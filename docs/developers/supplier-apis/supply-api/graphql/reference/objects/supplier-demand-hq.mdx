@@ -1,0 +1,67 @@
+---
+id: supplier-demand-hq
+title: SupplierDemandHq
+hide_table_of_contents: false
+---
+
+
+A relationship between a Supplier and a DemandHQ.
+
+```graphql
+type SupplierDemandHq {
+  createdAt: Date!
+  demandHqId: ID!
+  publicDemandHq: PublicDemandHq
+  status: SupplierDemandHqStatus!
+  supplierId: ID!
+  syncedAt: Date
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`createdAt`](#) ([`Date!`](/developers/supplier-apis/supply-api/graphql/reference/scalars/date))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/developers/supplier-apis/supply-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`publicDemandHq`](#) ([`PublicDemandHq`](/developers/supplier-apis/supply-api/graphql/reference/objects/public-demand-hq))
+
+Get the expanded PublicDemandHq for this SupplierDemandHq
+
+
+#### [`status`](#) ([`SupplierDemandHqStatus!`](/developers/supplier-apis/supply-api/graphql/reference/enums/supplier-demand-hq-status))
+
+Indicates what status the current relationship between a Supplier and a DemandHQ is in.
+
+
+#### [`supplierId`](#) ([`ID!`](/developers/supplier-apis/supply-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`syncedAt`](#) ([`Date`](/developers/supplier-apis/supply-api/graphql/reference/scalars/date))
+
+If populated, this means that the last update was from the associated DemandHQ (typically a REQUEST).
+
+
+#### [`updatedAt`](#) ([`Date!`](/developers/supplier-apis/supply-api/graphql/reference/scalars/date))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/developers/supplier-apis/supply-api/graphql/reference/scalars/id))
+
+
+
+
+
+

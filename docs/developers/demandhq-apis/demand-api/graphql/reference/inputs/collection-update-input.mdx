@@ -16,10 +16,11 @@ input CollectionUpdateInput {
   primaryImageUrl: String
   publishedAt: Date
   rules: CollectionRulesInput
+  secondaryImageUrl: String
   seoDescription: String
   seoTitle: String
   slug: String
-  status: CollectionStatus
+  status: DemandEntityStatus
   storefrontIds: [ID]
   subtitle: String
   tags: [String]
@@ -66,6 +67,11 @@ with status set to PUBLISHED will republish and re-set this date.
 A map of rules to determine whether a Product should be part of this Collection.
 
 
+#### [`secondaryImageUrl`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+A secondary image url for this collection, often a logo or related item.
+
+
 #### [`seoDescription`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
 
 Description specific for SEO purposes, limit 170 characters.
@@ -81,7 +87,7 @@ Title specific for SEO purposes, limit 256 characters.
 Slug for the URL for this collection. Limit 128 characters.
 
 
-#### [`status`](#) ([`CollectionStatus`](/developers/demandhq-apis/demand-api/graphql/reference/enums/collection-status))
+#### [`status`](#) ([`DemandEntityStatus`](/developers/demandhq-apis/demand-api/graphql/reference/enums/demand-entity-status))
 
 The status of the collection, can be DRAFT or PUBLISHED.
 

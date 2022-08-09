@@ -16,6 +16,7 @@ pages(
   before: String
   first: Int
   last: Int
+  numberOfTermAggregations: PageNumberOfTermAggregations
   pageType: StringFilterInput
   query: String
   slugs: [String]
@@ -50,6 +51,11 @@ Returns the first n elements from the list.
 #### [`last`](#) ([`Int`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/int))
 
 Returns the last n elements from the list.
+
+
+#### [`numberOfTermAggregations`](#) ([`PageNumberOfTermAggregations`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/page-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
 
 
 #### [`pageType`](#) ([`StringFilterInput`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/string-filter-input))

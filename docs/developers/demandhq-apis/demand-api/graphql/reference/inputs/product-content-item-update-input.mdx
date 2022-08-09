@@ -1,0 +1,50 @@
+---
+id: product-content-item-update-input
+title: ProductContentItemUpdateInput
+hide_table_of_contents: false
+---
+
+
+Input object for updating an existing ProductContentItem Image
+
+```graphql
+input ProductContentItemUpdateInput {
+  alt: String
+  category: String
+  contentItemId: ID!
+  position: Int
+  productId: ID!
+}
+```
+
+
+### Fields
+
+#### [`alt`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+
+
+
+#### [`category`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+
+
+
+#### [`contentItemId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`position`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+Used to determine what order the content comes out in.
+Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+
+
+#### [`productId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+
+
+
+
+

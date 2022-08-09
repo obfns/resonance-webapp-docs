@@ -31,23 +31,25 @@ type Collection {
   last: Int
   manufacturer: [StringFilterInput]
   msrp: [FloatRangeFilterInput]
+  numberOfTermAggregationResults: ProductNumberOfTermAggregations
   price: [FloatRangeFilterInput]
   productIds: [ID]
   query: String
   slugs: [String]
   sortOrder: [ProductSortInput]
   standardizedColor: [ProductStandardizedColorFilterInput]
-  status: ProductStatusFilterInput
+  status: DemandEntityStatusFilterInput
   storefrontIds: IDFilterInput
   tags: [StringFilterInput]
   vendor: StringFilterInput
 ): ProductConnectionWithSearch!
   publishedAt: Date
   rules: CollectionRules
+  secondaryImageUrl: String
   seoDescription: String
   seoTitle: String
   slug: String!
-  status: CollectionStatus!
+  status: DemandEntityStatus!
   storefrontIds: [ID]
   subtitle: String
   tags: CollectionTags
@@ -154,6 +156,11 @@ Optionally filter by manufacturer.
 Optionally filter by msrp.
 
 
+- ##### [`numberOfTermAggregationResults`](#) ([`ProductNumberOfTermAggregations`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/product-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+
 - ##### [`price`](#) ([`[FloatRangeFilterInput]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/float-range-filter-input))
 
 Optionally filter by price.
@@ -186,7 +193,7 @@ Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
 Optionally filter by standardized color.
 
 
-- ##### [`status`](#) ([`ProductStatusFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/product-status-filter-input))
+- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/demand-entity-status-filter-input))
 
 Filter Products using Status.
 
@@ -217,6 +224,11 @@ with status set to PUBLISHED will republish and re-set this date.
 A map of rules to determine whether a Product should be part of this Collection.
 
 
+#### [`secondaryImageUrl`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+A secondary image url for this collection, often a logo or related item.
+
+
 #### [`seoDescription`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
 
 Description specific for SEO purposes, limit 170 characters.
@@ -232,7 +244,7 @@ Title specific for SEO purposes, limit 256 characters.
 Slug for the URL for this collection. Limit 128 characters.
 
 
-#### [`status`](#) ([`CollectionStatus!`](/developers/demandhq-apis/demand-api/graphql/reference/enums/collection-status))
+#### [`status`](#) ([`DemandEntityStatus!`](/developers/demandhq-apis/demand-api/graphql/reference/enums/demand-entity-status))
 
 The status of the collection, can be DRAFT or PUBLISHED.
 

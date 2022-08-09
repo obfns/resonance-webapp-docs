@@ -5,7 +5,10 @@ hide_table_of_contents: false
 ---
 
 
-Filter using a combination of operator and an array of string values
+Filter using a combination of operator and an array of string values.
+            
+Special values:
+- '#EXISTS#' - Indicates the field should merely exist, and any value is acceptable. (Or, no value should exist for 'NOT').
 
 ```graphql
 input StringFilterInput {

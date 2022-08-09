@@ -1,3 +1,33 @@
+"""The globally used Address of Resonance"""
+type Address {
+  """The city of the address"""
+  city: String!
+
+  """The company associated with the address"""
+  company: String
+
+  """The country of the address"""
+  country: String!
+
+  """The name associated with the address, i.e. the Person in the household"""
+  name: String!
+
+  """The phone number of the address. Format +11231231234"""
+  phoneNumber: String
+
+  """The zip or postal code of the address"""
+  postalCode: String!
+
+  """The state of the address"""
+  state: String!
+
+  """The first line of the street address"""
+  streetAddress1: String!
+
+  """The second line of the street address"""
+  streetAddress2: String
+}
+
 """
 The response recieved when an app is installed or the permissions are updated
 """
@@ -102,6 +132,11 @@ type Collection {
     """Optionally filter by msrp."""
     msrp: [FloatRangeFilterInput]
 
+    """
+    The number of results to return for each term aggregation. Defaults to 0 for each.
+    """
+    numberOfTermAggregationResults: ProductNumberOfTermAggregations
+
     """Optionally filter by price."""
     price: [FloatRangeFilterInput]
 
@@ -127,7 +162,7 @@ type Collection {
     standardizedColor: [ProductStandardizedColorFilterInput]
 
     """Filter Products using Status."""
-    status: ProductStatusFilterInput
+    status: DemandEntityStatusFilterInput
 
     """Optionally filter by storefrontIds."""
     storefrontIds: IDFilterInput
@@ -150,6 +185,11 @@ type Collection {
   """
   rules: CollectionRules
 
+  """
+  A secondary image url for this collection, often a logo or related item.
+  """
+  secondaryImageUrl: String
+
   """Description specific for SEO purposes, limit 170 characters."""
   seoDescription: String
 
@@ -160,7 +200,7 @@ type Collection {
   slug: String!
 
   """The status of the collection, can be DRAFT or PUBLISHED."""
-  status: CollectionStatus!
+  status: DemandEntityStatus!
 
   """Which storefronts should have access to this collection?"""
   storefrontIds: [ID]
@@ -188,6 +228,12 @@ type CollectionConnectionWithSearch {
   term as the value. This is often referred to as 'Did you mean?'
   """
   querySuggestions: JSON
+
+  """
+  Values and the number of times they occur for the results of the query. These
+  will be the same for every page of a query, and should only be fetched on the first page.
+  """
+  termAggregations: CollectionTermAggregations
 }
 
 """This is the actual markdown content for the collection"""
@@ -264,6 +310,11 @@ input CollectionCreateInput {
   """
   rules: CollectionRulesInput
 
+  """
+  A secondary image url for this collection, often a logo or related item.
+  """
+  secondaryImageUrl: String
+
   """Description specific for SEO purposes, limit 170 characters."""
   seoDescription: String
 
@@ -294,10 +345,16 @@ type CollectionEdge {
   node: Collection
 }
 
-"""
-Input object for creating an Image for a Collection from a File on a device
-"""
+"""The input for creating an Image for a Collection from a file"""
 input CollectionImageFromFileInput {
+  collectionId: ID!
+  demandHqId: ID!
+  fileExtension: String!
+  fileName: String!
+}
+
+"""The original input that errored"""
+type CollectionImageFromFileInputResponse {
   collectionId: ID!
   demandHqId: ID!
   fileExtension: String!
@@ -320,7 +377,12 @@ type CollectionImageFromFileResponse {
 
 """Returned object from createCollectionImagesFromFiles"""
 type CollectionImageFromFilesResponse {
-  collectionImageFromFileResponse: [CollectionImageFromFileResponse]
+  errors: [CollectionImagesFromFilesError!]
+
+  """
+  A signed S3 url to upload the image to along with supporting data about the image
+  """
+  mutationResponses: [CollectionImageFromFileResponse!]!
 }
 
 """Input object for creating an Image for a Collection from a URL"""
@@ -328,6 +390,21 @@ input CollectionImageFromUrlInput {
   collectionId: ID!
   demandHqId: ID!
   url: String!
+}
+
+"""Returned object for any failed CreateCollectionImagesFromFiles inputs"""
+type CollectionImagesFromFilesError {
+  """The error message"""
+  error: String!
+  input: CollectionImageFromFileInputResponse!
+}
+
+"""
+The number of results to return for each term aggregation. Defaults to 0 for each.
+"""
+input CollectionNumberOfTermAggregations {
+  collectionTypes: Int
+  tags: Int
 }
 
 """A rule to determine whether a Product should be part of a Collection."""
@@ -411,18 +488,6 @@ enum CollectionSortField {
 input CollectionSortInput {
   direction: SortDirection!
   field: CollectionSortField!
-}
-
-"""Indicates whether the user type is an app or human user"""
-enum CollectionStatus {
-  DRAFT
-  PUBLISHED
-}
-
-"""Filter Collections using Status."""
-input CollectionStatusFilterInput {
-  operator: FilterOperator
-  values: [CollectionStatus!]!
 }
 
 """These are the tags associated to the collection"""
@@ -615,6 +680,11 @@ input CollectionUpdateInput {
   """
   rules: CollectionRulesInput
 
+  """
+  A secondary image url for this collection, often a logo or related item.
+  """
+  secondaryImageUrl: String
+
   """Description specific for SEO purposes, limit 170 characters."""
   seoDescription: String
 
@@ -625,7 +695,7 @@ input CollectionUpdateInput {
   slug: String
 
   """The status of the collection, can be DRAFT or PUBLISHED."""
-  status: CollectionStatus
+  status: DemandEntityStatus
 
   """Which storefronts should have access to this collection?"""
   storefrontIds: [ID]
@@ -1049,6 +1119,22 @@ type DeletePageContentItemResponse {
   deletedId: ID!
 }
 
+"""
+Indicates what stage of creation a Demand Entity is in, i.e. a Collection, Page, or Product
+"""
+enum DemandEntityStatus {
+  ARCHIVED
+  DRAFT
+  NEEDSREVIEW
+  PUBLISHED
+}
+
+"""Filter using DemandEntityStatus."""
+input DemandEntityStatusFilterInput {
+  operator: FilterOperator
+  values: [DemandEntityStatus!]!
+}
+
 """The parent-most entity of the DemandHq Domain"""
 type DemandHq {
   """
@@ -1093,6 +1179,11 @@ type DemandHq {
     last: Int
 
     """
+    The number of results to return for each term aggregation. Defaults to 0 for each.
+    """
+    numberOfTermAggregations: CollectionNumberOfTermAggregations
+
+    """
     Query collections for certain terms. Searches several fields, including
     collection.description, collection.subtitle, collection.title,
     collectionTags, and the actual primary and secondary content of the collection.
@@ -1108,7 +1199,7 @@ type DemandHq {
     sortOrder: [CollectionSortInput]
 
     """Filter Collections using status"""
-    status: CollectionStatusFilterInput
+    status: DemandEntityStatusFilterInput
 
     """Optionally filter by storefrontIds."""
     storefrontIds: IDFilterInput
@@ -1154,6 +1245,35 @@ type DemandHq {
   Requires demandHqidentity/read permission on the requesting identity, or you can request your own identity.
   """
   demandHqIdentity(demandHqId: ID!, identityId: ID!): DemandHqIdentity
+
+  """
+  Get a DemandHqSupplier by SupplierId.
+              
+  Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
+  """
+  demandHqSupplier(supplierId: ID!): DemandHqSupplier
+
+  """
+  Get a list of DemandHqSuppliers for a DemandHQ.
+  
+  Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
+  """
+  demandHqSuppliers(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+    status: DemandHqSupplierStatus
+  ): DemandHqSupplierConnection!
   demandSubscriptionCodes: [DemandSubscriptionCode!]
   description: String
   name: String!
@@ -1163,6 +1283,9 @@ type DemandHq {
   If none are provided, ownerUserName will be notified.
   """
   notificationUserNames: DemandHqNotificationUserNames
+
+  """Get a public identity for the owner of this DemandHq"""
+  ownerUser: PublicIdentity
   ownerUserName: String!
 
   """
@@ -1203,6 +1326,11 @@ type DemandHq {
     """Returns the last n elements from the list."""
     last: Int
 
+    """
+    The number of results to return for each term aggregation. Defaults to 0 for each.
+    """
+    numberOfTermAggregations: PageNumberOfTermAggregations
+
     """Filter Pages to a set of pageIds"""
     pageIds: [ID]
 
@@ -1225,7 +1353,7 @@ type DemandHq {
     sortOrder: [PageSortInput]
 
     """Filter Pages using status"""
-    status: PageStatusFilterInput
+    status: DemandEntityStatusFilterInput
 
     """Optionally filter by storefrontIds."""
     storefrontIds: IDFilterInput
@@ -1275,6 +1403,11 @@ type DemandHq {
     """Optionally filter by msrp."""
     msrp: [FloatRangeFilterInput]
 
+    """
+    The number of results to return for each term aggregation. Defaults to 0 for each.
+    """
+    numberOfTermAggregationResults: ProductNumberOfTermAggregations
+
     """Optionally filter by price."""
     price: [FloatRangeFilterInput]
 
@@ -1300,7 +1433,7 @@ type DemandHq {
     standardizedColor: [ProductStandardizedColorFilterInput]
 
     """Filter Products using Status."""
-    status: ProductStatusFilterInput
+    status: DemandEntityStatusFilterInput
 
     """Optionally filter by storefrontIds."""
     storefrontIds: IDFilterInput
@@ -1485,6 +1618,54 @@ enum DemandHqStatus {
   PUBLISHED
 }
 
+"""A relationship between a Supplier and a DemandHQ."""
+type DemandHqSupplier {
+  createdAt: Date!
+  demandHqId: ID!
+
+  """Get the expanded PublicSupplier for this DemandHqSupplier"""
+  publicSupplier: PublicSupplier
+
+  """
+  Indicates what status the current relationship between a Supplier and a DemandHQ is in.
+  """
+  status: DemandHqSupplierStatus!
+  supplierId: ID!
+
+  """
+  If populated, this means that the last update was from the associated DemandHQ (typically a REQUEST).
+  """
+  syncedAt: Date
+  updatedAt: Date!
+  updatedBy: ID!
+}
+
+"""Paginate through DemandHqSuppliers"""
+type DemandHqSupplierConnection {
+  edges: [DemandHqSupplierEdge]!
+  nodes: [DemandHqSupplier]!
+  pageInfo: PageInfo!
+}
+
+"""One edge producing one DemandHqSupplier Node"""
+type DemandHqSupplierEdge {
+  node: DemandHqSupplier
+}
+
+"""
+Indicates what status the current relationship between a Supplier and a DemandHQ is in.
+"""
+enum DemandHqSupplierStatus {
+  """The DemandHq has permission to sell items from the Supplier."""
+  APPROVED
+
+  """The Supplier has denied permission to the DemandHQ to sell its items."""
+  DENIED
+
+  """The DemandHq has requested permission to sell items from the Supplier."""
+  PENDING
+}
+
 """The possible fields in order to update a demandHq."""
 input DemandHqUpdateInput {
   demandHqId: ID!
@@ -1611,7 +1792,7 @@ type Mutation {
   createPage(input: PageCreateInput!): Page!
 
   """
-  Create a Image for a Page from a file.
+  Create an Image for a Page from a file.
   
   Requires the page/write permission on the given DemandHq
   """
@@ -1644,6 +1825,12 @@ type Mutation {
   Requires the product/write permission on the given DemandHq
   """
   createProduct(input: ProductCreateInput!): Product!
+
+  """Create a ProductContentItem from a URL"""
+  createProductImageFromUrl(input: ProductImageFromUrlInput!): ProductContentItem!
+
+  """Create ProductContentItems from image files"""
+  createProductImagesFromFiles(inputs: [ProductImageFromFileInput!]!): ProductImagesFromFilesResponse!
 
   """Create a new productLocale."""
   createProductLocale(input: ProductLocaleCreateInput!): ProductLocale!
@@ -1739,6 +1926,9 @@ type Mutation {
   """
   deleteProduct(productId: ID!): ProductDeleteResponse!
 
+  """Delete an existing ProductContentItem"""
+  deleteProductContentItem(contentItemId: ID!, productId: ID!): ProductContentItemDeleteResponse!
+
   """
   Delete a variant
               
@@ -1752,6 +1942,13 @@ type Mutation {
   Requires the demandHqidentity/write permission on the given DemandHq
   """
   installApp(appId: ID!, demandHqId: ID!): AppInstallationResponse!
+
+  """
+  Request access to sell items from a Supplier.
+              
+  Requires the requesting identity to have the "demandhqsupplier/write" permission on the associated DemandHq.
+  """
+  requestSupplierAccess(demandHqId: ID!, supplierId: ID!): DemandHqSupplier!
 
   """
   Update an app's permissions on a DemandHq. This is a no-op if the app's
@@ -1830,6 +2027,9 @@ type Mutation {
   Requires the product/write permission on the given DemandHq
   """
   updateProduct(input: ProductUpdateInput!): Product!
+
+  """Update an existing ProductContentItem"""
+  updateProductContentItem(input: ProductContentItemUpdateInput!): ProductContentItem!
 
   """Update an existing productLocale"""
   updateProductLocale(input: ProductLocaleUpdateInput!): ProductLocale!
@@ -2092,10 +2292,26 @@ type Page {
   primaryImageUrl: String
 
   """
+  Returns the primary image URL if exists, otherwise attempts to construct an
+  image url from the first (featured) image of the page.  If the primary image
+  URL is a CDN URL, it can be passed width and height properties to return a resized image.
+  """
+  primaryImageUrlWithFallback(
+    """The height of the image to return in pixels."""
+    height: Int
+
+    """The width of the image to return in pixels."""
+    width: Int
+  ): String
+
+  """
   ISO format date when the page was published. Note that ensuing updates with
   status set to PUBLISHED will republish and re-set this date.
   """
   publishedAt: Date
+
+  """A secondary image url for this page, often a logo or related item."""
+  secondaryImageUrl: String
 
   """Description specific for SEO purposes, limit 170 characters."""
   seoDescription: String
@@ -2107,7 +2323,7 @@ type Page {
   slug: String!
 
   """The status of the page, can be DRAFT or PUBLISHED."""
-  status: PageStatus!
+  status: DemandEntityStatus!
 
   """Which storefronts should have access to this page?"""
   storefrontIds: [ID]
@@ -2135,6 +2351,12 @@ type PageConnectionWithSearch {
   term as the value. This is often referred to as 'Did you mean?'
   """
   querySuggestions: JSON
+
+  """
+  Values and the number of times they occur for the results of the query. These
+  will be the same for every page of a query, and should only be fetched on the first page.
+  """
+  termAggregations: PageTermAggregations
 }
 
 """This is the actual content of the page"""
@@ -2200,6 +2422,9 @@ input PageCreateInput {
   """
   primaryImageUrl: String
 
+  """A secondary image url for this page, often a logo or related item."""
+  secondaryImageUrl: String
+
   """Description specific for SEO purposes, limit 170 characters."""
   seoDescription: String
 
@@ -2230,8 +2455,16 @@ type PageEdge {
   node: Page
 }
 
-"""Input object for creating an Image for a Page from a File on a device"""
+"""The input for creating an Image for a Page from a file"""
 input PageImageFromFileInput {
+  demandHqId: ID!
+  fileExtension: String!
+  fileName: String!
+  pageId: ID!
+}
+
+"""The original input that errored"""
+type PageImageFromFileInputResponse {
   demandHqId: ID!
   fileExtension: String!
   fileName: String!
@@ -2253,7 +2486,12 @@ type PageImageFromFileResponse {
 
 """Returned object from createPageImagesFromFiles"""
 type PageImageFromFileResponses {
-  pageImageFromFileResponses: [PageImageFromFileResponse]!
+  errors: [PageImagesFromFilesError!]
+
+  """
+  A signed S3 url to upload the image to along with supporting data about the image
+  """
+  mutationResponses: [PageImageFromFileResponse!]!
 }
 
 """Input object for creating an Image for a Page from a URL"""
@@ -2261,6 +2499,13 @@ input PageImageFromUrlInput {
   demandHqId: ID!
   pageId: ID!
   url: String!
+}
+
+"""Returned object for any failed CreatePageImagesFromFiles inputs"""
+type PageImagesFromFilesError {
+  """The error message"""
+  error: String!
+  input: PageImageFromFileInputResponse!
 }
 
 """Information on Pagination"""
@@ -2290,6 +2535,15 @@ type PageInfo {
   startCursor: String
 }
 
+"""
+The number of results to return for each term aggregation. Defaults to 0 for each.
+"""
+input PageNumberOfTermAggregations {
+  authors: Int
+  pageTypes: Int
+  tags: Int
+}
+
 """Indicates which field to sort by, defaults to CREATED_AT"""
 enum PageSortField {
   CREATED_AT
@@ -2303,18 +2557,6 @@ enum PageSortField {
 input PageSortInput {
   direction: SortDirection!
   field: PageSortField!
-}
-
-"""Indicates whether the user type is an app or human user"""
-enum PageStatus {
-  DRAFT
-  PUBLISHED
-}
-
-"""Filter Pages using Status."""
-input PageStatusFilterInput {
-  operator: FilterOperator
-  values: [PageStatus!]!
 }
 
 """These are the tags associated to the page"""
@@ -2503,6 +2745,9 @@ input PageUpdateInput {
   """
   publishedAt: Date
 
+  """A secondary image url for this page, often a logo or related item."""
+  secondaryImageUrl: String
+
   """Description specific for SEO purposes, limit 170 characters."""
   seoDescription: String
 
@@ -2513,7 +2758,7 @@ input PageUpdateInput {
   slug: String
 
   """The status of the page, can be DRAFT or PUBLISHED."""
-  status: PageStatus
+  status: DemandEntityStatus
 
   """Which storefronts should have access to this page?"""
   storefrontIds: [ID]
@@ -2543,6 +2788,39 @@ A Product is a part of the Demand Domain and represents a the basic information 
 Products have many support entities, including variants, which represent SKUs of the product.
 """
 type Product {
+  """
+  Get a productContentItem for a product
+  
+          Requires productcontentitem/read permission on the requesting identity
+  """
+  contentItem(contentItemId: ID!): ProductContentItem
+
+  """
+  Get a list of productContentItems
+  
+  Requires productcontentitem/read permission on the DemandHq for the requesting identity
+  
+  Sorting works differently depending on which filters are used.
+  Without any filters, the sort order is by createdAt.
+  With a contentType filter, the sort order is by position.
+  This means "featuredImage" can be retrieved by using contentType: IMAGE and first: 1.
+  """
+  contentItems(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    contentType: ProductContentType
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): ProductContentItemConnection
   createdAt: Date!
   demandHqId: ID!
 
@@ -2573,7 +2851,7 @@ type Product {
   slug: String!
 
   """The status of the product, can be DRAFT or PUBLISHED."""
-  status: ProductStatus!
+  status: DemandEntityStatus!
 
   """Which storefronts should have access to this product?"""
   storefrontIds: [ID]
@@ -2629,6 +2907,81 @@ type ProductConnectionWithSearch {
   term as the value. This is often referred to as 'Did you mean?'
   """
   querySuggestions: JSON
+
+  """
+  Values and the number of times they occur for the results of the query. These
+  will be the same for every page of a query, and should only be fetched on the first page.
+  """
+  termAggregations: ProductTermAggregations
+}
+
+"""
+This has a many to one relationship with Product, and provides a connection to the CDN items.
+"""
+type ProductContentItem {
+  alt: String!
+  category: String
+  contentItemId: ID!
+
+  """The key to the file in the CDN"""
+  contentKey: String!
+  contentType: ProductContentType!
+  createdAt: Date!
+  demandHqId: ID!
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+  productId: ID!
+  updatedAt: Date!
+  updatedBy: String!
+}
+
+"""Paginate through ProductContentItems"""
+type ProductContentItemConnection {
+  edges: [ProductContentItemEdge]!
+  nodes: [ProductContentItem]!
+  pageInfo: PageInfo!
+}
+
+"""
+The 'id' type for the deleted ProductContentItem returned from the mutation
+"""
+type ProductContentItemDeleteId {
+  contentItemId: ID!
+  productId: ID!
+}
+
+"""The response type from a ProductContentItem delete mutation"""
+type ProductContentItemDeleteResponse {
+  deletedId: ProductContentItemDeleteId
+}
+
+"""One edge producing one ProductContentItem Node"""
+type ProductContentItemEdge {
+  node: ProductContentItem
+}
+
+"""Input object for updating an existing ProductContentItem Image"""
+input ProductContentItemUpdateInput {
+  alt: String
+  category: String
+  contentItemId: ID!
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+  productId: ID!
+}
+
+"""Describes what type of content the contentItem is"""
+enum ProductContentType {
+  IMAGE
+  VIDEO
 }
 
 """
@@ -2668,6 +3021,77 @@ type ProductDeleteResponse {
 """One edge producing one Product Node"""
 type ProductEdge {
   node: Product
+}
+
+"""Input object for creating a ProductContentItem Image from a file"""
+input ProductImageFromFileInput {
+  alt: String!
+  category: String
+  demandHqId: ID!
+  fileExtension: String!
+  fileName: String!
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+  productId: ID!
+}
+
+"""The original input that errored"""
+type ProductImageFromFileInputResponse {
+  alt: String!
+  category: String
+  demandHqId: ID!
+  fileExtension: String!
+  fileName: String!
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+  productId: ID!
+}
+
+"""The response object from createProductImageFromFile"""
+type ProductImageFromFileResponse {
+  contentItem: ProductContentItem!
+  fields: JSON!
+  url: String!
+}
+
+"""Input object for creating a ProductContentItem Image from a URL"""
+input ProductImageFromUrlInput {
+  alt: String!
+  category: String
+  demandHqId: ID!
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+  productId: ID!
+  url: String!
+}
+
+"""Returned object for any failed createProductImagesFromFiles inputs"""
+type ProductImagesFromFilesError {
+  """The error message"""
+  error: String!
+  input: ProductImageFromFileInputResponse!
+}
+
+"""Returned object from createProductImagesFromFiles"""
+type ProductImagesFromFilesResponse {
+  errors: [ProductImagesFromFilesError!]
+
+  """
+  A signed S3 url to upload the image to along with supporting data about the image
+  """
+  mutationResponses: [ProductImageFromFileResponse!]!
 }
 
 """
@@ -2711,6 +3135,15 @@ input ProductLocaleUpdateInput {
   productId: ID!
 }
 
+"""
+The number of results to return for each term aggregation. Defaults to 0 for each.
+"""
+input ProductNumberOfTermAggregations {
+  manufacturers: Int
+  tags: Int
+  vendors: Int
+}
+
 """Indicates which field to sort by, defaults to CREATED_AT"""
 enum ProductSortField {
   CREATED_AT
@@ -2733,20 +3166,6 @@ input ProductSortInput {
 input ProductStandardizedColorFilterInput {
   operator: FilterOperator
   values: [VariantStandardizedColor!]!
-}
-
-"""Indicates whether the user type is an app or human user"""
-enum ProductStatus {
-  ARCHIVED
-  DRAFT
-  NEEDSREVIEW
-  PUBLISHED
-}
-
-"""Filter Products using Status."""
-input ProductStatusFilterInput {
-  operator: FilterOperator
-  values: [ProductStatus!]!
 }
 
 """These are the tags associated to the product"""
@@ -2789,7 +3208,7 @@ input ProductUpdateInput {
   slug: String
 
   """The status of the product, can be DRAFT or PUBLISHED."""
-  status: ProductStatus
+  status: DemandEntityStatus
 
   """Which storefronts should have access to this product?"""
   storefrontIds: [ID]
@@ -2818,6 +3237,25 @@ type PublicApp {
   status: AppStatus!
 }
 
+"""The parent-most entity of the DemandHq Domain"""
+type PublicDemandHq {
+  demandHqId: ID!
+  description: String
+  name: String!
+}
+
+"""Paginate through PublicDemandHq"""
+type PublicDemandHqConnection {
+  edges: [PublicDemandHqEdge]!
+  nodes: [PublicDemandHq]!
+  pageInfo: PageInfo!
+}
+
+"""One edge producing one PublicDemandHq Node"""
+type PublicDemandHqEdge {
+  node: PublicDemandHq
+}
+
 """
 This type is returned on routes with no permissions attached to protect
 Personally Identifiable Information, but still provide minimal data.
@@ -2837,6 +3275,27 @@ This type is the extension of DemandHqIdentity's identityParentEntityId into the
         Currently, this is for Apps only.
 """
 union PublicIdentityParent = PublicApp
+
+"""The parent-most entity of the Supplier Domain"""
+type PublicSupplier {
+  """Indicates the vertical the majority of a Supplier's goods are in."""
+  category: SupplierCategory
+  description: String
+
+  """
+  The approximate number of in stock products this Supplier has on a typical basis.
+  """
+  inStockProducts: Int
+  name: String!
+  shipFromAddress: Address
+  status: SupplierStatus!
+  supplierId: ID!
+
+  """
+  The top Brands or Vendors this Supplier carries, limit 5 and 256 characters each.
+  """
+  topVendors: [String!]
+}
 
 """The root query type for the Demand domain"""
 type Query {
@@ -2925,6 +3384,13 @@ type Query {
   demandHqIdentity(demandHqId: ID!, identityId: ID!): DemandHqIdentity
 
   """
+  Get a DemandHqSupplier by its IDs.
+              
+  Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
+  """
+  demandHqSupplier(demandHqId: ID!, supplierId: ID!): DemandHqSupplier
+
+  """
   Get a Nav by its id.
               
   Requires the user to have the nav/read permission on the associated DemandHq.
@@ -2951,6 +3417,9 @@ type Query {
   Requires the product/read scope on the associated DemandHq.
   """
   product(productId: ID!): Product
+
+  """List PublicDemandHqs"""
+  publicDemandHqs(demandHqIds: [ID!]): PublicDemandHqConnection!
 
   """
   Get a storefront by its storefrontId.
@@ -3132,21 +3601,49 @@ type StorefrontApiKey {
 Based on the authenticationType, these settings can have different shapes, but this type is all encompassing.
 """
 type StorefrontAuthenticationSettings {
-  """Used for authenticationType COGNITO."""
-  issuer: String
+  """
+  Required for authenticationType JWKS. This is the name of the field containing the customerId, normally 'sub'
+  """
+  externalCustomerIdFieldName: String
+
+  """
+  Required for authenticationType COGNITO or JWKS. This indicates the issuer of the JWT.
+  """
+  issuer: String!
+
+  """
+  Required for authenticationType JWKS. This is the URL of the JWKS endpoint.
+  """
+  jwksUrl: String
 }
 
 """
 Necessary fields to set authentication related settings for a Storefront.
 """
 input StorefrontAuthenticationSettingsInput {
-  """Used for authenticationType COGNITO."""
-  issuer: String
+  """
+  Required for authenticationType JWKS. This is the name of the field containing the customerId, normally 'sub'
+  """
+  externalCustomerIdFieldName: String
+
+  """
+  Required for authenticationType COGNITO or JWKS. This indicates the issuer of the JWT.
+  """
+  issuer: String!
+
+  """
+  Required for authenticationType JWKS. This is the URL of the JWKS endpoint.
+  """
+  jwksUrl: String
 }
 
 """Indicates what type of authentication is used for the storefront."""
 enum StorefrontAuthenticationType {
+  """Indicates that the storefront uses Cognito for auth."""
   COGNITO
+
+  """Indicates that the storefront uses a JWT that has a JWKS for auth."""
+  JWKS
   NONE
 }
 
@@ -3255,10 +3752,41 @@ input StorefrontUpdateInput {
   urlDomain: String
 }
 
-"""Filter using a combination of operator and an array of string values"""
+"""
+Filter using a combination of operator and an array of string values.
+            
+Special values:
+- '#EXISTS#' - Indicates the field should merely exist, and any value is acceptable. (Or, no value should exist for 'NOT').
+"""
 input StringFilterInput {
   operator: FilterOperator
   values: [String!]!
+}
+
+"""Indicates the vertical the majority of a Supplier's goods are in."""
+enum SupplierCategory {
+  SPORTING_GOODS
+}
+
+"""Indication of whether the Supplier is live and accepting orders"""
+enum SupplierStatus {
+  """Indicates a Supplier's goods are no longer available for retailing."""
+  ARCHIVED
+
+  """
+  Indicates that a Supplier's goods are not yet available for retailing. Functionally identical to ARCHIVED.
+  """
+  DRAFT
+
+  """
+  Indicates that a Supplier is activated and available, but not in the public Supplier Marketplace.
+  """
+  PRIVATE
+
+  """
+  Indicates that a Supplier is not only activated, but available in the public Supplier Marketplace.
+  """
+  PUBLIC
 }
 
 """

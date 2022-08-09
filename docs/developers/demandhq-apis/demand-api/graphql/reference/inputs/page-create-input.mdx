@@ -15,6 +15,7 @@ input PageCreateInput {
   description: String
   pageType: String!
   primaryImageUrl: String
+  secondaryImageUrl: String
   seoDescription: String
   seoTitle: String
   slug: String!
@@ -56,6 +57,11 @@ Any string to declare a category of this page, can be used to filter pages, limi
 #### [`primaryImageUrl`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
 
 A primary image url for this page, can be generated from a Page ContentItem.
+
+
+#### [`secondaryImageUrl`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+A secondary image url for this page, often a logo or related item.
 
 
 #### [`seoDescription`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))

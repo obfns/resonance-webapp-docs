@@ -14,7 +14,7 @@ input ProductUpdateInput {
   publishedAt: Date
   seoTitle: String
   slug: String
-  status: ProductStatus
+  status: DemandEntityStatus
   storefrontIds: [ID]
   tags: [String]
   title: String
@@ -52,7 +52,7 @@ Title specific for SEO purposes, limit 256 characters.
 Slug for the URL for this product. Limit 128 characters.
 
 
-#### [`status`](#) ([`ProductStatus`](/developers/demandhq-apis/demand-api/graphql/reference/enums/product-status))
+#### [`status`](#) ([`DemandEntityStatus`](/developers/demandhq-apis/demand-api/graphql/reference/enums/demand-entity-status))
 
 The status of the product, can be DRAFT or PUBLISHED.
 

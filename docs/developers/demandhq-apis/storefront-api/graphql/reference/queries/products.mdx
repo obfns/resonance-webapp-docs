@@ -17,6 +17,7 @@ products(
   last: Int
   manufacturer: [StringFilterInput]
   msrp: FloatRangeFilterInput
+  numberOfTermAggregations: ProductNumberOfTermAggregations
   price: FloatRangeFilterInput
   query: String
   slugs: [String]
@@ -58,6 +59,11 @@ Optionally filter by manufacturer.
 #### [`msrp`](#) ([`FloatRangeFilterInput`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/float-range-filter-input))
 
 Optionally filter by msrp.
+
+
+#### [`numberOfTermAggregations`](#) ([`ProductNumberOfTermAggregations`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/product-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
 
 
 #### [`price`](#) ([`FloatRangeFilterInput`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/float-range-filter-input))

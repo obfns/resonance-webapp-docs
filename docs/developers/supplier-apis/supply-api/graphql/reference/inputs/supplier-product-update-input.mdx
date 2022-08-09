@@ -12,7 +12,7 @@ If status is set to Publish, additional validation will be performed.
 input SupplierProductUpdateInput {
   externalProductId: String
   optionLabels: [String!]
-  status: SupplierProductStatus
+  status: SupplyEntityStatus
   supplierProductId: ID!
   tags: [String!]
   title: String
@@ -37,7 +37,7 @@ Set the first optionLabel to "No Option" if you don't want to use options for th
 See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
 
 
-#### [`status`](#) ([`SupplierProductStatus`](/developers/supplier-apis/supply-api/graphql/reference/enums/supplier-product-status))
+#### [`status`](#) ([`SupplyEntityStatus`](/developers/supplier-apis/supply-api/graphql/reference/enums/supply-entity-status))
 
 Indicates whether a product is live and able to be ordered.
 

@@ -26,11 +26,16 @@ type Page {
   pageId: ID!
   pageType: String!
   primaryImageUrl: String
+  primaryImageUrlWithFallback(
+  height: Int
+  width: Int
+): String
   publishedAt: Date
+  secondaryImageUrl: String
   seoDescription: String
   seoTitle: String
   slug: String!
-  status: PageStatus!
+  status: DemandEntityStatus!
   storefrontIds: [ID]
   subtitle: String
   tags: PageTags
@@ -101,10 +106,30 @@ Any string to declare a category of this page, can be used to filter pages, limi
 A primary image url for this page, can be generated from a Page ContentItem.
 
 
+#### [`primaryImageUrlWithFallback`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the primary image URL if exists, otherwise attempts to construct an
+image url from the first (featured) image of the page.  If the primary image
+URL is a CDN URL, it can be passed width and height properties to return a resized image.
+- ##### [`height`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+The height of the image to return in pixels.
+
+
+- ##### [`width`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+The width of the image to return in pixels.
+
+
 #### [`publishedAt`](#) ([`Date`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/date))
 
 ISO format date when the page was published. Note that ensuing updates with
 status set to PUBLISHED will republish and re-set this date.
+
+
+#### [`secondaryImageUrl`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+A secondary image url for this page, often a logo or related item.
 
 
 #### [`seoDescription`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
@@ -122,7 +147,7 @@ Title specific for SEO purposes, limit 256 characters.
 Slug for the URL for this page. Limit 128 characters.
 
 
-#### [`status`](#) ([`PageStatus!`](/developers/demandhq-apis/demand-api/graphql/reference/enums/page-status))
+#### [`status`](#) ([`DemandEntityStatus!`](/developers/demandhq-apis/demand-api/graphql/reference/enums/demand-entity-status))
 
 The status of the page, can be DRAFT or PUBLISHED.
 

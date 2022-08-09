@@ -10,6 +10,7 @@ Indicates what type of authentication is used for the storefront.
 ```graphql
 enum StorefrontAuthenticationType {
   COGNITO
+  JWKS
   NONE
 }
 ```
@@ -19,7 +20,12 @@ enum StorefrontAuthenticationType {
 
 #### [`COGNITO`](#)
 
+Indicates that the storefront uses Cognito for auth.
 
+
+#### [`JWKS`](#)
+
+Indicates that the storefront uses a JWT that has a JWKS for auth.
 
 
 #### [`NONE`](#)
