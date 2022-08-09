@@ -79,6 +79,14 @@ type CollectionContent {
   updatedAt: String
 }
 
+"""
+The number of results to return for each term aggregation. Defaults to 0 for each.
+"""
+input CollectionNumberOfTermAggregations {
+  collectionTypes: Int
+  tags: Int
+}
+
 """Indicates which field to sort by"""
 enum CollectionSortField {
   PUBLISHED_AT
@@ -313,6 +321,43 @@ input CustomerAddressUpdateInput {
   streetAddress2: String
 }
 
+"""Input for creating a Customer"""
+input CustomerCreateInput {
+  """
+  The CustomerAddressId for the default billing address for this Customer
+  """
+  defaultBillingAddressId: ID
+
+  """
+  The CustomerAddressId for the default shipping address for this Customer
+  """
+  defaultShippingAddressId: ID
+
+  """
+  The email address associated with the Customer, must be unique to the storefront, limit 256 characters
+  """
+  emailAddress: String!
+  emailMarketingConsent: CustomerMarketingConsentInput
+
+  """
+  Reference to the storefront's customer authentication system. Limit 256 characters.
+  This field is required if this customer is going to access any authenticated data (like their orders).
+  """
+  externalCustomerId: ID
+
+  """The first name of the Customer, limit 256 characters"""
+  firstName: String
+
+  """The last name of the Customer, limit 256 characters"""
+  lastName: String
+
+  """
+  Must be unique to the Storefront. Limit 64 characters. Format +11231231234
+  """
+  phoneNumber: String
+  smsMarketingConsent: CustomerMarketingConsentInput
+}
+
 """Details about the Customer's marketing consent"""
 type CustomerMarketingConsent {
   """The level at which the Customer has consented to marketing"""
@@ -472,6 +517,13 @@ type Mutation {
   ): Cart!
 
   """
+  Create a Customer.
+  
+  Requires the publiccustomer/write scope.
+  """
+  createCustomer(input: CustomerCreateInput!): Customer!
+
+  """
   Creates a new CustomerAddress
   
   Requires the customeraddress/write scope on the associated DemandHq.
@@ -499,7 +551,7 @@ type Mutation {
   
   Requires the publiccustomer/write scope and a valid customer authentication token.
   """
-  updateCustomer(customerToken: String!, input: CustomerUpdateInput): Customer!
+  updateCustomer(customerToken: String!, input: CustomerUpdateInput!): Customer!
 
   """
   Updates an existing CustomerAddress
@@ -554,6 +606,15 @@ type PageInfo {
   startCursor: String
 }
 
+"""
+The number of results to return for each term aggregation. Defaults to 0 for each.
+"""
+input PageNumberOfTermAggregations {
+  authors: Int
+  pageTypes: Int
+  tags: Int
+}
+
 """Indicates which field to sort by"""
 enum PageSortField {
   PUBLISHED_AT
@@ -599,6 +660,28 @@ type ParsedTag {
 
   """The value of the tag"""
   value: String!
+}
+
+"""Paginate through ProductContentItems"""
+type ProductContentItemConnection {
+  edges: [PublicProductContentItemEdge]!
+  nodes: [PublicProductContentItem]!
+  pageInfo: PageInfo!
+}
+
+"""Describes what type of content the contentItem is"""
+enum ProductContentType {
+  IMAGE
+  VIDEO
+}
+
+"""
+The number of results to return for each term aggregation. Defaults to 0 for each.
+"""
+input ProductNumberOfTermAggregations {
+  manufacturers: Int
+  tags: Int
+  vendors: Int
 }
 
 """Indicates which field to sort by, defaults to CREATED_AT"""
@@ -712,6 +795,11 @@ type PublicCollection {
     """Optionally filter by msrp."""
     msrp: FloatRangeFilterInput
 
+    """
+    The number of results to return for each term aggregation. Defaults to 0 for each.
+    """
+    numberOfTermAggregations: ProductNumberOfTermAggregations
+
     """Optionally filter by price."""
     price: FloatRangeFilterInput
 
@@ -746,6 +834,11 @@ type PublicCollection {
   """
   publishedAt: Date
 
+  """
+  A secondary image url for this collection, often a logo or related item.
+  """
+  secondaryImageUrl: String
+
   """Description specific for SEO purposes, limit 170 characters."""
   seoDescription: String
 
@@ -776,6 +869,12 @@ type PublicCollectionConnectionWithSearch {
   term as the value. This is often referred to as 'Did you mean?'
   """
   querySuggestions: JSON
+
+  """
+  Values and the number of times they occur for the results of the query. These
+  will be the same for every page of a query, and should only be fetched on the first page.
+  """
+  termAggregations: CollectionTermAggregations
 }
 
 """One edge producing one PublicCollection Node"""
@@ -979,6 +1078,9 @@ type PublicPage {
   """
   publishedAt: Date
 
+  """A secondary image url for this page, often a logo or related item."""
+  secondaryImageUrl: String
+
   """Title specific for SEO purposes, limit 256 characters."""
   seoTitle: String
 
@@ -1006,6 +1108,12 @@ type PublicPageConnectionWithSearch {
   term as the value. This is often referred to as 'Did you mean?'
   """
   querySuggestions: JSON
+
+  """
+  Values and the number of times they occur for the results of the query. These
+  will be the same for every page of a query, and should only be fetched on the first page.
+  """
+  termAggregations: PageTermAggregations
 }
 
 """One edge producing one PublicPage Node"""
@@ -1085,6 +1193,39 @@ A Product is a part of the Demand Domain and represents a the basic information 
 Products have many support entities, including variants, which represent SKUs of the product.
 """
 type PublicProduct {
+  """
+  Get a productContentItem for a product
+  
+          Requires productcontentitem/read permission on the requesting identity
+  """
+  contentItem(contentItemId: ID!): PublicProductContentItem
+
+  """
+  Get a list of productContentItems
+  
+          Requires productcontentitem/read permission on the DemandHq for the requesting identity
+  
+          Sorting works differently depending on which filters are used.
+          Without any filters, the sort order is by createdAt.
+          With a contentType filter, the sort order is by position.
+          This means "featuredImage" can be retrieved by using contentType: IMAGE and first: 1.
+  """
+  contentItems(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    contentType: ProductContentType
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): ProductContentItemConnection
   demandHqId: ID!
 
   """
@@ -1161,6 +1302,38 @@ type PublicProductConnectionWithSearch {
   term as the value. This is often referred to as 'Did you mean?'
   """
   querySuggestions: JSON
+
+  """
+  Values and the number of times they occur for the results of the query. These
+  will be the same for every page of a query, and should only be fetched on the first page.
+  """
+  termAggregations: ProductTermAggregations
+}
+
+"""
+This has a many to one relationship with Product, and provides a connection to the CDN items.
+"""
+type PublicProductContentItem {
+  alt: String!
+  category: String
+  contentItemId: ID!
+
+  """The key to the file in the CDN"""
+  contentKey: String!
+  contentType: ProductContentType!
+  demandHqId: ID!
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+  productId: ID!
+}
+
+"""One edge producing one ProductContentItem Node"""
+type PublicProductContentItemEdge {
+  node: PublicProductContentItem
 }
 
 """One edge producing one PublicProduct Node"""
@@ -1342,6 +1515,11 @@ type Query {
     last: Int
 
     """
+    The number of results to return for each term aggregation. Defaults to 0 for each.
+    """
+    numberOfTermAggregations: CollectionNumberOfTermAggregations
+
+    """
     Query collections for certain terms. Searches several fields, including
     collection.description, collection.subtitle, collection.title, and
     collectionTags.
@@ -1476,6 +1654,11 @@ type Query {
     """Returns the last n elements from the list."""
     last: Int
 
+    """
+    The number of results to return for each term aggregation. Defaults to 0 for each.
+    """
+    numberOfTermAggregations: PageNumberOfTermAggregations
+
     """Filter Pages using pageType"""
     pageType: StringFilterInput
 
@@ -1536,6 +1719,11 @@ type Query {
 
     """Optionally filter by msrp."""
     msrp: FloatRangeFilterInput
+
+    """
+    The number of results to return for each term aggregation. Defaults to 0 for each.
+    """
+    numberOfTermAggregations: ProductNumberOfTermAggregations
 
     """Optionally filter by price."""
     price: FloatRangeFilterInput

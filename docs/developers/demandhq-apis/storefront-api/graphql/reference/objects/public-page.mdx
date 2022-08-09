@@ -24,6 +24,7 @@ type PublicPage {
   pageType: String!
   primaryImageUrl: String
   publishedAt: Date
+  secondaryImageUrl: String
   seoTitle: String
   slug: String!
   subtitle: String
@@ -82,6 +83,11 @@ A primary image url for this page, can be generated from a Page ContentItem.
 
 ISO format date when the page was published. Note that ensuing updates with
 status set to PUBLISHED will republish and re-set this date.
+
+
+#### [`secondaryImageUrl`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))
+
+A secondary image url for this page, often a logo or related item.
 
 
 #### [`seoTitle`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))

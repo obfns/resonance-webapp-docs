@@ -1,0 +1,68 @@
+---
+id: public-product-content-item
+title: PublicProductContentItem
+hide_table_of_contents: false
+---
+
+
+This has a many to one relationship with Product, and provides a connection to the CDN items.
+
+```graphql
+type PublicProductContentItem {
+  alt: String!
+  category: String
+  contentItemId: ID!
+  contentKey: String!
+  contentType: ProductContentType!
+  demandHqId: ID!
+  position: Int
+  productId: ID!
+}
+```
+
+
+### Fields
+
+#### [`alt`](#) ([`String!`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))
+
+
+
+
+#### [`category`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))
+
+
+
+
+#### [`contentItemId`](#) ([`ID!`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`contentKey`](#) ([`String!`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))
+
+The key to the file in the CDN
+
+
+#### [`contentType`](#) ([`ProductContentType!`](/developers/demandhq-apis/storefront-api/graphql/reference/enums/product-content-type))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`position`](#) ([`Int`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/int))
+
+Used to determine what order the content comes out in.
+Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+
+
+#### [`productId`](#) ([`ID!`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/id))
+
+
+
+
+
+

@@ -22,6 +22,7 @@ type Partner {
   description: String
   name: String!
   notificationUserNames: PartnerNotificationUserNames
+  ownerUser: PublicIdentity
   ownerUserName: String!
   partnerId: ID!
   partnerIdentities(
@@ -92,6 +93,11 @@ Limited to 128 characters
 #### [`notificationUserNames`](#) ([`PartnerNotificationUserNames`](/developers/shared-apis/adminidentity-api/graphql/reference/objects/partner-notification-user-names))
 
 Represents the users to be notified for certain events
+
+
+#### [`ownerUser`](#) ([`PublicIdentity`](/developers/shared-apis/adminidentity-api/graphql/reference/objects/public-identity))
+
+Get the PublicIdentity of the owner for a given Partner
 
 
 #### [`ownerUserName`](#) ([`String!`](/developers/shared-apis/adminidentity-api/graphql/reference/scalars/string))

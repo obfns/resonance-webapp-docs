@@ -16,6 +16,7 @@ collections(
   collectionType: StringFilterInput
   first: Int
   last: Int
+  numberOfTermAggregations: CollectionNumberOfTermAggregations
   query: String
   slugs: [String]
   sortOrder: [CollectionSortInput]
@@ -49,6 +50,11 @@ Returns the first n elements from the list.
 #### [`last`](#) ([`Int`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/int))
 
 Returns the last n elements from the list.
+
+
+#### [`numberOfTermAggregations`](#) ([`CollectionNumberOfTermAggregations`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/collection-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
 
 
 #### [`query`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))

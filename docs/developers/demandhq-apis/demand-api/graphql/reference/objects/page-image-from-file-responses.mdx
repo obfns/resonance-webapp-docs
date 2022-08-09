@@ -9,16 +9,22 @@ Returned object from createPageImagesFromFiles
 
 ```graphql
 type PageImageFromFileResponses {
-  pageImageFromFileResponses: [PageImageFromFileResponse]!
+  errors: [PageImagesFromFilesError!]
+  mutationResponses: [PageImageFromFileResponse!]!
 }
 ```
 
 
 ### Fields
 
-#### [`pageImageFromFileResponses`](#) ([`[PageImageFromFileResponse]!`](/developers/demandhq-apis/demand-api/graphql/reference/objects/page-image-from-file-response))
+#### [`errors`](#) ([`[PageImagesFromFilesError!]`](/developers/demandhq-apis/demand-api/graphql/reference/objects/page-images-from-files-error))
 
 
+
+
+#### [`mutationResponses`](#) ([`[PageImageFromFileResponse!]!`](/developers/demandhq-apis/demand-api/graphql/reference/objects/page-image-from-file-response))
+
+A signed S3 url to upload the image to along with supporting data about the image
 
 
 

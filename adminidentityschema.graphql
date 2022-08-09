@@ -241,6 +241,9 @@ type Partner {
 
   """Represents the users to be notified for certain events"""
   notificationUserNames: PartnerNotificationUserNames
+
+  """Get the PublicIdentity of the owner for a given Partner"""
+  ownerUser: PublicIdentity
   ownerUserName: String!
   partnerId: ID!
 

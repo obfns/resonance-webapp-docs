@@ -25,6 +25,7 @@ type Supplier {
 ): SupplyEventSubscriptionConnection!
   name: String!
   notificationUserNames: SupplierNotificationUserNames
+  ownerUser: PublicIdentity
   ownerUserName: String!
   quickLink(
   appId: ID!
@@ -39,6 +40,16 @@ type Supplier {
 ): SupplierQuickLinkConnection!
   shipFromAddress: Address
   status: SupplierStatus!
+  supplierDemandHq(
+  demandHqId: ID!
+): SupplierDemandHq
+  supplierDemandHqs(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  status: SupplierDemandHqStatus
+): SupplierDemandHqConnection!
   supplierId: ID!
   supplierIdentities(
   after: String
@@ -50,7 +61,6 @@ type Supplier {
 ): SupplierIdentityConnection!
   supplierIdentity(
   identityId: ID!
-  supplierId: ID!
 ): SupplierIdentity
   supplierProduct(
   supplierProductId: ID!
@@ -72,7 +82,7 @@ type Supplier {
   recommendedPrice: [FloatRangeFilterInput]
   sortOrder: [SupplierProductSortInput]
   standardizedColor: [SupplierProductStandardizedColorFilterInput]
-  status: SupplierProductStatusFilterInput
+  status: SupplyEntityStatusFilterInput
   tags: [StringFilterInput]
   vendor: StringFilterInput
 ): SupplierProductConnectionWithSearch!
@@ -159,6 +169,11 @@ These users will get notified if something requires attention for this Supplier.
 If none are provided, ownerUserName will be notified.
 
 
+#### [`ownerUser`](#) ([`PublicIdentity`](/developers/supplier-apis/supply-api/graphql/reference/objects/public-identity))
+
+Get the owner for a given Supplier
+
+
 #### [`ownerUserName`](#) ([`String!`](/developers/supplier-apis/supply-api/graphql/reference/scalars/string))
 
 
@@ -215,6 +230,46 @@ The address where this Supplier's goods ship from.
 
 
 
+#### [`supplierDemandHq`](#) ([`SupplierDemandHq`](/developers/supplier-apis/supply-api/graphql/reference/objects/supplier-demand-hq))
+
+Get a SupplierDemandHq by its DemandHqId.
+            
+Requires the requesting identity to have the "supplierdemandhq/read" permission on the associated Supplier.
+- ##### [`demandHqId`](#) ([`ID!`](/developers/supplier-apis/supply-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`supplierDemandHqs`](#) ([`SupplierDemandHqConnection!`](/developers/supplier-apis/supply-api/graphql/reference/objects/supplier-demand-hq-connection))
+
+Get a list of SupplierDemandHqs for the Supplier.
+
+Requires the requesting identity to have the "supplierdemandhq/read" permission on the associated Supplier.
+- ##### [`after`](#) ([`String`](/developers/supplier-apis/supply-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/developers/supplier-apis/supply-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/developers/supplier-apis/supply-api/graphql/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/developers/supplier-apis/supply-api/graphql/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`status`](#) ([`SupplierDemandHqStatus`](/developers/supplier-apis/supply-api/graphql/reference/enums/supplier-demand-hq-status))
+
+
+
+
 #### [`supplierId`](#) ([`ID!`](/developers/supplier-apis/supply-api/graphql/reference/scalars/id))
 
 
@@ -261,11 +316,6 @@ Returns a SupplierIdentity for the given Supplier
 
 Requires supplieridentity/read permission on the requesting identity, or you can request your own identity.
 - ##### [`identityId`](#) ([`ID!`](/developers/supplier-apis/supply-api/graphql/reference/scalars/id))
-
-
-
-
-- ##### [`supplierId`](#) ([`ID!`](/developers/supplier-apis/supply-api/graphql/reference/scalars/id))
 
 
 
@@ -362,7 +412,7 @@ Sort SupplierProducts by a series of fields and directions, defaults to CREATED_
 Filter SupplierProducts using StandardizedColor (Variant).
 
 
-- ##### [`status`](#) ([`SupplierProductStatusFilterInput`](/developers/supplier-apis/supply-api/graphql/reference/inputs/supplier-product-status-filter-input))
+- ##### [`status`](#) ([`SupplyEntityStatusFilterInput`](/developers/supplier-apis/supply-api/graphql/reference/inputs/supply-entity-status-filter-input))
 
 Filter SupplierProducts using Status.
 

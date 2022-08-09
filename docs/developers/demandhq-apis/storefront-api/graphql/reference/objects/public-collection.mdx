@@ -28,6 +28,7 @@ type PublicCollection {
   last: Int
   manufacturer: [StringFilterInput]
   msrp: FloatRangeFilterInput
+  numberOfTermAggregations: ProductNumberOfTermAggregations
   price: FloatRangeFilterInput
   query: String
   slugs: [String]
@@ -37,6 +38,7 @@ type PublicCollection {
   vendor: StringFilterInput
 ): PublicProductConnectionWithSearch!
   publishedAt: Date
+  secondaryImageUrl: String
   seoDescription: String
   seoTitle: String
   slug: String!
@@ -128,6 +130,11 @@ Optionally filter by manufacturer.
 Optionally filter by msrp.
 
 
+- ##### [`numberOfTermAggregations`](#) ([`ProductNumberOfTermAggregations`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/product-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+
 - ##### [`price`](#) ([`FloatRangeFilterInput`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/float-range-filter-input))
 
 Optionally filter by price.
@@ -169,6 +176,11 @@ Optionally filter by vendor.
 
 ISO format date when the collection was published. Note that ensuing updates
 with status set to PUBLISHED will republish and re-set this date.
+
+
+#### [`secondaryImageUrl`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))
+
+A secondary image url for this collection, often a logo or related item.
 
 
 #### [`seoDescription`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))

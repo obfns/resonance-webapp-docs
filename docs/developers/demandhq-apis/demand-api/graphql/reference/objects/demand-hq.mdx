@@ -23,10 +23,11 @@ type DemandHq {
   collectionType: StringFilterInput
   first: Int
   last: Int
+  numberOfTermAggregations: CollectionNumberOfTermAggregations
   query: String
   slugs: [String]
   sortOrder: [CollectionSortInput]
-  status: CollectionStatusFilterInput
+  status: DemandEntityStatusFilterInput
   storefrontIds: IDFilterInput
   tags: [StringFilterInput]
 ): CollectionConnectionWithSearch!
@@ -46,10 +47,21 @@ type DemandHq {
   demandHqId: ID!
   identityId: ID!
 ): DemandHqIdentity
+  demandHqSupplier(
+  supplierId: ID!
+): DemandHqSupplier
+  demandHqSuppliers(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  status: DemandHqSupplierStatus
+): DemandHqSupplierConnection!
   demandSubscriptionCodes: [DemandSubscriptionCode!]
   description: String
   name: String!
   notificationUserNames: DemandHqNotificationUserNames
+  ownerUser: PublicIdentity
   ownerUserName: String!
   page(
   pageId: ID
@@ -64,12 +76,13 @@ type DemandHq {
   before: String
   first: Int
   last: Int
+  numberOfTermAggregations: PageNumberOfTermAggregations
   pageIds: [ID]
   pageType: StringFilterInput
   query: String
   slugs: [String]
   sortOrder: [PageSortInput]
-  status: PageStatusFilterInput
+  status: DemandEntityStatusFilterInput
   storefrontIds: IDFilterInput
   tags: [StringFilterInput]
 ): PageConnectionWithSearch!
@@ -87,13 +100,14 @@ type DemandHq {
   last: Int
   manufacturer: [StringFilterInput]
   msrp: [FloatRangeFilterInput]
+  numberOfTermAggregationResults: ProductNumberOfTermAggregations
   price: [FloatRangeFilterInput]
   productIds: [ID]
   query: String
   slugs: [String]
   sortOrder: [ProductSortInput]
   standardizedColor: [ProductStandardizedColorFilterInput]
-  status: ProductStatusFilterInput
+  status: DemandEntityStatusFilterInput
   storefrontIds: IDFilterInput
   tags: [StringFilterInput]
   vendor: StringFilterInput
@@ -174,6 +188,11 @@ Returns the first n elements from the list.
 Returns the last n elements from the list.
 
 
+- ##### [`numberOfTermAggregations`](#) ([`CollectionNumberOfTermAggregations`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/collection-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+
 - ##### [`query`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
 
 Query collections for certain terms. Searches several fields, including
@@ -191,7 +210,7 @@ Filter Collections to a set of slugs
 Sort Collections by a series of fields and directions, defaults to CREATED_AT/ASC.
 
 
-- ##### [`status`](#) ([`CollectionStatusFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/collection-status-filter-input))
+- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/demand-entity-status-filter-input))
 
 Filter Collections using status
 
@@ -276,6 +295,46 @@ Requires demandHqidentity/read permission on the requesting identity, or you can
 
 
 
+#### [`demandHqSupplier`](#) ([`DemandHqSupplier`](/developers/demandhq-apis/demand-api/graphql/reference/objects/demand-hq-supplier))
+
+Get a DemandHqSupplier by SupplierId.
+            
+Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
+- ##### [`supplierId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`demandHqSuppliers`](#) ([`DemandHqSupplierConnection!`](/developers/demandhq-apis/demand-api/graphql/reference/objects/demand-hq-supplier-connection))
+
+Get a list of DemandHqSuppliers for a DemandHQ.
+
+Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
+- ##### [`after`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`status`](#) ([`DemandHqSupplierStatus`](/developers/demandhq-apis/demand-api/graphql/reference/enums/demand-hq-supplier-status))
+
+
+
+
 #### [`demandSubscriptionCodes`](#) ([`[DemandSubscriptionCode!]`](/developers/demandhq-apis/demand-api/graphql/reference/enums/demand-subscription-code))
 
 
@@ -295,6 +354,11 @@ Requires demandHqidentity/read permission on the requesting identity, or you can
 
 These users will get notified if something requires attention for this DemandHq.
 If none are provided, ownerUserName will be notified.
+
+
+#### [`ownerUser`](#) ([`PublicIdentity`](/developers/demandhq-apis/demand-api/graphql/reference/objects/public-identity))
+
+Get a public identity for the owner of this DemandHq
 
 
 #### [`ownerUserName`](#) ([`String!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
@@ -355,6 +419,11 @@ Returns the first n elements from the list.
 Returns the last n elements from the list.
 
 
+- ##### [`numberOfTermAggregations`](#) ([`PageNumberOfTermAggregations`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/page-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+
 - ##### [`pageIds`](#) ([`[ID]`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
 
 Filter Pages to a set of pageIds
@@ -382,7 +451,7 @@ Filter Pages to a set of slugs
 Sort Pages by a series of fields and directions, defaults to CREATED_AT/ASC.
 
 
-- ##### [`status`](#) ([`PageStatusFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/page-status-filter-input))
+- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/demand-entity-status-filter-input))
 
 Filter Pages using status
 
@@ -455,6 +524,11 @@ Optionally filter by manufacturer.
 Optionally filter by msrp.
 
 
+- ##### [`numberOfTermAggregationResults`](#) ([`ProductNumberOfTermAggregations`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/product-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+
 - ##### [`price`](#) ([`[FloatRangeFilterInput]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/float-range-filter-input))
 
 Optionally filter by price.
@@ -487,7 +561,7 @@ Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
 Optionally filter by standardized color.
 
 
-- ##### [`status`](#) ([`ProductStatusFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/product-status-filter-input))
+- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/demand-entity-status-filter-input))
 
 Filter Products using Status.
 

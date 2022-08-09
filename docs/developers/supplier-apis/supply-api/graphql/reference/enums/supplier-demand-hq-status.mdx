@@ -1,0 +1,37 @@
+---
+id: supplier-demand-hq-status
+title: SupplierDemandHqStatus
+hide_table_of_contents: false
+---
+
+
+Indicates what status the current relationship between a Supplier and a DemandHQ is in.
+
+```graphql
+enum SupplierDemandHqStatus {
+  APPROVED
+  DENIED
+  PENDING
+}
+```
+
+
+### Values
+
+#### [`APPROVED`](#)
+
+The DemandHq has permission to sell items from the Supplier.
+
+
+#### [`DENIED`](#)
+
+The Supplier has denied permission to the DemandHQ to sell its items.
+
+
+#### [`PENDING`](#)
+
+The DemandHq has requested permission to sell items from the Supplier.
+
+
+
+

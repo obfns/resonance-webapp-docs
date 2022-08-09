@@ -124,6 +124,13 @@ type Mutation {
   createSupplier(input: SupplierCreateInput!): Supplier!
 
   """
+  Creates a new SupplierDemandHq.
+              
+  Requires the requesting identity to have the "supplierdemandhq/write" permission on the associated Supplier.
+  """
+  createSupplierDemandHq(input: SupplierDemandHqCreateInput!): SupplierDemandHq!
+
+  """
   Add a new SupplierIdentity to a Supplier (give a user permissions)
   
   Requires the supplieridentity/write permission on the given Supplier
@@ -145,7 +152,7 @@ type Mutation {
   createSupplierProductImageFromUrl(input: SupplierProductImageFromUrlInput!): SupplierProductContentItem!
 
   """Create Images for a SupplierProductContentItem from Files"""
-  createSupplierProductImagesFromFiles(input: [SupplierProductImageFromFileInput!]!): SupplierProductImageFromFileResponses!
+  createSupplierProductImagesFromFiles(inputs: [SupplierProductImageFromFileInput!]!): SupplierProductImageFromFilesResponse!
 
   """Create a new supplierProductLocale."""
   createSupplierProductLocale(input: SupplierProductLocaleCreateInput!): SupplierProductLocale!
@@ -220,6 +227,13 @@ type Mutation {
   Requires supplier/write permission on the requesting identity
   """
   updateSupplier(input: SupplierUpdateInput!): Supplier!
+
+  """
+  Updates an existing SupplierDemandHq.
+  
+              Requires the requesting identity to have the "supplierdemandhq/write" permission on the associated Supplier.
+  """
+  updateSupplierDemandHq(input: SupplierDemandHqUpdateInput!): SupplierDemandHq!
 
   """
   Update a SupplierIdentity for a Supplier (give a user permissions)
@@ -339,6 +353,13 @@ type PublicApp {
   status: AppStatus!
 }
 
+"""The parent-most entity of the Demand Domain"""
+type PublicDemandHq {
+  demandHqId: ID!
+  description: String
+  name: String!
+}
+
 """
 This type is returned on routes with no permissions attached to protect
 Personally Identifiable Information, but still provide minimal data.
@@ -370,6 +391,9 @@ type PublicSupplier {
   """
   inStockProducts: Int
   name: String!
+
+  """The address where this Supplier's goods ship from."""
+  shipFromAddress: Address
   status: SupplierStatus!
   supplierId: ID!
 
@@ -444,6 +468,13 @@ type Query {
   Requires supplier/read permission on the requesting identity
   """
   supplier(supplierId: ID!): Supplier
+
+  """
+  Get a SupplierDemandHq by its Ids.
+              
+  Requires the requesting identity to have the "supplierdemandhq/read" permission on the associated Supplier.
+  """
+  supplierDemandHq(demandHqId: ID!, supplierId: ID!): SupplierDemandHq
 
   """
   Get a filtered list of SupplierIdentities
@@ -679,6 +710,9 @@ type Supplier {
   If none are provided, ownerUserName will be notified.
   """
   notificationUserNames: SupplierNotificationUserNames
+
+  """Get the owner for a given Supplier"""
+  ownerUser: PublicIdentity
   ownerUserName: String!
 
   """Get a single SupplierQuickLink by its ids"""
@@ -705,6 +739,35 @@ type Supplier {
   """The address where this Supplier's goods ship from."""
   shipFromAddress: Address
   status: SupplierStatus!
+
+  """
+  Get a SupplierDemandHq by its DemandHqId.
+              
+  Requires the requesting identity to have the "supplierdemandhq/read" permission on the associated Supplier.
+  """
+  supplierDemandHq(demandHqId: ID!): SupplierDemandHq
+
+  """
+  Get a list of SupplierDemandHqs for the Supplier.
+  
+  Requires the requesting identity to have the "supplierdemandhq/read" permission on the associated Supplier.
+  """
+  supplierDemandHqs(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+    status: SupplierDemandHqStatus
+  ): SupplierDemandHqConnection!
   supplierId: ID!
 
   """
@@ -739,7 +802,7 @@ type Supplier {
   
   Requires supplieridentity/read permission on the requesting identity, or you can request your own identity.
   """
-  supplierIdentity(identityId: ID!, supplierId: ID!): SupplierIdentity
+  supplierIdentity(identityId: ID!): SupplierIdentity
 
   """
   Get a single SupplierProduct by its ID.
@@ -810,7 +873,7 @@ type Supplier {
     standardizedColor: [SupplierProductStandardizedColorFilterInput]
 
     """Filter SupplierProducts using Status."""
-    status: SupplierProductStatusFilterInput
+    status: SupplyEntityStatusFilterInput
 
     """Filter SupplierProducts using Tags."""
     tags: [StringFilterInput]
@@ -859,6 +922,76 @@ input SupplierCreateInput {
   The top Brands or Vendors this Supplier carries, limit 5 and 256 characters each.
   """
   topVendors: [String!]
+}
+
+"""A relationship between a Supplier and a DemandHQ."""
+type SupplierDemandHq {
+  createdAt: Date!
+  demandHqId: ID!
+
+  """Get the expanded PublicDemandHq for this SupplierDemandHq"""
+  publicDemandHq: PublicDemandHq
+
+  """
+  Indicates what status the current relationship between a Supplier and a DemandHQ is in.
+  """
+  status: SupplierDemandHqStatus!
+  supplierId: ID!
+
+  """
+  If populated, this means that the last update was from the associated DemandHQ (typically a REQUEST).
+  """
+  syncedAt: Date
+  updatedAt: Date!
+  updatedBy: ID!
+}
+
+"""Paginate through SupplierDemandHqs"""
+type SupplierDemandHqConnection {
+  edges: [SupplierDemandHqEdge]!
+  nodes: [SupplierDemandHq]!
+  pageInfo: PageInfo!
+}
+
+"""Input for creating a new SupplierDemandHq."""
+input SupplierDemandHqCreateInput {
+  demandHqId: ID!
+
+  """
+  Indicates what status the current relationship between a Supplier and a DemandHQ is in.
+  """
+  status: SupplierDemandHqStatus!
+  supplierId: ID!
+}
+
+"""One edge producing one SupplierDemandHq Node"""
+type SupplierDemandHqEdge {
+  node: SupplierDemandHq
+}
+
+"""
+Indicates what status the current relationship between a Supplier and a DemandHQ is in.
+"""
+enum SupplierDemandHqStatus {
+  """The DemandHq has permission to sell items from the Supplier."""
+  APPROVED
+
+  """The Supplier has denied permission to the DemandHQ to sell its items."""
+  DENIED
+
+  """The DemandHq has requested permission to sell items from the Supplier."""
+  PENDING
+}
+
+"""Input for updating an existing SupplierDemandHq."""
+input SupplierDemandHqUpdateInput {
+  demandHqId: ID!
+
+  """
+  Indicates what status the current relationship between a Supplier and a DemandHQ is in.
+  """
+  status: SupplierDemandHqStatus
+  supplierId: ID!
 }
 
 """Indicates a User or App has permissions on a Supplier"""
@@ -1045,7 +1178,7 @@ type SupplierProduct {
   optionLabels: [String!]!
 
   """Indicates whether a product is live and able to be ordered."""
-  status: SupplierProductStatus!
+  status: SupplyEntityStatus!
 
   """Reference to the Supplier that owns this product."""
   supplierId: ID!
@@ -1294,6 +1427,22 @@ input SupplierProductImageFromFileInput {
   supplierProductId: ID!
 }
 
+"""The original input that errored"""
+type SupplierProductImageFromFileInputResponse {
+  alt: String!
+  category: String
+  fileExtension: String!
+  fileName: String!
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+  supplierId: ID!
+  supplierProductId: ID!
+}
+
 """The response object from createSupplierProductImageFromFile"""
 type SupplierProductImageFromFileResponse {
   contentItem: SupplierProductContentItem!
@@ -1301,9 +1450,14 @@ type SupplierProductImageFromFileResponse {
   url: String!
 }
 
-"""The response object from createSupplierProductImagesFromFiles"""
-type SupplierProductImageFromFileResponses {
-  supplierProductImageFromFileResponses: [SupplierProductImageFromFileResponse]
+"""Returned object from createSupplierProductImagesFromFiles"""
+type SupplierProductImageFromFilesResponse {
+  errors: [SupplierProductImagesFromFilesError!]
+
+  """
+  A signed S3 url to upload the image to along with supporting data about the image
+  """
+  mutationResponses: [SupplierProductImageFromFileResponse!]!
 }
 
 """
@@ -1321,6 +1475,15 @@ input SupplierProductImageFromUrlInput {
   supplierId: ID!
   supplierProductId: ID!
   url: String!
+}
+
+"""
+Returned object for any failed CreateSupplierProductImagesFromFiles inputs
+"""
+type SupplierProductImagesFromFilesError {
+  """The error message"""
+  error: String!
+  input: SupplierProductImageFromFileInputResponse!
 }
 
 """Filter SupplierProducts using InventoryPolicy (Variant)."""
@@ -1406,20 +1569,6 @@ input SupplierProductStandardizedColorFilterInput {
   values: [VariantStandardizedColor!]!
 }
 
-"""Indicates whether a product is live and able to be ordered"""
-enum SupplierProductStatus {
-  ARCHIVED
-  DRAFT
-  NEEDSREVIEW
-  PUBLISHED
-}
-
-"""Filter SupplierProducts using Status."""
-input SupplierProductStatusFilterInput {
-  operator: FilterOperator
-  values: [SupplierProductStatus!]!
-}
-
 """Categories and other groupings that apply to this product."""
 type SupplierProductTags {
   """Get parsed, and optionally filtered, tags for a SupplierProduct."""
@@ -1468,7 +1617,7 @@ input SupplierProductUpdateInput {
   optionLabels: [String!]
 
   """Indicates whether a product is live and able to be ordered."""
-  status: SupplierProductStatus
+  status: SupplyEntityStatus
   supplierProductId: ID!
   tags: [String!]
 
@@ -2075,6 +2224,20 @@ enum SupplierVariantWeightUnit {
   LBS
 }
 
+"""Indicates what stage a Supply Entity is in."""
+enum SupplyEntityStatus {
+  ARCHIVED
+  DRAFT
+  NEEDSREVIEW
+  PUBLISHED
+}
+
+"""Filter Supply Entities using Status."""
+input SupplyEntityStatusFilterInput {
+  operator: FilterOperator
+  values: [SupplyEntityStatus!]!
+}
+
 """
 Contains before and after snapshots for every event that occurs within the Supply domain
 """
@@ -2129,6 +2292,8 @@ type SupplyEventMetadata {
   identityId: ID
   itemType: String
   mutationType: String
+  status: String
+  syncedAt: Int
   updatedBy: String
 }
 

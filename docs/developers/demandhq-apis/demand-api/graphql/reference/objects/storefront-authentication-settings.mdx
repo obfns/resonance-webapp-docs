@@ -9,16 +9,28 @@ Based on the authenticationType, these settings can have different shapes, but t
 
 ```graphql
 type StorefrontAuthenticationSettings {
-  issuer: String
+  externalCustomerIdFieldName: String
+  issuer: String!
+  jwksUrl: String
 }
 ```
 
 
 ### Fields
 
-#### [`issuer`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+#### [`externalCustomerIdFieldName`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
 
-Used for authenticationType COGNITO.
+Required for authenticationType JWKS. This is the name of the field containing the customerId, normally 'sub'
+
+
+#### [`issuer`](#) ([`String!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Required for authenticationType COGNITO or JWKS. This indicates the issuer of the JWT.
+
+
+#### [`jwksUrl`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Required for authenticationType JWKS. This is the URL of the JWKS endpoint.
 
 
 

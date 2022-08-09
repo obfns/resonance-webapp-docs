@@ -10,6 +10,16 @@ Products have many support entities, including variants, which represent SKUs of
 
 ```graphql
 type PublicProduct {
+  contentItem(
+  contentItemId: ID!
+): PublicProductContentItem
+  contentItems(
+  after: String
+  before: String
+  contentType: ProductContentType
+  first: Int
+  last: Int
+): ProductContentItemConnection
   demandHqId: ID!
   locale(
   localeType: ResonanceLocaleType!
@@ -36,6 +46,51 @@ type PublicProduct {
 
 
 ### Fields
+
+#### [`contentItem`](#) ([`PublicProductContentItem`](/developers/demandhq-apis/storefront-api/graphql/reference/objects/public-product-content-item))
+
+Get a productContentItem for a product
+
+        Requires productcontentitem/read permission on the requesting identity
+- ##### [`contentItemId`](#) ([`ID!`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`contentItems`](#) ([`ProductContentItemConnection`](/developers/demandhq-apis/storefront-api/graphql/reference/objects/product-content-item-connection))
+
+Get a list of productContentItems
+
+        Requires productcontentitem/read permission on the DemandHq for the requesting identity
+
+        Sorting works differently depending on which filters are used.
+        Without any filters, the sort order is by createdAt.
+        With a contentType filter, the sort order is by position.
+        This means "featuredImage" can be retrieved by using contentType: IMAGE and first: 1.
+- ##### [`after`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`contentType`](#) ([`ProductContentType`](/developers/demandhq-apis/storefront-api/graphql/reference/enums/product-content-type))
+
+
+
+
+- ##### [`first`](#) ([`Int`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/int))
+
+Returns the last n elements from the list.
+
 
 #### [`demandHqId`](#) ([`ID!`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/id))
 
