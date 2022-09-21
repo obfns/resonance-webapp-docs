@@ -1,0 +1,32 @@
+---
+id: demand-event-message
+title: DemandEventMessage
+hide_table_of_contents: false
+---
+
+
+This is the event data and metadata.
+The data is variable, but most typically contains a newItem and oldItem.
+
+```graphql
+type DemandEventMessage {
+  data: JSON
+  metadata: DemandEventMetadata
+}
+```
+
+
+### Fields
+
+#### [`data`](#) ([`JSON`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/json))
+
+Variable, but most typically contains a newItem and oldItem.
+
+
+#### [`metadata`](#) ([`DemandEventMetadata`](/developers/demandhq-apis/demand-api/graphql/reference/objects/demand-event-metadata))
+
+Items consistent to every event
+
+
+
+

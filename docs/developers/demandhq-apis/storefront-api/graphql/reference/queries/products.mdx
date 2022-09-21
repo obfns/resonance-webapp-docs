@@ -23,6 +23,7 @@ products(
   slugs: [String]
   sortOrder: [ProductSortInput]
   standardizedColor: [ProductStandardizedColorFilterInput]
+  tagPrefixes: [StringFilterInput]
   tags: [StringFilterInput]
   vendor: StringFilterInput
 ): PublicProductConnectionWithSearch!
@@ -93,9 +94,14 @@ Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
 Optionally filter by standardized color.
 
 
+#### [`tagPrefixes`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/string-filter-input))
+
+Filter Products using Tag Prefixes (starts with).
+
+
 #### [`tags`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/string-filter-input))
 
-Optionally filter by tags.
+Filter Products using Tags.
 
 
 #### [`vendor`](#) ([`StringFilterInput`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/string-filter-input))

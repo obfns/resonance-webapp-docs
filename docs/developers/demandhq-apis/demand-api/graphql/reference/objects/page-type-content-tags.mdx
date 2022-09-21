@@ -1,0 +1,44 @@
+---
+id: page-type-content-tags
+title: PageTypeContentTags
+hide_table_of_contents: false
+---
+
+
+These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+
+```graphql
+type PageTypeContentTags {
+  parsed(
+  category: String
+  key: String
+): [ParsedTag]
+  raw: [String!]
+}
+```
+
+
+### Fields
+
+#### [`parsed`](#) ([`[ParsedTag]`](/developers/demandhq-apis/demand-api/graphql/reference/objects/parsed-tag))
+
+Get parsed, and optionally filtered, tags for a Page.
+- ##### [`category`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Optionally filter tags by category.
+
+
+- ##### [`key`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+
+
+#### [`raw`](#) ([`[String!]`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+
+
+
+
+

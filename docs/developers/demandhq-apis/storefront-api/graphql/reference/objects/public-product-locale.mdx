@@ -12,6 +12,7 @@ There will often only be one of these, and it should be the one set in defaultLo
 type PublicProductLocale {
   demandHqId: ID!
   description: String
+  descriptionAsHTML: String
   featureBullets: [String]
   localeType: ResonanceLocaleType!
   productId: ID!
@@ -28,7 +29,12 @@ type PublicProductLocale {
 
 #### [`description`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))
 
+Can utilize Markdown
 
+
+#### [`descriptionAsHTML`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))
+
+Returns the product (productLocale) description as HTML.
 
 
 #### [`featureBullets`](#) ([`[String]`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))

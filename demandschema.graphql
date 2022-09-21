@@ -107,6 +107,19 @@ type Collection {
   primaryImageUrl: String
 
   """
+  Returns the primary image URL if exists, otherwise attempts to construct an
+  image url from the first (featured) image of the page.  If the primary image
+  URL is a CDN URL, it can be passed width and height properties to return a resized image.
+  """
+  primaryImageUrlWithFallback(
+    """The height of the image to return in pixels."""
+    height: Int
+
+    """The width of the image to return in pixels."""
+    width: Int
+  ): String
+
+  """
   Paginate through products in a collection.
   
   Requires the product/read scope.
@@ -167,7 +180,10 @@ type Collection {
     """Optionally filter by storefrontIds."""
     storefrontIds: IDFilterInput
 
-    """Optionally filter by tags."""
+    """Filter Products using Tag Prefixes (starts with)."""
+    tagPrefixes: [StringFilterInput]
+
+    """Filter Products using Tags."""
     tags: [StringFilterInput]
 
     """Optionally filter by vendor."""
@@ -570,6 +586,13 @@ type CollectionTypeContent {
   """The subtitle of the collectionTypeContent, limit 256 characters."""
   subtitle: String
 
+  """
+  These tags function in the opposite direction of other tags, allowing you to
+  choose several to focus on while displaying the content.
+  Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+  """
+  tags: CollectionTypeContentTags
+
   """The title of the collectionTypeContent, limit 256 characters."""
   title: String
   updatedAt: Date!
@@ -606,6 +629,13 @@ input CollectionTypeContentCreateInput {
   """The subtitle of the collectionTypeContent, limit 256 characters."""
   subtitle: String
 
+  """
+  These tags function in the opposite direction of other tags, allowing you to
+  choose several to focus on while displaying the content.
+  Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+  """
+  tags: CollectionTypeContentTagsInput
+
   """The title of the collectionTypeContent, limit 256 characters."""
   title: String
 }
@@ -618,6 +648,30 @@ type CollectionTypeContentDeletedResponse {
 """An edge containing a CollectionTypeContent."""
 type CollectionTypeContentEdge {
   node: CollectionTypeContent
+}
+
+"""
+These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+"""
+type CollectionTypeContentTags {
+  """Get parsed, and optionally filtered, tags for a Page."""
+  parsed(
+    """Optionally filter tags by category."""
+    category: String
+
+    """
+    Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+    """
+    key: String
+  ): [ParsedTag]
+  raw: [String!]
+}
+
+"""Input object to create CollectionTypeContentTags."""
+input CollectionTypeContentTagsInput {
+  raw: [String!]
 }
 
 """Input object to update a CollectionTypeContent."""
@@ -640,6 +694,13 @@ input CollectionTypeContentUpdateInput {
 
   """The subtitle of the collectionTypeContent, limit 256 characters."""
   subtitle: String
+
+  """
+  These tags function in the opposite direction of other tags, allowing you to
+  choose several to focus on while displaying the content.
+  Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+  """
+  tags: CollectionTypeContentTagsInput
 
   """The title of the collectionTypeContent, limit 256 characters."""
   title: String
@@ -1135,6 +1196,65 @@ input DemandEntityStatusFilterInput {
   values: [DemandEntityStatus!]!
 }
 
+"""
+Contains before and after snapshots for every event that occurs within the Demand domain
+"""
+type DemandEvent {
+  """
+  This is the event data and metadata.
+  The data is variable, but most typically contains a newItem and oldItem.
+  """
+  message: DemandEventMessage
+
+  """UUID"""
+  messageId: String!
+
+  """A human-friendly string summarizing the event"""
+  subject: String
+
+  """ISO Date that the event occurred"""
+  timestamp: Date!
+}
+
+"""Paginate through DemandEvents"""
+type DemandEventConnection {
+  edges: [DemandEventEdge]!
+  nodes: [DemandEvent]!
+  pageInfo: PageInfo!
+}
+
+"""One edge producing one DemandEvent Node"""
+type DemandEventEdge {
+  node: DemandEvent
+}
+
+"""
+This is the event data and metadata.
+The data is variable, but most typically contains a newItem and oldItem.
+"""
+type DemandEventMessage {
+  """Variable, but most typically contains a newItem and oldItem."""
+  data: JSON
+
+  """Items consistent to every event"""
+  metadata: DemandEventMetadata
+}
+
+"""Items consistent to every event"""
+type DemandEventMetadata {
+  domain: String!
+
+  """This is most typically supplierId or demandHqId"""
+  domainEntityId: ID!
+  entityId: ID
+  identityId: ID
+  itemType: String
+  mutationType: String
+  status: String
+  syncedAt: Int
+  updatedBy: String
+}
+
 """The parent-most entity of the DemandHq Domain"""
 type DemandHq {
   """
@@ -1203,6 +1323,9 @@ type DemandHq {
 
     """Optionally filter by storefrontIds."""
     storefrontIds: IDFilterInput
+
+    """Filter Collections using Tag Prefixes (starts with)."""
+    tagPrefixes: [StringFilterInput]
 
     """Filter Collections using Tags."""
     tags: [StringFilterInput]
@@ -1358,6 +1481,9 @@ type DemandHq {
     """Optionally filter by storefrontIds."""
     storefrontIds: IDFilterInput
 
+    """Filter Pages using Tag Prefixes (starts with)."""
+    tagPrefixes: [StringFilterInput]
+
     """Filter Pages using Tags."""
     tags: [StringFilterInput]
   ): PageConnectionWithSearch!
@@ -1438,7 +1564,10 @@ type DemandHq {
     """Optionally filter by storefrontIds."""
     storefrontIds: IDFilterInput
 
-    """Optionally filter by tags."""
+    """Filter Products using Tag Prefixes (starts with)."""
+    tagPrefixes: [StringFilterInput]
+
+    """Filter Products using Tags."""
     tags: [StringFilterInput]
 
     """Optionally filter by vendor."""
@@ -1708,6 +1837,15 @@ input IDFilterInput {
 }
 
 """
+Indicates how to handle inventory, whether a product should or can go out of stock
+"""
+enum InventoryPolicy {
+  BOTTOMLESS
+  DEFAULT
+  HOLD
+}
+
+"""
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
@@ -1849,6 +1987,9 @@ type Mutation {
   """
   createVariant(input: VariantCreateInput!): Variant!
 
+  """Create a new VariantSupplierVariant"""
+  createVariantSupplierVariant(input: VariantSupplierVariantCreateInput!): VariantSupplierVariant!
+
   """
   Delete a Collection from a DemandHq.
   
@@ -1935,6 +2076,9 @@ type Mutation {
   Requires variant/write permission on the associated demandHq for the requesting identity
   """
   deleteVariant(variantId: ID): VariantDeleteResponse!
+
+  """Delete a VariantSupplierVariant"""
+  deleteVariantSupplierVariant(supplierVariantId: ID!, variantId: ID!): VariantSupplierVariantDeleteResponse!
 
   """
   Install an app to a DemandHq (give an app permissions)
@@ -2638,6 +2782,13 @@ type PageTypeContent {
   """The subtitle of the pageTypeContent, limit 256 characters."""
   subtitle: String
 
+  """
+  These tags function in the opposite direction of other tags, allowing you to
+  choose several to focus on while displaying the content.
+  Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+  """
+  tags: PageTypeContentTags
+
   """The title of the pageTypeContent, limit 256 characters."""
   title: String
   updatedAt: Date!
@@ -2674,6 +2825,13 @@ input PageTypeContentCreateInput {
   """The subtitle of the pageTypeContent, limit 256 characters."""
   subtitle: String
 
+  """
+  These tags function in the opposite direction of other tags, allowing you to
+  choose several to focus on while displaying the content.
+  Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+  """
+  tags: PageTypeContentTagsInput
+
   """The title of the pageTypeContent, limit 256 characters."""
   title: String
 }
@@ -2686,6 +2844,30 @@ type PageTypeContentDeletedResponse {
 """An edge containing a PageTypeContent."""
 type PageTypeContentEdge {
   node: PageTypeContent
+}
+
+"""
+These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+"""
+type PageTypeContentTags {
+  """Get parsed, and optionally filtered, tags for a Page."""
+  parsed(
+    """Optionally filter tags by category."""
+    category: String
+
+    """
+    Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+    """
+    key: String
+  ): [ParsedTag]
+  raw: [String!]
+}
+
+"""Input object to update PageTypeContentTags."""
+input PageTypeContentTagsInput {
+  raw: [String!]
 }
 
 """Input object to update a PageTypeContent."""
@@ -2708,6 +2890,13 @@ input PageTypeContentUpdateInput {
 
   """The subtitle of the pageTypeContent, limit 256 characters."""
   subtitle: String
+
+  """
+  These tags function in the opposite direction of other tags, allowing you to
+  choose several to focus on while displaying the content.
+  Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+  """
+  tags: PageTypeContentTagsInput
 
   """The title of the pageTypeContent, limit 256 characters."""
   title: String
@@ -3101,7 +3290,12 @@ There will often only be one of these, and it should be the one set in defaultLo
 type ProductLocale {
   createdAt: String!
   demandHqId: ID!
+
+  """Can utilize Markdown"""
   description: String
+
+  """Returns the product (productLocale) description as HTML."""
+  descriptionAsHTML: String
 
   """Limited to 5 bullets"""
   featureBullets: [String]
@@ -3114,6 +3308,8 @@ type ProductLocale {
 """The necessary fields in order to create a new productLocale"""
 input ProductLocaleCreateInput {
   demandHqId: ID!
+
+  """Can utilize Markdown"""
   description: String
 
   """Limited to 5 bullets"""
@@ -3127,6 +3323,7 @@ The necessary fields in order to update a productLocale.
 ID fields are required, others are optional, only included fields will be updated.
 """
 input ProductLocaleUpdateInput {
+  """Can utilize Markdown"""
   description: String
 
   """Limited to 5 bullets"""
@@ -3390,6 +3587,29 @@ type Query {
   """
   demandHqSupplier(demandHqId: ID!, supplierId: ID!): DemandHqSupplier
 
+  """See changes that have been made to this Demand Entity"""
+  events(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """The DemandHqId to retrieve events for"""
+    demandHqId: ID!
+
+    """The entity to retrieve events for, like a VariantId"""
+    entityId: ID!
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): DemandEventConnection!
+
   """
   Get a Nav by its id.
               
@@ -3441,6 +3661,32 @@ type Query {
       Requires demandHqvariant/read permission on the requesting identity
   """
   variant(variantId: ID): Variant
+
+  """
+  Get a single variantSupplierVariant by id (combination of variantId and supplierVariantId)
+  """
+  variantSupplierVariant(supplierVariantId: ID!, variantId: ID!): VariantSupplierVariant
+
+  """
+  Get a list of variantSupplierVariants by ids (combination of variantIds and supplierVariantIds)
+  """
+  variantSupplierVariants(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+    variantId: ID
+    variantSupplierVariantIds: [VariantSupplierVariantIdInput!]
+  ): VariantSupplierVariantConnection!
 
   """
   Get several variants by VariantIds (currently)
@@ -3863,6 +4109,28 @@ type Variant {
   updatedAt: String!
   updatedBy: String!
   variantId: ID!
+
+  """
+  Get a single variantSupplierVariant for a Variant by the SupplierVariantId
+  """
+  variantSupplierVariant(supplierVariantId: ID!): VariantSupplierVariant
+
+  """List all variantSupplierVariants for a Variant"""
+  variantSupplierVariants(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): VariantSupplierVariantConnection!
   weight: VariantWeight
 }
 
@@ -3935,6 +4203,15 @@ type VariantEdge {
   node: Variant
 }
 
+"""Indicates what unit the amount is in"""
+enum VariantHandlingCost {
+  """The amount is in a currency, i.e. $"""
+  CURRENCY
+
+  """The amount is a percentage of the Cost field"""
+  PERCENTAGE_OF_COST
+}
+
 """Metric or Standard Dimension?"""
 enum VariantShippingDimensionUnit {
   CM
@@ -3977,6 +4254,137 @@ enum VariantStandardizedColor {
   SILVER
   WHITE
   YELLOW
+}
+
+"""
+A VariantSupplierVariant has a 1:1 relationship with a SupplierVariant.
+VariantSupplierVariants are the Demand window into the SupplierVariant and can
+be used to determine inventory and cost as well as for assigning OrderItems.
+Each VariantSupplierVariant has a parent Variant,
+"""
+type VariantSupplierVariant {
+  """
+  A calculated metric for some kind of average for a common region. Uncommon.
+  Must be a positive number.
+  """
+  averageShippingCost: Float
+
+  """
+  COGS, or Cost of Goods Sold for this VariantSupplierVariant
+  Must be a positive number.
+  """
+  cost: Float!
+  createdAt: String!
+  demandHqId: ID!
+
+  """Additional warehouse handling charge, typically for larger items."""
+  handlingCost: VariantSupplierVariantHandlingCost
+  inventoryPolicy: InventoryPolicy!
+  inventoryQuantity: Int!
+
+  """Id of the Product the parent Variant is associated with"""
+  productId: ID!
+
+  """Id of the Supplier for the associated SupplierVariant"""
+  supplierId: ID!
+
+  """Id of the SupplierProduct for the associated SupplierVariant"""
+  supplierProductId: ID!
+
+  """Id of the SupplierVariant"""
+  supplierVariantId: ID!
+  updatedAt: String!
+  updatedBy: ID!
+
+  """Id of the parent Variant"""
+  variantId: ID!
+}
+
+"""Paginate through VariantSupplierVariants"""
+type VariantSupplierVariantConnection {
+  edges: [VariantSupplierVariantEdge]!
+  nodes: [VariantSupplierVariant]!
+  pageInfo: PageInfo!
+}
+
+"""The fields required to create a new VariantSupplierVariant"""
+input VariantSupplierVariantCreateInput {
+  """
+  A calculated metric for some kind of average for a common region. Uncommon.
+  Must be a positive number.
+  """
+  averageShippingCost: Float
+
+  """
+  COGS, or Cost of Goods Sold for this VariantSupplierVariant
+  Must be a positive number.
+  """
+  cost: Float!
+  demandHqId: ID!
+
+  """Additional warehouse handling charge, typically for larger items."""
+  handlingCost: VariantSupplierVariantHandlingCostInput
+  inventoryPolicy: InventoryPolicy!
+  inventoryQuantity: Int!
+
+  """Id of the Product the parent Variant is associated with"""
+  productId: ID!
+
+  """Id of the Supplier for the associated SupplierVariant"""
+  supplierId: ID!
+
+  """Id of the SupplierProduct for the associated SupplierVariant"""
+  supplierProductId: ID!
+
+  """Id of the SupplierVariant"""
+  supplierVariantId: ID!
+
+  """Id of the parent Variant"""
+  variantId: ID!
+}
+
+"""Response from deleting a VariantSupplierVariant"""
+type VariantSupplierVariantDeleteResponse {
+  deletedId: VariantSupplierVariantId!
+}
+
+"""One Edge producing one VariantSupplierVariant Node"""
+type VariantSupplierVariantEdge {
+  node: VariantSupplierVariant!
+}
+
+"""Object to indicate both amount and unit of handling cost."""
+type VariantSupplierVariantHandlingCost {
+  """The amount in currency or as a percentage of the cost"""
+  amount: Float!
+
+  """The unit of the amount - currency or percentage of cost"""
+  unit: VariantHandlingCost!
+}
+
+"""Input object to indicate both amount and unit of handling cost."""
+input VariantSupplierVariantHandlingCostInput {
+  """The amount in currency or as a percentage of the cost"""
+  amount: Float!
+
+  """The unit of the amount - currency or percentage of cost"""
+  unit: VariantHandlingCost!
+}
+
+"""
+Id of a VariantSupplierVariant is a combination of a variantId and a supplierVariantId
+"""
+type VariantSupplierVariantId {
+  supplierVariantId: ID!
+  variantId: ID!
+}
+
+"""
+Id of a VariantSupplierVariant is a combination of a variantId and a supplierVariantId
+"""
+input VariantSupplierVariantIdInput {
+  supplierVariantId: ID!
+  variantId: ID!
 }
 
 """The necessary fields in order to update an existing variant"""

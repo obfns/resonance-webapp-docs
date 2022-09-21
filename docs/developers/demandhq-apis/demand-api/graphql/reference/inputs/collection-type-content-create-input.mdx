@@ -18,6 +18,7 @@ input CollectionTypeContentCreateInput {
   seoTitle: String
   storefrontId: ID!
   subtitle: String
+  tags: CollectionTypeContentTagsInput
   title: String
 }
 ```
@@ -69,6 +70,13 @@ Title specific for SEO purposes, limit 256 characters.
 #### [`subtitle`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
 
 The subtitle of the collectionTypeContent, limit 256 characters.
+
+
+#### [`tags`](#) ([`CollectionTypeContentTagsInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/collection-type-content-tags-input))
+
+These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
 
 
 #### [`title`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))

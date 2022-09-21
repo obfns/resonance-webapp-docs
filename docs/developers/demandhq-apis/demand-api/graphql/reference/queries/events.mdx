@@ -1,0 +1,62 @@
+---
+id: events
+title: events
+hide_table_of_contents: false
+---
+
+
+See changes that have been made to this Demand Entity
+
+```graphql
+events(
+  after: String
+  before: String
+  demandHqId: ID!
+  entityId: ID!
+  first: Int
+  last: Int
+): DemandEventConnection!
+```
+
+
+### Arguments
+
+#### [`after`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [`before`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [`demandHqId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+The DemandHqId to retrieve events for
+
+
+#### [`entityId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+The entity to retrieve events for, like a VariantId
+
+
+#### [`first`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+#### [`last`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+### Type
+
+#### [`DemandEventConnection`](/developers/demandhq-apis/demand-api/graphql/reference/objects/demand-event-connection)
+
+Paginate through DemandEvents
+
+
+
+

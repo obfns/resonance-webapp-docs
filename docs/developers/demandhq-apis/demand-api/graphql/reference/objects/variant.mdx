@@ -32,6 +32,15 @@ type Variant {
   updatedAt: String!
   updatedBy: String!
   variantId: ID!
+  variantSupplierVariant(
+  supplierVariantId: ID!
+): VariantSupplierVariant
+  variantSupplierVariants(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): VariantSupplierVariantConnection!
   weight: VariantWeight
 }
 ```
@@ -155,6 +164,37 @@ Get the title of this variant (combo of optionValues)
 #### [`variantId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
 
 
+
+
+#### [`variantSupplierVariant`](#) ([`VariantSupplierVariant`](/developers/demandhq-apis/demand-api/graphql/reference/objects/variant-supplier-variant))
+
+Get a single variantSupplierVariant for a Variant by the SupplierVariantId
+- ##### [`supplierVariantId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`variantSupplierVariants`](#) ([`VariantSupplierVariantConnection!`](/developers/demandhq-apis/demand-api/graphql/reference/objects/variant-supplier-variant-connection))
+
+List all variantSupplierVariants for a Variant
+- ##### [`after`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+Returns the last n elements from the list.
 
 
 #### [`weight`](#) ([`VariantWeight`](/developers/demandhq-apis/demand-api/graphql/reference/objects/variant-weight))
