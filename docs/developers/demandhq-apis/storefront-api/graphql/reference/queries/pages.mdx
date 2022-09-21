@@ -21,6 +21,7 @@ pages(
   query: String
   slugs: [String]
   sortOrder: [PageSortInput]
+  tagPrefixes: [StringFilterInput]
   tags: [StringFilterInput]
 ): PublicPageConnectionWithSearch!
 ```
@@ -78,6 +79,11 @@ Filter Pages using slugs
 #### [`sortOrder`](#) ([`[PageSortInput]`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/page-sort-input))
 
 Sort Pages by a series of fields and directions.
+
+
+#### [`tagPrefixes`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/string-filter-input))
+
+Filter Pages using Tag Prefixes (starts with).
 
 
 #### [`tags`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/storefront-api/graphql/reference/inputs/string-filter-input))

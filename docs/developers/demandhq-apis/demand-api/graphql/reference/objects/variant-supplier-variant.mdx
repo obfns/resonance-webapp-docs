@@ -1,0 +1,108 @@
+---
+id: variant-supplier-variant
+title: VariantSupplierVariant
+hide_table_of_contents: false
+---
+
+
+A VariantSupplierVariant has a 1:1 relationship with a SupplierVariant.
+VariantSupplierVariants are the Demand window into the SupplierVariant and can
+be used to determine inventory and cost as well as for assigning OrderItems.
+Each VariantSupplierVariant has a parent Variant,
+
+```graphql
+type VariantSupplierVariant {
+  averageShippingCost: Float
+  cost: Float!
+  createdAt: String!
+  demandHqId: ID!
+  handlingCost: VariantSupplierVariantHandlingCost
+  inventoryPolicy: InventoryPolicy!
+  inventoryQuantity: Int!
+  productId: ID!
+  supplierId: ID!
+  supplierProductId: ID!
+  supplierVariantId: ID!
+  updatedAt: String!
+  updatedBy: ID!
+  variantId: ID!
+}
+```
+
+
+### Fields
+
+#### [`averageShippingCost`](#) ([`Float`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/float))
+
+A calculated metric for some kind of average for a common region. Uncommon.
+Must be a positive number.
+
+
+#### [`cost`](#) ([`Float!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/float))
+
+COGS, or Cost of Goods Sold for this VariantSupplierVariant
+Must be a positive number.
+
+
+#### [`createdAt`](#) ([`String!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`handlingCost`](#) ([`VariantSupplierVariantHandlingCost`](/developers/demandhq-apis/demand-api/graphql/reference/objects/variant-supplier-variant-handling-cost))
+
+Additional warehouse handling charge, typically for larger items.
+
+
+#### [`inventoryPolicy`](#) ([`InventoryPolicy!`](/developers/demandhq-apis/demand-api/graphql/reference/enums/inventory-policy))
+
+
+
+
+#### [`inventoryQuantity`](#) ([`Int!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+
+
+
+#### [`productId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+Id of the Product the parent Variant is associated with
+
+
+#### [`supplierId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+Id of the Supplier for the associated SupplierVariant
+
+
+#### [`supplierProductId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+Id of the SupplierProduct for the associated SupplierVariant
+
+
+#### [`supplierVariantId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+Id of the SupplierVariant
+
+
+#### [`updatedAt`](#) ([`String!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`variantId`](#) ([`ID!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+Id of the parent Variant
+
+
+
+

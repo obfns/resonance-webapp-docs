@@ -27,6 +27,7 @@ type PublicPageTypeContent {
   seoTitle: String
   storefrontId: ID!
   subtitle: String
+  tags: PageTypeContentTags
   title: String
 }
 ```
@@ -111,6 +112,13 @@ Title specific for SEO purposes, limit 256 characters.
 #### [`subtitle`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))
 
 The subtitle of the pageTypeContent, limit 256 characters.
+
+
+#### [`tags`](#) ([`PageTypeContentTags`](/developers/demandhq-apis/storefront-api/graphql/reference/objects/page-type-content-tags))
+
+These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
 
 
 #### [`title`](#) ([`String`](/developers/demandhq-apis/storefront-api/graphql/reference/scalars/string))

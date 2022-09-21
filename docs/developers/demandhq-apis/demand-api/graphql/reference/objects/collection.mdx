@@ -24,6 +24,10 @@ type Collection {
 ): String
   featuredProductIds: [ID]
   primaryImageUrl: String
+  primaryImageUrlWithFallback(
+  height: Int
+  width: Int
+): String
   products(
   after: String
   before: String
@@ -40,6 +44,7 @@ type Collection {
   standardizedColor: [ProductStandardizedColorFilterInput]
   status: DemandEntityStatusFilterInput
   storefrontIds: IDFilterInput
+  tagPrefixes: [StringFilterInput]
   tags: [StringFilterInput]
   vendor: StringFilterInput
 ): ProductConnectionWithSearch!
@@ -119,6 +124,21 @@ Max number of products is 20.
 #### [`primaryImageUrl`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
 
 A primary image url for this collection, can be generated from a Collection ContentItem.
+
+
+#### [`primaryImageUrlWithFallback`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the primary image URL if exists, otherwise attempts to construct an
+image url from the first (featured) image of the page.  If the primary image
+URL is a CDN URL, it can be passed width and height properties to return a resized image.
+- ##### [`height`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+The height of the image to return in pixels.
+
+
+- ##### [`width`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+The width of the image to return in pixels.
 
 
 #### [`products`](#) ([`ProductConnectionWithSearch!`](/developers/demandhq-apis/demand-api/graphql/reference/objects/product-connection-with-search))
@@ -203,9 +223,14 @@ Filter Products using Status.
 Optionally filter by storefrontIds.
 
 
+- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/string-filter-input))
+
+Filter Products using Tag Prefixes (starts with).
+
+
 - ##### [`tags`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/string-filter-input))
 
-Optionally filter by tags.
+Filter Products using Tags.
 
 
 - ##### [`vendor`](#) ([`StringFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/string-filter-input))

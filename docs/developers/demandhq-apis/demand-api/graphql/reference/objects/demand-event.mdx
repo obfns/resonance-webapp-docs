@@ -1,0 +1,44 @@
+---
+id: demand-event
+title: DemandEvent
+hide_table_of_contents: false
+---
+
+
+Contains before and after snapshots for every event that occurs within the Demand domain
+
+```graphql
+type DemandEvent {
+  message: DemandEventMessage
+  messageId: String!
+  subject: String
+  timestamp: Date!
+}
+```
+
+
+### Fields
+
+#### [`message`](#) ([`DemandEventMessage`](/developers/demandhq-apis/demand-api/graphql/reference/objects/demand-event-message))
+
+This is the event data and metadata.
+The data is variable, but most typically contains a newItem and oldItem.
+
+
+#### [`messageId`](#) ([`String!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+UUID
+
+
+#### [`subject`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+A human-friendly string summarizing the event
+
+
+#### [`timestamp`](#) ([`Date!`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/date))
+
+ISO Date that the event occurred
+
+
+
+

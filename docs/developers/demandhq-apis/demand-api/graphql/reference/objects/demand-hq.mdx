@@ -29,6 +29,7 @@ type DemandHq {
   sortOrder: [CollectionSortInput]
   status: DemandEntityStatusFilterInput
   storefrontIds: IDFilterInput
+  tagPrefixes: [StringFilterInput]
   tags: [StringFilterInput]
 ): CollectionConnectionWithSearch!
   createdAt: String!
@@ -84,6 +85,7 @@ type DemandHq {
   sortOrder: [PageSortInput]
   status: DemandEntityStatusFilterInput
   storefrontIds: IDFilterInput
+  tagPrefixes: [StringFilterInput]
   tags: [StringFilterInput]
 ): PageConnectionWithSearch!
   product(
@@ -109,6 +111,7 @@ type DemandHq {
   standardizedColor: [ProductStandardizedColorFilterInput]
   status: DemandEntityStatusFilterInput
   storefrontIds: IDFilterInput
+  tagPrefixes: [StringFilterInput]
   tags: [StringFilterInput]
   vendor: StringFilterInput
 ): ProductConnectionWithSearch!
@@ -218,6 +221,11 @@ Filter Collections using status
 - ##### [`storefrontIds`](#) ([`IDFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/idfilter-input))
 
 Optionally filter by storefrontIds.
+
+
+- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/string-filter-input))
+
+Filter Collections using Tag Prefixes (starts with).
 
 
 - ##### [`tags`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/string-filter-input))
@@ -461,6 +469,11 @@ Filter Pages using status
 Optionally filter by storefrontIds.
 
 
+- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/string-filter-input))
+
+Filter Pages using Tag Prefixes (starts with).
+
+
 - ##### [`tags`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/string-filter-input))
 
 Filter Pages using Tags.
@@ -571,9 +584,14 @@ Filter Products using Status.
 Optionally filter by storefrontIds.
 
 
+- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/string-filter-input))
+
+Filter Products using Tag Prefixes (starts with).
+
+
 - ##### [`tags`](#) ([`[StringFilterInput]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/string-filter-input))
 
-Optionally filter by tags.
+Filter Products using Tags.
 
 
 - ##### [`vendor`](#) ([`StringFilterInput`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/string-filter-input))

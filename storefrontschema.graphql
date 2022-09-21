@@ -122,6 +122,25 @@ type CollectionTermAggregations {
 }
 
 """
+These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+"""
+type CollectionTypeContentTags {
+  """Get parsed, and optionally filtered, tags for a Page."""
+  parsed(
+    """Optionally filter tags by category."""
+    category: String
+
+    """
+    Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+    """
+    key: String
+  ): [ParsedTag]
+  raw: [String!]
+}
+
+"""
 A customer of a given Storefront is a user who places orders on the Storefront
 """
 type Customer {
@@ -650,6 +669,25 @@ type PageTermAggregations {
   tags: [TermAggregation!]
 }
 
+"""
+These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+"""
+type PageTypeContentTags {
+  """Get parsed, and optionally filtered, tags for a Page."""
+  parsed(
+    """Optionally filter tags by category."""
+    category: String
+
+    """
+    Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+    """
+    key: String
+  ): [ParsedTag]
+  raw: [String!]
+}
+
 """An up to 3-part tag, comma-separated, that has been parsed"""
 type ParsedTag {
   """The category of the tag"""
@@ -821,7 +859,10 @@ type PublicCollection {
     """Optionally filter by standardized color."""
     standardizedColor: [ProductStandardizedColorFilterInput]
 
-    """Optionally filter by tags."""
+    """Filter Products using Tag Prefixes (starts with)."""
+    tagPrefixes: [StringFilterInput]
+
+    """Filter Products using Tags."""
     tags: [StringFilterInput]
 
     """Optionally filter by vendor."""
@@ -934,6 +975,13 @@ type PublicCollectionTypeContent {
 
   """The subtitle of the collectionTypeContent, limit 256 characters."""
   subtitle: String
+
+  """
+  These tags function in the opposite direction of other tags, allowing you to
+  choose several to focus on while displaying the content.
+  Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+  """
+  tags: CollectionTypeContentTags
 
   """The title of the collectionTypeContent, limit 256 characters."""
   title: String
@@ -1172,6 +1220,13 @@ type PublicPageTypeContent {
   """The subtitle of the pageTypeContent, limit 256 characters."""
   subtitle: String
 
+  """
+  These tags function in the opposite direction of other tags, allowing you to
+  choose several to focus on while displaying the content.
+  Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+  """
+  tags: PageTypeContentTags
+
   """The title of the pageTypeContent, limit 256 characters."""
   title: String
 }
@@ -1347,7 +1402,12 @@ There will often only be one of these, and it should be the one set in defaultLo
 """
 type PublicProductLocale {
   demandHqId: ID!
+
+  """Can utilize Markdown"""
   description: String
+
+  """Returns the product (productLocale) description as HTML."""
+  descriptionAsHTML: String
 
   """Limited to 5 bullets"""
   featureBullets: [String]
@@ -1532,6 +1592,9 @@ type Query {
     """Sort Collections by a series of fields and directions."""
     sortOrder: [CollectionSortInput]
 
+    """Filter Collections using Tag Prefixes (starts with)."""
+    tagPrefixes: [StringFilterInput]
+
     """Filter Collections using Tags."""
     tags: [StringFilterInput]
   ): PublicCollectionConnectionWithSearch!
@@ -1675,6 +1738,9 @@ type Query {
     """Sort Pages by a series of fields and directions."""
     sortOrder: [PageSortInput]
 
+    """Filter Pages using Tag Prefixes (starts with)."""
+    tagPrefixes: [StringFilterInput]
+
     """Filter Pages using Tags."""
     tags: [StringFilterInput]
   ): PublicPageConnectionWithSearch!
@@ -1746,7 +1812,10 @@ type Query {
     """Optionally filter by standardized color."""
     standardizedColor: [ProductStandardizedColorFilterInput]
 
-    """Optionally filter by tags."""
+    """Filter Products using Tag Prefixes (starts with)."""
+    tagPrefixes: [StringFilterInput]
+
+    """Filter Products using Tags."""
     tags: [StringFilterInput]
 
     """Optionally filter by vendor."""

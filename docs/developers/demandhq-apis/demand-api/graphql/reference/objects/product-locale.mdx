@@ -13,6 +13,7 @@ type ProductLocale {
   createdAt: String!
   demandHqId: ID!
   description: String
+  descriptionAsHTML: String
   featureBullets: [String]
   localeType: ResonanceLocaleType!
   productId: ID!
@@ -36,7 +37,12 @@ type ProductLocale {
 
 #### [`description`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
 
+Can utilize Markdown
 
+
+#### [`descriptionAsHTML`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the product (productLocale) description as HTML.
 
 
 #### [`featureBullets`](#) ([`[String]`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))

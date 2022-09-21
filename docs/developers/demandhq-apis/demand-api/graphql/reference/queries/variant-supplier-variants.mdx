@@ -1,0 +1,62 @@
+---
+id: variant-supplier-variants
+title: variantSupplierVariants
+hide_table_of_contents: false
+---
+
+
+Get a list of variantSupplierVariants by ids (combination of variantIds and supplierVariantIds)
+
+```graphql
+variantSupplierVariants(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  variantId: ID
+  variantSupplierVariantIds: [VariantSupplierVariantIdInput!]
+): VariantSupplierVariantConnection!
+```
+
+
+### Arguments
+
+#### [`after`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [`before`](#) ([`String`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [`first`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+#### [`last`](#) ([`Int`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`variantId`](#) ([`ID`](/developers/demandhq-apis/demand-api/graphql/reference/scalars/id))
+
+
+
+
+#### [`variantSupplierVariantIds`](#) ([`[VariantSupplierVariantIdInput!]`](/developers/demandhq-apis/demand-api/graphql/reference/inputs/variant-supplier-variant-id-input))
+
+
+
+
+### Type
+
+#### [`VariantSupplierVariantConnection`](/developers/demandhq-apis/demand-api/graphql/reference/objects/variant-supplier-variant-connection)
+
+Paginate through VariantSupplierVariants
+
+
+
+
