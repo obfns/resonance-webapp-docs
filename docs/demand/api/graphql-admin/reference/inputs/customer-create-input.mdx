@@ -1,0 +1,98 @@
+---
+id: customer-create-input
+title: CustomerCreateInput
+hide_table_of_contents: false
+---
+
+
+Input for creating a Customer
+
+```graphql
+input CustomerCreateInput {
+  defaultBillingAddressId: ID
+  defaultShippingAddressId: ID
+  demandHqId: ID!
+  emailAddress: String!
+  emailMarketingConsent: CustomerMarketingConsentInput
+  externalCustomerId: ID
+  firstName: String
+  lastName: String
+  phoneNumber: String
+  smsMarketingConsent: CustomerMarketingConsentInput
+  status: CustomerStatus!
+  storefrontId: ID!
+  tags: [String]
+}
+```
+
+
+### Fields
+
+#### [`defaultBillingAddressId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+The CustomerAddressId for the default billing address for this Customer
+
+
+#### [`defaultShippingAddressId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+The CustomerAddressId for the default shipping address for this Customer
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`emailAddress`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The email address associated with the Customer, must be unique to the storefront, limit 256 characters
+
+
+#### [`emailMarketingConsent`](#) ([`CustomerMarketingConsentInput`](/demand/api/graphql-admin/reference/inputs/customer-marketing-consent-input))
+
+
+
+
+#### [`externalCustomerId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+Reference to the storefront's customer authentication system. Limit 256 characters.
+This field is required if this customer is going to access any authenticated data (like their orders).
+
+
+#### [`firstName`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The first name of the Customer, limit 256 characters
+
+
+#### [`lastName`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The last name of the Customer, limit 256 characters
+
+
+#### [`phoneNumber`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Must be unique to the Storefront. Limit 64 characters. Format +11231231234
+
+
+#### [`smsMarketingConsent`](#) ([`CustomerMarketingConsentInput`](/demand/api/graphql-admin/reference/inputs/customer-marketing-consent-input))
+
+
+
+
+#### [`status`](#) ([`CustomerStatus!`](/demand/api/graphql-admin/reference/enums/customer-status))
+
+
+
+
+#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`tags`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

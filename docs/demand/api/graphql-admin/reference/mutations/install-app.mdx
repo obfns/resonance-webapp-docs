@@ -1,0 +1,40 @@
+---
+id: install-app
+title: installApp
+hide_table_of_contents: false
+---
+
+
+Install an app to a DemandHq (give an app permissions)
+
+Requires the demandHqidentity/write permission on the given DemandHq
+
+```graphql
+installApp(
+  appId: ID!
+  demandHqId: ID!
+): AppInstallationResponse!
+```
+
+
+### Arguments
+
+#### [`appId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`AppInstallationResponse`](/demand/api/graphql-admin/reference/objects/app-installation-response)
+
+The response recieved when an app is installed or the permissions are updated
+
+
+
+

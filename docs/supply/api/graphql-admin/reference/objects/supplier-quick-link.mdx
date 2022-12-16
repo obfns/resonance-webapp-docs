@@ -1,0 +1,67 @@
+---
+id: supplier-quick-link
+title: SupplierQuickLink
+hide_table_of_contents: false
+---
+
+
+Represents a link to your app from inside the Resonance Supply Portal
+
+```graphql
+type SupplierQuickLink {
+  appId: ID!
+  createdAt: String!
+  dynamicUrl: String!
+  label: String!
+  quickLinkType: SupplierQuickLinkType!
+  supplierId: ID!
+  updatedAt: String!
+  updatedBy: String!
+}
+```
+
+
+### Fields
+
+#### [`appId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+The Id of the App this quicklink pertains to.
+
+
+#### [`createdAt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`dynamicUrl`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+This can have dynamic parts, using [supplierProductId] format. It represents where the link goes.
+
+
+#### [`label`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+What the text for the link should be to the user.
+
+
+#### [`quickLinkType`](#) ([`SupplierQuickLinkType!`](/supply/api/graphql-admin/reference/enums/supplier-quick-link-type))
+
+Indicates which page the SupplierQuickLink would live on
+
+
+#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+The Id of the Supplier this quicklink pertains to (the one that has installed your app).
+
+
+#### [`updatedAt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`updatedBy`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

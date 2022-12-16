@@ -1,0 +1,40 @@
+---
+id: supplier-identity
+title: supplierIdentity
+hide_table_of_contents: false
+---
+
+
+Get a single SupplierIdentity
+
+Requires supplieridentity/read permission on the requesting identity for the supplier requested
+
+```graphql
+supplierIdentity(
+  identityId: ID!
+  supplierId: ID!
+): SupplierIdentity
+```
+
+
+### Arguments
+
+#### [`identityId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`SupplierIdentity`](/supply/api/graphql-admin/reference/objects/supplier-identity)
+
+Indicates a User or App has permissions on a Supplier
+
+
+
+

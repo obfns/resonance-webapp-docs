@@ -1,0 +1,40 @@
+---
+id: delete-demand-hq-identity
+title: deleteDemandHqIdentity
+hide_table_of_contents: false
+---
+
+
+Delete a DemandHqIdentity from a DemandHq (remove a user's permissions)
+
+Requires the demandHqidentity/write permission on the given DemandHq
+
+```graphql
+deleteDemandHqIdentity(
+  demandHqId: ID!
+  identityId: ID!
+): DemandHqIdentityDeleteResponse
+```
+
+
+### Arguments
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`identityId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`DemandHqIdentityDeleteResponse`](/demand/api/graphql-admin/reference/objects/demand-hq-identity-delete-response)
+
+Returned object from deleteDemandHqIdentity
+
+
+
+

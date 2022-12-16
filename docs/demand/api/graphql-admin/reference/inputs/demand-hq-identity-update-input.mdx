@@ -1,0 +1,37 @@
+---
+id: demand-hq-identity-update-input
+title: DemandHqIdentityUpdateInput
+hide_table_of_contents: false
+---
+
+
+ID Fields are required, but all other fields are optional, only included fields will be updated.
+
+```graphql
+input DemandHqIdentityUpdateInput {
+  demandHqId: ID!
+  identityId: ID!
+  permissions: DemandHqIdentityPermissionsInput
+}
+```
+
+
+### Fields
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`identityId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+Could be a userName or an appClientId
+
+
+#### [`permissions`](#) ([`DemandHqIdentityPermissionsInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-identity-permissions-input))
+
+
+
+
+
+

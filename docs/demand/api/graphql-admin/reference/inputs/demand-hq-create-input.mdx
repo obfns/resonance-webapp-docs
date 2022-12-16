@@ -1,0 +1,56 @@
+---
+id: demand-hq-create-input
+title: DemandHqCreateInput
+hide_table_of_contents: false
+---
+
+
+The necessary fields in order to create a new demandHq
+
+```graphql
+input DemandHqCreateInput {
+  defaultCurrency: ResonanceCurrency!
+  defaultLocaleType: ResonanceLocaleType!
+  demandSubscriptionCodes: [DemandSubscriptionCode!]
+  description: String
+  name: String!
+  notificationUserNames: DemandHqNotificationUserNamesInput
+}
+```
+
+
+### Fields
+
+#### [`defaultCurrency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency))
+
+
+
+
+#### [`defaultLocaleType`](#) ([`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type))
+
+
+
+
+#### [`demandSubscriptionCodes`](#) ([`[DemandSubscriptionCode!]`](/demand/api/graphql-admin/reference/enums/demand-subscription-code))
+
+
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`name`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`notificationUserNames`](#) ([`DemandHqNotificationUserNamesInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-notification-user-names-input))
+
+These users will get notified if something requires attention for this DemandHq.
+If none are provided, ownerUserName will be notified.
+
+
+
+

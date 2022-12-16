@@ -1,0 +1,41 @@
+---
+id: update-app-permissions
+title: updateAppPermissions
+hide_table_of_contents: false
+---
+
+
+Update an app's permissions on a DemandHq. This is a no-op if the app's
+requested permissions are the same as the current permissions.
+
+Requires the demandHqidentity/write permission on the given DemandHq
+
+```graphql
+updateAppPermissions(
+  appId: ID!
+  demandHqId: ID!
+): AppInstallationResponse!
+```
+
+
+### Arguments
+
+#### [`appId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`AppInstallationResponse`](/demand/api/graphql-admin/reference/objects/app-installation-response)
+
+The response recieved when an app is installed or the permissions are updated
+
+
+
+

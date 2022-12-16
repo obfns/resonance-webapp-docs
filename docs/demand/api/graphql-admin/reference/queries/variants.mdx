@@ -1,0 +1,34 @@
+---
+id: variants
+title: variants
+hide_table_of_contents: false
+---
+
+
+Get several variants by VariantIds (currently)
+
+    Requires demandHqvariant/read permission on the requesting identity for all associated demandHqs
+
+```graphql
+variants(
+  variantIds: [ID!]!
+): VariantConnection!
+```
+
+
+### Arguments
+
+#### [`variantIds`](#) ([`[ID!]!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`VariantConnection`](/demand/api/graphql-admin/reference/objects/variant-connection)
+
+Paginate through Variants
+
+
+
+

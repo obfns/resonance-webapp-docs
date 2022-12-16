@@ -1,0 +1,81 @@
+---
+id: product-update-input
+title: ProductUpdateInput
+hide_table_of_contents: false
+---
+
+
+ID Fields are required, but all other fields are optional, only included fields will be updated.
+
+```graphql
+input ProductUpdateInput {
+  optionLabels: [String!]
+  productId: ID!
+  publishedAt: Date
+  seoTitle: String
+  slug: String
+  status: DemandEntityStatus
+  storefrontIds: [ID]
+  tags: [String]
+  title: String
+  vendor: String
+}
+```
+
+
+### Fields
+
+#### [`optionLabels`](#) ([`[String!]`](/demand/api/graphql-admin/reference/scalars/string))
+
+The labels for the possible option groups for this product, i.e. "Color", "Size", "Material", etc.
+These will match with labelOptions in Variants.
+
+
+#### [`productId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`publishedAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
+
+ISO format date when the product was published. Note that ensuing updates with
+status set to PUBLISHED will republish and re-set this date.
+
+
+#### [`seoTitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Title specific for SEO purposes, limit 256 characters.
+
+
+#### [`slug`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Slug for the URL for this product. Limit 128 characters.
+
+
+#### [`status`](#) ([`DemandEntityStatus`](/demand/api/graphql-admin/reference/enums/demand-entity-status))
+
+The status of the product, can be DRAFT or PUBLISHED.
+
+
+#### [`storefrontIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+Which storefronts should have access to this product?
+
+
+#### [`tags`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`title`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The title of the product, limit 256 characters.
+
+
+#### [`vendor`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+AKA Brand. Limit 256 characters.
+
+
+
+

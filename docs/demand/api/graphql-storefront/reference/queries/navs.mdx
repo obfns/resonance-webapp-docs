@@ -1,0 +1,94 @@
+---
+id: navs
+title: navs
+hide_table_of_contents: false
+---
+
+
+List Navs.
+            
+Requires the publicnav/read permission.
+
+```graphql
+navs(
+  after: String
+  before: String
+  first: Int
+  href: String
+  hrefPrefix: String
+  last: Int
+  linkSlug: String
+  linkType: String
+  navIds: [ID]
+  navLevel: Int
+  navType: String
+): PublicNavConnection!
+```
+
+
+### Arguments
+
+#### [`after`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [`before`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [`first`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+#### [`href`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`hrefPrefix`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`last`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`linkSlug`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`linkType`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`navIds`](#) ([`[ID]`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+#### [`navLevel`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+
+
+
+
+#### [`navType`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+### Type
+
+#### [`PublicNavConnection`](/demand/api/graphql-storefront/reference/objects/public-nav-connection)
+
+Paginate through PublicNavs
+
+
+
+

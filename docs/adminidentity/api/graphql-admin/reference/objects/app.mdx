@@ -1,0 +1,87 @@
+---
+id: app
+title: App
+hide_table_of_contents: false
+---
+
+
+Represents a App, which are machine users that perform a small context, unified set of tasks.
+
+```graphql
+type App {
+  appClientIds: [String!]!
+  appId: ID!
+  appType: AppType!
+  createdAt: String!
+  description: String
+  name: String!
+  partnerId: ID!
+  requestedScopes: [String]
+  status: AppStatus!
+  updatedAt: String!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`appClientIds`](#) ([`[String!]!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`appId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`appType`](#) ([`AppType!`](/adminidentity/api/graphql-admin/reference/enums/app-type))
+
+
+
+
+#### [`createdAt`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`description`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+Short description of the app
+Limited to 8000 characters
+
+
+#### [`name`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+The name of the app
+Limited to 128 characters
+
+
+#### [`partnerId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`requestedScopes`](#) ([`[String]`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`status`](#) ([`AppStatus!`](/adminidentity/api/graphql-admin/reference/enums/app-status))
+
+
+
+
+#### [`updatedAt`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

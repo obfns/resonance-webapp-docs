@@ -1,0 +1,38 @@
+---
+id: update-page
+title: updatePage
+hide_table_of_contents: false
+---
+
+
+Update an existing page.
+
+Requires the page/write permission on the given DemandHq
+
+```graphql
+updatePage(
+  input: PageUpdateInput!
+): Page!
+```
+
+
+### Arguments
+
+#### [`input`](#) ([`PageUpdateInput!`](/demand/api/graphql-admin/reference/inputs/page-update-input))
+
+
+
+
+### Type
+
+#### [`Page`](/demand/api/graphql-admin/reference/objects/page)
+
+A Page is a part of the Demand Domain and represents a page with textual and
+image content on it, that has nothing to do with products.
+This can range from "About Us" pages to Blog articles. Use the "pageType" field to differentiate.
+Pages do not have locales specified, but since everything would be different
+anyway, "pageType" can be a composite key with locale in it.
+
+
+
+

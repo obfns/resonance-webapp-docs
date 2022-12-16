@@ -1,0 +1,66 @@
+---
+id: supplier-product-tags
+title: SupplierProductTags
+hide_table_of_contents: false
+---
+
+
+Categories and other groupings that apply to this product.
+
+```graphql
+type SupplierProductTags {
+  parsed(
+  category: String
+  key: String
+): [ParsedTag]
+  raw: [String!]
+  supplierId: ID!
+  supplierProductId: ID!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`parsed`](#) ([`[ParsedTag]`](/supply/api/graphql-admin/reference/objects/parsed-tag))
+
+Get parsed, and optionally filtered, tags for a SupplierProduct.
+- ##### [`category`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Optionally filter tags by category.
+
+
+- ##### [`key`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+
+
+#### [`raw`](#) ([`[String!]`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierProductId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`updatedAt`](#) ([`Date!`](/supply/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

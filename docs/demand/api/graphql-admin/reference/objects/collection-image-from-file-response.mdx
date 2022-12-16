@@ -1,0 +1,43 @@
+---
+id: collection-image-from-file-response
+title: CollectionImageFromFileResponse
+hide_table_of_contents: false
+---
+
+
+Returned object from createCollectionImageFromFile
+
+```graphql
+type CollectionImageFromFileResponse {
+  collection: Collection!
+  contentItemId: ID!
+  fields: JSON!
+  url: String!
+}
+```
+
+
+### Fields
+
+#### [`collection`](#) ([`Collection!`](/demand/api/graphql-admin/reference/objects/collection))
+
+
+
+
+#### [`contentItemId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+The contentItemId of the image
+
+
+#### [`fields`](#) ([`JSON!`](/demand/api/graphql-admin/reference/scalars/json))
+
+Used while uploading the image
+
+
+#### [`url`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+Used to upload the image
+
+
+
+

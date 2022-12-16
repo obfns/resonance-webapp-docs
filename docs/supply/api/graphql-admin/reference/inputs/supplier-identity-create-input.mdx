@@ -1,0 +1,49 @@
+---
+id: supplier-identity-create-input
+title: SupplierIdentityCreateInput
+hide_table_of_contents: false
+---
+
+
+Exactly like SupplierIdentity, but no updatedBy or identityType (always User, Apps get installed)
+
+```graphql
+input SupplierIdentityCreateInput {
+  identityId: ID!
+  identityParentEntityId: ID
+  identityType: SupplierIdentityType!
+  permissions: SupplierIdentityPermissionsInput!
+  supplierId: ID!
+}
+```
+
+
+### Fields
+
+#### [`identityId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+Always a user's userName (not appClientId)
+
+
+#### [`identityParentEntityId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`identityType`](#) ([`SupplierIdentityType!`](/supply/api/graphql-admin/reference/enums/supplier-identity-type))
+
+Should always be USER
+
+
+#### [`permissions`](#) ([`SupplierIdentityPermissionsInput!`](/supply/api/graphql-admin/reference/inputs/supplier-identity-permissions-input))
+
+
+
+
+#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

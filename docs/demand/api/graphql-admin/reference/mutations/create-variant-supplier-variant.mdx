@@ -1,0 +1,35 @@
+---
+id: create-variant-supplier-variant
+title: createVariantSupplierVariant
+hide_table_of_contents: false
+---
+
+
+Create a new VariantSupplierVariant
+
+```graphql
+createVariantSupplierVariant(
+  input: VariantSupplierVariantCreateInput!
+): VariantSupplierVariant!
+```
+
+
+### Arguments
+
+#### [`input`](#) ([`VariantSupplierVariantCreateInput!`](/demand/api/graphql-admin/reference/inputs/variant-supplier-variant-create-input))
+
+
+
+
+### Type
+
+#### [`VariantSupplierVariant`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant)
+
+A VariantSupplierVariant has a 1:1 relationship with a SupplierVariant.
+VariantSupplierVariants are the Demand window into the SupplierVariant and can
+be used to determine inventory and cost as well as for assigning OrderItems.
+Each VariantSupplierVariant has a parent Variant,
+
+
+
+

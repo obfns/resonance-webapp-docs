@@ -1,0 +1,31 @@
+---
+id: page-image-from-file-responses
+title: PageImageFromFileResponses
+hide_table_of_contents: false
+---
+
+
+Returned object from createPageImagesFromFiles
+
+```graphql
+type PageImageFromFileResponses {
+  errors: [PageImagesFromFilesError!]
+  mutationResponses: [PageImageFromFileResponse!]!
+}
+```
+
+
+### Fields
+
+#### [`errors`](#) ([`[PageImagesFromFilesError!]`](/demand/api/graphql-admin/reference/objects/page-images-from-files-error))
+
+
+
+
+#### [`mutationResponses`](#) ([`[PageImageFromFileResponse!]!`](/demand/api/graphql-admin/reference/objects/page-image-from-file-response))
+
+A signed S3 url to upload the image to along with supporting data about the image
+
+
+
+

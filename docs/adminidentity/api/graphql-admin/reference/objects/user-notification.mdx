@@ -1,0 +1,109 @@
+---
+id: user-notification
+title: UserNotification
+hide_table_of_contents: false
+---
+
+
+Represents a notification specific to a User
+
+```graphql
+type UserNotification {
+  category: UserNotificationCategory!
+  content: String
+  createdAt: String!
+  createdBy: ID!
+  expiresAt: Int
+  externalDeliveries: [NotificationExternalDeliveryType]
+  link: String
+  senderReferenceKey: String
+  sentiment: NotificationSentiment
+  status: NotificationStatus!
+  subject: String!
+  updatedAt: String!
+  updatedBy: ID!
+  userName: ID!
+  userNotificationId: ID!
+}
+```
+
+
+### Fields
+
+#### [`category`](#) ([`UserNotificationCategory!`](/adminidentity/api/graphql-admin/reference/enums/user-notification-category))
+
+These denote where the message is from and what it pertains to.
+
+
+#### [`content`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+The actual message. It's optional, and potentially only the subject is needed. Should be short.
+
+
+#### [`createdAt`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+ISO Date
+
+
+#### [`createdBy`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+Identity who created the notification
+
+
+#### [`expiresAt`](#) ([`Int`](/adminidentity/api/graphql-admin/reference/scalars/int))
+
+Epoch date when this notification will expire
+
+
+#### [`externalDeliveries`](#) ([`[NotificationExternalDeliveryType]`](/adminidentity/api/graphql-admin/reference/enums/notification-external-delivery-type))
+
+Should this notification be delivered outside the portal?
+
+
+#### [`link`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+Where the button in the notification should link to
+
+
+#### [`senderReferenceKey`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+The sender of the notification can use this to reference it later
+
+
+#### [`sentiment`](#) ([`NotificationSentiment`](/adminidentity/api/graphql-admin/reference/enums/notification-sentiment))
+
+Denotes the tone of the message, may affect display
+
+
+#### [`status`](#) ([`NotificationStatus!`](/adminidentity/api/graphql-admin/reference/enums/notification-status))
+
+Denotes how urgent and whether the Notification is archived
+
+
+#### [`subject`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+The subject of the notification, is required
+
+
+#### [`updatedAt`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+ISO Date
+
+
+#### [`updatedBy`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+The last identity to alter this record
+
+
+#### [`userName`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+The user this notification pertains to
+
+
+#### [`userNotificationId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+The ID of this userNotification
+
+
+
+

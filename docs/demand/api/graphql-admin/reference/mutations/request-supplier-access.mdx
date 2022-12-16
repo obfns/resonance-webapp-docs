@@ -1,0 +1,40 @@
+---
+id: request-supplier-access
+title: requestSupplierAccess
+hide_table_of_contents: false
+---
+
+
+Request access to sell items from a Supplier.
+            
+Requires the requesting identity to have the "demandhqsupplier/write" permission on the associated DemandHq.
+
+```graphql
+requestSupplierAccess(
+  demandHqId: ID!
+  supplierId: ID!
+): DemandHqSupplier!
+```
+
+
+### Arguments
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`DemandHqSupplier`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier)
+
+A relationship between a Supplier and a DemandHQ.
+
+
+
+

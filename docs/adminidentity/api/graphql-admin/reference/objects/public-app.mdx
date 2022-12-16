@@ -1,0 +1,67 @@
+---
+id: public-app
+title: PublicApp
+hide_table_of_contents: false
+---
+
+
+Represents an App, but the fields that can be publicly consumed without scopes
+
+```graphql
+type PublicApp {
+  appClientIds: [String!]!
+  appId: ID!
+  appType: AppType!
+  description: String
+  name: String!
+  partnerId: ID!
+  requestedScopes: [String]
+  status: AppStatus!
+}
+```
+
+
+### Fields
+
+#### [`appClientIds`](#) ([`[String!]!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`appId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`appType`](#) ([`AppType!`](/adminidentity/api/graphql-admin/reference/enums/app-type))
+
+
+
+
+#### [`description`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`name`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`partnerId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`requestedScopes`](#) ([`[String]`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`status`](#) ([`AppStatus!`](/adminidentity/api/graphql-admin/reference/enums/app-status))
+
+
+
+
+
+

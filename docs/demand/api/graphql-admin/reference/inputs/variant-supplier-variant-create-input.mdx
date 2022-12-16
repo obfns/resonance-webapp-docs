@@ -1,0 +1,87 @@
+---
+id: variant-supplier-variant-create-input
+title: VariantSupplierVariantCreateInput
+hide_table_of_contents: false
+---
+
+
+The fields required to create a new VariantSupplierVariant
+
+```graphql
+input VariantSupplierVariantCreateInput {
+  averageShippingCost: Float
+  cost: Float!
+  demandHqId: ID!
+  handlingCost: VariantSupplierVariantHandlingCostInput
+  inventoryPolicy: InventoryPolicy!
+  inventoryQuantity: Int!
+  productId: ID!
+  supplierId: ID!
+  supplierProductId: ID!
+  supplierVariantId: ID!
+  variantId: ID!
+}
+```
+
+
+### Fields
+
+#### [`averageShippingCost`](#) ([`Float`](/demand/api/graphql-admin/reference/scalars/float))
+
+A calculated metric for some kind of average for a common region. Uncommon.
+Must be a positive number.
+
+
+#### [`cost`](#) ([`Float!`](/demand/api/graphql-admin/reference/scalars/float))
+
+COGS, or Cost of Goods Sold for this VariantSupplierVariant
+Must be a positive number.
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`handlingCost`](#) ([`VariantSupplierVariantHandlingCostInput`](/demand/api/graphql-admin/reference/inputs/variant-supplier-variant-handling-cost-input))
+
+Additional warehouse handling charge, typically for larger items.
+
+
+#### [`inventoryPolicy`](#) ([`InventoryPolicy!`](/demand/api/graphql-admin/reference/enums/inventory-policy))
+
+
+
+
+#### [`inventoryQuantity`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
+
+
+
+
+#### [`productId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+Id of the Product the parent Variant is associated with
+
+
+#### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+Id of the Supplier for the associated SupplierVariant
+
+
+#### [`supplierProductId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+Id of the SupplierProduct for the associated SupplierVariant
+
+
+#### [`supplierVariantId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+Id of the SupplierVariant
+
+
+#### [`variantId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+Id of the parent Variant
+
+
+
+

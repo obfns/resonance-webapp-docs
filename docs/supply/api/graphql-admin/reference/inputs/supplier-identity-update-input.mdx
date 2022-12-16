@@ -1,0 +1,37 @@
+---
+id: supplier-identity-update-input
+title: SupplierIdentityUpdateInput
+hide_table_of_contents: false
+---
+
+
+ID Fields are required, but all other fields are optional, only included fields will be updated.
+
+```graphql
+input SupplierIdentityUpdateInput {
+  identityId: ID!
+  permissions: SupplierIdentityPermissionsInput
+  supplierId: ID!
+}
+```
+
+
+### Fields
+
+#### [`identityId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+Could be a userName or an appClientId
+
+
+#### [`permissions`](#) ([`SupplierIdentityPermissionsInput`](/supply/api/graphql-admin/reference/inputs/supplier-identity-permissions-input))
+
+
+
+
+#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

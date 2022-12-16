@@ -1,0 +1,88 @@
+---
+id: collection-type-content-create-input
+title: CollectionTypeContentCreateInput
+hide_table_of_contents: false
+---
+
+
+Input object to create a CollectionTypeContent.
+
+```graphql
+input CollectionTypeContentCreateInput {
+  collectionType: String!
+  contentAsString: String
+  demandHqId: ID!
+  description: String
+  secondaryContentAsString: String
+  seoDescription: String
+  seoTitle: String
+  storefrontId: ID!
+  subtitle: String
+  tags: CollectionTypeContentTagsInput
+  title: String
+}
+```
+
+
+### Fields
+
+#### [`collectionType`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`contentAsString`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A short description of the collectionTypeContent, limit 1000 characters. This
+is typically used off of the collectionTypeContent page itself.
+
+
+#### [`secondaryContentAsString`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`seoDescription`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Description specific for SEO purposes, limit 170 characters.
+
+
+#### [`seoTitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Title specific for SEO purposes, limit 256 characters.
+
+
+#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`subtitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The subtitle of the collectionTypeContent, limit 256 characters.
+
+
+#### [`tags`](#) ([`CollectionTypeContentTagsInput`](/demand/api/graphql-admin/reference/inputs/collection-type-content-tags-input))
+
+These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+
+
+#### [`title`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The title of the collectionTypeContent, limit 256 characters.
+
+
+
+

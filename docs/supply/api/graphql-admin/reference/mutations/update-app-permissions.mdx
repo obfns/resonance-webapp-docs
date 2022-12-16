@@ -1,0 +1,41 @@
+---
+id: update-app-permissions
+title: updateAppPermissions
+hide_table_of_contents: false
+---
+
+
+Update an app's permissions on a Supplier. This is a no-op if the app's
+requested permissions are the same as the current permissions.
+
+Requires the supplieridentity/write permission on the given Supplier
+
+```graphql
+updateAppPermissions(
+  appId: ID!
+  supplierId: ID!
+): AppInstallationResponse!
+```
+
+
+### Arguments
+
+#### [`appId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`AppInstallationResponse`](/supply/api/graphql-admin/reference/objects/app-installation-response)
+
+The response recieved when an app is installed or the permissions are updated
+
+
+
+

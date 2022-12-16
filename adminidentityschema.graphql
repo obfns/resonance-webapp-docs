@@ -1,5 +1,5 @@
 """
-Represents a App, which are machine users that perform a small context, unified set of tasks
+Represents a App, which are machine users that perform a small context, unified set of tasks.
 """
 type App {
   appClientIds: [String!]!

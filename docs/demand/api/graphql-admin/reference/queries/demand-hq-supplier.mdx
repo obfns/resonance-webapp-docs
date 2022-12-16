@@ -1,0 +1,40 @@
+---
+id: demand-hq-supplier
+title: demandHqSupplier
+hide_table_of_contents: false
+---
+
+
+Get a DemandHqSupplier by its IDs.
+            
+Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
+
+```graphql
+demandHqSupplier(
+  demandHqId: ID!
+  supplierId: ID!
+): DemandHqSupplier
+```
+
+
+### Arguments
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`DemandHqSupplier`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier)
+
+A relationship between a Supplier and a DemandHQ.
+
+
+
+

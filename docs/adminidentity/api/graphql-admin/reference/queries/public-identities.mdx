@@ -1,0 +1,58 @@
+---
+id: public-identities
+title: publicIdentities
+hide_table_of_contents: false
+---
+
+
+Get several public identities by their IDs.
+In the case of using the identityIds arg, will return in exact order of the
+IDs passed in, with null for missing identities.
+
+```graphql
+publicIdentities(
+  after: String
+  before: String
+  first: Int
+  identityIds: [ID!]
+  last: Int
+): PublicIdentityConnection!
+```
+
+
+### Arguments
+
+#### [`after`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [`before`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [`first`](#) ([`Int`](/adminidentity/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+#### [`identityIds`](#) ([`[ID!]`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`last`](#) ([`Int`](/adminidentity/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+### Type
+
+#### [`PublicIdentityConnection`](/adminidentity/api/graphql-admin/reference/objects/public-identity-connection)
+
+Paginate through PublicIdentities
+
+
+
+

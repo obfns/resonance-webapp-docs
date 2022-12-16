@@ -1,0 +1,40 @@
+---
+id: update-customer
+title: updateCustomer
+hide_table_of_contents: false
+---
+
+
+Update a Customer.
+
+Requires the publiccustomer/write scope and a valid customer authentication token.
+
+```graphql
+updateCustomer(
+  customerToken: String!
+  input: CustomerUpdateInput!
+): Customer!
+```
+
+
+### Arguments
+
+#### [`customerToken`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`input`](#) ([`CustomerUpdateInput!`](/demand/api/graphql-storefront/reference/inputs/customer-update-input))
+
+
+
+
+### Type
+
+#### [`Customer`](/demand/api/graphql-storefront/reference/objects/customer)
+
+A customer of a given Storefront is a user who places orders on the Storefront
+
+
+
+

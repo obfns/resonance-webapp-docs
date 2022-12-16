@@ -1,0 +1,96 @@
+---
+id: collections
+title: collections
+hide_table_of_contents: false
+---
+
+
+List collections for a Storefront with optional filters.
+            
+Requires the publiccollection/read scope.
+
+```graphql
+collections(
+  after: String
+  before: String
+  collectionType: StringFilterInput
+  first: Int
+  last: Int
+  numberOfTermAggregations: CollectionNumberOfTermAggregations
+  query: String
+  slugs: [String]
+  sortOrder: [CollectionSortInput]
+  tagPrefixes: [StringFilterInput]
+  tags: [StringFilterInput]
+): PublicCollectionConnectionWithSearch!
+```
+
+
+### Arguments
+
+#### [`after`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [`before`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [`collectionType`](#) ([`StringFilterInput`](/demand/api/graphql-storefront/reference/inputs/string-filter-input))
+
+Filter Collections using collectionType
+
+
+#### [`first`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+#### [`last`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`numberOfTermAggregations`](#) ([`CollectionNumberOfTermAggregations`](/demand/api/graphql-storefront/reference/inputs/collection-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+
+#### [`query`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Query collections for certain terms. Searches several fields, including
+collection.description, collection.subtitle, collection.title, and
+collectionTags.
+
+
+#### [`slugs`](#) ([`[String]`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Filter Collections using slugs
+
+
+#### [`sortOrder`](#) ([`[CollectionSortInput]`](/demand/api/graphql-storefront/reference/inputs/collection-sort-input))
+
+Sort Collections by a series of fields and directions.
+
+
+#### [`tagPrefixes`](#) ([`[StringFilterInput]`](/demand/api/graphql-storefront/reference/inputs/string-filter-input))
+
+Filter Collections using Tag Prefixes (starts with).
+
+
+#### [`tags`](#) ([`[StringFilterInput]`](/demand/api/graphql-storefront/reference/inputs/string-filter-input))
+
+Filter Collections using Tags.
+
+
+### Type
+
+#### [`PublicCollectionConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-collection-connection-with-search)
+
+Paginate through PublicCollections
+
+
+
+

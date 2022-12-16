@@ -1,0 +1,62 @@
+---
+id: public-apps
+title: publicApps
+hide_table_of_contents: false
+---
+
+
+Get a list of PublicApps
+
+```graphql
+publicApps(
+  after: String
+  appIds: [ID!]
+  before: String
+  first: Int
+  last: Int
+  partnerId: ID
+): PublicAppConnection!
+```
+
+
+### Arguments
+
+#### [`after`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [`appIds`](#) ([`[ID!]`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`before`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [`first`](#) ([`Int`](/adminidentity/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+#### [`last`](#) ([`Int`](/adminidentity/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`partnerId`](#) ([`ID`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`PublicAppConnection`](/adminidentity/api/graphql-admin/reference/objects/public-app-connection)
+
+Paginate through PublicApps
+
+
+
+

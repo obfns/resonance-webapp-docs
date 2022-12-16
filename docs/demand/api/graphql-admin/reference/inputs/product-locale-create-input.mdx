@@ -1,0 +1,49 @@
+---
+id: product-locale-create-input
+title: ProductLocaleCreateInput
+hide_table_of_contents: false
+---
+
+
+The necessary fields in order to create a new productLocale
+
+```graphql
+input ProductLocaleCreateInput {
+  demandHqId: ID!
+  description: String
+  featureBullets: [String]
+  localeType: ResonanceLocaleType!
+  productId: ID!
+}
+```
+
+
+### Fields
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Can utilize Markdown
+
+
+#### [`featureBullets`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+Limited to 5 bullets
+
+
+#### [`localeType`](#) ([`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type))
+
+
+
+
+#### [`productId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

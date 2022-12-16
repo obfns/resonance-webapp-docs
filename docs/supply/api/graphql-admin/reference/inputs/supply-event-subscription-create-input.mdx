@@ -1,0 +1,66 @@
+---
+id: supply-event-subscription-create-input
+title: SupplyEventSubscriptionCreateInput
+hide_table_of_contents: false
+---
+
+
+The fields required to create an event subscription.
+
+```graphql
+input SupplyEventSubscriptionCreateInput {
+  endpoint: String!
+  itemType: String!
+  mutationType: SupplyEventMutationType!
+  protocol: SupplyEventProtocol!
+  subscriptionEntityId: ID!
+  subscriptionEntityType: SupplyEventSubscriptionEntityType!
+  subscriptionOwnerId: ID!
+}
+```
+
+
+### Fields
+
+#### [`endpoint`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+Changes based on protocol, but indicates the exact target.
+
+
+#### [`itemType`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+The SupplyEntity to subscribe to, all lowercase.
+
+
+#### [`mutationType`](#) ([`SupplyEventMutationType!`](/supply/api/graphql-admin/reference/enums/supply-event-mutation-type))
+
+What type of event to listen for.
+
+
+#### [`protocol`](#) ([`SupplyEventProtocol!`](/supply/api/graphql-admin/reference/enums/supply-event-protocol))
+
+The protocol to use to supply the event.
+
+
+#### [`subscriptionEntityId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+This is the "main" entity that is being subscribed to.
+This can either be a ResonanceDomainEntityId (SupplierId, DemandHqId) to subscribe to an entity to which they have access.
+This is useful to monitor things like changes to Products and such.
+Or an Identity (AppClientId, UserName) to subscribe to THEMSELF.
+This is useful to monitor things like app installations, uninstallations, and such.
+subscriptionEntityType indicates what type of entity this is.
+
+
+#### [`subscriptionEntityType`](#) ([`SupplyEventSubscriptionEntityType!`](/supply/api/graphql-admin/reference/enums/supply-event-subscription-entity-type))
+
+This distinguishes between the types of subscriptions.
+
+
+#### [`subscriptionOwnerId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+The app (not appClient) or user that owns the subscription.
+
+
+
+

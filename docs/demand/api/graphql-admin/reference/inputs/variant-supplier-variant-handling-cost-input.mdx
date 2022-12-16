@@ -1,0 +1,31 @@
+---
+id: variant-supplier-variant-handling-cost-input
+title: VariantSupplierVariantHandlingCostInput
+hide_table_of_contents: false
+---
+
+
+Input object to indicate both amount and unit of handling cost.
+
+```graphql
+input VariantSupplierVariantHandlingCostInput {
+  amount: Float!
+  unit: VariantHandlingCost!
+}
+```
+
+
+### Fields
+
+#### [`amount`](#) ([`Float!`](/demand/api/graphql-admin/reference/scalars/float))
+
+The amount in currency or as a percentage of the cost
+
+
+#### [`unit`](#) ([`VariantHandlingCost!`](/demand/api/graphql-admin/reference/enums/variant-handling-cost))
+
+The unit of the amount - currency or percentage of cost
+
+
+
+

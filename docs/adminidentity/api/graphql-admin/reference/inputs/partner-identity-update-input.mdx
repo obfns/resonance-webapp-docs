@@ -1,0 +1,37 @@
+---
+id: partner-identity-update-input
+title: PartnerIdentityUpdateInput
+hide_table_of_contents: false
+---
+
+
+Input object to update a PartnerIdentity, the permissions given to an Identity for a Partner
+
+```graphql
+input PartnerIdentityUpdateInput {
+  identityId: ID!
+  partnerId: ID!
+  permissions: PartnerIdentityPermissionsInput
+}
+```
+
+
+### Fields
+
+#### [`identityId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+The identityId these permissions pertain to
+
+
+#### [`partnerId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+The ID of the Partner this permission pertains to
+
+
+#### [`permissions`](#) ([`PartnerIdentityPermissionsInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-identity-permissions-input))
+
+Object representing exactly what permissions are given
+
+
+
+

@@ -1,0 +1,188 @@
+---
+id: customer
+title: Customer
+hide_table_of_contents: false
+---
+
+
+A customer of a given Storefront is a user who places orders on the Storefront
+
+```graphql
+type Customer {
+  createdAt: Date!
+  customerAddress(
+  customerAddressId: ID!
+): CustomerAddress
+  customerAddresses(
+  after: String
+  before: String
+  customerAddressIds: [ID]
+  first: Int
+  last: Int
+): CustomerAddressConnection!
+  customerId: ID!
+  defaultBillingAddress: CustomerAddress
+  defaultBillingAddressId: ID
+  defaultShippingAddress: CustomerAddress
+  defaultShippingAddressId: ID
+  demandHqId: ID!
+  emailAddress: String!
+  emailMarketingConsent: CustomerMarketingConsent
+  externalCustomerId: ID
+  firstName: String
+  lastName: String
+  phoneNumber: String
+  smsMarketingConsent: CustomerMarketingConsent
+  status: CustomerStatus!
+  storefrontId: ID!
+  tags: CustomerTags
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`createdAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`customerAddress`](#) ([`CustomerAddress`](/demand/api/graphql-admin/reference/objects/customer-address))
+
+Get a CustomerAddress by their customerAddressId.
+            
+Requires the customeraddress/read permission for the associated DemandHq.
+- ##### [`customerAddressId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`customerAddresses`](#) ([`CustomerAddressConnection!`](/demand/api/graphql-admin/reference/objects/customer-address-connection))
+
+Get a list of CustomerAddresses.
+
+Requires the customeraddress/read permission for the associated DemandHq.
+- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`customerAddressIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`customerId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`defaultBillingAddress`](#) ([`CustomerAddress`](/demand/api/graphql-admin/reference/objects/customer-address))
+
+Get the default billing address for a customer.
+
+Requires the customeraddress/read permission for the associated DemandHq.
+
+
+#### [`defaultBillingAddressId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+The CustomerAddressId for the default billing address for this Customer
+
+
+#### [`defaultShippingAddress`](#) ([`CustomerAddress`](/demand/api/graphql-admin/reference/objects/customer-address))
+
+Get the default shipping address for a customer.
+
+Requires the customeraddress/read permission for the associated DemandHq.
+
+
+#### [`defaultShippingAddressId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+The CustomerAddressId for the default shipping address for this Customer
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`emailAddress`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The email address associated with the Customer, must be unique to the storefront, limit 256 characters
+
+
+#### [`emailMarketingConsent`](#) ([`CustomerMarketingConsent`](/demand/api/graphql-admin/reference/objects/customer-marketing-consent))
+
+
+
+
+#### [`externalCustomerId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+Reference to the storefront's customer authentication system. Limit 256 characters.
+This field is required if this customer is going to access any authenticated data (like their orders).
+
+
+#### [`firstName`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The first name of the Customer, limit 256 characters
+
+
+#### [`lastName`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The last name of the Customer, limit 256 characters
+
+
+#### [`phoneNumber`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Must be unique to the Storefront. Limit 64 characters. Format +11231231234
+
+
+#### [`smsMarketingConsent`](#) ([`CustomerMarketingConsent`](/demand/api/graphql-admin/reference/objects/customer-marketing-consent))
+
+
+
+
+#### [`status`](#) ([`CustomerStatus!`](/demand/api/graphql-admin/reference/enums/customer-status))
+
+
+
+
+#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`tags`](#) ([`CustomerTags`](/demand/api/graphql-admin/reference/objects/customer-tags))
+
+Get the tags of the customer.
+
+
+#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

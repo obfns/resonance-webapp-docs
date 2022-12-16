@@ -1,0 +1,653 @@
+---
+id: demand-hq
+title: DemandHq
+hide_table_of_contents: false
+---
+
+
+The parent-most entity of the DemandHq Domain
+
+```graphql
+type DemandHq {
+  collection(
+  collectionId: ID
+  slug: String
+): Collection!
+  collectionTermAggregations(
+  numberOfResults: Int!
+): CollectionTermAggregations
+  collections(
+  after: String
+  before: String
+  collectionIds: [ID]
+  collectionType: StringFilterInput
+  first: Int
+  last: Int
+  numberOfTermAggregations: CollectionNumberOfTermAggregations
+  query: String
+  slugs: [String]
+  sortOrder: [CollectionSortInput]
+  status: DemandEntityStatusFilterInput
+  storefrontIds: IDFilterInput
+  tagPrefixes: [StringFilterInput]
+  tags: [StringFilterInput]
+): CollectionConnectionWithSearch!
+  createdAt: String!
+  defaultCurrency: ResonanceCurrency!
+  defaultLocaleType: ResonanceLocaleType!
+  demandHqId: ID!
+  demandHqIdentities(
+  after: String
+  before: String
+  first: Int
+  identityParentEntityId: ID
+  identityType: DemandHqIdentityType
+  last: Int
+): DemandHqIdentityConnection!
+  demandHqIdentity(
+  demandHqId: ID!
+  identityId: ID!
+): DemandHqIdentity
+  demandHqSupplier(
+  supplierId: ID!
+): DemandHqSupplier
+  demandHqSuppliers(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  status: DemandHqSupplierStatus
+): DemandHqSupplierConnection!
+  demandSubscriptionCodes: [DemandSubscriptionCode!]
+  description: String
+  name: String!
+  notificationUserNames: DemandHqNotificationUserNames
+  ownerUser: PublicIdentity
+  ownerUserName: String!
+  page(
+  pageId: ID
+  slug: String
+): Page!
+  pageTermAggregations(
+  numberOfResults: Int!
+): PageTermAggregations
+  pages(
+  after: String
+  author: StringFilterInput
+  before: String
+  first: Int
+  last: Int
+  numberOfTermAggregations: PageNumberOfTermAggregations
+  pageIds: [ID]
+  pageType: StringFilterInput
+  query: String
+  slugs: [String]
+  sortOrder: [PageSortInput]
+  status: DemandEntityStatusFilterInput
+  storefrontIds: IDFilterInput
+  tagPrefixes: [StringFilterInput]
+  tags: [StringFilterInput]
+): PageConnectionWithSearch!
+  product(
+  productId: ID
+  slug: String
+): Product
+  productTermAggregations(
+  numberOfResults: Int!
+): ProductTermAggregations
+  products(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  manufacturer: [StringFilterInput]
+  msrp: [FloatRangeFilterInput]
+  numberOfTermAggregationResults: ProductNumberOfTermAggregations
+  price: [FloatRangeFilterInput]
+  productIds: [ID]
+  query: String
+  slugs: [String]
+  sortOrder: [ProductSortInput]
+  standardizedColor: [ProductStandardizedColorFilterInput]
+  status: DemandEntityStatusFilterInput
+  storefrontIds: IDFilterInput
+  tagPrefixes: [StringFilterInput]
+  tags: [StringFilterInput]
+  vendor: StringFilterInput
+): ProductConnectionWithSearch!
+  status: DemandHqStatus!
+  storefront(
+  storefrontId: ID!
+): Storefront
+  storefronts(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): StorefrontConnection
+  updatedAt: String!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`collection`](#) ([`Collection!`](/demand/api/graphql-admin/reference/objects/collection))
+
+Get a collection by collectionId or slug (one must be provided).
+            
+Required collection/read permission on the given DemandHq.
+- ##### [`collectionId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+- ##### [`slug`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`collectionTermAggregations`](#) ([`CollectionTermAggregations`](/demand/api/graphql-admin/reference/objects/collection-term-aggregations))
+
+Term aggregations for Collections, typically used to suggest terms to use in Search Filters.
+- ##### [`numberOfResults`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
+
+The number of aggregations to return for each type.
+
+
+#### [`collections`](#) ([`CollectionConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/collection-connection-with-search))
+
+List collections for a DemandHq with optional filters.
+            
+Required collection/read permission on the given DemandHq.
+- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`collectionIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+Filter Collections to a set of collectionIds
+
+
+- ##### [`collectionType`](#) ([`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Collections using collectionType
+
+
+- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`numberOfTermAggregations`](#) ([`CollectionNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/collection-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+
+- ##### [`query`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Query collections for certain terms. Searches several fields, including
+collection.description, collection.subtitle, collection.title,
+collectionTags, and the actual primary and secondary content of the collection.
+
+
+- ##### [`slugs`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+Filter Collections to a set of slugs
+
+
+- ##### [`sortOrder`](#) ([`[CollectionSortInput]`](/demand/api/graphql-admin/reference/inputs/collection-sort-input))
+
+Sort Collections by a series of fields and directions, defaults to CREATED_AT/ASC.
+
+
+- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input))
+
+Filter Collections using status
+
+
+- ##### [`storefrontIds`](#) ([`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input))
+
+Optionally filter by storefrontIds.
+
+
+- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Collections using Tag Prefixes (starts with).
+
+
+- ##### [`tags`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Collections using Tags.
+
+
+#### [`createdAt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`defaultCurrency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency))
+
+
+
+
+#### [`defaultLocaleType`](#) ([`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`demandHqIdentities`](#) ([`DemandHqIdentityConnection!`](/demand/api/graphql-admin/reference/objects/demand-hq-identity-connection))
+
+Returns DemandHqIdentities for the given DemandHq
+
+Requires demandHqidentity/read permission on the requesting identity
+- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`identityParentEntityId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+Filter the results to a specific identityParentEntityId (optional)
+
+
+- ##### [`identityType`](#) ([`DemandHqIdentityType`](/demand/api/graphql-admin/reference/enums/demand-hq-identity-type))
+
+Filter the results to a specific identity type (optional)
+
+
+- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`demandHqIdentity`](#) ([`DemandHqIdentity`](/demand/api/graphql-admin/reference/objects/demand-hq-identity))
+
+Returns a DemandHqIdentity for the given DemandHq
+
+Requires demandHqidentity/read permission on the requesting identity, or you can request your own identity.
+- ##### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+- ##### [`identityId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`demandHqSupplier`](#) ([`DemandHqSupplier`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier))
+
+Get a DemandHqSupplier by SupplierId.
+            
+Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
+- ##### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`demandHqSuppliers`](#) ([`DemandHqSupplierConnection!`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier-connection))
+
+Get a list of DemandHqSuppliers for a DemandHQ.
+
+Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
+- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`status`](#) ([`DemandHqSupplierStatus`](/demand/api/graphql-admin/reference/enums/demand-hq-supplier-status))
+
+
+
+
+#### [`demandSubscriptionCodes`](#) ([`[DemandSubscriptionCode!]`](/demand/api/graphql-admin/reference/enums/demand-subscription-code))
+
+
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`name`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`notificationUserNames`](#) ([`DemandHqNotificationUserNames`](/demand/api/graphql-admin/reference/objects/demand-hq-notification-user-names))
+
+These users will get notified if something requires attention for this DemandHq.
+If none are provided, ownerUserName will be notified.
+
+
+#### [`ownerUser`](#) ([`PublicIdentity`](/demand/api/graphql-admin/reference/objects/public-identity))
+
+Get a public identity for the owner of this DemandHq
+
+
+#### [`ownerUserName`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`page`](#) ([`Page!`](/demand/api/graphql-admin/reference/objects/page))
+
+Get a page by pageId or slug (one must be provided).
+            
+Required page/read permission on the given DemandHq.
+- ##### [`pageId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+- ##### [`slug`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`pageTermAggregations`](#) ([`PageTermAggregations`](/demand/api/graphql-admin/reference/objects/page-term-aggregations))
+
+Term aggregations for Pages, typically used to suggest terms to use in Search Filters.
+- ##### [`numberOfResults`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
+
+The number of aggregations to return for each type.
+
+
+#### [`pages`](#) ([`PageConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/page-connection-with-search))
+
+List pages for a DemandHq with optional filters.
+            
+Required page/read permission on the given DemandHq.
+- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`author`](#) ([`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Pages using author
+
+
+- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`numberOfTermAggregations`](#) ([`PageNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/page-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+
+- ##### [`pageIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+Filter Pages to a set of pageIds
+
+
+- ##### [`pageType`](#) ([`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Pages using pageType
+
+
+- ##### [`query`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Query pages for certain terms. Searches several fields, including
+page.author, page.description, page.subtitle, page.title, pageTags, and the
+actual content of the page.
+
+
+- ##### [`slugs`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+Filter Pages to a set of slugs
+
+
+- ##### [`sortOrder`](#) ([`[PageSortInput]`](/demand/api/graphql-admin/reference/inputs/page-sort-input))
+
+Sort Pages by a series of fields and directions, defaults to CREATED_AT/ASC.
+
+
+- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input))
+
+Filter Pages using status
+
+
+- ##### [`storefrontIds`](#) ([`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input))
+
+Optionally filter by storefrontIds.
+
+
+- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Pages using Tag Prefixes (starts with).
+
+
+- ##### [`tags`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Pages using Tags.
+
+
+#### [`product`](#) ([`Product`](/demand/api/graphql-admin/reference/objects/product))
+
+Get a single product by ID or slug.
+
+Requires the product/read scope on the associated DemandHq.
+- ##### [`productId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+- ##### [`slug`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`productTermAggregations`](#) ([`ProductTermAggregations`](/demand/api/graphql-admin/reference/objects/product-term-aggregations))
+
+Term aggregations for Products, typically used to suggest terms to use in Search Filters.
+- ##### [`numberOfResults`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
+
+The number of aggregations to return for each type.
+
+
+#### [`products`](#) ([`ProductConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/product-connection-with-search))
+
+Get a list of products.
+
+Requires the product/read scope on the associated DemandHq.
+- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`manufacturer`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Optionally filter by manufacturer.
+
+
+- ##### [`msrp`](#) ([`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input))
+
+Optionally filter by msrp.
+
+
+- ##### [`numberOfTermAggregationResults`](#) ([`ProductNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/product-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+
+- ##### [`price`](#) ([`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input))
+
+Optionally filter by price.
+
+
+- ##### [`productIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+Filter Products to a set of productIds
+
+
+- ##### [`query`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Query products for certain terms. Searches several fields, including
+product.tags, product.title, product.vendor, productLocales.description,
+productLocales.featureBullets, variant.barcode, variant.mpn, variant.sku
+
+
+- ##### [`slugs`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+Filter Products to a set of slugs
+
+
+- ##### [`sortOrder`](#) ([`[ProductSortInput]`](/demand/api/graphql-admin/reference/inputs/product-sort-input))
+
+Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
+
+
+- ##### [`standardizedColor`](#) ([`[ProductStandardizedColorFilterInput]`](/demand/api/graphql-admin/reference/inputs/product-standardized-color-filter-input))
+
+Optionally filter by standardized color.
+
+
+- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input))
+
+Filter Products using Status.
+
+
+- ##### [`storefrontIds`](#) ([`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input))
+
+Optionally filter by storefrontIds.
+
+
+- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Products using Tag Prefixes (starts with).
+
+
+- ##### [`tags`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Products using Tags.
+
+
+- ##### [`vendor`](#) ([`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Optionally filter by vendor.
+
+
+#### [`status`](#) ([`DemandHqStatus!`](/demand/api/graphql-admin/reference/enums/demand-hq-status))
+
+
+
+
+#### [`storefront`](#) ([`Storefront`](/demand/api/graphql-admin/reference/objects/storefront))
+
+Get a storefront by its storefrontId.
+            
+Requires the storefront/read permission on the associated DemandHq.
+- ##### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`storefronts`](#) ([`StorefrontConnection`](/demand/api/graphql-admin/reference/objects/storefront-connection))
+
+List storefronts for a DemandHq.
+            
+Requires the storefront/read permission on the associated DemandHq.
+- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`updatedAt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

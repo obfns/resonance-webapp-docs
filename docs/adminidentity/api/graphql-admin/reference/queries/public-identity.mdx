@@ -1,0 +1,34 @@
+---
+id: public-identity
+title: publicIdentity
+hide_table_of_contents: false
+---
+
+
+Get a PublicIdentity by ID
+
+```graphql
+publicIdentity(
+  identityId: ID!
+): PublicIdentity
+```
+
+
+### Arguments
+
+#### [`identityId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`PublicIdentity`](/adminidentity/api/graphql-admin/reference/objects/public-identity)
+
+This type is returned on routes with no permissions attached to protect
+Personally Identifiable Information, but still provide minimal data.
+Can be a User or Identity.
+
+
+
+

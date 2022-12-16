@@ -1,0 +1,44 @@
+---
+id: customer-connection-with-search
+title: CustomerConnectionWithSearch
+hide_table_of_contents: false
+---
+
+
+Paginate through Customers
+
+```graphql
+type CustomerConnectionWithSearch {
+  edges: [CustomerEdge]!
+  nodes: [Customer]!
+  pageInfo: PageInfo!
+  querySuggestions: JSON
+}
+```
+
+
+### Fields
+
+#### [`edges`](#) ([`[CustomerEdge]!`](/demand/api/graphql-admin/reference/objects/customer-edge))
+
+
+
+
+#### [`nodes`](#) ([`[Customer]!`](/demand/api/graphql-admin/reference/objects/customer))
+
+
+
+
+#### [`pageInfo`](#) ([`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info))
+
+
+
+
+#### [`querySuggestions`](#) ([`JSON`](/demand/api/graphql-admin/reference/scalars/json))
+
+This is an object with terms in the query as keys, and a suggestion for that
+term as the value. This is often referred to as 'Did you mean?'
+
+
+
+

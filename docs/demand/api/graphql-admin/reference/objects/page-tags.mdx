@@ -1,0 +1,66 @@
+---
+id: page-tags
+title: PageTags
+hide_table_of_contents: false
+---
+
+
+These are the tags associated to the page
+
+```graphql
+type PageTags {
+  demandHqId: ID!
+  pageId: ID!
+  parsed(
+  category: String
+  key: String
+): [ParsedTag]
+  raw: [String]
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`pageId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`parsed`](#) ([`[ParsedTag]`](/demand/api/graphql-admin/reference/objects/parsed-tag))
+
+Get parsed, and optionally filtered, tags for a Page.
+- ##### [`category`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Optionally filter tags by category.
+
+
+- ##### [`key`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+
+
+#### [`raw`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+---
+id: page-content
+title: PageContent
+hide_table_of_contents: false
+---
+
+
+This is the actual content of the page
+
+```graphql
+type PageContent {
+  contentAsHtml: String
+  contentAsString: String!
+  demandHqId: ID!
+  excerpt(
+  numberOfCharacters: Int
+): String
+  pageId: ID!
+  updatedAt: String
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`contentAsHtml`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Get the markdown content of the page as parsed HTML. Do not use this field
+without purifying or sanitizing the HTML in your webapp.
+
+
+#### [`contentAsString`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`excerpt`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Get an excerpt of the page content.
+- ##### [`numberOfCharacters`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+The number of characters to return, defaults to 200.
+
+
+#### [`pageId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`updatedAt`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

@@ -1,0 +1,308 @@
+---
+id: collection
+title: Collection
+hide_table_of_contents: false
+---
+
+
+A Collection is a group of products, what may often be referred to as a "Category Page" of some variety.
+In reality, a collection is far more flexible and can be used to represent any
+product grouping, and the collectionType can help differentiate between them.
+
+```graphql
+type Collection {
+  collectionId: ID!
+  collectionType: String!
+  content: CollectionContent
+  contentItemIds: [ID!]
+  contentItems: [CollectionContentItem]
+  createdAt: Date!
+  demandHqId: ID!
+  description: String
+  descriptionOrExcerpt(
+  numberOfCharacters: Int
+): String
+  featuredProductIds: [ID]
+  primaryImageUrl: String
+  primaryImageUrlWithFallback(
+  height: Int
+  width: Int
+): String
+  products(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  manufacturer: [StringFilterInput]
+  msrp: [FloatRangeFilterInput]
+  numberOfTermAggregationResults: ProductNumberOfTermAggregations
+  price: [FloatRangeFilterInput]
+  productIds: [ID]
+  query: String
+  slugs: [String]
+  sortOrder: [ProductSortInput]
+  standardizedColor: [ProductStandardizedColorFilterInput]
+  status: DemandEntityStatusFilterInput
+  storefrontIds: IDFilterInput
+  tagPrefixes: [StringFilterInput]
+  tags: [StringFilterInput]
+  vendor: StringFilterInput
+): ProductConnectionWithSearch!
+  publishedAt: Date
+  rules: CollectionRules
+  secondaryImageUrl: String
+  seoDescription: String
+  seoTitle: String
+  slug: String!
+  status: DemandEntityStatus!
+  storefrontIds: [ID]
+  subtitle: String
+  tags: CollectionTags
+  title: String!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`collectionId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`collectionType`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+Any string to declare a category of this collection, can be used to filter collections, limit 128 characters.
+
+
+#### [`content`](#) ([`CollectionContent`](/demand/api/graphql-admin/reference/objects/collection-content))
+
+Get the content of the collection.
+
+
+#### [`contentItemIds`](#) ([`[ID!]`](/demand/api/graphql-admin/reference/scalars/id))
+
+The ContentItemIds of the Content Items that are associated with this collection.
+
+
+#### [`contentItems`](#) ([`[CollectionContentItem]`](/demand/api/graphql-admin/reference/objects/collection-content-item))
+
+Get the content items of the collection.
+
+
+#### [`createdAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A short description of the collection, limit 1000 characters.
+
+
+#### [`descriptionOrExcerpt`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Get the description if it exists, or fallback to the excerpt of content for the collection.
+- ##### [`numberOfCharacters`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+The number of characters to return, defaults to 200.
+
+
+#### [`featuredProductIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+This can be used to pin certain products to the top of a collection when using certain sorts.
+Max number of products is 20.
+
+
+#### [`primaryImageUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A primary image url for this collection, can be generated from a Collection ContentItem.
+
+
+#### [`primaryImageUrlWithFallback`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the primary image URL if exists, otherwise attempts to construct an
+image url from the first (featured) image of the page.  If the primary image
+URL is a CDN URL, it can be passed width and height properties to return a resized image.
+- ##### [`height`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+The height of the image to return in pixels.
+
+
+- ##### [`width`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+The width of the image to return in pixels.
+
+
+#### [`products`](#) ([`ProductConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/product-connection-with-search))
+
+Paginate through products in a collection.
+
+Requires the product/read scope.
+- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`manufacturer`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Optionally filter by manufacturer.
+
+
+- ##### [`msrp`](#) ([`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input))
+
+Optionally filter by msrp.
+
+
+- ##### [`numberOfTermAggregationResults`](#) ([`ProductNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/product-number-of-term-aggregations))
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+
+- ##### [`price`](#) ([`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input))
+
+Optionally filter by price.
+
+
+- ##### [`productIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+Filter Products to a set of productIds
+
+
+- ##### [`query`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Query products for certain terms. Searches several fields, including
+product.tags, product.title, product.vendor, productLocales.description,
+productLocales.featureBullets, variant.barcode, variant.mpn, variant.sku
+
+
+- ##### [`slugs`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+Filter Products to a set of slugs
+
+
+- ##### [`sortOrder`](#) ([`[ProductSortInput]`](/demand/api/graphql-admin/reference/inputs/product-sort-input))
+
+Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
+
+
+- ##### [`standardizedColor`](#) ([`[ProductStandardizedColorFilterInput]`](/demand/api/graphql-admin/reference/inputs/product-standardized-color-filter-input))
+
+Optionally filter by standardized color.
+
+
+- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input))
+
+Filter Products using Status.
+
+
+- ##### [`storefrontIds`](#) ([`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input))
+
+Optionally filter by storefrontIds.
+
+
+- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Products using Tag Prefixes (starts with).
+
+
+- ##### [`tags`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter Products using Tags.
+
+
+- ##### [`vendor`](#) ([`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+
+Optionally filter by vendor.
+
+
+#### [`publishedAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
+
+ISO format date when the collection was published. Note that ensuing updates
+with status set to PUBLISHED will republish and re-set this date.
+
+
+#### [`rules`](#) ([`CollectionRules`](/demand/api/graphql-admin/reference/objects/collection-rules))
+
+A map of rules to determine whether a Product should be part of this Collection.
+
+
+#### [`secondaryImageUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A secondary image url for this collection, often a logo or related item.
+
+
+#### [`seoDescription`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Description specific for SEO purposes, limit 170 characters.
+
+
+#### [`seoTitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Title specific for SEO purposes, limit 256 characters.
+
+
+#### [`slug`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+Slug for the URL for this collection. Limit 128 characters.
+
+
+#### [`status`](#) ([`DemandEntityStatus!`](/demand/api/graphql-admin/reference/enums/demand-entity-status))
+
+The status of the collection, can be DRAFT or PUBLISHED.
+
+
+#### [`storefrontIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+Which storefronts should have access to this collection?
+
+
+#### [`subtitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The subtitle of the collection, limit 256 characters.
+
+
+#### [`tags`](#) ([`CollectionTags`](/demand/api/graphql-admin/reference/objects/collection-tags))
+
+Get the tags of the collection.
+
+
+#### [`title`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The title of the collection, limit 256 characters.
+
+
+#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

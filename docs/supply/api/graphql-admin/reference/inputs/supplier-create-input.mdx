@@ -1,0 +1,74 @@
+---
+id: supplier-create-input
+title: SupplierCreateInput
+hide_table_of_contents: false
+---
+
+
+The necessary fields in order to create a new supplier
+
+```graphql
+input SupplierCreateInput {
+  category: SupplierCategory
+  defaultCurrency: ResonanceCurrency!
+  defaultLocaleType: ResonanceLocaleType!
+  description: String
+  inStockProducts: Int
+  name: String!
+  notificationUserNames: SupplierNotificationUserNamesInput
+  shipFromAddress: AddressInput
+  topVendors: [String!]
+}
+```
+
+
+### Fields
+
+#### [`category`](#) ([`SupplierCategory`](/supply/api/graphql-admin/reference/enums/supplier-category))
+
+Indicates the vertical the majority of a Supplier's goods are in.
+
+
+#### [`defaultCurrency`](#) ([`ResonanceCurrency!`](/supply/api/graphql-admin/reference/enums/resonance-currency))
+
+
+
+
+#### [`defaultLocaleType`](#) ([`ResonanceLocaleType!`](/supply/api/graphql-admin/reference/enums/resonance-locale-type))
+
+
+
+
+#### [`description`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`inStockProducts`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+The approximate number of in stock products this Supplier has on a typical basis.
+
+
+#### [`name`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`notificationUserNames`](#) ([`SupplierNotificationUserNamesInput`](/supply/api/graphql-admin/reference/inputs/supplier-notification-user-names-input))
+
+These users will get notified if something requires attention for this Supplier.
+If none are provided, ownerUserName will be notified.
+
+
+#### [`shipFromAddress`](#) ([`AddressInput`](/supply/api/graphql-admin/reference/inputs/address-input))
+
+The address where this Supplier's goods ship from.
+
+
+#### [`topVendors`](#) ([`[String!]`](/supply/api/graphql-admin/reference/scalars/string))
+
+The top Brands or Vendors this Supplier carries, limit 5 and 256 characters each.
+
+
+
+

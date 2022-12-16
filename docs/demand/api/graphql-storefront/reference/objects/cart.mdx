@@ -1,0 +1,61 @@
+---
+id: cart
+title: Cart
+hide_table_of_contents: false
+---
+
+
+A cart is a temporary container for products that a customer or anonymous user wants to buy
+
+```graphql
+type Cart {
+  cartItems: [CartItem]
+  cartType: CartType!
+  demandHqId: ID!
+  externalCustomerOrDeviceId: String!
+  savedForLaterItems: [SavedForLaterItem]
+  storefrontId: ID!
+  updatedAt: Date!
+}
+```
+
+
+### Fields
+
+#### [`cartItems`](#) ([`[CartItem]`](/demand/api/graphql-storefront/reference/objects/cart-item))
+
+
+
+
+#### [`cartType`](#) ([`CartType!`](/demand/api/graphql-storefront/reference/enums/cart-type))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+#### [`externalCustomerOrDeviceId`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`savedForLaterItems`](#) ([`[SavedForLaterItem]`](/demand/api/graphql-storefront/reference/objects/saved-for-later-item))
+
+
+
+
+#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-storefront/reference/scalars/date))
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+---
+id: app-update-input
+title: AppUpdateInput
+hide_table_of_contents: false
+---
+
+
+The possible fields in order to update an existing app
+
+```graphql
+input AppUpdateInput {
+  appId: ID!
+  description: String
+  name: String
+  requestedScopes: [String]
+  status: AppStatus
+}
+```
+
+
+### Fields
+
+#### [`appId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`description`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+Short description of the app
+Limited to 8000 characters
+
+
+#### [`name`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+The name of the app
+Limited to 128 characters
+
+
+#### [`requestedScopes`](#) ([`[String]`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`status`](#) ([`AppStatus`](/adminidentity/api/graphql-admin/reference/enums/app-status))
+
+
+
+
+
+

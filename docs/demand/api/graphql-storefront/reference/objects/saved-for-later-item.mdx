@@ -1,0 +1,39 @@
+---
+id: saved-for-later-item
+title: SavedForLaterItem
+hide_table_of_contents: false
+---
+
+
+This is an item being saved for later, waiting for a future purchase day.
+
+```graphql
+type SavedForLaterItem {
+  position: Int
+  variant: PublicVariant
+  variantId: ID!
+}
+```
+
+
+### Fields
+
+#### [`position`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+
+
+
+
+#### [`variant`](#) ([`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant))
+
+The variant that this saved for later item is associated with.
+            
+Requires publicvariant/read permission on the requesting identity.
+
+
+#### [`variantId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+
+

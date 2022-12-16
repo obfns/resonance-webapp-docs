@@ -1,0 +1,103 @@
+---
+id: collection-create-input
+title: CollectionCreateInput
+hide_table_of_contents: false
+---
+
+
+Exactly like Collection, but no publishedAt or Status (Status is set to DRAFT on create).
+
+```graphql
+input CollectionCreateInput {
+  collectionType: String!
+  contentItemIds: [ID!]
+  demandHqId: ID!
+  description: String
+  primaryImageUrl: String
+  rules: CollectionRulesInput
+  secondaryImageUrl: String
+  seoDescription: String
+  seoTitle: String
+  slug: String!
+  storefrontIds: [ID]
+  subtitle: String
+  tags: [String]
+  title: String!
+}
+```
+
+
+### Fields
+
+#### [`collectionType`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+Any string to declare a category of this collection, can be used to filter collections, limit 128 characters.
+
+
+#### [`contentItemIds`](#) ([`[ID!]`](/demand/api/graphql-admin/reference/scalars/id))
+
+The ContentItemIds of the Content Items that are associated with this collection.
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A short description of the collection, limit 1000 characters.
+
+
+#### [`primaryImageUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A primary image url for this collection, can be generated from a Collection ContentItem.
+
+
+#### [`rules`](#) ([`CollectionRulesInput`](/demand/api/graphql-admin/reference/inputs/collection-rules-input))
+
+A map of rules to determine whether a Product should be part of this Collection.
+
+
+#### [`secondaryImageUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A secondary image url for this collection, often a logo or related item.
+
+
+#### [`seoDescription`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Description specific for SEO purposes, limit 170 characters.
+
+
+#### [`seoTitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Title specific for SEO purposes, limit 256 characters.
+
+
+#### [`slug`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+Slug for the URL for this collection. Limit 128 characters.
+
+
+#### [`storefrontIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+Which storefronts should have access to this collection?
+
+
+#### [`subtitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The subtitle of the collection, limit 256 characters.
+
+
+#### [`tags`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`title`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The title of the collection, limit 256 characters.
+
+
+
+

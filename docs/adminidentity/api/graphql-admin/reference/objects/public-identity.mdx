@@ -1,0 +1,40 @@
+---
+id: public-identity
+title: PublicIdentity
+hide_table_of_contents: false
+---
+
+
+This type is returned on routes with no permissions attached to protect
+Personally Identifiable Information, but still provide minimal data.
+Can be a User or Identity.
+
+```graphql
+type PublicIdentity {
+  displayName: String!
+  identityId: ID!
+  identityParentEntityId: ID
+}
+```
+
+
+### Fields
+
+#### [`displayName`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`identityId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+A userName or appClientId
+
+
+#### [`identityParentEntityId`](#) ([`ID`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+The parent entityId of the identity.
+At time of writing, this is only used for AppClients, and is populated with the AppId.
+
+
+
+

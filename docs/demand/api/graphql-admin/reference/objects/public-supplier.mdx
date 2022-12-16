@@ -1,0 +1,67 @@
+---
+id: public-supplier
+title: PublicSupplier
+hide_table_of_contents: false
+---
+
+
+The parent-most entity of the Supplier Domain
+
+```graphql
+type PublicSupplier {
+  category: SupplierCategory
+  description: String
+  inStockProducts: Int
+  name: String!
+  shipFromAddress: Address
+  status: SupplierStatus!
+  supplierId: ID!
+  topVendors: [String!]
+}
+```
+
+
+### Fields
+
+#### [`category`](#) ([`SupplierCategory`](/demand/api/graphql-admin/reference/enums/supplier-category))
+
+Indicates the vertical the majority of a Supplier's goods are in.
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`inStockProducts`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+The approximate number of in stock products this Supplier has on a typical basis.
+
+
+#### [`name`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`shipFromAddress`](#) ([`Address`](/demand/api/graphql-admin/reference/objects/address))
+
+
+
+
+#### [`status`](#) ([`SupplierStatus!`](/demand/api/graphql-admin/reference/enums/supplier-status))
+
+
+
+
+#### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`topVendors`](#) ([`[String!]`](/demand/api/graphql-admin/reference/scalars/string))
+
+The top Brands or Vendors this Supplier carries, limit 5 and 256 characters each.
+
+
+
+

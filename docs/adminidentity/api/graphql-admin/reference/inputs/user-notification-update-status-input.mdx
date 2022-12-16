@@ -1,0 +1,31 @@
+---
+id: user-notification-update-status-input
+title: UserNotificationUpdateStatusInput
+hide_table_of_contents: false
+---
+
+
+Input to change the status of a UserNotification
+
+```graphql
+input UserNotificationUpdateStatusInput {
+  status: NotificationStatus!
+  userNotificationId: ID!
+}
+```
+
+
+### Fields
+
+#### [`status`](#) ([`NotificationStatus!`](/adminidentity/api/graphql-admin/reference/enums/notification-status))
+
+Denotes how urgent and whether the Notification is archived
+
+
+#### [`userNotificationId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+The ID of this userNotification
+
+
+
+

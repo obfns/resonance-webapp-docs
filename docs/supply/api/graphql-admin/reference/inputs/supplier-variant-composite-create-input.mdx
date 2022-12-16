@@ -1,0 +1,31 @@
+---
+id: supplier-variant-composite-create-input
+title: SupplierVariantCompositeCreateInput
+hide_table_of_contents: false
+---
+
+
+The necessary fields in order to create a new supplierVariant and supplierVariantSupplement.
+
+```graphql
+input SupplierVariantCompositeCreateInput {
+  supplierVariantInput: SupplierVariantCreateInput!
+  supplierVariantSupplementInput: SupplierVariantSupplementInCompositeCreateInput
+}
+```
+
+
+### Fields
+
+#### [`supplierVariantInput`](#) ([`SupplierVariantCreateInput!`](/supply/api/graphql-admin/reference/inputs/supplier-variant-create-input))
+
+
+
+
+#### [`supplierVariantSupplementInput`](#) ([`SupplierVariantSupplementInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-in-composite-create-input))
+
+
+
+
+
+

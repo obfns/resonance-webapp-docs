@@ -1,0 +1,42 @@
+---
+id: page-tags
+title: PageTags
+hide_table_of_contents: false
+---
+
+
+These are the tags associated to the page
+
+```graphql
+type PageTags {
+  parsed(
+  category: String
+  key: String
+): [ParsedTag]
+  raw: [String]
+}
+```
+
+
+### Fields
+
+#### [`parsed`](#) ([`[ParsedTag]`](/demand/api/graphql-storefront/reference/objects/parsed-tag))
+
+Get parsed, and optionally filtered, tags for a Page.
+- ##### [`category`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Optionally filter tags by category.
+
+
+- ##### [`key`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+
+
+#### [`raw`](#) ([`[String]`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+
+

@@ -1,0 +1,446 @@
+---
+id: supplier
+title: Supplier
+hide_table_of_contents: false
+---
+
+
+The parent-most entity of the Supplier Domain
+
+```graphql
+type Supplier {
+  category: SupplierCategory
+  createdAt: String!
+  defaultCurrency: ResonanceCurrency!
+  defaultLocaleType: ResonanceLocaleType!
+  description: String
+  inStockProducts: Int
+  mySupplyEventSubscriptions(
+  after: String
+  before: String
+  first: Int
+  itemType: String
+  last: Int
+  mutationType: SupplyEventMutationType
+): SupplyEventSubscriptionConnection!
+  name: String!
+  notificationUserNames: SupplierNotificationUserNames
+  ownerUser: PublicIdentity
+  ownerUserName: String!
+  quickLink(
+  appId: ID!
+  quickLinkType: SupplierQuickLinkType!
+): SupplierQuickLink
+  quickLinks(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  quickLinkType: SupplierQuickLinkType!
+): SupplierQuickLinkConnection!
+  shipFromAddress: Address
+  status: SupplierStatus!
+  supplierDemandHq(
+  demandHqId: ID!
+): SupplierDemandHq
+  supplierDemandHqs(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  status: SupplierDemandHqStatus
+): SupplierDemandHqConnection!
+  supplierId: ID!
+  supplierIdentities(
+  after: String
+  before: String
+  first: Int
+  identityParentEntityId: ID
+  identityType: SupplierIdentityType
+  last: Int
+): SupplierIdentityConnection!
+  supplierIdentity(
+  identityId: ID!
+): SupplierIdentity
+  supplierProduct(
+  supplierProductId: ID!
+): SupplierProduct
+  supplierProductTermAggregations(
+  numberOfResults: Int!
+): SupplierProductTermAggregations
+  supplierProducts(
+  after: String
+  before: String
+  cost: [FloatRangeFilterInput]
+  first: Int
+  inventoryPolicy: [SupplierProductInventoryPolicyFilterInput]
+  inventoryStatus: VariantInventoryStatus
+  last: Int
+  manufacturer: [StringFilterInput]
+  msrp: [FloatRangeFilterInput]
+  query: String
+  recommendedPrice: [FloatRangeFilterInput]
+  sortOrder: [SupplierProductSortInput]
+  standardizedColor: [SupplierProductStandardizedColorFilterInput]
+  status: SupplyEntityStatusFilterInput
+  tags: [StringFilterInput]
+  vendor: StringFilterInput
+): SupplierProductConnectionWithSearch!
+  topVendors: [String!]
+  updatedAt: String!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`category`](#) ([`SupplierCategory`](/supply/api/graphql-admin/reference/enums/supplier-category))
+
+Indicates the vertical the majority of a Supplier's goods are in.
+
+
+#### [`createdAt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`defaultCurrency`](#) ([`ResonanceCurrency!`](/supply/api/graphql-admin/reference/enums/resonance-currency))
+
+
+
+
+#### [`defaultLocaleType`](#) ([`ResonanceLocaleType!`](/supply/api/graphql-admin/reference/enums/resonance-locale-type))
+
+
+
+
+#### [`description`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`inStockProducts`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+The approximate number of in stock products this Supplier has on a typical basis.
+
+
+#### [`mySupplyEventSubscriptions`](#) ([`SupplyEventSubscriptionConnection!`](/supply/api/graphql-admin/reference/objects/supply-event-subscription-connection))
+
+List supplyEventSubscriptions by filtering for your identity for this supplier.
+- ##### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`itemType`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+In order to use this filter, you must also provide subscriptionEntityId
+
+
+- ##### [`last`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`mutationType`](#) ([`SupplyEventMutationType`](/supply/api/graphql-admin/reference/enums/supply-event-mutation-type))
+
+In order to use this filter, you must also include itemType and subscriptionEntityId
+
+
+#### [`name`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`notificationUserNames`](#) ([`SupplierNotificationUserNames`](/supply/api/graphql-admin/reference/objects/supplier-notification-user-names))
+
+These users will get notified if something requires attention for this Supplier.
+If none are provided, ownerUserName will be notified.
+
+
+#### [`ownerUser`](#) ([`PublicIdentity`](/supply/api/graphql-admin/reference/objects/public-identity))
+
+Get the owner for a given Supplier
+
+
+#### [`ownerUserName`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`quickLink`](#) ([`SupplierQuickLink`](/supply/api/graphql-admin/reference/objects/supplier-quick-link))
+
+Get a single SupplierQuickLink by its ids
+- ##### [`appId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+- ##### [`quickLinkType`](#) ([`SupplierQuickLinkType!`](/supply/api/graphql-admin/reference/enums/supplier-quick-link-type))
+
+
+
+
+#### [`quickLinks`](#) ([`SupplierQuickLinkConnection!`](/supply/api/graphql-admin/reference/objects/supplier-quick-link-connection))
+
+List multiple SupplierQuickLinks for a single SupplierQuickLinkType
+- ##### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`quickLinkType`](#) ([`SupplierQuickLinkType!`](/supply/api/graphql-admin/reference/enums/supplier-quick-link-type))
+
+
+
+
+#### [`shipFromAddress`](#) ([`Address`](/supply/api/graphql-admin/reference/objects/address))
+
+The address where this Supplier's goods ship from.
+
+
+#### [`status`](#) ([`SupplierStatus!`](/supply/api/graphql-admin/reference/enums/supplier-status))
+
+
+
+
+#### [`supplierDemandHq`](#) ([`SupplierDemandHq`](/supply/api/graphql-admin/reference/objects/supplier-demand-hq))
+
+Get a SupplierDemandHq by its DemandHqId.
+            
+Requires the requesting identity to have the "supplierdemandhq/read" permission on the associated Supplier.
+- ##### [`demandHqId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierDemandHqs`](#) ([`SupplierDemandHqConnection!`](/supply/api/graphql-admin/reference/objects/supplier-demand-hq-connection))
+
+Get a list of SupplierDemandHqs for the Supplier.
+
+Requires the requesting identity to have the "supplierdemandhq/read" permission on the associated Supplier.
+- ##### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`status`](#) ([`SupplierDemandHqStatus`](/supply/api/graphql-admin/reference/enums/supplier-demand-hq-status))
+
+
+
+
+#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierIdentities`](#) ([`SupplierIdentityConnection!`](/supply/api/graphql-admin/reference/objects/supplier-identity-connection))
+
+Returns SupplierIdentities for the given Supplier
+
+Requires supplieridentity/read permission on the requesting identity
+- ##### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`identityParentEntityId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
+
+Filter the results to a specific identityParentEntityId (optional)
+
+
+- ##### [`identityType`](#) ([`SupplierIdentityType`](/supply/api/graphql-admin/reference/enums/supplier-identity-type))
+
+Filter the results to a specific identity type (optional)
+
+
+- ##### [`last`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`supplierIdentity`](#) ([`SupplierIdentity`](/supply/api/graphql-admin/reference/objects/supplier-identity))
+
+Returns a SupplierIdentity for the given Supplier
+
+Requires supplieridentity/read permission on the requesting identity, or you can request your own identity.
+- ##### [`identityId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierProduct`](#) ([`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product))
+
+Get a single SupplierProduct by its ID.
+
+Requires supplierproduct/read permission on the requesting identity
+- ##### [`supplierProductId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierProductTermAggregations`](#) ([`SupplierProductTermAggregations`](/supply/api/graphql-admin/reference/objects/supplier-product-term-aggregations))
+
+Term aggregations for SupplierProducts, typically used to suggest terms to use in Search Filters.
+- ##### [`numberOfResults`](#) ([`Int!`](/supply/api/graphql-admin/reference/scalars/int))
+
+The number of aggregations to return for each type.
+
+
+#### [`supplierProducts`](#) ([`SupplierProductConnectionWithSearch!`](/supply/api/graphql-admin/reference/objects/supplier-product-connection-with-search))
+
+List SupplierProducts for a Supplier.
+
+Requires supplierproduct/read permission on the requesting identity
+- ##### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`cost`](#) ([`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input))
+
+Filter SupplierProducts using cost ranges.
+
+
+- ##### [`first`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`inventoryPolicy`](#) ([`[SupplierProductInventoryPolicyFilterInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-inventory-policy-filter-input))
+
+Filter SupplierProducts using InventoryPolicy (Variant).
+
+
+- ##### [`inventoryStatus`](#) ([`VariantInventoryStatus`](/supply/api/graphql-admin/reference/enums/variant-inventory-status))
+
+
+
+
+- ##### [`last`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+- ##### [`manufacturer`](#) ([`[StringFilterInput]`](/supply/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter SupplierProducts using Manufacturer (VariantSupplement).
+
+
+- ##### [`msrp`](#) ([`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input))
+
+Filter SupplierProducts using MSRP ranges.
+
+
+- ##### [`query`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Query supplierProducts for certain terms. Searches several fields, including
+supplierProduct.tags, supplierProduct.title, supplierProduct.vendor,
+supplierProductLocales.description, supplierProductLocales.featureBullets,
+supplierVariantSupplements.barcode, supplierVariantSupplement.mpn,
+supplierVariantSupplement.sku
+
+
+- ##### [`recommendedPrice`](#) ([`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input))
+
+Filter SupplierProducts using recommendedPrice ranges.
+
+
+- ##### [`sortOrder`](#) ([`[SupplierProductSortInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-sort-input))
+
+Sort SupplierProducts by a series of fields and directions, defaults to CREATED_AT/ASC.
+
+
+- ##### [`standardizedColor`](#) ([`[SupplierProductStandardizedColorFilterInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-standardized-color-filter-input))
+
+Filter SupplierProducts using StandardizedColor (Variant).
+
+
+- ##### [`status`](#) ([`SupplyEntityStatusFilterInput`](/supply/api/graphql-admin/reference/inputs/supply-entity-status-filter-input))
+
+Filter SupplierProducts using Status.
+
+
+- ##### [`tags`](#) ([`[StringFilterInput]`](/supply/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter SupplierProducts using Tags.
+
+
+- ##### [`vendor`](#) ([`StringFilterInput`](/supply/api/graphql-admin/reference/inputs/string-filter-input))
+
+Filter SupplierProducts using Vendors.
+
+
+#### [`topVendors`](#) ([`[String!]`](/supply/api/graphql-admin/reference/scalars/string))
+
+The top Brands or Vendors this Supplier carries, limit 5 and 256 characters each.
+
+
+#### [`updatedAt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

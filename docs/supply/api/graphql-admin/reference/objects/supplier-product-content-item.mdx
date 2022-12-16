@@ -1,0 +1,86 @@
+---
+id: supplier-product-content-item
+title: SupplierProductContentItem
+hide_table_of_contents: false
+---
+
+
+This has a many to one relationship with SupplierProduct, and provides a connection to the CDN items.
+
+```graphql
+type SupplierProductContentItem {
+  alt: String!
+  category: String
+  contentItemId: ID!
+  contentKey: String!
+  contentType: SupplierProductContentType!
+  createdAt: Date!
+  position: Int
+  supplierId: ID!
+  supplierProductId: ID!
+  updatedAt: Date!
+  updatedBy: String!
+}
+```
+
+
+### Fields
+
+#### [`alt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`category`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`contentItemId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`contentKey`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+The key to the file in the CDN
+
+
+#### [`contentType`](#) ([`SupplierProductContentType!`](/supply/api/graphql-admin/reference/enums/supplier-product-content-type))
+
+
+
+
+#### [`createdAt`](#) ([`Date!`](/supply/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`position`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Used to determine what order the content comes out in.
+Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+
+
+#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierProductId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`updatedAt`](#) ([`Date!`](/supply/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`updatedBy`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

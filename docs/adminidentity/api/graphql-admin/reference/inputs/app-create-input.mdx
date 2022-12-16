@@ -1,0 +1,57 @@
+---
+id: app-create-input
+title: AppCreateInput
+hide_table_of_contents: false
+---
+
+
+The necessary fields in order to create a new app
+
+```graphql
+input AppCreateInput {
+  appType: AppType!
+  description: String
+  name: String!
+  partnerId: ID!
+  requestedScopes: [String]
+  status: AppStatus!
+}
+```
+
+
+### Fields
+
+#### [`appType`](#) ([`AppType!`](/adminidentity/api/graphql-admin/reference/enums/app-type))
+
+
+
+
+#### [`description`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+Short description of the app
+Limited to 8000 characters
+
+
+#### [`name`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+The name of the app
+Limited to 128 characters
+
+
+#### [`partnerId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`requestedScopes`](#) ([`[String]`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`status`](#) ([`AppStatus!`](/adminidentity/api/graphql-admin/reference/enums/app-status))
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+---
+id: product-image-from-file-input
+title: ProductImageFromFileInput
+hide_table_of_contents: false
+---
+
+
+Input object for creating a ProductContentItem Image from a file
+
+```graphql
+input ProductImageFromFileInput {
+  alt: String!
+  category: String
+  demandHqId: ID!
+  fileExtension: String!
+  fileName: String!
+  position: Int
+  productId: ID!
+}
+```
+
+
+### Fields
+
+#### [`alt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`category`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`fileExtension`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`fileName`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`position`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Used to determine what order the content comes out in.
+Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+
+
+#### [`productId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

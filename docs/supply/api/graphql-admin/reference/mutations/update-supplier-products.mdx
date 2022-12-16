@@ -1,0 +1,36 @@
+---
+id: update-supplier-products
+title: updateSupplierProducts
+hide_table_of_contents: false
+---
+
+
+Bulk Update SupplierProducts
+
+Note that if there are Permission or UserInput Errors, the entire group will fail, not partially succeed.
+
+```graphql
+updateSupplierProducts(
+  inputs: [SupplierProductUpdateInput!]
+): [SupplierProduct!]
+```
+
+
+### Arguments
+
+#### [`inputs`](#) ([`[SupplierProductUpdateInput!]`](/supply/api/graphql-admin/reference/inputs/supplier-product-update-input))
+
+
+
+
+### Type
+
+#### [`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product)
+
+This is the main entity of the Supplier domain, and is used to represent a product, which is a group of SKUs.
+SKUs are represented by SupplierVariants, a child of this entity.
+This entity is less frequently updated, it is more likely that SupplyVariant will be updated frequently.
+
+
+
+

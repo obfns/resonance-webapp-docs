@@ -1,0 +1,45 @@
+---
+id: cart-item
+title: CartItem
+hide_table_of_contents: false
+---
+
+
+This is an item in the actual cart, ready for purchase.
+
+```graphql
+type CartItem {
+  customProperties: JSON
+  quantity: Int!
+  variant: PublicVariant
+  variantId: ID!
+}
+```
+
+
+### Fields
+
+#### [`customProperties`](#) ([`JSON`](/demand/api/graphql-storefront/reference/scalars/json))
+
+
+
+
+#### [`quantity`](#) ([`Int!`](/demand/api/graphql-storefront/reference/scalars/int))
+
+
+
+
+#### [`variant`](#) ([`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant))
+
+The variant that this cart item is associated with.
+            
+Requires publicvariant/read permission on the requesting identity.
+
+
+#### [`variantId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+
+

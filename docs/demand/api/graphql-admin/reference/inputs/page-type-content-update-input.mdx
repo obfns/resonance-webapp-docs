@@ -1,0 +1,76 @@
+---
+id: page-type-content-update-input
+title: PageTypeContentUpdateInput
+hide_table_of_contents: false
+---
+
+
+Input object to update a PageTypeContent.
+
+```graphql
+input PageTypeContentUpdateInput {
+  contentAsString: String
+  description: String
+  pageTypeContentId: ID!
+  secondaryContentAsString: String
+  seoDescription: String
+  seoTitle: String
+  subtitle: String
+  tags: PageTypeContentTagsInput
+  title: String
+}
+```
+
+
+### Fields
+
+#### [`contentAsString`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A short description of the pageTypeContent, limit 1000 characters. This is
+typically used off of the pageTypeContent page itself.
+
+
+#### [`pageTypeContentId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`secondaryContentAsString`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`seoDescription`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Description specific for SEO purposes, limit 170 characters.
+
+
+#### [`seoTitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Title specific for SEO purposes, limit 256 characters.
+
+
+#### [`subtitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The subtitle of the pageTypeContent, limit 256 characters.
+
+
+#### [`tags`](#) ([`PageTypeContentTagsInput`](/demand/api/graphql-admin/reference/inputs/page-type-content-tags-input))
+
+These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+
+
+#### [`title`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The title of the pageTypeContent, limit 256 characters.
+
+
+
+

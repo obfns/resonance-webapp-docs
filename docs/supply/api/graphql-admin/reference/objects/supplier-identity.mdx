@@ -1,0 +1,73 @@
+---
+id: supplier-identity
+title: SupplierIdentity
+hide_table_of_contents: false
+---
+
+
+Indicates a User or App has permissions on a Supplier
+
+```graphql
+type SupplierIdentity {
+  identityId: ID!
+  identityParentEntityId: ID
+  identityType: SupplierIdentityType!
+  permissions: SupplierIdentityPermissions!
+  publicIdentity: PublicIdentity
+  publicIdentityParent: PublicIdentityParent
+  supplier: Supplier
+  supplierId: ID!
+  updatedBy: String!
+}
+```
+
+
+### Fields
+
+#### [`identityId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+Could be a userName or an appClientId
+
+
+#### [`identityParentEntityId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`identityType`](#) ([`SupplierIdentityType!`](/supply/api/graphql-admin/reference/enums/supplier-identity-type))
+
+
+
+
+#### [`permissions`](#) ([`SupplierIdentityPermissions!`](/supply/api/graphql-admin/reference/objects/supplier-identity-permissions))
+
+
+
+
+#### [`publicIdentity`](#) ([`PublicIdentity`](/supply/api/graphql-admin/reference/objects/public-identity))
+
+Get a public identity by id
+
+
+#### [`publicIdentityParent`](#) ([`PublicIdentityParent`](/supply/api/graphql-admin/reference/unions/public-identity-parent))
+
+Get the expanded publicIdentityParent for this SupplierIdentity
+
+
+#### [`supplier`](#) ([`Supplier`](/supply/api/graphql-admin/reference/objects/supplier))
+
+Get the supplier associated with this SupplierIdentity.
+
+
+#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`updatedBy`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

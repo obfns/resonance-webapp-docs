@@ -1,0 +1,87 @@
+---
+id: supplier-identities
+title: supplierIdentities
+hide_table_of_contents: false
+---
+
+
+Get a filtered list of SupplierIdentities
+
+All of the filters are optional, but you must include at least one.
+You may receive less supplierIdentities than you indicate if you do not have
+permission to read part of the result set.
+
+Not all filter combinations are valid, for example you cannot filter by
+- identityId + identityParentEntityId (requires supplierId)
+- identityType only (requires supplierId)
+
+Requires supplieridentity/read permission on the requesting identity for each supplier requested,
+or you can request your own identities.
+
+```graphql
+supplierIdentities(
+  after: String
+  before: String
+  first: Int
+  identityId: ID
+  identityParentEntityId: ID
+  identityType: SupplierIdentityType
+  last: Int
+  supplierId: ID
+): SupplierIdentityConnection!
+```
+
+
+### Arguments
+
+#### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [`before`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [`first`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+#### [`identityId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
+
+Filter the results to a specific identityId.
+Use this with your own userName or appClientId in order to see "My SupplierIdentities".
+You automatically have access to your own SupplierIdentities.
+
+
+#### [`identityParentEntityId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
+
+Filter the results to a specific identityParentEntityId (optional)
+
+
+#### [`identityType`](#) ([`SupplierIdentityType`](/supply/api/graphql-admin/reference/enums/supplier-identity-type))
+
+Filter the results to a specific identity type (optional)
+
+
+#### [`last`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`supplierId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
+
+Filter the results to a specific supplierId. (optional)
+
+
+### Type
+
+#### [`SupplierIdentityConnection`](/supply/api/graphql-admin/reference/objects/supplier-identity-connection)
+
+Paginate through SupplierIdentities
+
+
+
+

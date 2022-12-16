@@ -1,0 +1,32 @@
+---
+id: storefront-identity-input
+title: StorefrontIdentityInput
+hide_table_of_contents: false
+---
+
+
+Necessary fields to create a Storefront Identity.
+
+```graphql
+input StorefrontIdentityInput {
+  permissions: StorefrontPermissionsInput!
+  slug: String!
+}
+```
+
+
+### Fields
+
+#### [`permissions`](#) ([`StorefrontPermissionsInput!`](/demand/api/graphql-admin/reference/inputs/storefront-permissions-input))
+
+
+
+
+#### [`slug`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+Human-readable way to categorize the use of this identity, must be unique to
+this storefront, all lowercase, and contain no spaces, limit 32 characters.
+
+
+
+

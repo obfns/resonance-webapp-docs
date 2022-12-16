@@ -1,0 +1,31 @@
+---
+id: collection-image-from-files-response
+title: CollectionImageFromFilesResponse
+hide_table_of_contents: false
+---
+
+
+Returned object from createCollectionImagesFromFiles
+
+```graphql
+type CollectionImageFromFilesResponse {
+  errors: [CollectionImagesFromFilesError!]
+  mutationResponses: [CollectionImageFromFileResponse!]!
+}
+```
+
+
+### Fields
+
+#### [`errors`](#) ([`[CollectionImagesFromFilesError!]`](/demand/api/graphql-admin/reference/objects/collection-images-from-files-error))
+
+
+
+
+#### [`mutationResponses`](#) ([`[CollectionImageFromFileResponse!]!`](/demand/api/graphql-admin/reference/objects/collection-image-from-file-response))
+
+A signed S3 url to upload the image to along with supporting data about the image
+
+
+
+

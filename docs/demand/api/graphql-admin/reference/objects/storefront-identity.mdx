@@ -1,0 +1,32 @@
+---
+id: storefront-identity
+title: StorefrontIdentity
+hide_table_of_contents: false
+---
+
+
+An identity that is associated with a storefront and is assigned scopes
+
+```graphql
+type StorefrontIdentity {
+  permissions: StorefrontPermissions!
+  slug: String!
+}
+```
+
+
+### Fields
+
+#### [`permissions`](#) ([`StorefrontPermissions!`](/demand/api/graphql-admin/reference/objects/storefront-permissions))
+
+
+
+
+#### [`slug`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+Human-readable way to categorize the use of this identity, must be unique to
+this storefront, all lowercase, and contain no spaces, limit 32 characters.
+
+
+
+

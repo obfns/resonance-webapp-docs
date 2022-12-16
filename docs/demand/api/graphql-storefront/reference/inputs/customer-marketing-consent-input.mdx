@@ -1,0 +1,43 @@
+---
+id: customer-marketing-consent-input
+title: CustomerMarketingConsentInput
+hide_table_of_contents: false
+---
+
+
+Input for updating a Customer's marketing consent
+
+```graphql
+input CustomerMarketingConsentInput {
+  consentLevel: CustomerMarketingConsentLevel!
+  consentedAt: Date!
+  hasConsented: Boolean!
+  source: String
+}
+```
+
+
+### Fields
+
+#### [`consentLevel`](#) ([`CustomerMarketingConsentLevel!`](/demand/api/graphql-storefront/reference/enums/customer-marketing-consent-level))
+
+The level at which the Customer has consented to marketing
+
+
+#### [`consentedAt`](#) ([`Date!`](/demand/api/graphql-storefront/reference/scalars/date))
+
+The date the associated Customer agreed to the marketing consent
+
+
+#### [`hasConsented`](#) ([`Boolean!`](/demand/api/graphql-storefront/reference/scalars/boolean))
+
+
+
+
+#### [`source`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Optional field to store where consent was sourced from
+
+
+
+

@@ -1,0 +1,61 @@
+---
+id: storefront-create-input
+title: StorefrontCreateInput
+hide_table_of_contents: false
+---
+
+
+Necessary fields to create a storefront.
+
+```graphql
+input StorefrontCreateInput {
+  authenticationSettings: StorefrontAuthenticationSettingsInput
+  authenticationType: StorefrontAuthenticationType
+  demandHqId: ID!
+  description: String
+  name: String!
+  storefrontIdentities: [StorefrontIdentityInput!]
+  urlDomain: String!
+}
+```
+
+
+### Fields
+
+#### [`authenticationSettings`](#) ([`StorefrontAuthenticationSettingsInput`](/demand/api/graphql-admin/reference/inputs/storefront-authentication-settings-input))
+
+
+
+
+#### [`authenticationType`](#) ([`StorefrontAuthenticationType`](/demand/api/graphql-admin/reference/enums/storefront-authentication-type))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`name`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`storefrontIdentities`](#) ([`[StorefrontIdentityInput!]`](/demand/api/graphql-admin/reference/inputs/storefront-identity-input))
+
+
+
+
+#### [`urlDomain`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

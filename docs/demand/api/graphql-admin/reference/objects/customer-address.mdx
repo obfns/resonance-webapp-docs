@@ -1,0 +1,115 @@
+---
+id: customer-address
+title: CustomerAddress
+hide_table_of_contents: false
+---
+
+
+A customerAddress is an Address entity that is associated with a customer
+
+```graphql
+type CustomerAddress {
+  city: String!
+  company: String
+  country: String!
+  createdAt: Date!
+  customerAddressId: ID!
+  customerId: ID!
+  demandHqId: ID!
+  name: String!
+  phoneNumber: String
+  postalCode: String!
+  state: String!
+  storefrontId: ID!
+  streetAddress1: String!
+  streetAddress2: String
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`city`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The city of the address
+
+
+#### [`company`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The company associated with the address
+
+
+#### [`country`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The country of the address
+
+
+#### [`createdAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`customerAddressId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`customerId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`name`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The name associated with the address, i.e. the Person in the household
+
+
+#### [`phoneNumber`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The phone number of the address. Format +11231231234
+
+
+#### [`postalCode`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The zip or postal code of the address
+
+
+#### [`state`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The state of the address
+
+
+#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`streetAddress1`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The first line of the street address
+
+
+#### [`streetAddress2`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The second line of the street address
+
+
+#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

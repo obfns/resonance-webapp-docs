@@ -1,0 +1,51 @@
+---
+id: public-page-connection-with-search
+title: PublicPageConnectionWithSearch
+hide_table_of_contents: false
+---
+
+
+Paginate through PublicPages
+
+```graphql
+type PublicPageConnectionWithSearch {
+  edges: [PublicPageEdge]!
+  nodes: [PublicPage]!
+  pageInfo: PageInfo!
+  querySuggestions: JSON
+  termAggregations: PageTermAggregations
+}
+```
+
+
+### Fields
+
+#### [`edges`](#) ([`[PublicPageEdge]!`](/demand/api/graphql-storefront/reference/objects/public-page-edge))
+
+
+
+
+#### [`nodes`](#) ([`[PublicPage]!`](/demand/api/graphql-storefront/reference/objects/public-page))
+
+
+
+
+#### [`pageInfo`](#) ([`PageInfo!`](/demand/api/graphql-storefront/reference/objects/page-info))
+
+
+
+
+#### [`querySuggestions`](#) ([`JSON`](/demand/api/graphql-storefront/reference/scalars/json))
+
+This is an object with terms in the query as keys, and a suggestion for that
+term as the value. This is often referred to as 'Did you mean?'
+
+
+#### [`termAggregations`](#) ([`PageTermAggregations`](/demand/api/graphql-storefront/reference/objects/page-term-aggregations))
+
+Values and the number of times they occur for the results of the query. These
+will be the same for every page of a query, and should only be fetched on the first page.
+
+
+
+

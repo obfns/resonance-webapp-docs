@@ -1,0 +1,34 @@
+---
+id: string-filter-input
+title: StringFilterInput
+hide_table_of_contents: false
+---
+
+
+Filter using a combination of operator and an array of string values.
+            
+Special values:
+- '#EXISTS#' - Indicates the field should merely exist, and any value is acceptable. (Or, no value should exist for 'NOT').
+
+```graphql
+input StringFilterInput {
+  operator: FilterOperator
+  values: [String!]!
+}
+```
+
+
+### Fields
+
+#### [`operator`](#) ([`FilterOperator`](/demand/api/graphql-admin/reference/enums/filter-operator))
+
+
+
+
+#### [`values`](#) ([`[String!]!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

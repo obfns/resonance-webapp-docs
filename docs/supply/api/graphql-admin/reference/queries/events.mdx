@@ -1,0 +1,62 @@
+---
+id: events
+title: events
+hide_table_of_contents: false
+---
+
+
+See changes that have been made to this SupplierVariant
+
+```graphql
+events(
+  after: String
+  before: String
+  entityId: ID!
+  first: Int
+  last: Int
+  supplierId: ID!
+): SupplyEventConnection!
+```
+
+
+### Arguments
+
+#### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [`before`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [`entityId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+The entity to retrieve events for, like a SupplierVariantId
+
+
+#### [`first`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+#### [`last`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+
+The SupplierId to retrieve events for
+
+
+### Type
+
+#### [`SupplyEventConnection`](/supply/api/graphql-admin/reference/objects/supply-event-connection)
+
+Paginate through SupplyEvents
+
+
+
+

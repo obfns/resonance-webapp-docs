@@ -1,0 +1,74 @@
+---
+id: product-locale
+title: ProductLocale
+hide_table_of_contents: false
+---
+
+
+This has a many to one relationship with Product, and provides localized language data for the appropriate fields.
+There will often only be one of these, and it should be the one set in defaultLocale for the supplier.
+
+```graphql
+type ProductLocale {
+  createdAt: String!
+  demandHqId: ID!
+  description: String
+  descriptionAsHTML: String
+  featureBullets: [String]
+  localeType: ResonanceLocaleType!
+  productId: ID!
+  updatedAt: String!
+  updatedBy: String!
+}
+```
+
+
+### Fields
+
+#### [`createdAt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Can utilize Markdown
+
+
+#### [`descriptionAsHTML`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the product (productLocale) description as HTML.
+
+
+#### [`featureBullets`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+Limited to 5 bullets
+
+
+#### [`localeType`](#) ([`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type))
+
+
+
+
+#### [`productId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`updatedAt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`updatedBy`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

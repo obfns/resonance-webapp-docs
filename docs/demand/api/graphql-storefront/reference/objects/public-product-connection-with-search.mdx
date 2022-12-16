@@ -1,0 +1,51 @@
+---
+id: public-product-connection-with-search
+title: PublicProductConnectionWithSearch
+hide_table_of_contents: false
+---
+
+
+Paginate through PublicProducts
+
+```graphql
+type PublicProductConnectionWithSearch {
+  edges: [PublicProductEdge]!
+  nodes: [PublicProduct]!
+  pageInfo: PageInfo!
+  querySuggestions: JSON
+  termAggregations: ProductTermAggregations
+}
+```
+
+
+### Fields
+
+#### [`edges`](#) ([`[PublicProductEdge]!`](/demand/api/graphql-storefront/reference/objects/public-product-edge))
+
+
+
+
+#### [`nodes`](#) ([`[PublicProduct]!`](/demand/api/graphql-storefront/reference/objects/public-product))
+
+
+
+
+#### [`pageInfo`](#) ([`PageInfo!`](/demand/api/graphql-storefront/reference/objects/page-info))
+
+
+
+
+#### [`querySuggestions`](#) ([`JSON`](/demand/api/graphql-storefront/reference/scalars/json))
+
+This is an object with terms in the query as keys, and a suggestion for that
+term as the value. This is often referred to as 'Did you mean?'
+
+
+#### [`termAggregations`](#) ([`ProductTermAggregations`](/demand/api/graphql-storefront/reference/objects/product-term-aggregations))
+
+Values and the number of times they occur for the results of the query. These
+will be the same for every page of a query, and should only be fetched on the first page.
+
+
+
+

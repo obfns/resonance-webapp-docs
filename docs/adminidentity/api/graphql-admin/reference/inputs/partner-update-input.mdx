@@ -1,0 +1,51 @@
+---
+id: partner-update-input
+title: PartnerUpdateInput
+hide_table_of_contents: false
+---
+
+
+The possible fields in order to update an existing partner
+
+```graphql
+input PartnerUpdateInput {
+  description: String
+  name: String
+  notificationUserNames: PartnerNotificationUserNamesInput
+  ownerUserName: String
+  partnerId: ID!
+}
+```
+
+
+### Fields
+
+#### [`description`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+Description of the partner
+Limited to 8000 characters
+
+
+#### [`name`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+The name of the partner
+Limited to 128 characters
+
+
+#### [`notificationUserNames`](#) ([`PartnerNotificationUserNamesInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-notification-user-names-input))
+
+Represents the users to be notified for certain events
+
+
+#### [`ownerUserName`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`partnerId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

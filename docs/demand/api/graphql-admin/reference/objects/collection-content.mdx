@@ -1,0 +1,80 @@
+---
+id: collection-content
+title: CollectionContent
+hide_table_of_contents: false
+---
+
+
+This is the actual markdown content for the collection
+
+```graphql
+type CollectionContent {
+  collectionId: ID!
+  contentAsHtml: String
+  contentAsString: String!
+  demandHqId: ID!
+  excerpt(
+  numberOfCharacters: Int
+): String
+  secondaryContentAsHtml: String
+  secondaryContentAsString: String
+  updatedAt: String
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`collectionId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`contentAsHtml`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Get the markdown content of the collection as parsed HTML. Do not use this
+field without purifying or sanitizing the HTML in your webapp.
+
+
+#### [`contentAsString`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`excerpt`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Get an excerpt of the collection content.
+- ##### [`numberOfCharacters`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+The number of characters to return, defaults to 200.
+
+
+#### [`secondaryContentAsHtml`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Get the secondary markdown content of the collection as parsed HTML. Do not
+use this field without purifying or sanitizing the HTML in your webapp.
+
+
+#### [`secondaryContentAsString`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`updatedAt`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

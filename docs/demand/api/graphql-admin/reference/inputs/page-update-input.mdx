@@ -1,0 +1,116 @@
+---
+id: page-update-input
+title: PageUpdateInput
+hide_table_of_contents: false
+---
+
+
+ID Fields are required, but all other fields are optional, only included fields will be updated.
+
+```graphql
+input PageUpdateInput {
+  author: String
+  contentItemIds: [ID!]
+  description: String
+  pageId: ID!
+  pageType: String
+  primaryImageUrl: String
+  publishedAt: Date
+  secondaryImageUrl: String
+  seoDescription: String
+  seoTitle: String
+  slug: String
+  status: DemandEntityStatus
+  storefrontIds: [ID]
+  subtitle: String
+  tags: [String]
+  title: String
+}
+```
+
+
+### Fields
+
+#### [`author`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The author of the page, limit 256 characters.
+
+
+#### [`contentItemIds`](#) ([`[ID!]`](/demand/api/graphql-admin/reference/scalars/id))
+
+The ContentItemIds of the Content Items that are associated with this page.
+
+
+#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A short description of the page, limit 1000 characters.
+
+
+#### [`pageId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`pageType`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Any string to declare a category of this page, can be used to filter pages, limit 128 characters.
+
+
+#### [`primaryImageUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A primary image url for this page, can be generated from a Page ContentItem.
+
+
+#### [`publishedAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
+
+ISO format date when the page was published. Note that ensuing updates with
+status set to PUBLISHED will republish and re-set this date.
+
+
+#### [`secondaryImageUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A secondary image url for this page, often a logo or related item.
+
+
+#### [`seoDescription`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Description specific for SEO purposes, limit 170 characters.
+
+
+#### [`seoTitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Title specific for SEO purposes, limit 256 characters.
+
+
+#### [`slug`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Slug for the URL for this page. Limit 128 characters.
+
+
+#### [`status`](#) ([`DemandEntityStatus`](/demand/api/graphql-admin/reference/enums/demand-entity-status))
+
+The status of the page, can be DRAFT or PUBLISHED.
+
+
+#### [`storefrontIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+Which storefronts should have access to this page?
+
+
+#### [`subtitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The subtitle of the page, limit 256 characters.
+
+
+#### [`tags`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`title`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+The title of the page, limit 256 characters.
+
+
+
+
