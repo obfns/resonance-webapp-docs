@@ -1,0 +1,75 @@
+---
+id: checkout-order-item
+title: CheckoutOrderItem
+hide_table_of_contents: false
+---
+
+
+This is an orderItem in the checkout process, pending order creation.
+Nearly all fields are optional, but their existence is still required by the end
+of the checkout process if they are required for OrderItems.
+
+```graphql
+type CheckoutOrderItem {
+  customProperties: JSON
+  discounts: [OrderItemDiscount]
+  note: String
+  quantity: Int
+  shippingCharges: [OrderItemShippingCharge]
+  shippingMethod: ShippingMethod
+  taxes: [OrderItemTax]
+  unitPrice: Float
+  variantId: ID!
+}
+```
+
+
+### Fields
+
+#### [`customProperties`](#) ([`JSON`](/demand/api/graphql-storefront/reference/scalars/json))
+
+
+
+
+#### [`discounts`](#) ([`[OrderItemDiscount]`](/demand/api/graphql-storefront/reference/objects/order-item-discount))
+
+
+
+
+#### [`note`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`quantity`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+
+
+
+
+#### [`shippingCharges`](#) ([`[OrderItemShippingCharge]`](/demand/api/graphql-storefront/reference/objects/order-item-shipping-charge))
+
+
+
+
+#### [`shippingMethod`](#) ([`ShippingMethod`](/demand/api/graphql-storefront/reference/enums/shipping-method))
+
+
+
+
+#### [`taxes`](#) ([`[OrderItemTax]`](/demand/api/graphql-storefront/reference/objects/order-item-tax))
+
+
+
+
+#### [`unitPrice`](#) ([`Float`](/demand/api/graphql-storefront/reference/scalars/float))
+
+
+
+
+#### [`variantId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+
+

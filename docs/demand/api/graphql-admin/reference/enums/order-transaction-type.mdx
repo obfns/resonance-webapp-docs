@@ -1,0 +1,51 @@
+---
+id: order-transaction-type
+title: OrderTransactionType
+hide_table_of_contents: false
+---
+
+
+Indicates the purpose of a given OrderTransaction.
+
+```graphql
+enum OrderTransactionType {
+  AUTHORIZATION
+  CAPTURE
+  REFUND
+  SALE
+  VOID
+}
+```
+
+
+### Values
+
+#### [`AUTHORIZATION`](#)
+
+Money that the customer has agreed to pay.
+The authorization period can be between 7 and 30 days (depending on your
+payment service) while a store waits for a payment to be captured.
+
+
+#### [`CAPTURE`](#)
+
+A transfer of money that was reserved during the authorization of a shop.
+
+
+#### [`REFUND`](#)
+
+The partial or full return of captured money to the customer.
+
+
+#### [`SALE`](#)
+
+The authorization and capture of a payment performed in one single step.
+
+
+#### [`VOID`](#)
+
+The cancellation of a pending authorization or capture.
+
+
+
+

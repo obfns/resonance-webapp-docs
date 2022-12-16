@@ -9,12 +9,18 @@ Create a new SupplierProduct and its associated ContentItems, Locales, and Varia
 
 ```graphql
 createSupplierProductComposite(
+  duplicationCheckType: CompositeDuplicationCheckType
   input: SupplierProductCompositeCreateInput!
 ): SupplierProduct!
 ```
 
 
 ### Arguments
+
+#### [`duplicationCheckType`](#) ([`CompositeDuplicationCheckType`](/supply/api/graphql-admin/reference/enums/composite-duplication-check-type))
+
+The type of duplication check to perform, defaults to STANDARD
+
 
 #### [`input`](#) ([`SupplierProductCompositeCreateInput!`](/supply/api/graphql-admin/reference/inputs/supplier-product-composite-create-input))
 

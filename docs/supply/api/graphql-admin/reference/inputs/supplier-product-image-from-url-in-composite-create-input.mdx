@@ -1,0 +1,52 @@
+---
+id: supplier-product-image-from-url-in-composite-create-input
+title: SupplierProductImageFromUrlInCompositeCreateInput
+hide_table_of_contents: false
+---
+
+
+Input object to create a new SupplierProductContentItem from a URL for a
+SupplierProduct inside a SupplierProductCompositeCreateInput
+
+```graphql
+input SupplierProductImageFromUrlInCompositeCreateInput {
+  alt: String
+  category: String
+  contentItemInputId: String
+  position: Int
+  url: String!
+}
+```
+
+
+### Fields
+
+#### [`alt`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`category`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`contentItemInputId`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+
+Temporary ID, can be any string, to associate Variants with this Image. On
+create, the real contentItemId will be substituted.
+
+
+#### [`position`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+
+Used to determine what order the content comes out in.
+Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+
+
+#### [`url`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

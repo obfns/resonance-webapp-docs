@@ -1,0 +1,68 @@
+---
+id: public-supplier-product-content-item
+title: PublicSupplierProductContentItem
+hide_table_of_contents: false
+---
+
+
+This has a many to one relationship with SupplierProduct, and provides a connection to the CDN items.
+
+```graphql
+type PublicSupplierProductContentItem {
+  alt: String!
+  category: String
+  contentItemId: ID!
+  contentKey: String!
+  contentType: SupplierProductContentType!
+  position: Int
+  supplierId: ID!
+  supplierProductId: ID!
+}
+```
+
+
+### Fields
+
+#### [`alt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`category`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`contentItemId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`contentKey`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+The key to the file in the CDN
+
+
+#### [`contentType`](#) ([`SupplierProductContentType!`](/demand/api/graphql-admin/reference/enums/supplier-product-content-type))
+
+
+
+
+#### [`position`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Used to determine what order the content comes out in.
+Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+
+
+#### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierProductId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

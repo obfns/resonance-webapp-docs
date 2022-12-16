@@ -1,0 +1,115 @@
+---
+id: order-transaction
+title: OrderTransaction
+hide_table_of_contents: false
+---
+
+
+A transaction in an Order.
+
+```graphql
+type OrderTransaction {
+  amount: Float!
+  authorizationCode: String
+  authorizationExpiresAt: Date
+  createdAt: Date!
+  currency: ResonanceCurrency!
+  currencyExchangeAdjustment: OrderTransactionCurrencyExchangeAdjustment
+  demandHqId: ID!
+  errorMessage: String
+  gateway: OrderTransactionGateway!
+  gatewayMessage: String
+  gatewayTransactionId: ID
+  orderId: ID!
+  orderTransactionId: ID!
+  orderTransactionType: OrderTransactionType!
+  processedAt: Date
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`amount`](#) ([`Float!`](/demand/api/graphql-admin/reference/scalars/float))
+
+
+
+
+#### [`authorizationCode`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`authorizationExpiresAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`createdAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`currency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency))
+
+
+
+
+#### [`currencyExchangeAdjustment`](#) ([`OrderTransactionCurrencyExchangeAdjustment`](/demand/api/graphql-admin/reference/objects/order-transaction-currency-exchange-adjustment))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`errorMessage`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`gateway`](#) ([`OrderTransactionGateway!`](/demand/api/graphql-admin/reference/enums/order-transaction-gateway))
+
+
+
+
+#### [`gatewayMessage`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`gatewayTransactionId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`orderId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`orderTransactionId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`orderTransactionType`](#) ([`OrderTransactionType!`](/demand/api/graphql-admin/reference/enums/order-transaction-type))
+
+
+
+
+#### [`processedAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+---
+id: create-order
+title: createOrder
+hide_table_of_contents: false
+---
+
+
+Create an Order (Draft Status).
+                
+Requires the order/write permission on the given DemandHq.
+
+```graphql
+createOrder(
+  input: OrderCreateInput!
+): Order!
+```
+
+
+### Arguments
+
+#### [`input`](#) ([`OrderCreateInput!`](/demand/api/graphql-admin/reference/inputs/order-create-input))
+
+
+
+
+### Type
+
+#### [`Order`](/demand/api/graphql-admin/reference/objects/order)
+
+An order is a collection of items that a customer has purchased.
+As an order accrues transactions, it changes status until it is eventually complete.
+Orders rely on Suppliers to fulfill the OrderItems by creating PurchaseOrderItems (which are then fulfilled).
+
+
+
+

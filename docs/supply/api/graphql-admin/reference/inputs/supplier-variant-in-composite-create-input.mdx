@@ -9,7 +9,7 @@ The necessary fields in order to create a new supplierVariant inside a SupplierP
 
 ```graphql
 input SupplierVariantInCompositeCreateInput {
-  contentItemIds: [ID]
+  contentItemInputIds: [String!]
   externalVariantId: String!
   inventoryPolicy: SupplierVariantInventoryPolicy!
   inventoryQuantity: Int!
@@ -20,9 +20,10 @@ input SupplierVariantInCompositeCreateInput {
 
 ### Fields
 
-#### [`contentItemIds`](#) ([`[ID]`](/supply/api/graphql-admin/reference/scalars/id))
+#### [`contentItemInputIds`](#) ([`[String!]`](/supply/api/graphql-admin/reference/scalars/string))
 
-Associates contentItems with this variant
+For contentItems where you are associating an existing contentItem, input the actual contentItemId.
+For other contentItem Inputs, match this to the contentItemInputId you have assigned.
 
 
 #### [`externalVariantId`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))

@@ -1,0 +1,66 @@
+---
+id: order-tags
+title: OrderTags
+hide_table_of_contents: false
+---
+
+
+These are the tags associated to the order
+
+```graphql
+type OrderTags {
+  demandHqId: ID!
+  orderId: ID!
+  parsed(
+  category: String
+  key: String
+): [ParsedTag]
+  raw: [String]
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`orderId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`parsed`](#) ([`[ParsedTag]`](/demand/api/graphql-admin/reference/objects/parsed-tag))
+
+Get the tags for an order parsed into category, key, and value.
+- ##### [`category`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Optionally filter tags by category.
+
+
+- ##### [`key`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+
+
+#### [`raw`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

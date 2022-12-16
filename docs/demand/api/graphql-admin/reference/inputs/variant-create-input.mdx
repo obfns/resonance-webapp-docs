@@ -12,6 +12,7 @@ input VariantCreateInput {
   barcode: String!
   casePack: Int
   contentItemIds: [ID]
+  deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
   isTaxable: Boolean
   manufacturer: String
@@ -45,6 +46,11 @@ Quantity in one variant (i.e. 12-pack). Must be a positive integer.
 #### [`contentItemIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
 
 Associates contentItems with this variant
+
+
+#### [`deliveryMethod`](#) ([`VariantDeliveryMethod`](/demand/api/graphql-admin/reference/enums/variant-delivery-method))
+
+
 
 
 #### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))

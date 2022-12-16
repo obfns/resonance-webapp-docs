@@ -1,0 +1,110 @@
+---
+id: public-supplier-variant
+title: PublicSupplierVariant
+hide_table_of_contents: false
+---
+
+
+The public version of SupplierVariant.  Represents a single SKU.  A
+SupplierVariant is a child of a SupplierProduct (this is a one-to-many
+relationship, where a SupplierProduct has many SupplierVariants).
+
+```graphql
+type PublicSupplierVariant {
+  averageShippingCost: Float
+  contentItemIds: [ID]
+  cost: Float
+  externalVariantId: String!
+  featuredImage: PublicSupplierProductContentItem
+  handlingCost: SupplierVariantHandlingCost
+  inventoryPolicy: PublicSupplierVariantInventoryPolicy!
+  inventoryQuantity: Int!
+  inventoryStatus: InventoryStatus!
+  optionValues: [String!]!
+  supplierId: ID!
+  supplierProductId: ID!
+  supplierVariantId: ID!
+  title: String
+}
+```
+
+
+### Fields
+
+#### [`averageShippingCost`](#) ([`Float`](/demand/api/graphql-admin/reference/scalars/float))
+
+
+
+
+#### [`contentItemIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+
+Associates contentItems with this variant
+
+
+#### [`cost`](#) ([`Float`](/demand/api/graphql-admin/reference/scalars/float))
+
+
+
+
+#### [`externalVariantId`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`featuredImage`](#) ([`PublicSupplierProductContentItem`](/demand/api/graphql-admin/reference/objects/public-supplier-product-content-item))
+
+
+
+
+#### [`handlingCost`](#) ([`SupplierVariantHandlingCost`](/demand/api/graphql-admin/reference/objects/supplier-variant-handling-cost))
+
+
+
+
+#### [`inventoryPolicy`](#) ([`PublicSupplierVariantInventoryPolicy!`](/demand/api/graphql-admin/reference/enums/public-supplier-variant-inventory-policy))
+
+
+
+
+#### [`inventoryQuantity`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
+
+
+
+
+#### [`inventoryStatus`](#) ([`InventoryStatus!`](/demand/api/graphql-admin/reference/enums/inventory-status))
+
+
+
+
+#### [`optionValues`](#) ([`[String!]!`](/demand/api/graphql-admin/reference/scalars/string))
+
+An array of the option values that make up this variant.
+For example, a product with a color and size option would have two option values,
+one for each of the color and size options, i.e. ["Red", "Small"]
+Must have 1-3, and it should match the number of options in the product, but there is no validation to do so.
+Set this to "No Option" if you don't want to use options for this product and this is the only variant.
+See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
+
+
+#### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierProductId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`supplierVariantId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`title`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

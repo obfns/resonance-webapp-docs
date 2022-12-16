@@ -1,0 +1,73 @@
+---
+id: checkout-order-item-input
+title: CheckoutOrderItemInput
+hide_table_of_contents: false
+---
+
+
+Create or Update a CheckoutOrderItem
+
+```graphql
+input CheckoutOrderItemInput {
+  customProperties: JSON
+  discounts: [OrderItemDiscountInput]
+  note: String
+  quantity: Int
+  shippingCharges: [OrderItemShippingChargeInput]
+  shippingMethod: ShippingMethod
+  taxes: [OrderItemTaxInput]
+  unitPrice: Float
+  variantId: ID!
+}
+```
+
+
+### Fields
+
+#### [`customProperties`](#) ([`JSON`](/demand/api/graphql-storefront/reference/scalars/json))
+
+
+
+
+#### [`discounts`](#) ([`[OrderItemDiscountInput]`](/demand/api/graphql-storefront/reference/inputs/order-item-discount-input))
+
+
+
+
+#### [`note`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`quantity`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+
+
+
+
+#### [`shippingCharges`](#) ([`[OrderItemShippingChargeInput]`](/demand/api/graphql-storefront/reference/inputs/order-item-shipping-charge-input))
+
+
+
+
+#### [`shippingMethod`](#) ([`ShippingMethod`](/demand/api/graphql-storefront/reference/enums/shipping-method))
+
+
+
+
+#### [`taxes`](#) ([`[OrderItemTaxInput]`](/demand/api/graphql-storefront/reference/inputs/order-item-tax-input))
+
+
+
+
+#### [`unitPrice`](#) ([`Float`](/demand/api/graphql-storefront/reference/scalars/float))
+
+
+
+
+#### [`variantId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+
+

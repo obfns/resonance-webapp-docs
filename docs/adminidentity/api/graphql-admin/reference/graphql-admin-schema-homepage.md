@@ -1,7 +1,7 @@
 ---
 id: schema
 slug: /adminidentity/api/graphql-admin/reference
-title: AdminIdentity GraphQL Admin API Schema Documentation
+title: Admin Identity GraphQL Admin API Schema Documentation
 sidebar_position: 1
 ---
 

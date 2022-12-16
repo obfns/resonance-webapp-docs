@@ -12,6 +12,7 @@ input VariantUpdateInput {
   barcode: String
   casePack: Int
   contentItemIds: [ID]
+  deliveryMethod: VariantDeliveryMethod
   isTaxable: Boolean
   manufacturer: String
   mapPrice: Float
@@ -44,6 +45,11 @@ Quantity in one variant (i.e. 12-pack). Must be a positive integer.
 #### [`contentItemIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
 
 Associates contentItems with this variant
+
+
+#### [`deliveryMethod`](#) ([`VariantDeliveryMethod`](/demand/api/graphql-admin/reference/enums/variant-delivery-method))
+
+
 
 
 #### [`isTaxable`](#) ([`Boolean`](/demand/api/graphql-admin/reference/scalars/boolean))

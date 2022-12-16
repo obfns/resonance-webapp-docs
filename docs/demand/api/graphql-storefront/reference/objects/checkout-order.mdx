@@ -1,0 +1,63 @@
+---
+id: checkout-order
+title: CheckoutOrder
+hide_table_of_contents: false
+---
+
+
+This is an order in the checkout process, pending creation.
+Nearly all fields are optional, but their existence is still required by the end
+of the checkout process if they are required for Orders.
+
+```graphql
+type CheckoutOrder {
+  billingAddress: Address
+  customerNote: String
+  emailAddress: String
+  paymentId: ID
+  phoneNumber: String
+  shippingAddress: Address
+  tags: [String]
+}
+```
+
+
+### Fields
+
+#### [`billingAddress`](#) ([`Address`](/demand/api/graphql-storefront/reference/objects/address))
+
+
+
+
+#### [`customerNote`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+A note provided by the customer at time of order
+
+
+#### [`emailAddress`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`paymentId`](#) ([`ID`](/demand/api/graphql-storefront/reference/scalars/id))
+
+A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+
+
+#### [`phoneNumber`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`shippingAddress`](#) ([`Address`](/demand/api/graphql-storefront/reference/objects/address))
+
+
+
+
+#### [`tags`](#) ([`[String]`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+
+

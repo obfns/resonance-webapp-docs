@@ -10,7 +10,8 @@ and its ContentItems, Locales, and Variants in one mutation
 
 ```graphql
 input SupplierProductCompositeCreateInput {
-  supplierProductContentItemInputs: [SupplierProductContentItemAssociationInCompositeCreateInput]
+  supplierProductContentItemAssociationInputs: [SupplierProductContentItemAssociationInCompositeCreateInput]
+  supplierProductImageFromUrlInputs: [SupplierProductImageFromUrlInCompositeCreateInput]
   supplierProductInput: SupplierProductCreateInput!
   supplierProductLocaleInputs: [SupplierProductLocaleInCompositeCreateInput]
   supplierVariantInputs: [SupplierVariantCompositeInCompositeCreateInput]
@@ -20,7 +21,12 @@ input SupplierProductCompositeCreateInput {
 
 ### Fields
 
-#### [`supplierProductContentItemInputs`](#) ([`[SupplierProductContentItemAssociationInCompositeCreateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-content-item-association-in-composite-create-input))
+#### [`supplierProductContentItemAssociationInputs`](#) ([`[SupplierProductContentItemAssociationInCompositeCreateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-content-item-association-in-composite-create-input))
+
+
+
+
+#### [`supplierProductImageFromUrlInputs`](#) ([`[SupplierProductImageFromUrlInCompositeCreateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-image-from-url-in-composite-create-input))
 
 
 

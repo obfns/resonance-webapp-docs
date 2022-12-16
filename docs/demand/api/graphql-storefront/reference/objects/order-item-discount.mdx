@@ -1,0 +1,43 @@
+---
+id: order-item-discount
+title: OrderItemDiscount
+hide_table_of_contents: false
+---
+
+
+A discount applied to an OrderItem. Discounts alter pricing of an OrderItem, and may include a coupon code to do so.
+
+```graphql
+type OrderItemDiscount {
+  code: String
+  discountAmount: Float!
+  discountType: OrderItemDiscountType!
+  discountedAt: Date!
+}
+```
+
+
+### Fields
+
+#### [`code`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`discountAmount`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The amount of the discount.
+
+
+#### [`discountType`](#) ([`OrderItemDiscountType!`](/demand/api/graphql-storefront/reference/enums/order-item-discount-type))
+
+The type of discount.
+
+
+#### [`discountedAt`](#) ([`Date!`](/demand/api/graphql-storefront/reference/scalars/date))
+
+
+
+
+
+

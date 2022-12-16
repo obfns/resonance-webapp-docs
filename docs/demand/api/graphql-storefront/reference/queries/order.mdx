@@ -1,0 +1,41 @@
+---
+id: order
+title: order
+hide_table_of_contents: false
+---
+
+
+Get a order by its orderId.
+
+Requires the publicorder/read scope.
+
+```graphql
+order(
+  customerToken: String!
+  orderId: ID!
+): PublicOrder
+```
+
+
+### Arguments
+
+#### [`customerToken`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`orderId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`PublicOrder`](/demand/api/graphql-storefront/reference/objects/public-order)
+
+A Order is a part of the Demand Domain and represents a the basic information of a order.
+Orders have many support entities, including variants, which represent SKUs of the order.
+
+
+
+

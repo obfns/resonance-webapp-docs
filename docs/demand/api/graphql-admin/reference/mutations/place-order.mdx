@@ -1,0 +1,36 @@
+---
+id: place-order
+title: placeOrder
+hide_table_of_contents: false
+---
+
+
+Place an Order (into Pending Status).
+
+Requires the order/write permission on the given DemandHq.
+
+```graphql
+placeOrder(
+  orderId: ID!
+): Order!
+```
+
+
+### Arguments
+
+#### [`orderId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`Order`](/demand/api/graphql-admin/reference/objects/order)
+
+An order is a collection of items that a customer has purchased.
+As an order accrues transactions, it changes status until it is eventually complete.
+Orders rely on Suppliers to fulfill the OrderItems by creating PurchaseOrderItems (which are then fulfilled).
+
+
+
+

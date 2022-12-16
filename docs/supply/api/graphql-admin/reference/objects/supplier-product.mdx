@@ -24,6 +24,7 @@ type SupplierProduct {
   createdAt: Date!
   customData: SupplierProductCustomData
   externalProductId: String!
+  featuredImage: SupplierProductContentItem
   locale(
   localeType: ResonanceLocaleType!
 ): SupplierProductLocale
@@ -67,9 +68,7 @@ Get a list of supplierProductContentItems
 
 Requires supplierproductcontentitem/read permission on the supplier for the requesting identity
 
-Sorting works differently depending on which filters are used.
-Without any filters, the sort order is by createdAt.
-With a contentType filter, the sort order is by position.
+Sorts by position.
 This means "featuredImage" can be retrieved by using contentType: IMAGE and first: 1.
 - ##### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
 
@@ -109,6 +108,15 @@ Get the associated SupplierProductCustomData
 #### [`externalProductId`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
 
 Passed along in PurchaseOrders so the Supplier can identify items in their warehouse.
+
+
+#### [`featuredImage`](#) ([`SupplierProductContentItem`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item))
+
+Get the featured image for a supplierProduct
+
+Requires the supplierproductcontentitem/read permission on the associated Supplier.
+
+This is a convenience field that is equivalent to contentItems(contentType: IMAGE, first: 1)
 
 
 #### [`locale`](#) ([`SupplierProductLocale`](/supply/api/graphql-admin/reference/objects/supplier-product-locale))

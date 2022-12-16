@@ -1,0 +1,36 @@
+---
+id: update-order
+title: updateOrder
+hide_table_of_contents: false
+---
+
+
+Update an Order.
+
+Requires the order/write permission on the given DemandHq.
+
+```graphql
+updateOrder(
+  input: OrderUpdateInput!
+): Order!
+```
+
+
+### Arguments
+
+#### [`input`](#) ([`OrderUpdateInput!`](/demand/api/graphql-admin/reference/inputs/order-update-input))
+
+
+
+
+### Type
+
+#### [`Order`](/demand/api/graphql-admin/reference/objects/order)
+
+An order is a collection of items that a customer has purchased.
+As an order accrues transactions, it changes status until it is eventually complete.
+Orders rely on Suppliers to fulfill the OrderItems by creating PurchaseOrderItems (which are then fulfilled).
+
+
+
+

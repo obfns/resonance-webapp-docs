@@ -1,0 +1,53 @@
+---
+id: create-customer-checkout
+title: createCustomerCheckout
+hide_table_of_contents: false
+---
+
+
+Creates a new checkout for a logged in customer.
+Unlike most creates, this will overwrite any existing checkout for the customer, starting from scratch.
+            
+Requires the publiccheckout/write scope and a valid customerToken.
+
+```graphql
+createCustomerCheckout(
+  currency: ResonanceCurrency!
+  customerToken: String!
+  orderInput: CheckoutOrderInput
+  orderItemInputs: [CheckoutOrderItemInput]
+): Checkout!
+```
+
+
+### Arguments
+
+#### [`currency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-storefront/reference/enums/resonance-currency))
+
+
+
+
+#### [`customerToken`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`orderInput`](#) ([`CheckoutOrderInput`](/demand/api/graphql-storefront/reference/inputs/checkout-order-input))
+
+
+
+
+#### [`orderItemInputs`](#) ([`[CheckoutOrderItemInput]`](/demand/api/graphql-storefront/reference/inputs/checkout-order-item-input))
+
+
+
+
+### Type
+
+#### [`Checkout`](/demand/api/graphql-storefront/reference/objects/checkout)
+
+A checkout is a temporary container for an order and its orderItems that a customer or anonymous user wants to buy
+
+
+
+

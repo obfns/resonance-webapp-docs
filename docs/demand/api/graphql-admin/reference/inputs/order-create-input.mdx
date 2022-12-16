@@ -1,0 +1,85 @@
+---
+id: order-create-input
+title: OrderCreateInput
+hide_table_of_contents: false
+---
+
+
+Input for creating an Order
+
+```graphql
+input OrderCreateInput {
+  billingAddress: AddressInput!
+  customerId: ID
+  customerNote: String
+  demandHqId: ID!
+  emailAddress: String!
+  note: String
+  paymentId: ID
+  phoneNumber: String
+  shippingAddress: AddressInput!
+  storefrontId: ID
+  tags: [String]
+}
+```
+
+
+### Fields
+
+#### [`billingAddress`](#) ([`AddressInput!`](/demand/api/graphql-admin/reference/inputs/address-input))
+
+
+
+
+#### [`customerId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`customerNote`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A note provided by the customer at time of order
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`emailAddress`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`note`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`paymentId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+
+
+#### [`phoneNumber`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`shippingAddress`](#) ([`AddressInput!`](/demand/api/graphql-admin/reference/inputs/address-input))
+
+
+
+
+#### [`storefrontId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`tags`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

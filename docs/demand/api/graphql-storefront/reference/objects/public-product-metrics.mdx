@@ -1,0 +1,127 @@
+---
+id: public-product-metrics
+title: PublicProductMetrics
+hide_table_of_contents: false
+---
+
+
+Metrics for a PublicProduct including msrp min/max, price min/max, and discount metrics
+
+```graphql
+type PublicProductMetrics {
+  countOfVariants: Int!
+  discountMaximum: Float!
+  discountMaximumInStock: Float
+  discountMinimum: Float!
+  discountMinimumInStock: Float
+  discountPercentageMaximum: Float!
+  discountPercentageMaximumInStock: Float
+  discountPercentageMinimum: Float!
+  discountPercentageMinimumInStock: Float
+  inventoryStatus: InventoryStatus!
+  msrpMaximum: Float!
+  msrpMaximumInStock: Float
+  msrpMinimum: Float!
+  msrpMinimumInStock: Float
+  priceMaximum: Float!
+  priceMaximumInStock: Float
+  priceMinimum: Float!
+  priceMinimumInStock: Float
+}
+```
+
+
+### Fields
+
+#### [`countOfVariants`](#) ([`Int!`](/demand/api/graphql-storefront/reference/scalars/int))
+
+This number is mostly useful in tallying other numbers, averages, etc.
+
+
+#### [`discountMaximum`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The maximum discount for all of the variants
+
+
+#### [`discountMaximumInStock`](#) ([`Float`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The maximum discount for all in stock variants (null if no variants are in stock)
+
+
+#### [`discountMinimum`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The minimum discount for all of the variants
+
+
+#### [`discountMinimumInStock`](#) ([`Float`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The minimum discount for all in stock variants (null if no variants are in stock)
+
+
+#### [`discountPercentageMaximum`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The maximum discount percentage for all of the variants
+
+
+#### [`discountPercentageMaximumInStock`](#) ([`Float`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The maximum discount percentage for all in stock variants (null if no variants are in stock)
+
+
+#### [`discountPercentageMinimum`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The minimum discount percentage for all of the variants
+
+
+#### [`discountPercentageMinimumInStock`](#) ([`Float`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The minimum discount percentage for all in stock variants (null if no variants are in stock)
+
+
+#### [`inventoryStatus`](#) ([`InventoryStatus!`](/demand/api/graphql-storefront/reference/enums/inventory-status))
+
+In Stock if any Variant inventoryStatus is In Stock
+
+
+#### [`msrpMaximum`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The maximum MSRP from all of the variants
+
+
+#### [`msrpMaximumInStock`](#) ([`Float`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The maximum MSRP from all in stock variants (null if no variants are in stock)
+
+
+#### [`msrpMinimum`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The minimum MSRP from all of the variants
+
+
+#### [`msrpMinimumInStock`](#) ([`Float`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The minimum MSRP from all in stock variants (null if no variants are in stock)
+
+
+#### [`priceMaximum`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The maximum price from all of the variants
+
+
+#### [`priceMaximumInStock`](#) ([`Float`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The maximum price from all in stock variants (null if no variants are in stock)
+
+
+#### [`priceMinimum`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The minimum price from all of the variants
+
+
+#### [`priceMinimumInStock`](#) ([`Float`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The minimum price from all in stock variants (null if no variants are in stock)
+
+
+
+

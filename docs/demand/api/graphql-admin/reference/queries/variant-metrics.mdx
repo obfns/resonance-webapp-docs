@@ -1,0 +1,34 @@
+---
+id: variant-metrics
+title: variantMetrics
+hide_table_of_contents: false
+---
+
+
+Get variantMetrics for a Variant by variantId
+            
+    Requires variant/read permission
+
+```graphql
+variantMetrics(
+  variantId: ID!
+): VariantMetrics
+```
+
+
+### Arguments
+
+#### [`variantId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`VariantMetrics`](/demand/api/graphql-admin/reference/objects/variant-metrics)
+
+Metrics for a variant, including inventory quantity, status, and supplierVariant counts
+
+
+
+

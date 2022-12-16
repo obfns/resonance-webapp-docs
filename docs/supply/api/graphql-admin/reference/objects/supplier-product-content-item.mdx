@@ -9,13 +9,16 @@ This has a many to one relationship with SupplierProduct, and provides a connect
 
 ```graphql
 type SupplierProductContentItem {
-  alt: String!
+  alt: String
   category: String
   contentItemId: ID!
   contentKey: String!
   contentType: SupplierProductContentType!
   createdAt: Date!
   position: Int
+  sourceDetail: String!
+  sourceType: SupplierProductContentItemSourceType!
+  status: SupplierProductContentItemStatus!
   supplierId: ID!
   supplierProductId: ID!
   updatedAt: Date!
@@ -26,7 +29,7 @@ type SupplierProductContentItem {
 
 ### Fields
 
-#### [`alt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+#### [`alt`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
 
 
 
@@ -60,6 +63,21 @@ The key to the file in the CDN
 
 Used to determine what order the content comes out in.
 Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+
+
+#### [`sourceDetail`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+
+The original URL, or some kind of file pointer, based on sourceType
+
+
+#### [`sourceType`](#) ([`SupplierProductContentItemSourceType!`](/supply/api/graphql-admin/reference/enums/supplier-product-content-item-source-type))
+
+How did we receive this content item?
+
+
+#### [`status`](#) ([`SupplierProductContentItemStatus!`](/supply/api/graphql-admin/reference/enums/supplier-product-content-item-status))
+
+
 
 
 #### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))

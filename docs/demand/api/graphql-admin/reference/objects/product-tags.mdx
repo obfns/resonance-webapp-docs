@@ -10,6 +10,10 @@ These are the tags associated to the product
 ```graphql
 type ProductTags {
   demandHqId: ID!
+  parsed(
+  category: String
+  key: String
+): [ParsedTag]
   productId: ID!
   raw: [String]
   updatedAt: Date!
@@ -23,6 +27,19 @@ type ProductTags {
 #### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
 
 
+
+
+#### [`parsed`](#) ([`[ParsedTag]`](/demand/api/graphql-admin/reference/objects/parsed-tag))
+
+Get the tags for an product parsed into category, key, and value.
+- ##### [`category`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Optionally filter tags by category.
+
+
+- ##### [`key`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
 
 
 #### [`productId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))

@@ -1,0 +1,49 @@
+---
+id: purchase-order-item-status
+title: PurchaseOrderItemStatus
+hide_table_of_contents: false
+---
+
+
+Indicates the status of an PurchaseOrderItem (Supply).
+
+```graphql
+enum PurchaseOrderItemStatus {
+  CANCELLED
+  FULFILLED
+  INITIAL
+  PARTIALLY_ASSIGNED
+  PARTIALLY_FULFILLED
+}
+```
+
+
+### Values
+
+#### [`CANCELLED`](#)
+
+Indicates that the PurchaseOrderItem was assigned, but is no longer needed to be fulfilled.
+
+
+#### [`FULFILLED`](#)
+
+Indicates that the PurchaseOrderItem is fully fulfilled and is now complete.
+
+
+#### [`INITIAL`](#)
+
+Indicates that the PurchaseOrderItem is ready for processing, and data is complete.
+
+
+#### [`PARTIALLY_ASSIGNED`](#)
+
+
+
+
+#### [`PARTIALLY_FULFILLED`](#)
+
+Indicates that the PurchaseOrderItem is in the process of being fulfilled.
+
+
+
+

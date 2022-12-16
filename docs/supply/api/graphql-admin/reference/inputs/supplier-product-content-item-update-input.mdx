@@ -13,6 +13,7 @@ input SupplierProductContentItemUpdateInput {
   category: String
   contentItemId: ID!
   position: Int
+  status: SupplierProductContentItemStatus!
   supplierProductId: ID!
 }
 ```
@@ -39,6 +40,11 @@ input SupplierProductContentItemUpdateInput {
 
 Used to determine what order the content comes out in.
 Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+
+
+#### [`status`](#) ([`SupplierProductContentItemStatus!`](/supply/api/graphql-admin/reference/enums/supplier-product-content-item-status))
+
+
 
 
 #### [`supplierProductId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))

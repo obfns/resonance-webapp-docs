@@ -1,0 +1,62 @@
+---
+id: order-status
+title: OrderStatus
+hide_table_of_contents: false
+---
+
+
+Indicates the lifecycle stage an order is in
+
+```graphql
+enum OrderStatus {
+  AUTHORIZED
+  COMPLETE
+  DRAFT
+  FULFILLED
+  PARTIALLY_FULFILLED
+  PARTIALLY_FULFILLED_AWAITING_PAYMENT
+  PENDING
+}
+```
+
+
+### Values
+
+#### [`AUTHORIZED`](#)
+
+Order has been authorized, waiting on fulfillment
+
+
+#### [`COMPLETE`](#)
+
+Order has been paid, and is now complete. This can also indicate that an order
+was partially or fully refunded, but that process is also complete.
+
+
+#### [`DRAFT`](#)
+
+Initial state for an order, during which it can contain invalid or incomplete information
+
+
+#### [`FULFILLED`](#)
+
+Order has been fulfilled, waiting on payment
+
+
+#### [`PARTIALLY_FULFILLED`](#)
+
+Order has been partially fulfilled, and paid up for the currently fulfilled items
+
+
+#### [`PARTIALLY_FULFILLED_AWAITING_PAYMENT`](#)
+
+Order has been partially fulfilled, waiting on other fulfillments and for the existing fulfillments payment
+
+
+#### [`PENDING`](#)
+
+Order has been placed, waiting on authorization
+
+
+
+

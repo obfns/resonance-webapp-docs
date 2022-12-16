@@ -1,0 +1,49 @@
+---
+id: order-item-purchase-order-item
+title: OrderItemPurchaseOrderItem
+hide_table_of_contents: false
+---
+
+
+A relationship entity between an OrderItem and a PurchaseOrderItem.
+
+```graphql
+type OrderItemPurchaseOrderItem {
+  fulfillments: [PurchaseOrderItemFulfillment]
+  orderItemId: ID!
+  purchaseOrderItemId: ID!
+  quantity: Int!
+  status: PurchaseOrderItemStatus!
+}
+```
+
+
+### Fields
+
+#### [`fulfillments`](#) ([`[PurchaseOrderItemFulfillment]`](/demand/api/graphql-admin/reference/objects/purchase-order-item-fulfillment))
+
+
+
+
+#### [`orderItemId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`purchaseOrderItemId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`quantity`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
+
+
+
+
+#### [`status`](#) ([`PurchaseOrderItemStatus!`](/demand/api/graphql-admin/reference/enums/purchase-order-item-status))
+
+
+
+
+
+

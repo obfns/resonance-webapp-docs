@@ -1,0 +1,34 @@
+---
+id: customer-checkout
+title: customerCheckout
+hide_table_of_contents: false
+---
+
+
+Get the checkout for a customer.
+            
+Requires the publiccheckout/read scope and a valid customerToken.
+
+```graphql
+customerCheckout(
+  customerToken: String!
+): Checkout
+```
+
+
+### Arguments
+
+#### [`customerToken`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+### Type
+
+#### [`Checkout`](/demand/api/graphql-storefront/reference/objects/checkout)
+
+A checkout is a temporary container for an order and its orderItems that a customer or anonymous user wants to buy
+
+
+
+

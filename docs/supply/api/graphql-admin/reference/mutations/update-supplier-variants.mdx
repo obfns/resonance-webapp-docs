@@ -12,14 +12,20 @@ Note that if there are Permission or UserInput Errors, the entire group will fai
 
 ```graphql
 updateSupplierVariants(
-  inputs: [SupplierVariantUpdateInput!]
+  externalInputs: [SupplierVariantExternalUpdateInput]
+  inputs: [SupplierVariantUpdateInput]
 ): [SupplierVariant!]
 ```
 
 
 ### Arguments
 
-#### [`inputs`](#) ([`[SupplierVariantUpdateInput!]`](/supply/api/graphql-admin/reference/inputs/supplier-variant-update-input))
+#### [`externalInputs`](#) ([`[SupplierVariantExternalUpdateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-variant-external-update-input))
+
+
+
+
+#### [`inputs`](#) ([`[SupplierVariantUpdateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-variant-update-input))
 
 
 

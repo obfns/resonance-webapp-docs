@@ -1,0 +1,139 @@
+---
+id: order-item-create-input
+title: OrderItemCreateInput
+hide_table_of_contents: false
+---
+
+
+Input for creating an OrderItem
+
+```graphql
+input OrderItemCreateInput {
+  adjustments: [OrderItemAdjustmentInput]
+  barcode: String!
+  currency: ResonanceCurrency!
+  customProperties: JSON
+  deliveryMethod: VariantDeliveryMethod!
+  demandHqId: ID!
+  discounts: [OrderItemDiscountInput]
+  note: String
+  orderId: ID!
+  productId: ID!
+  productTitle: String!
+  quantity: Int!
+  shippingCharges: [OrderItemShippingChargeInput]
+  shippingMethod: ShippingMethod
+  sku: String
+  taxes: [OrderItemTaxInput]
+  unitPrice: Float!
+  variantId: ID!
+  variantTitle: String!
+  vendor: String!
+}
+```
+
+
+### Fields
+
+#### [`adjustments`](#) ([`[OrderItemAdjustmentInput]`](/demand/api/graphql-admin/reference/inputs/order-item-adjustment-input))
+
+
+
+
+#### [`barcode`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`currency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency))
+
+
+
+
+#### [`customProperties`](#) ([`JSON`](/demand/api/graphql-admin/reference/scalars/json))
+
+
+
+
+#### [`deliveryMethod`](#) ([`VariantDeliveryMethod!`](/demand/api/graphql-admin/reference/enums/variant-delivery-method))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`discounts`](#) ([`[OrderItemDiscountInput]`](/demand/api/graphql-admin/reference/inputs/order-item-discount-input))
+
+
+
+
+#### [`note`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`orderId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`productId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`productTitle`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`quantity`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
+
+
+
+
+#### [`shippingCharges`](#) ([`[OrderItemShippingChargeInput]`](/demand/api/graphql-admin/reference/inputs/order-item-shipping-charge-input))
+
+
+
+
+#### [`shippingMethod`](#) ([`ShippingMethod`](/demand/api/graphql-admin/reference/enums/shipping-method))
+
+
+
+
+#### [`sku`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`taxes`](#) ([`[OrderItemTaxInput]`](/demand/api/graphql-admin/reference/inputs/order-item-tax-input))
+
+
+
+
+#### [`unitPrice`](#) ([`Float!`](/demand/api/graphql-admin/reference/scalars/float))
+
+Price per item, can be multiplied by quantity for total price
+
+
+#### [`variantId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`variantTitle`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`vendor`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+
+

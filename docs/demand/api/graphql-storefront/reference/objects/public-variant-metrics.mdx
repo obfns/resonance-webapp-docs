@@ -1,0 +1,44 @@
+---
+id: public-variant-metrics
+title: PublicVariantMetrics
+hide_table_of_contents: false
+---
+
+
+Metrics for a PublicVariant, including inventory quantity, status, and supplierVariant counts
+
+```graphql
+type PublicVariantMetrics {
+  countOfInStockSupplierVariants: Int!
+  countOfSupplierVariants: Int!
+  inventoryQuantity: Int!
+  inventoryStatus: InventoryStatus!
+}
+```
+
+
+### Fields
+
+#### [`countOfInStockSupplierVariants`](#) ([`Int!`](/demand/api/graphql-storefront/reference/scalars/int))
+
+
+
+
+#### [`countOfSupplierVariants`](#) ([`Int!`](/demand/api/graphql-storefront/reference/scalars/int))
+
+
+
+
+#### [`inventoryQuantity`](#) ([`Int!`](/demand/api/graphql-storefront/reference/scalars/int))
+
+This is mostly useful for determining whether a certain quantity can be added
+to the cart. For BOTTOMLESS InventoryPolicy, a value of 10,000,000 is added here.
+
+
+#### [`inventoryStatus`](#) ([`InventoryStatus!`](/demand/api/graphql-storefront/reference/enums/inventory-status))
+
+If any SupplierVariant is in stock, this is in stock.
+
+
+
+

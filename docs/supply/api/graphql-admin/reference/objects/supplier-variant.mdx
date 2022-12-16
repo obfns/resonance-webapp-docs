@@ -14,6 +14,7 @@ type SupplierVariant {
   createdAt: String!
   customData: SupplierVariantCustomData
   externalVariantId: String!
+  featuredImage: SupplierProductContentItem
   inventoryPolicy: SupplierVariantInventoryPolicy!
   inventoryQuantity: Int!
   inventoryStatus: VariantInventoryStatus
@@ -49,6 +50,16 @@ Get the associated SupplierVariantCustomData
 #### [`externalVariantId`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
 
 
+
+
+#### [`featuredImage`](#) ([`SupplierProductContentItem`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item))
+
+Get the featured image for a supplierVariant
+
+Requires the supplierproductcontentitem/read permission on the associated Supplier.
+
+This is a convenience field that returns the first content item with the type
+IMAGE, if exists for the associated supplierProduct.
 
 
 #### [`inventoryPolicy`](#) ([`SupplierVariantInventoryPolicy!`](/supply/api/graphql-admin/reference/enums/supplier-variant-inventory-policy))

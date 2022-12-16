@@ -1,0 +1,34 @@
+---
+id: product-metricses
+title: productMetricses
+hide_table_of_contents: false
+---
+
+
+Get productMetrics for Products by productIds
+
+    Requires product/read permission
+
+```graphql
+productMetricses(
+  productIds: [ID!]!
+): [ProductMetrics]
+```
+
+
+### Arguments
+
+#### [`productIds`](#) ([`[ID!]!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+### Type
+
+#### [`ProductMetrics`](/demand/api/graphql-admin/reference/objects/product-metrics)
+
+Metrics for a product including msrp min/max, price min/max, and discount metrics
+
+
+
+

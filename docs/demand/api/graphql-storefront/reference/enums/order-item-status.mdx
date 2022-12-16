@@ -1,0 +1,55 @@
+---
+id: order-item-status
+title: OrderItemStatus
+hide_table_of_contents: false
+---
+
+
+Indicates the status of an OrderItem.
+
+```graphql
+enum OrderItemStatus {
+  ASSIGNED
+  CANCELLED
+  FULFILLED
+  INITIAL
+  PARTIALLY_ASSIGNED
+  PARTIALLY_FULFILLED
+}
+```
+
+
+### Values
+
+#### [`ASSIGNED`](#)
+
+
+
+
+#### [`CANCELLED`](#)
+
+Indicates that the OrderItem was assigned, but is no longer needed to be fulfilled.
+
+
+#### [`FULFILLED`](#)
+
+Indicates that the OrderItem is fully fulfilled and is now complete.
+
+
+#### [`INITIAL`](#)
+
+Indicates that the OrderItem is ready for processing, and data is complete.
+
+
+#### [`PARTIALLY_ASSIGNED`](#)
+
+
+
+
+#### [`PARTIALLY_FULFILLED`](#)
+
+Indicates that the OrderItem is in the process of being fulfilled.
+
+
+
+

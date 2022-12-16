@@ -1,0 +1,31 @@
+---
+id: order-transaction-currency-exchange-adjustment
+title: OrderTransactionCurrencyExchangeAdjustment
+hide_table_of_contents: false
+---
+
+
+If money is accepted in a foreign currency, this object describes amounts and currencies in the Shop's default currency.
+
+```graphql
+type OrderTransactionCurrencyExchangeAdjustment {
+  targetAmount: Float!
+  targetCurrency: ResonanceCurrency!
+}
+```
+
+
+### Fields
+
+#### [`targetAmount`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+The amount in the shop's default currency.
+
+
+#### [`targetCurrency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-storefront/reference/enums/resonance-currency))
+
+Shop's default currency.
+
+
+
+

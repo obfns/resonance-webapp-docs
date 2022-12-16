@@ -1,0 +1,43 @@
+---
+id: order-item-adjustment-input
+title: OrderItemAdjustmentInput
+hide_table_of_contents: false
+---
+
+
+Input for OrderItemAdjustment
+
+```graphql
+input OrderItemAdjustmentInput {
+  adjustedAt: Date!
+  adjustmentAmount: Float!
+  adjustmentReason: OrderItemAdjustmentReason!
+  adjustmentType: OrderItemAdjustmentType!
+}
+```
+
+
+### Fields
+
+#### [`adjustedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`adjustmentAmount`](#) ([`Float!`](/demand/api/graphql-admin/reference/scalars/float))
+
+The amount of the adjustment.
+
+
+#### [`adjustmentReason`](#) ([`OrderItemAdjustmentReason!`](/demand/api/graphql-admin/reference/enums/order-item-adjustment-reason))
+
+The reason for the adjustment.
+
+
+#### [`adjustmentType`](#) ([`OrderItemAdjustmentType!`](/demand/api/graphql-admin/reference/enums/order-item-adjustment-type))
+
+The type of adjustment.
+
+
+
+

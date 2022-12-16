@@ -1,0 +1,58 @@
+---
+id: orders
+title: orders
+hide_table_of_contents: false
+---
+
+
+Paginate through orders.
+
+Requires the publicorder/read scope.
+
+```graphql
+orders(
+  after: String
+  before: String
+  customerToken: String!
+  first: Int
+  last: Int
+): PublicOrderConnectionWithSearch!
+```
+
+
+### Arguments
+
+#### [`after`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [`before`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [`customerToken`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`first`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+#### [`last`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+### Type
+
+#### [`PublicOrderConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-order-connection-with-search)
+
+Paginate through PublicOrders, name is indicative of future functionality.
+
+
+
+

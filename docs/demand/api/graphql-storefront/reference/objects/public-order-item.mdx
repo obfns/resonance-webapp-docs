@@ -1,0 +1,157 @@
+---
+id: public-order-item
+title: PublicOrderItem
+hide_table_of_contents: false
+---
+
+
+An item in a PublicOrder.
+
+```graphql
+type PublicOrderItem {
+  adjustments: [OrderItemAdjustment]
+  barcode: String!
+  currency: ResonanceCurrency!
+  customProperties: JSON
+  deliveryMethod: VariantDeliveryMethod!
+  demandHqId: ID!
+  discounts: [OrderItemDiscount]
+  note: String
+  orderId: ID!
+  orderItemId: ID!
+  productId: ID!
+  productTitle: String!
+  purchaseOrderItems: [OrderItemPurchaseOrderItem]
+  quantity: Int!
+  shippingCharges: [OrderItemShippingCharge]
+  shippingMethod: ShippingMethod
+  sku: String
+  status: OrderItemStatus!
+  taxes: [OrderItemTax]
+  unitPrice: Float!
+  variantId: ID!
+  variantTitle: String!
+  vendor: String!
+}
+```
+
+
+### Fields
+
+#### [`adjustments`](#) ([`[OrderItemAdjustment]`](/demand/api/graphql-storefront/reference/objects/order-item-adjustment))
+
+
+
+
+#### [`barcode`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`currency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-storefront/reference/enums/resonance-currency))
+
+
+
+
+#### [`customProperties`](#) ([`JSON`](/demand/api/graphql-storefront/reference/scalars/json))
+
+
+
+
+#### [`deliveryMethod`](#) ([`VariantDeliveryMethod!`](/demand/api/graphql-storefront/reference/enums/variant-delivery-method))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+#### [`discounts`](#) ([`[OrderItemDiscount]`](/demand/api/graphql-storefront/reference/objects/order-item-discount))
+
+
+
+
+#### [`note`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`orderId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+#### [`orderItemId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+#### [`productId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+#### [`productTitle`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`purchaseOrderItems`](#) ([`[OrderItemPurchaseOrderItem]`](/demand/api/graphql-storefront/reference/objects/order-item-purchase-order-item))
+
+
+
+
+#### [`quantity`](#) ([`Int!`](/demand/api/graphql-storefront/reference/scalars/int))
+
+
+
+
+#### [`shippingCharges`](#) ([`[OrderItemShippingCharge]`](/demand/api/graphql-storefront/reference/objects/order-item-shipping-charge))
+
+
+
+
+#### [`shippingMethod`](#) ([`ShippingMethod`](/demand/api/graphql-storefront/reference/enums/shipping-method))
+
+
+
+
+#### [`sku`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`status`](#) ([`OrderItemStatus!`](/demand/api/graphql-storefront/reference/enums/order-item-status))
+
+
+
+
+#### [`taxes`](#) ([`[OrderItemTax]`](/demand/api/graphql-storefront/reference/objects/order-item-tax))
+
+
+
+
+#### [`unitPrice`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+
+Price per item, can be multiplied by quantity for total price
+
+
+#### [`variantId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+#### [`variantTitle`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`vendor`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+
+

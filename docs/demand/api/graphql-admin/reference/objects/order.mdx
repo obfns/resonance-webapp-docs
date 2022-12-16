@@ -1,0 +1,187 @@
+---
+id: order
+title: Order
+hide_table_of_contents: false
+---
+
+
+An order is a collection of items that a customer has purchased.
+As an order accrues transactions, it changes status until it is eventually complete.
+Orders rely on Suppliers to fulfill the OrderItems by creating PurchaseOrderItems (which are then fulfilled).
+
+```graphql
+type Order {
+  billingAddress: Address!
+  createdAt: Date!
+  customerId: ID
+  customerNote: String
+  demandHqId: ID!
+  emailAddress: String!
+  items(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): OrderItemConnection!
+  note: String
+  orderId: ID!
+  paymentId: ID
+  phoneNumber: String
+  placedAt: Date
+  shippingAddress: Address!
+  status: OrderStatus!
+  storefrontId: ID
+  tags: OrderTags
+  transactions(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): OrderTransactionConnection!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [`billingAddress`](#) ([`Address!`](/demand/api/graphql-admin/reference/objects/address))
+
+
+
+
+#### [`createdAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`customerId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`customerNote`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+A note provided by the customer at time of order
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`emailAddress`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`items`](#) ([`OrderItemConnection!`](/demand/api/graphql-admin/reference/objects/order-item-connection))
+
+List the items in an order.
+            
+Requires the orderitem/read permission on the associated DemandHq.
+- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`note`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`orderId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`paymentId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+
+
+#### [`phoneNumber`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`placedAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
+
+ISO Date indicated when an order should be considered complete, closed for some changes, and started to process.
+
+
+#### [`shippingAddress`](#) ([`Address!`](/demand/api/graphql-admin/reference/objects/address))
+
+
+
+
+#### [`status`](#) ([`OrderStatus!`](/demand/api/graphql-admin/reference/enums/order-status))
+
+The status of the order currently, this field is read-only and can change many times over the course of the order
+
+
+#### [`storefrontId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`tags`](#) ([`OrderTags`](/demand/api/graphql-admin/reference/objects/order-tags))
+
+Get the tags for an order.
+
+Requires the order/read scope on the associated DemandHq.
+
+
+#### [`transactions`](#) ([`OrderTransactionConnection!`](/demand/api/graphql-admin/reference/objects/order-transaction-connection))
+
+List the transactions in an order.
+            
+Requires the ordertransaction/read permission on the associated DemandHq.
+- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+
+

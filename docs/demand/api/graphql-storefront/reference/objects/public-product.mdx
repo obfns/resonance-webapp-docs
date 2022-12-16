@@ -26,6 +26,7 @@ type PublicProduct {
 ): PublicProductLocale
   optionLabels: [String!]!
   productId: ID!
+  productMetrics: PublicProductMetrics
   publishedAt: Date
   seoTitle: String
   slug: String!
@@ -116,6 +117,13 @@ These will match with labelOptions in Variants.
 #### [`productId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
 
 A short description of the product, limit 1000 characters.
+
+
+#### [`productMetrics`](#) ([`PublicProductMetrics`](/demand/api/graphql-storefront/reference/objects/public-product-metrics))
+
+Get productMetrics for a Product
+
+    Requires product/read permission
 
 
 #### [`publishedAt`](#) ([`Date`](/demand/api/graphql-storefront/reference/scalars/date))

@@ -1,0 +1,70 @@
+---
+id: public-supplier-variants
+title: publicSupplierVariants
+hide_table_of_contents: false
+---
+
+
+Get a list of supplierVariants
+
+Requires suppliervariant/read permission on the supplier for the requesting identity
+
+```graphql
+publicSupplierVariants(
+  after: String
+  before: String
+  demandHqId: ID!
+  first: Int
+  last: Int
+  supplierId: ID!
+  supplierProductId: ID!
+): PublicSupplierVariantConnection!
+```
+
+
+### Arguments
+
+#### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come after the specified cursor.
+
+
+#### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+Returns the elements in the list that come before the specified cursor.
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+The ID of the DemandHq requesting the Public Supplier Product
+
+
+#### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the first n elements from the list.
+
+
+#### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+
+Returns the last n elements from the list.
+
+
+#### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+The ID of the Supplier requesting the Public Supplier Product
+
+
+#### [`supplierProductId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+The ID of the SupplierProduct to get variants for.
+
+
+### Type
+
+#### [`PublicSupplierVariantConnection`](/demand/api/graphql-admin/reference/objects/public-supplier-variant-connection)
+
+Paginate through PublicSupplierVariants
+
+
+
+

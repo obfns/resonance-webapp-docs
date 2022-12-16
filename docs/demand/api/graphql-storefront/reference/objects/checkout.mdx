@@ -1,0 +1,73 @@
+---
+id: checkout
+title: Checkout
+hide_table_of_contents: false
+---
+
+
+A checkout is a temporary container for an order and its orderItems that a customer or anonymous user wants to buy
+
+```graphql
+type Checkout {
+  checkoutType: CheckoutType!
+  createdAt: Date!
+  currency: ResonanceCurrency!
+  demandHqId: ID!
+  externalCustomerOrDeviceId: String!
+  order: CheckoutOrder
+  orderItems: [CheckoutOrderItem]
+  storefrontId: ID!
+  updatedAt: Date!
+}
+```
+
+
+### Fields
+
+#### [`checkoutType`](#) ([`CheckoutType!`](/demand/api/graphql-storefront/reference/enums/checkout-type))
+
+
+
+
+#### [`createdAt`](#) ([`Date!`](/demand/api/graphql-storefront/reference/scalars/date))
+
+
+
+
+#### [`currency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-storefront/reference/enums/resonance-currency))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+#### [`externalCustomerOrDeviceId`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+
+
+
+
+#### [`order`](#) ([`CheckoutOrder`](/demand/api/graphql-storefront/reference/objects/checkout-order))
+
+
+
+
+#### [`orderItems`](#) ([`[CheckoutOrderItem]`](/demand/api/graphql-storefront/reference/objects/checkout-order-item))
+
+
+
+
+#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+
+
+
+
+#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-storefront/reference/scalars/date))
+
+
+
+
+
+

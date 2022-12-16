@@ -1,0 +1,55 @@
+---
+id: order-item-update-input
+title: OrderItemUpdateInput
+hide_table_of_contents: false
+---
+
+
+Input for updating an OrderItem
+
+```graphql
+input OrderItemUpdateInput {
+  adjustments: [OrderItemAdjustmentInput]
+  customProperties: JSON
+  discounts: [OrderItemDiscountInput]
+  note: String
+  orderItemId: ID!
+  taxes: [OrderItemTaxInput]
+}
+```
+
+
+### Fields
+
+#### [`adjustments`](#) ([`[OrderItemAdjustmentInput]`](/demand/api/graphql-admin/reference/inputs/order-item-adjustment-input))
+
+
+
+
+#### [`customProperties`](#) ([`JSON`](/demand/api/graphql-admin/reference/scalars/json))
+
+
+
+
+#### [`discounts`](#) ([`[OrderItemDiscountInput]`](/demand/api/graphql-admin/reference/inputs/order-item-discount-input))
+
+
+
+
+#### [`note`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`orderItemId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`taxes`](#) ([`[OrderItemTaxInput]`](/demand/api/graphql-admin/reference/inputs/order-item-tax-input))
+
+
+
+
+
+

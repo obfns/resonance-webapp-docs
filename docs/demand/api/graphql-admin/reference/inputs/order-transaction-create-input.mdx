@@ -1,0 +1,97 @@
+---
+id: order-transaction-create-input
+title: OrderTransactionCreateInput
+hide_table_of_contents: false
+---
+
+
+Input for creating an OrderTransaction
+
+```graphql
+input OrderTransactionCreateInput {
+  amount: Float!
+  authorizationCode: String
+  authorizationExpiresAt: Date
+  currency: ResonanceCurrency!
+  currencyExchangeAdjustment: OrderTransactionCurrencyExchangeAdjustmentInput
+  demandHqId: ID!
+  errorMessage: String
+  gateway: OrderTransactionGateway!
+  gatewayMessage: String
+  gatewayTransactionId: ID
+  orderId: ID!
+  orderTransactionType: OrderTransactionType!
+  processedAt: Date
+}
+```
+
+
+### Fields
+
+#### [`amount`](#) ([`Float!`](/demand/api/graphql-admin/reference/scalars/float))
+
+
+
+
+#### [`authorizationCode`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`authorizationExpiresAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+#### [`currency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency))
+
+
+
+
+#### [`currencyExchangeAdjustment`](#) ([`OrderTransactionCurrencyExchangeAdjustmentInput`](/demand/api/graphql-admin/reference/inputs/order-transaction-currency-exchange-adjustment-input))
+
+
+
+
+#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`errorMessage`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`gateway`](#) ([`OrderTransactionGateway!`](/demand/api/graphql-admin/reference/enums/order-transaction-gateway))
+
+
+
+
+#### [`gatewayMessage`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`gatewayTransactionId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`orderId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+
+
+
+
+#### [`orderTransactionType`](#) ([`OrderTransactionType!`](/demand/api/graphql-admin/reference/enums/order-transaction-type))
+
+
+
+
+#### [`processedAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
+
+
+
+
+
+

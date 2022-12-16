@@ -12,6 +12,7 @@ type PublicVariant {
   barcode: String!
   casePack: Int
   contentItemIds: [ID]
+  deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
   isTaxable: Boolean
   manufacturer: String
@@ -28,6 +29,7 @@ type PublicVariant {
   standardizedColor: VariantStandardizedColor
   title: String!
   variantId: ID!
+  variantMetrics: PublicVariantMetrics
   weight: VariantWeight
 }
 ```
@@ -48,6 +50,11 @@ Quantity in one variant (i.e. 12-pack). Must be a positive integer.
 #### [`contentItemIds`](#) ([`[ID]`](/demand/api/graphql-storefront/reference/scalars/id))
 
 Associates contentItems with this variant
+
+
+#### [`deliveryMethod`](#) ([`VariantDeliveryMethod`](/demand/api/graphql-storefront/reference/enums/variant-delivery-method))
+
+
 
 
 #### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
@@ -136,6 +143,13 @@ Get the title of this variant (combo of optionValues)
 #### [`variantId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
 
 
+
+
+#### [`variantMetrics`](#) ([`PublicVariantMetrics`](/demand/api/graphql-storefront/reference/objects/public-variant-metrics))
+
+Get variantMetrics for a Variant
+            
+    Requires variant/read permission
 
 
 #### [`weight`](#) ([`VariantWeight`](/demand/api/graphql-storefront/reference/objects/variant-weight))

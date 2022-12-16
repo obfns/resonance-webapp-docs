@@ -27,6 +27,7 @@ type Product {
 ): ProductLocale
   optionLabels: [String!]!
   productId: ID!
+  productMetrics: ProductMetrics
   publishedAt: Date
   seoTitle: String
   slug: String!
@@ -126,6 +127,13 @@ These will match with labelOptions in Variants.
 #### [`productId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
 
 
+
+
+#### [`productMetrics`](#) ([`ProductMetrics`](/demand/api/graphql-admin/reference/objects/product-metrics))
+
+Get productMetrics for a Product
+
+    Requires product/read permission
 
 
 #### [`publishedAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))

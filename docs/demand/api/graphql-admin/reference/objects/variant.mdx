@@ -14,6 +14,7 @@ type Variant {
   casePack: Int
   contentItemIds: [ID]
   createdAt: String!
+  deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
   isTaxable: Boolean
   manufacturer: String
@@ -32,6 +33,7 @@ type Variant {
   updatedAt: String!
   updatedBy: String!
   variantId: ID!
+  variantMetrics: VariantMetrics
   variantSupplierVariant(
   supplierVariantId: ID!
 ): VariantSupplierVariant
@@ -64,6 +66,11 @@ Associates contentItems with this variant
 
 
 #### [`createdAt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+
+
+
+
+#### [`deliveryMethod`](#) ([`VariantDeliveryMethod`](/demand/api/graphql-admin/reference/enums/variant-delivery-method))
 
 
 
@@ -164,6 +171,13 @@ Get the title of this variant (combo of optionValues)
 #### [`variantId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
 
 
+
+
+#### [`variantMetrics`](#) ([`VariantMetrics`](/demand/api/graphql-admin/reference/objects/variant-metrics))
+
+Get variantMetrics for a Variant
+            
+    Requires variant/read permission
 
 
 #### [`variantSupplierVariant`](#) ([`VariantSupplierVariant`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant))
