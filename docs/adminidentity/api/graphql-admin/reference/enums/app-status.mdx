@@ -1,0 +1,48 @@
+---
+id: app-status
+title: AppStatus
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+What stage and availability the app is in
+
+```graphql
+enum AppStatus {
+  DRAFT
+  PRIVATE
+  PUBLIC
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>AppStatus.<b>DRAFT</b></code>](#) 
+> The app is in the process of being created
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AppStatus.<b>PRIVATE</b></code>](#) 
+> The app is available to install, but only through shared links
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AppStatus.<b>PUBLIC</b></code>](#) 
+> The app is available to install, and is searchable/discoverable
+> 
+
+
+
+### Member of
+
+[`App`](/adminidentity/api/graphql-admin/reference/objects/app)  <Badge class="secondary" text="object"/><Bullet />[`AppCreateInput`](/adminidentity/api/graphql-admin/reference/inputs/app-create-input)  <Badge class="secondary" text="input"/><Bullet />[`AppUpdateInput`](/adminidentity/api/graphql-admin/reference/inputs/app-update-input)  <Badge class="secondary" text="input"/><Bullet />[`PublicApp`](/adminidentity/api/graphql-admin/reference/objects/public-app)  <Badge class="secondary" text="object"/>
+
+
+

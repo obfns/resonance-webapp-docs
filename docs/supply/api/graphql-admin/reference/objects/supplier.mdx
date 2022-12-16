@@ -1,0 +1,394 @@
+---
+id: supplier
+title: Supplier
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The parent-most entity of the Supplier Domain
+
+```graphql
+type Supplier {
+  category: SupplierCategory
+  createdAt: String!
+  defaultCurrency: ResonanceCurrency!
+  defaultLocaleType: ResonanceLocaleType!
+  description: String
+  inStockProducts: Int
+  mySupplyEventSubscriptions(
+  after: String
+  before: String
+  first: Int
+  itemType: String
+  last: Int
+  mutationType: SupplyEventMutationType
+): SupplyEventSubscriptionConnection!
+  name: String!
+  notificationUserNames: SupplierNotificationUserNames
+  ownerUser: PublicIdentity
+  ownerUserName: String!
+  quickLink(
+  appId: ID!
+  quickLinkType: SupplierQuickLinkType!
+): SupplierQuickLink
+  quickLinks(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  quickLinkType: SupplierQuickLinkType!
+): SupplierQuickLinkConnection!
+  shipFromAddress: Address
+  status: SupplierStatus!
+  supplierDemandHq(
+  demandHqId: ID!
+): SupplierDemandHq
+  supplierDemandHqs(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  status: SupplierDemandHqStatus
+): SupplierDemandHqConnection!
+  supplierId: ID!
+  supplierIdentities(
+  after: String
+  before: String
+  first: Int
+  identityParentEntityId: ID
+  identityType: SupplierIdentityType
+  last: Int
+): SupplierIdentityConnection!
+  supplierIdentity(
+  identityId: ID!
+): SupplierIdentity
+  supplierProduct(
+  supplierProductId: ID!
+): SupplierProduct
+  supplierProductTermAggregations(
+  numberOfResults: Int!
+): SupplierProductTermAggregations
+  supplierProducts(
+  after: String
+  before: String
+  cost: [FloatRangeFilterInput]
+  first: Int
+  inventoryPolicy: [SupplierProductInventoryPolicyFilterInput]
+  inventoryStatus: VariantInventoryStatus
+  last: Int
+  manufacturer: [StringFilterInput]
+  msrp: [FloatRangeFilterInput]
+  query: String
+  recommendedPrice: [FloatRangeFilterInput]
+  sortOrder: [SupplierProductSortInput]
+  standardizedColor: [SupplierProductStandardizedColorFilterInput]
+  status: SupplyEntityStatusFilterInput
+  tags: [StringFilterInput]
+  vendor: StringFilterInput
+): SupplierProductConnectionWithSearch!
+  topVendors: [String!]
+  updatedAt: String!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>category</b></code>](#)<Bullet />[`SupplierCategory`](/supply/api/graphql-admin/reference/enums/supplier-category) <Badge class="secondary" text="enum"/>
+> Indicates the vertical the majority of a Supplier's goods are in.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>createdAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>defaultCurrency</b></code>](#)<Bullet />[`ResonanceCurrency!`](/supply/api/graphql-admin/reference/enums/resonance-currency) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>defaultLocaleType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/supply/api/graphql-admin/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>description</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>inStockProducts</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The approximate number of in stock products this Supplier has on a typical basis.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>mySupplyEventSubscriptions</b></code>](#)<Bullet />[`SupplyEventSubscriptionConnection!`](/supply/api/graphql-admin/reference/objects/supply-event-subscription-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List supplyEventSubscriptions by filtering for your identity for this supplier.
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.mySupplyEventSubscriptions.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.mySupplyEventSubscriptions.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.mySupplyEventSubscriptions.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.mySupplyEventSubscriptions.<b>itemType</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> In order to use this filter, you must also provide subscriptionEntityId
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.mySupplyEventSubscriptions.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.mySupplyEventSubscriptions.<b>mutationType</b></code>](#)<Bullet />[`SupplyEventMutationType`](/supply/api/graphql-admin/reference/enums/supply-event-mutation-type) <Badge class="secondary" text="enum"/>
+> In order to use this filter, you must also include itemType and subscriptionEntityId
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>name</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>notificationUserNames</b></code>](#)<Bullet />[`SupplierNotificationUserNames`](/supply/api/graphql-admin/reference/objects/supplier-notification-user-names) <Badge class="secondary" text="object"/>
+> These users will get notified if something requires attention for this Supplier.
+If none are provided, ownerUserName will be notified.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>ownerUser</b></code>](#)<Bullet />[`PublicIdentity`](/supply/api/graphql-admin/reference/objects/public-identity) <Badge class="secondary" text="object"/>
+> Get the owner for a given Supplier
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>ownerUserName</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>quickLink</b></code>](#)<Bullet />[`SupplierQuickLink`](/supply/api/graphql-admin/reference/objects/supplier-quick-link) <Badge class="secondary" text="object"/>
+> Get a single SupplierQuickLink by its ids
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.quickLink.<b>appId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.quickLink.<b>quickLinkType</b></code>](#)<Bullet />[`SupplierQuickLinkType!`](/supply/api/graphql-admin/reference/enums/supplier-quick-link-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>quickLinks</b></code>](#)<Bullet />[`SupplierQuickLinkConnection!`](/supply/api/graphql-admin/reference/objects/supplier-quick-link-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List multiple SupplierQuickLinks for a single SupplierQuickLinkType
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.quickLinks.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.quickLinks.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.quickLinks.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.quickLinks.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.quickLinks.<b>quickLinkType</b></code>](#)<Bullet />[`SupplierQuickLinkType!`](/supply/api/graphql-admin/reference/enums/supplier-quick-link-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>shipFromAddress</b></code>](#)<Bullet />[`Address`](/supply/api/graphql-admin/reference/objects/address) <Badge class="secondary" text="object"/>
+> The address where this Supplier's goods ship from.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>status</b></code>](#)<Bullet />[`SupplierStatus!`](/supply/api/graphql-admin/reference/enums/supplier-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>supplierDemandHq</b></code>](#)<Bullet />[`SupplierDemandHq`](/supply/api/graphql-admin/reference/objects/supplier-demand-hq) <Badge class="secondary" text="object"/>
+> Get a SupplierDemandHq by its DemandHqId.
+            
+Requires the requesting identity to have the "supplierdemandhq/read" permission on the associated Supplier.
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierDemandHq.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>supplierDemandHqs</b></code>](#)<Bullet />[`SupplierDemandHqConnection!`](/supply/api/graphql-admin/reference/objects/supplier-demand-hq-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a list of SupplierDemandHqs for the Supplier.
+
+Requires the requesting identity to have the "supplierdemandhq/read" permission on the associated Supplier.
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierDemandHqs.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierDemandHqs.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierDemandHqs.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierDemandHqs.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierDemandHqs.<b>status</b></code>](#)<Bullet />[`SupplierDemandHqStatus`](/supply/api/graphql-admin/reference/enums/supplier-demand-hq-status) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>supplierIdentities</b></code>](#)<Bullet />[`SupplierIdentityConnection!`](/supply/api/graphql-admin/reference/objects/supplier-identity-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Returns SupplierIdentities for the given Supplier
+
+Requires supplieridentity/read permission on the requesting identity
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierIdentities.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierIdentities.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierIdentities.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierIdentities.<b>identityParentEntityId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter the results to a specific identityParentEntityId (optional)
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierIdentities.<b>identityType</b></code>](#)<Bullet />[`SupplierIdentityType`](/supply/api/graphql-admin/reference/enums/supplier-identity-type) <Badge class="secondary" text="enum"/>
+> Filter the results to a specific identity type (optional)
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierIdentities.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>supplierIdentity</b></code>](#)<Bullet />[`SupplierIdentity`](/supply/api/graphql-admin/reference/objects/supplier-identity) <Badge class="secondary" text="object"/>
+> Returns a SupplierIdentity for the given Supplier
+
+Requires supplieridentity/read permission on the requesting identity, or you can request your own identity.
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierIdentity.<b>identityId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>supplierProduct</b></code>](#)<Bullet />[`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product) <Badge class="secondary" text="object"/>
+> Get a single SupplierProduct by its ID.
+
+Requires supplierproduct/read permission on the requesting identity
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProduct.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>supplierProductTermAggregations</b></code>](#)<Bullet />[`SupplierProductTermAggregations`](/supply/api/graphql-admin/reference/objects/supplier-product-term-aggregations) <Badge class="secondary" text="object"/>
+> Term aggregations for SupplierProducts, typically used to suggest terms to use in Search Filters.
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProductTermAggregations.<b>numberOfResults</b></code>](#)<Bullet />[`Int!`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The number of aggregations to return for each type.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>supplierProducts</b></code>](#)<Bullet />[`SupplierProductConnectionWithSearch!`](/supply/api/graphql-admin/reference/objects/supplier-product-connection-with-search) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List SupplierProducts for a Supplier.
+
+Requires supplierproduct/read permission on the requesting identity
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>cost</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using cost ranges.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>inventoryPolicy</b></code>](#)<Bullet />[`[SupplierProductInventoryPolicyFilterInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-inventory-policy-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using InventoryPolicy (Variant).
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>inventoryStatus</b></code>](#)<Bullet />[`VariantInventoryStatus`](/supply/api/graphql-admin/reference/enums/variant-inventory-status) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>manufacturer</b></code>](#)<Bullet />[`[StringFilterInput]`](/supply/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Manufacturer (VariantSupplement).
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>msrp</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using MSRP ranges.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>query</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Query supplierProducts for certain terms. Searches several fields, including
+supplierProduct.tags, supplierProduct.title, supplierProduct.vendor,
+supplierProductLocales.description, supplierProductLocales.featureBullets,
+supplierVariantSupplements.barcode, supplierVariantSupplement.mpn,
+supplierVariantSupplement.sku
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>recommendedPrice</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using recommendedPrice ranges.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>sortOrder</b></code>](#)<Bullet />[`[SupplierProductSortInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-sort-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Sort SupplierProducts by a series of fields and directions, defaults to CREATED_AT/ASC.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>standardizedColor</b></code>](#)<Bullet />[`[SupplierProductStandardizedColorFilterInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-standardized-color-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using StandardizedColor (Variant).
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>status</b></code>](#)<Bullet />[`SupplyEntityStatusFilterInput`](/supply/api/graphql-admin/reference/inputs/supply-entity-status-filter-input) <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Status.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/supply/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Tags.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>vendor</b></code>](#)<Bullet />[`StringFilterInput`](/supply/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Vendors.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>topVendors</b></code>](#)<Bullet />[`[String!]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The top Brands or Vendors this Supplier carries, limit 5 and 256 characters each.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createSupplier`](/supply/api/graphql-admin/reference/mutations/create-supplier)  <Badge class="secondary" text="mutation"/><Bullet />[`supplier`](/supply/api/graphql-admin/reference/queries/supplier)  <Badge class="secondary" text="query"/><Bullet />[`updateSupplier`](/supply/api/graphql-admin/reference/mutations/update-supplier)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`SupplierIdentity`](/supply/api/graphql-admin/reference/objects/supplier-identity)  <Badge class="secondary" text="object"/>
+
+
+

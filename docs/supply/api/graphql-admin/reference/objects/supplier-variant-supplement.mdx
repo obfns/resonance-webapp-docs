@@ -1,0 +1,153 @@
+---
+id: supplier-variant-supplement
+title: SupplierVariantSupplement
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+This has a one to one relationship with SupplierVariant, and provides supplemental data for the SupplierVariant.
+These items get updated at a lower frequency, and are therefore separate.
+
+```graphql
+type SupplierVariantSupplement {
+  averageShippingCost: Float
+  barcode: String!
+  casePack: Int
+  cost: Float!
+  createdAt: String!
+  handlingCost: SupplierVariantHandlingCost
+  handlingCostAsCurrency: Float
+  isTaxable: Boolean
+  manufacturer: String
+  mapPrice: Float
+  mpn: String
+  msrp: Float
+  productTags: [String]
+  recommendedPrice: Float
+  shippingDimensions: SupplierVariantShippingDimensions
+  sku: String
+  standardizedColor: VariantStandardizedColor
+  supplierId: ID!
+  supplierProductId: ID!
+  supplierVariantId: ID!
+  updatedAt: String!
+  updatedBy: String!
+  weight: SupplierVariantWeight
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>averageShippingCost</b></code>](#)<Bullet />[`Float`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> A calculated metric for some kind of average for a common region. Uncommon.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>barcode</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> UPC, ISBN, GTIN, etc
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>casePack</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Quantity in one variant (i.e. 12-pack)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>cost</b></code>](#)<Bullet />[`Float!`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> COGS, or Cost of Goods Sold, in a currency
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>createdAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> ISO Date
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>handlingCost</b></code>](#)<Bullet />[`SupplierVariantHandlingCost`](/supply/api/graphql-admin/reference/objects/supplier-variant-handling-cost) <Badge class="secondary" text="object"/>
+> Additional warehouse handling charge, typically for larger items.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>handlingCostAsCurrency</b></code>](#)<Bullet />[`Float`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> Calculated field, giving the handling cost as Currency no matter how it is stored
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>isTaxable</b></code>](#)<Bullet />[`Boolean`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>manufacturer</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Often same as vendor, but not always.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>mapPrice</b></code>](#)<Bullet />[`Float`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> Minimum Advertised Price
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>mpn</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Manufacturer Part Number
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>msrp</b></code>](#)<Bullet />[`Float`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> Manufacturer's Suggested Retail Price
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>productTags</b></code>](#)<Bullet />[`[String]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>recommendedPrice</b></code>](#)<Bullet />[`Float`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> AKA Price
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>shippingDimensions</b></code>](#)<Bullet />[`SupplierVariantShippingDimensions`](/supply/api/graphql-admin/reference/objects/supplier-variant-shipping-dimensions) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>sku</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Stock Keeping Unit
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>standardizedColor</b></code>](#)<Bullet />[`VariantStandardizedColor`](/supply/api/graphql-admin/reference/enums/variant-standardized-color) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>supplierVariantId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> ISO Date
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>updatedBy</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>weight</b></code>](#)<Bullet />[`SupplierVariantWeight`](/supply/api/graphql-admin/reference/objects/supplier-variant-weight) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createSupplierVariantSupplement`](/supply/api/graphql-admin/reference/mutations/create-supplier-variant-supplement)  <Badge class="secondary" text="mutation"/><Bullet />[`updateSupplierVariantSupplement`](/supply/api/graphql-admin/reference/mutations/update-supplier-variant-supplement)  <Badge class="secondary" text="mutation"/><Bullet />[`upsertSupplierVariantSupplements`](/supply/api/graphql-admin/reference/mutations/upsert-supplier-variant-supplements)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`SupplierVariant`](/supply/api/graphql-admin/reference/objects/supplier-variant)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantComposite`](/supply/api/graphql-admin/reference/objects/supplier-variant-composite)  <Badge class="secondary" text="object"/>
+
+
+

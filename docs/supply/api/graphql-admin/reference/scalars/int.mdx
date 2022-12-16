@@ -1,0 +1,30 @@
+---
+id: int
+title: Int
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+
+```graphql
+scalar Int
+```
+
+
+
+
+### Member of
+
+[`events`](/supply/api/graphql-admin/reference/queries/events)  <Badge class="secondary" text="query"/><Bullet />[`PublicSupplier`](/supply/api/graphql-admin/reference/objects/public-supplier)  <Badge class="secondary" text="object"/><Bullet />[`publicSuppliers`](/supply/api/graphql-admin/reference/queries/public-suppliers)  <Badge class="secondary" text="query"/><Bullet />[`Supplier`](/supply/api/graphql-admin/reference/objects/supplier)  <Badge class="secondary" text="object"/><Bullet />[`SupplierCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-create-input)  <Badge class="secondary" text="input"/><Bullet />[`supplierIdentities`](/supply/api/graphql-admin/reference/queries/supplier-identities)  <Badge class="secondary" text="query"/><Bullet />[`SupplierProductContentItem`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item)  <Badge class="secondary" text="object"/><Bullet />[`SupplierProductContentItemAssociationCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-content-item-association-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierProductContentItemAssociationInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-content-item-association-in-composite-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierProductContentItemUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-content-item-update-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierProductImageFromFileInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-image-from-file-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierProductImageFromFileInputResponse`](/supply/api/graphql-admin/reference/objects/supplier-product-image-from-file-input-response)  <Badge class="secondary" text="object"/><Bullet />[`SupplierProductImageFromUrlInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-image-from-url-in-composite-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierProductImageFromUrlInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-image-from-url-input)  <Badge class="secondary" text="input"/><Bullet />[`supplierQuickLinks`](/supply/api/graphql-admin/reference/queries/supplier-quick-links)  <Badge class="secondary" text="query"/><Bullet />[`SupplierUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-update-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariant`](/supply/api/graphql-admin/reference/objects/supplier-variant)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantExternalUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-external-update-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-in-composite-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantSupplement`](/supply/api/graphql-admin/reference/objects/supplier-variant-supplement)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantSupplementCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantSupplementInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-in-composite-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantSupplementUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-update-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-update-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplyEventMetadata`](/supply/api/graphql-admin/reference/objects/supply-event-metadata)  <Badge class="secondary" text="object"/><Bullet />[`supplyEventSubscriptions`](/supply/api/graphql-admin/reference/queries/supply-event-subscriptions)  <Badge class="secondary" text="query"/><Bullet />[`TermAggregation`](/supply/api/graphql-admin/reference/objects/term-aggregation)  <Badge class="secondary" text="object"/>
+
+
+

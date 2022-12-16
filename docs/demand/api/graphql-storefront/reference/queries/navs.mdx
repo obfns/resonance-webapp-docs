@@ -1,0 +1,92 @@
+---
+id: navs
+title: navs
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+List Navs.
+            
+Requires the publicnav/read permission.
+
+```graphql
+navs(
+  after: String
+  before: String
+  first: Int
+  href: String
+  hrefPrefix: String
+  last: Int
+  linkSlug: String
+  linkType: String
+  navIds: [ID]
+  navLevel: Int
+  navType: String
+): PublicNavConnection!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>href</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>hrefPrefix</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>linkSlug</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>linkType</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>navIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>navLevel</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>navs.<b>navType</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`PublicNavConnection`](/demand/api/graphql-storefront/reference/objects/public-nav-connection) <Badge class="secondary" text="object"/>
+> Paginate through PublicNavs
+> 
+
+
+
+
+

@@ -1,0 +1,43 @@
+---
+id: supplier-product-inventory-policy-filter-input
+title: SupplierProductInventoryPolicyFilterInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Filter SupplierProducts using InventoryPolicy (Variant).
+
+```graphql
+input SupplierProductInventoryPolicyFilterInput {
+  operator: FilterOperator
+  values: [PublicSupplierVariantInventoryPolicy!]!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductInventoryPolicyFilterInput.<b>operator</b></code>](#)<Bullet />[`FilterOperator`](/demand/api/graphql-admin/reference/enums/filter-operator) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductInventoryPolicyFilterInput.<b>values</b></code>](#)<Bullet />[`[PublicSupplierVariantInventoryPolicy!]!`](/demand/api/graphql-admin/reference/enums/public-supplier-variant-inventory-policy) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+
+
+### Member of
+
+[`publicSupplierProducts`](/demand/api/graphql-admin/reference/queries/public-supplier-products)  <Badge class="secondary" text="query"/>
+
+
+

@@ -1,0 +1,48 @@
+---
+id: public-order-connection-with-search
+title: PublicOrderConnectionWithSearch
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through PublicOrders, name is indicative of future functionality.
+
+```graphql
+type PublicOrderConnectionWithSearch {
+  edges: [PublicOrderEdge]!
+  nodes: [PublicOrder]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderConnectionWithSearch.<b>edges</b></code>](#)<Bullet />[`[PublicOrderEdge]!`](/demand/api/graphql-storefront/reference/objects/public-order-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderConnectionWithSearch.<b>nodes</b></code>](#)<Bullet />[`[PublicOrder]!`](/demand/api/graphql-storefront/reference/objects/public-order) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderConnectionWithSearch.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-storefront/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`orders`](/demand/api/graphql-storefront/reference/queries/orders)  <Badge class="secondary" text="query"/>
+
+
+

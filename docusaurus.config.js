@@ -7,7 +7,7 @@ module.exports = {
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
-    organizationName: "obfns", // Usually your GitHub org/user name.
+    organizationName: "buildresonance", // Usually your GitHub org/user name.
     projectName: "resonance-webapp-docs", // Usually your repo name.
     themeConfig: {
         navbar: {
@@ -24,10 +24,57 @@ module.exports = {
                     label: "Getting Started",
                 },
                 {
-                    type: "doc",
-                    docId: "developers/overall-concepts",
+                    type: "dropdown",
+                    label: "Admin Identity",
                     position: "left",
-                    label: "Developers",
+                    items: [
+                        {
+                            href: "/adminidentity/api/graphql-admin/reference",
+                            label: "Admin GraphQL API Reference",
+                        },
+                        {
+                            href: "/adminidentity/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
+                        },
+                    ],
+                },
+                {
+                    type: "dropdown",
+                    label: "Demand",
+                    position: "left",
+                    items: [
+                        {
+                            href: "/demand/api/graphql-admin/reference",
+                            label: "Admin GraphQL API Reference",
+                        },
+                        {
+                            href: "/demand/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
+                        },
+                        {
+                            href: "/demand/api/graphql-storefront/reference",
+                            label: "Storefront GraphQL API Reference",
+                        },
+                        {
+                            href: "/demand/api/rest-storefront/reference",
+                            label: "Storefront REST API Reference",
+                        },
+                    ],
+                },
+                {
+                    type: "dropdown",
+                    label: "Supply",
+                    position: "left",
+                    items: [
+                        {
+                            href: "/supply/api/graphql-admin/reference",
+                            label: "Admin GraphQL API Reference",
+                        },
+                        {
+                            href: "/supply/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
+                        },
+                    ],
                 },
                 {
                     href: "https://github.com/obfns/resonance-webapp-docs",
@@ -40,15 +87,58 @@ module.exports = {
             style: "dark",
             links: [
                 {
-                    title: "Docs",
+                    title: "Concepts",
                     items: [
                         {
                             label: "Getting Started",
                             to: "/concepts/why",
                         },
+                    ],
+                },
+                {
+                    title: "Admin Identity",
+                    items: [
                         {
-                            label: "Developers",
-                            to: "/developers/overall-concepts",
+                            to: "/adminidentity/api/graphql-admin/reference",
+                            label: "Admin GraphQL API Reference",
+                        },
+                        {
+                            to: "/adminidentity/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
+                        },
+                    ],
+                },
+                {
+                    title: "Demand",
+                    items: [
+                        {
+                            to: "/demand/api/graphql-admin/reference",
+                            label: "Admin GraphQL API Reference",
+                        },
+                        {
+                            to: "/demand/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
+                        },
+                        {
+                            to: "/demand/api/graphql-storefront/reference",
+                            label: "Storefront GraphQL API Reference",
+                        },
+                        {
+                            to: "/demand/api/rest-storefront/reference",
+                            label: "Storefront REST API Reference",
+                        },
+                    ],
+                },
+                {
+                    title: "Supply",
+                    items: [
+                        {
+                            to: "/supply/api/graphql-admin/reference",
+                            label: "Admin GraphQL API Reference",
+                        },
+                        {
+                            to: "/supply/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
                         },
                     ],
                 },
@@ -85,19 +175,45 @@ module.exports = {
                 },
             },
         ],
+        [
+            "redocusaurus",
+            {
+                specs: [
+                    {
+                        spec: "https://api.adminidentity.buildresonance.com/openapi",
+                        route: "/adminidentity/api/rest-admin/reference",
+                    },
+                    {
+                        spec: "https://api.demand.buildresonance.com/openapi",
+                        route: "/demand/api/rest-admin/reference",
+                    },
+                    {
+                        spec: "https://storefrontapi.buildresonance.com/openapi",
+                        route: "/demand/api/rest-storefront/reference",
+                    },
+                    {
+                        spec: "https://api.supply.buildresonance.com/openapi",
+                        route: "/supply/api/rest-admin/reference",
+                    },
+                ],
+            },
+        ],
     ],
     plugins: [
+        [
+            "@graphql-markdown/docusaurus",
+            {
+                rootPath: "./docs",
+                loaders: {
+                    GraphQLFileLoader: "@graphql-tools/graphql-file-loader",
+                },
+            },
+        ],
         [
             "@cmfcmf/docusaurus-search-local",
             {
                 indexDocSidebarParentCategories: 3,
                 indexBlog: false,
-            },
-        ],
-        [
-            "@edno/docusaurus2-graphql-doc-generator",
-            {
-                rootPath: "./docs",
             },
         ],
         [

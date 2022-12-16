@@ -1,0 +1,43 @@
+---
+id: supplier-variant-composite-in-composite-create-input
+title: SupplierVariantCompositeInCompositeCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The necessary fields to create a SupplierVariant and optional Supplement as part of a SupplierProductComposite
+
+```graphql
+input SupplierVariantCompositeInCompositeCreateInput {
+  supplierVariantInput: SupplierVariantInCompositeCreateInput
+  supplierVariantSupplementInput: SupplierVariantSupplementInCompositeCreateInput
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantCompositeInCompositeCreateInput.<b>supplierVariantInput</b></code>](#)<Bullet />[`SupplierVariantInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-in-composite-create-input) <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantCompositeInCompositeCreateInput.<b>supplierVariantSupplementInput</b></code>](#)<Bullet />[`SupplierVariantSupplementInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-in-composite-create-input) <Badge class="secondary" text="input"/>
+> 
+> 
+
+
+
+### Member of
+
+[`SupplierProductCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-composite-create-input)  <Badge class="secondary" text="input"/>
+
+
+

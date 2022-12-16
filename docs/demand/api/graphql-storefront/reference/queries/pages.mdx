@@ -1,0 +1,99 @@
+---
+id: pages
+title: pages
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+List pages for a Storefront with optional filters.
+            
+Requires the publicpage/read scope.
+
+```graphql
+pages(
+  after: String
+  author: StringFilterInput
+  before: String
+  first: Int
+  last: Int
+  numberOfTermAggregations: PageNumberOfTermAggregations
+  pageType: StringFilterInput
+  query: String
+  slugs: [String]
+  sortOrder: [PageSortInput]
+  tagPrefixes: [StringFilterInput]
+  tags: [StringFilterInput]
+): PublicPageConnectionWithSearch!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>author</b></code>](#)<Bullet />[`StringFilterInput`](/demand/api/graphql-storefront/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Filter Pages using author
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>numberOfTermAggregations</b></code>](#)<Bullet />[`PageNumberOfTermAggregations`](/demand/api/graphql-storefront/reference/inputs/page-number-of-term-aggregations) <Badge class="secondary" text="input"/>
+> The number of results to return for each term aggregation. Defaults to 0 for each.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>pageType</b></code>](#)<Bullet />[`StringFilterInput`](/demand/api/graphql-storefront/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Filter Pages using pageType
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>query</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Query pages for certain terms. Searches several fields, including
+page.author, page.description, page.subtitle, page.title, pageTags, and the
+actual content of the page.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>slugs</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter Pages using slugs
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>sortOrder</b></code>](#)<Bullet />[`[PageSortInput]`](/demand/api/graphql-storefront/reference/inputs/page-sort-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Sort Pages by a series of fields and directions.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>tagPrefixes</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-storefront/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Pages using Tag Prefixes (starts with).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>pages.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-storefront/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Pages using Tags.
+> 
+
+### Type
+
+#### [`PublicPageConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-page-connection-with-search) <Badge class="secondary" text="object"/>
+> Paginate through PublicPages
+> 
+
+
+
+
+

@@ -1,0 +1,261 @@
+---
+id: storefront
+title: Storefront
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A Storefront represents a customer facing ecommerce website that consumes Resonance Demand Entities
+
+```graphql
+type Storefront {
+  apiKey(
+  slug: String!
+): StorefrontApiKey
+  apiKeys: [StorefrontApiKey]!
+  authenticationSettings: StorefrontAuthenticationSettings
+  authenticationType: StorefrontAuthenticationType
+  collectionTypeContents(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): CollectionTypeContentConnection!
+  createdAt: Date!
+  customer(
+  customerId: ID!
+): Customer
+  customers(
+  after: String
+  before: String
+  customerIds: [ID]
+  first: Int
+  last: Int
+): CustomerConnectionWithSearch!
+  demandHqId: ID!
+  description: String
+  name: String!
+  navs(
+  after: String
+  before: String
+  first: Int
+  href: String
+  hrefPrefix: String
+  last: Int
+  linkSlug: String
+  linkType: String
+  navIds: [ID]
+  navLevel: Int
+  navType: String
+): NavConnection!
+  pageTypeContents(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): PageTypeContentConnection!
+  storefrontId: ID!
+  storefrontIdentities: [StorefrontIdentity!]
+  updatedAt: Date!
+  updatedBy: ID!
+  urlDomain: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>apiKey</b></code>](#)<Bullet />[`StorefrontApiKey`](/demand/api/graphql-admin/reference/objects/storefront-api-key) <Badge class="secondary" text="object"/>
+> Get an api key for this storefront by identitySlug.
+> ##### [<code style={{ fontWeight: 'normal' }}>Storefront.apiKey.<b>slug</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>apiKeys</b></code>](#)<Bullet />[`[StorefrontApiKey]!`](/demand/api/graphql-admin/reference/objects/storefront-api-key) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get all api keys for this storefront.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>authenticationSettings</b></code>](#)<Bullet />[`StorefrontAuthenticationSettings`](/demand/api/graphql-admin/reference/objects/storefront-authentication-settings) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>authenticationType</b></code>](#)<Bullet />[`StorefrontAuthenticationType`](/demand/api/graphql-admin/reference/enums/storefront-authentication-type) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>collectionTypeContents</b></code>](#)<Bullet />[`CollectionTypeContentConnection!`](/demand/api/graphql-admin/reference/objects/collection-type-content-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get all collectionTypeContents for a storefront.
+            
+Requires the collectiontypecontent/read scope on the associated DemandHq
+> ##### [<code style={{ fontWeight: 'normal' }}>Storefront.collectionTypeContents.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.collectionTypeContents.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.collectionTypeContents.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.collectionTypeContents.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>customer</b></code>](#)<Bullet />[`Customer`](/demand/api/graphql-admin/reference/objects/customer) <Badge class="secondary" text="object"/>
+> Get a Customer by their customerId.
+            
+Requires the customer/read permission for the associated DemandHq.
+> ##### [<code style={{ fontWeight: 'normal' }}>Storefront.customer.<b>customerId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>customers</b></code>](#)<Bullet />[`CustomerConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/customer-connection-with-search) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a list of Customers.
+
+Requires the customer/read permission for the associated DemandHq.
+> ##### [<code style={{ fontWeight: 'normal' }}>Storefront.customers.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.customers.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.customers.<b>customerIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.customers.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.customers.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>name</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>navs</b></code>](#)<Bullet />[`NavConnection!`](/demand/api/graphql-admin/reference/objects/nav-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List Navs for a storefront.
+
+Requires the user to have the nav/read permission on the associated DemandHq.
+> ##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>href</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>hrefPrefix</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>linkSlug</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>linkType</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>navIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>navLevel</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.navs.<b>navType</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>pageTypeContents</b></code>](#)<Bullet />[`PageTypeContentConnection!`](/demand/api/graphql-admin/reference/objects/page-type-content-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get all pageTypeContents for a storefront.
+            
+Requires the pagetypecontent/read scope on the associated DemandHq
+> ##### [<code style={{ fontWeight: 'normal' }}>Storefront.pageTypeContents.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.pageTypeContents.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.pageTypeContents.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Storefront.pageTypeContents.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>storefrontIdentities</b></code>](#)<Bullet />[`[StorefrontIdentity!]`](/demand/api/graphql-admin/reference/objects/storefront-identity) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Storefront.<b>urlDomain</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createStorefront`](/demand/api/graphql-admin/reference/mutations/create-storefront)  <Badge class="secondary" text="mutation"/><Bullet />[`storefront`](/demand/api/graphql-admin/reference/queries/storefront)  <Badge class="secondary" text="query"/><Bullet />[`updateStorefront`](/demand/api/graphql-admin/reference/mutations/update-storefront)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/><Bullet />[`StorefrontConnection`](/demand/api/graphql-admin/reference/objects/storefront-connection)  <Badge class="secondary" text="object"/><Bullet />[`StorefrontEdge`](/demand/api/graphql-admin/reference/objects/storefront-edge)  <Badge class="secondary" text="object"/>
+
+
+

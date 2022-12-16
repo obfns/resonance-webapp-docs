@@ -1,0 +1,42 @@
+---
+id: create-storefront
+title: createStorefront
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create a new Storefront.
+    
+Requires the "storefront/write" scope on the associated DemandHq.
+
+```graphql
+createStorefront(
+  input: StorefrontCreateInput
+): Storefront
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createStorefront.<b>input</b></code>](#)<Bullet />[`StorefrontCreateInput`](/demand/api/graphql-admin/reference/inputs/storefront-create-input) <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`Storefront`](/demand/api/graphql-admin/reference/objects/storefront) <Badge class="secondary" text="object"/>
+> A Storefront represents a customer facing ecommerce website that consumes Resonance Demand Entities
+> 
+
+
+
+
+

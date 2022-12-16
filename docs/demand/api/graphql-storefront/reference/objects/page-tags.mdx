@@ -1,0 +1,52 @@
+---
+id: page-tags
+title: PageTags
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+These are the tags associated to the page
+
+```graphql
+type PageTags {
+  parsed(
+  category: String
+  key: String
+): [ParsedTag]
+  raw: [String]
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTags.<b>parsed</b></code>](#)<Bullet />[`[ParsedTag]`](/demand/api/graphql-storefront/reference/objects/parsed-tag) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> Get parsed, and optionally filtered, tags for a Page.
+> ##### [<code style={{ fontWeight: 'normal' }}>PageTags.parsed.<b>category</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Optionally filter tags by category.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PageTags.parsed.<b>key</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTags.<b>raw</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`PublicPage`](/demand/api/graphql-storefront/reference/objects/public-page)  <Badge class="secondary" text="object"/>
+
+
+

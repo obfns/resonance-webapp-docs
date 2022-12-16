@@ -1,0 +1,38 @@
+---
+id: demand-subscription-code
+title: DemandSubscriptionCode
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Codes that signify a DemandSubscription
+
+```graphql
+enum DemandSubscriptionCode {
+  BETAMAX
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandSubscriptionCode.<b>BETAMAX</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/><Bullet />[`DemandHqCreateInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-create-input)  <Badge class="secondary" text="input"/><Bullet />[`DemandHqUpdateInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-update-input)  <Badge class="secondary" text="input"/>
+
+
+

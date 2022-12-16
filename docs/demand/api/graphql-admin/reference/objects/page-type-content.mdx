@@ -1,0 +1,145 @@
+---
+id: page-type-content
+title: PageTypeContent
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+This holds content specific to a pageType. This is generally used on a page that lists all pages for a pageType.
+
+```graphql
+type PageTypeContent {
+  contentAsHtml: String
+  contentAsString: String
+  createdAt: Date!
+  demandHqId: ID!
+  description: String
+  descriptionOrExcerpt(
+  numberOfCharacters: Int
+): String
+  excerpt(
+  numberOfCharacters: Int
+): String
+  pageType: String!
+  pageTypeContentId: ID!
+  secondaryContentAsHtml: String
+  secondaryContentAsString: String
+  seoDescription: String
+  seoTitle: String
+  storefrontId: ID!
+  subtitle: String
+  tags: PageTypeContentTags
+  title: String
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>contentAsHtml</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the markdown content of the pageTypeContent as parsed HTML. Do not use
+this field without purifying or sanitizing the HTML in your webapp.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>contentAsString</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A short description of the pageTypeContent, limit 1000 characters. This is
+typically used off of the pageTypeContent page itself.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>descriptionOrExcerpt</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the description if it exists, or fallback to the excerpt of content for the PageTypeContent.
+> ##### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.descriptionOrExcerpt.<b>numberOfCharacters</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The number of characters to return, defaults to 200.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>excerpt</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get an excerpt of the PageTypeContent.
+> ##### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.excerpt.<b>numberOfCharacters</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The number of characters to return, defaults to 200.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>pageType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>pageTypeContentId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>secondaryContentAsHtml</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the secondary markdown content of the pageTypeContent as parsed HTML. Do
+not use this field without purifying or sanitizing the HTML in your webapp.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>secondaryContentAsString</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>seoDescription</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Description specific for SEO purposes, limit 170 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>seoTitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title specific for SEO purposes, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>subtitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The subtitle of the pageTypeContent, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>tags</b></code>](#)<Bullet />[`PageTypeContentTags`](/demand/api/graphql-admin/reference/objects/page-type-content-tags) <Badge class="secondary" text="object"/>
+> These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>title</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The title of the pageTypeContent, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContent.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createPageTypeContent`](/demand/api/graphql-admin/reference/mutations/create-page-type-content)  <Badge class="secondary" text="mutation"/><Bullet />[`pageTypeContent`](/demand/api/graphql-admin/reference/queries/page-type-content)  <Badge class="secondary" text="query"/><Bullet />[`updatePageTypeContent`](/demand/api/graphql-admin/reference/mutations/update-page-type-content)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`PageTypeContentConnection`](/demand/api/graphql-admin/reference/objects/page-type-content-connection)  <Badge class="secondary" text="object"/><Bullet />[`PageTypeContentEdge`](/demand/api/graphql-admin/reference/objects/page-type-content-edge)  <Badge class="secondary" text="object"/>
+
+
+

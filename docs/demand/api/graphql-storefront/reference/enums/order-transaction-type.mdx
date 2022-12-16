@@ -1,0 +1,60 @@
+---
+id: order-transaction-type
+title: OrderTransactionType
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates the purpose of a given OrderTransaction.
+
+```graphql
+enum OrderTransactionType {
+  AUTHORIZATION
+  CAPTURE
+  REFUND
+  SALE
+  VOID
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionType.<b>AUTHORIZATION</b></code>](#) 
+> Money that the customer has agreed to pay.
+The authorization period can be between 7 and 30 days (depending on your
+payment service) while a store waits for a payment to be captured.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionType.<b>CAPTURE</b></code>](#) 
+> A transfer of money that was reserved during the authorization of a shop.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionType.<b>REFUND</b></code>](#) 
+> The partial or full return of captured money to the customer.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionType.<b>SALE</b></code>](#) 
+> The authorization and capture of a payment performed in one single step.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionType.<b>VOID</b></code>](#) 
+> The cancellation of a pending authorization or capture.
+> 
+
+
+
+### Member of
+
+[`PublicOrderTransaction`](/demand/api/graphql-storefront/reference/objects/public-order-transaction)  <Badge class="secondary" text="object"/>
+
+
+

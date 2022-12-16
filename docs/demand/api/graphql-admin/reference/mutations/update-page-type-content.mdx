@@ -1,0 +1,42 @@
+---
+id: update-page-type-content
+title: updatePageTypeContent
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Update an existing PageTypeContent.
+
+Requires the pagetypecontent/write scope on the associated DemandHq.
+
+```graphql
+updatePageTypeContent(
+  input: PageTypeContentUpdateInput!
+): PageTypeContent!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>updatePageTypeContent.<b>input</b></code>](#)<Bullet />[`PageTypeContentUpdateInput!`](/demand/api/graphql-admin/reference/inputs/page-type-content-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`PageTypeContent`](/demand/api/graphql-admin/reference/objects/page-type-content) <Badge class="secondary" text="object"/>
+> This holds content specific to a pageType. This is generally used on a page that lists all pages for a pageType.
+> 
+
+
+
+
+

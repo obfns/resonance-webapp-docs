@@ -1,0 +1,148 @@
+---
+id: user
+title: User
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Type representing a User, or human entity
+
+```graphql
+type User {
+  address: String
+  birthdate: String
+  createdAt: String
+  displayName: String
+  email: String!
+  emailVerified: String
+  familyName: String
+  gender: String
+  givenName: String
+  locale: String
+  nickname: String
+  phone: String
+  phoneNumberVerified: String
+  picture: String
+  profile: String
+  sub: String!
+  updatedAt: String
+  userName: ID!
+  website: String
+  zoneinfo: String
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>address</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>birthdate</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> End-User's birthday, represented as an ISO 8601:2004 YYYY-MM-DD format. The
+year MAY be 0000, indicating that it is omitted. To represent only the year,
+YYYY format is allowed. Note that depending on the underlying platform's date
+related function, providing just year can result in varying month and day, so
+the implementers need to take this factor into account to correctly process the dates.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>createdAt</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>displayName</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Determined field based on other user information, represents the best name to use for the User.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>email</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>emailVerified</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> string of true or false
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>familyName</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>gender</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>givenName</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>locale</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> String representing the User's locale, i.e. 'en-us'
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>nickname</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The display name for the User
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>phone</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> End-User's preferred telephone number. E.164 [E.164] is RECOMMENDED as the
+format of this Claim, for example, +1 (425) 555-1212 or +56 (2) 687 2400. If
+the phone number contains an extension, it is RECOMMENDED that the extension
+be represented using the RFC 3966 [RFC3966] extension syntax, for example, +1
+(604) 555-1234;ext=5678.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>phoneNumberVerified</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> string of true or false
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>picture</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> URL of the End-User's profile picture. This URL MUST refer to an image file
+(for example, a PNG, JPEG, or GIF image file), rather than to a Web page
+containing an image. Note that this URL SHOULD specifically reference a
+profile photo of the End-User suitable for displaying when describing the
+End-User, rather than an arbitrary photo taken by the End-User.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>profile</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> URL of the End-User's profile page. The contents of this Web page SHOULD be about the End-User.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>sub</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> A secondary ID, UUID
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>updatedAt</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>userName</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>website</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> URL of the End-User's Web page or blog. This Web page SHOULD contain
+information published by the End-User or an organization that the End-User is
+affiliated with.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>User.<b>zoneinfo</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Timezone - String from zoneinfo time zone database representing the End-User's
+time zone. For example, Europe/Paris or America/Los_Angeles.
+> 
+
+
+
+### Returned by
+
+[`inviteUser`](/adminidentity/api/graphql-admin/reference/mutations/invite-user)  <Badge class="secondary" text="mutation"/><Bullet />[`me`](/adminidentity/api/graphql-admin/reference/queries/me)  <Badge class="secondary" text="query"/><Bullet />[`updateUser`](/adminidentity/api/graphql-admin/reference/mutations/update-user)  <Badge class="secondary" text="mutation"/>
+
+
+

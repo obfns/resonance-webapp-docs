@@ -1,0 +1,43 @@
+---
+id: string-filter-input
+title: StringFilterInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Filter using a combination of operator and an array of string values
+
+```graphql
+input StringFilterInput {
+  operator: FilterOperator
+  values: [String!]!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>StringFilterInput.<b>operator</b></code>](#)<Bullet />[`FilterOperator`](/demand/api/graphql-storefront/reference/enums/filter-operator) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StringFilterInput.<b>values</b></code>](#)<Bullet />[`[String!]!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`collections`](/demand/api/graphql-storefront/reference/queries/collections)  <Badge class="secondary" text="query"/><Bullet />[`pages`](/demand/api/graphql-storefront/reference/queries/pages)  <Badge class="secondary" text="query"/><Bullet />[`products`](/demand/api/graphql-storefront/reference/queries/products)  <Badge class="secondary" text="query"/>
+
+
+

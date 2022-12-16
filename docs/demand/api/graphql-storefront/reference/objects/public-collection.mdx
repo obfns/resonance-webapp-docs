@@ -1,0 +1,208 @@
+---
+id: public-collection
+title: PublicCollection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A Collection is a group of products, what may often be referred to as a "Category Page" of some variety.
+In reality, a collection is far more flexible and can be used to represent any
+product grouping, and the collectionType can help differentiate between them.
+
+```graphql
+type PublicCollection {
+  collectionId: ID!
+  collectionType: String!
+  content: CollectionContent
+  demandHqId: ID!
+  description: String
+  descriptionOrExcerpt(
+  numberOfCharacters: Int
+): String
+  featuredProductIds: [ID]
+  primaryImageUrl: String
+  products(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  manufacturer: [StringFilterInput]
+  msrp: FloatRangeFilterInput
+  numberOfTermAggregations: ProductNumberOfTermAggregations
+  price: FloatRangeFilterInput
+  query: String
+  slugs: [String]
+  sortOrder: [ProductSortInput]
+  standardizedColor: [ProductStandardizedColorFilterInput]
+  tagPrefixes: [StringFilterInput]
+  tags: [StringFilterInput]
+  vendor: StringFilterInput
+): PublicProductConnectionWithSearch!
+  publishedAt: Date
+  secondaryImageUrl: String
+  seoDescription: String
+  seoTitle: String
+  slug: String!
+  subtitle: String
+  tags: CollectionTags
+  title: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>collectionId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>collectionType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Any string to declare a category of this collection, can be used to filter collections, limit 128 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>content</b></code>](#)<Bullet />[`CollectionContent`](/demand/api/graphql-storefront/reference/objects/collection-content) <Badge class="secondary" text="object"/>
+> Get the content of the collection.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A short description of the collection, limit 1000 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>descriptionOrExcerpt</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the description if it exists, or fallback to the excerpt of content for the collection.
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.descriptionOrExcerpt.<b>numberOfCharacters</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The number of characters to return, defaults to 200.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>featuredProductIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> This can be used to pin certain products to the top of a collection when using certain sorts.
+Max number of products is 20.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>primaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A primary image url for this collection, can be generated from a Collection ContentItem.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>products</b></code>](#)<Bullet />[`PublicProductConnectionWithSearch!`](/demand/api/graphql-storefront/reference/objects/public-product-connection-with-search) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Paginate through products in a collection.
+
+Requires the publicproduct/read scope.
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>manufacturer</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-storefront/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by manufacturer.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>msrp</b></code>](#)<Bullet />[`FloatRangeFilterInput`](/demand/api/graphql-storefront/reference/inputs/float-range-filter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by msrp.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>numberOfTermAggregations</b></code>](#)<Bullet />[`ProductNumberOfTermAggregations`](/demand/api/graphql-storefront/reference/inputs/product-number-of-term-aggregations) <Badge class="secondary" text="input"/>
+> The number of results to return for each term aggregation. Defaults to 0 for each.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>price</b></code>](#)<Bullet />[`FloatRangeFilterInput`](/demand/api/graphql-storefront/reference/inputs/float-range-filter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by price.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>query</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Query products for certain terms. Searches several fields, including
+product.tags, product.title, product.vendor, productLocales.description,
+productLocales.featureBullets, variant.barcode, variant.mpn, variant.sku
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>slugs</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter Products using slugs
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>sortOrder</b></code>](#)<Bullet />[`[ProductSortInput]`](/demand/api/graphql-storefront/reference/inputs/product-sort-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>standardizedColor</b></code>](#)<Bullet />[`[ProductStandardizedColorFilterInput]`](/demand/api/graphql-storefront/reference/inputs/product-standardized-color-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by standardized color.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>tagPrefixes</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-storefront/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Products using Tag Prefixes (starts with).
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-storefront/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Products using Tags.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicCollection.products.<b>vendor</b></code>](#)<Bullet />[`StringFilterInput`](/demand/api/graphql-storefront/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by vendor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>publishedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> ISO format date when the collection was published. Note that ensuing updates
+with status set to PUBLISHED will republish and re-set this date.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>secondaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A secondary image url for this collection, often a logo or related item.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>seoDescription</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Description specific for SEO purposes, limit 170 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>seoTitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title specific for SEO purposes, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>slug</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Slug for the URL for this collection. Limit 128 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>subtitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The subtitle of the collection, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>tags</b></code>](#)<Bullet />[`CollectionTags`](/demand/api/graphql-storefront/reference/objects/collection-tags) <Badge class="secondary" text="object"/>
+> Get the tags of the collection.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollection.<b>title</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The title of the collection, limit 256 characters.
+> 
+
+
+
+### Returned by
+
+[`collection`](/demand/api/graphql-storefront/reference/queries/collection)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`PublicCollectionConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-collection-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicCollectionEdge`](/demand/api/graphql-storefront/reference/objects/public-collection-edge)  <Badge class="secondary" text="object"/>
+
+
+

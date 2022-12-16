@@ -1,0 +1,42 @@
+---
+id: create-demand-hq
+title: createDemandHq
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create a new demandHq
+            
+Requires demandHq/write permission on the requesting identity
+
+```graphql
+createDemandHq(
+  input: DemandHqCreateInput!
+): DemandHq!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createDemandHq.<b>input</b></code>](#)<Bullet />[`DemandHqCreateInput!`](/demand/api/graphql-admin/reference/inputs/demand-hq-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq) <Badge class="secondary" text="object"/>
+> The parent-most entity of the DemandHq Domain
+> 
+
+
+
+
+

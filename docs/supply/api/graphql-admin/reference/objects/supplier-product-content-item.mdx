@@ -1,0 +1,108 @@
+---
+id: supplier-product-content-item
+title: SupplierProductContentItem
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+This has a many to one relationship with SupplierProduct, and provides a connection to the CDN items.
+
+```graphql
+type SupplierProductContentItem {
+  alt: String
+  category: String
+  contentItemId: ID!
+  contentKey: String!
+  contentType: SupplierProductContentType!
+  createdAt: Date!
+  position: Int
+  sourceDetail: String!
+  sourceType: SupplierProductContentItemSourceType!
+  status: SupplierProductContentItemStatus!
+  supplierId: ID!
+  supplierProductId: ID!
+  updatedAt: Date!
+  updatedBy: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>alt</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>category</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>contentItemId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>contentKey</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The key to the file in the CDN
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>contentType</b></code>](#)<Bullet />[`SupplierProductContentType!`](/supply/api/graphql-admin/reference/enums/supplier-product-content-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/supply/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>position</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Used to determine what order the content comes out in.
+Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>sourceDetail</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The original URL, or some kind of file pointer, based on sourceType
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>sourceType</b></code>](#)<Bullet />[`SupplierProductContentItemSourceType!`](/supply/api/graphql-admin/reference/enums/supplier-product-content-item-source-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> How did we receive this content item?
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>status</b></code>](#)<Bullet />[`SupplierProductContentItemStatus!`](/supply/api/graphql-admin/reference/enums/supplier-product-content-item-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/supply/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentItem.<b>updatedBy</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`associateSupplierProductContentItem`](/supply/api/graphql-admin/reference/mutations/associate-supplier-product-content-item)  <Badge class="secondary" text="mutation"/><Bullet />[`createSupplierProductImageFromUrl`](/supply/api/graphql-admin/reference/mutations/create-supplier-product-image-from-url)  <Badge class="secondary" text="mutation"/><Bullet />[`updateSupplierProductContentItem`](/supply/api/graphql-admin/reference/mutations/update-supplier-product-content-item)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product)  <Badge class="secondary" text="object"/><Bullet />[`SupplierProductContentItemConnection`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplierProductContentItemEdge`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item-edge)  <Badge class="secondary" text="object"/><Bullet />[`SupplierProductImageFromFileResponse`](/supply/api/graphql-admin/reference/objects/supplier-product-image-from-file-response)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariant`](/supply/api/graphql-admin/reference/objects/supplier-variant)  <Badge class="secondary" text="object"/>
+
+
+

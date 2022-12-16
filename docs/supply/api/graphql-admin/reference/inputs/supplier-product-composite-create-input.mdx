@@ -1,0 +1,59 @@
+---
+id: supplier-product-composite-create-input
+title: SupplierProductCompositeCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The necessary fields to create a SupplierProductComposite, or a SupplierProduct
+and its ContentItems, Locales, and Variants in one mutation
+
+```graphql
+input SupplierProductCompositeCreateInput {
+  supplierProductContentItemAssociationInputs: [SupplierProductContentItemAssociationInCompositeCreateInput]
+  supplierProductImageFromUrlInputs: [SupplierProductImageFromUrlInCompositeCreateInput]
+  supplierProductInput: SupplierProductCreateInput!
+  supplierProductLocaleInputs: [SupplierProductLocaleInCompositeCreateInput]
+  supplierVariantInputs: [SupplierVariantCompositeInCompositeCreateInput]
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductCompositeCreateInput.<b>supplierProductContentItemAssociationInputs</b></code>](#)<Bullet />[`[SupplierProductContentItemAssociationInCompositeCreateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-content-item-association-in-composite-create-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductCompositeCreateInput.<b>supplierProductImageFromUrlInputs</b></code>](#)<Bullet />[`[SupplierProductImageFromUrlInCompositeCreateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-image-from-url-in-composite-create-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductCompositeCreateInput.<b>supplierProductInput</b></code>](#)<Bullet />[`SupplierProductCreateInput!`](/supply/api/graphql-admin/reference/inputs/supplier-product-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductCompositeCreateInput.<b>supplierProductLocaleInputs</b></code>](#)<Bullet />[`[SupplierProductLocaleInCompositeCreateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-locale-in-composite-create-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductCompositeCreateInput.<b>supplierVariantInputs</b></code>](#)<Bullet />[`[SupplierVariantCompositeInCompositeCreateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-variant-composite-in-composite-create-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+
+
+### Member of
+
+[`createSupplierProductComposite`](/supply/api/graphql-admin/reference/mutations/create-supplier-product-composite)  <Badge class="secondary" text="mutation"/>
+
+
+

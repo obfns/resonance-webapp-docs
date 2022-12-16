@@ -1,0 +1,53 @@
+---
+id: supply-entity-status
+title: SupplyEntityStatus
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates what stage a Supply Entity is in.
+
+```graphql
+enum SupplyEntityStatus {
+  ARCHIVED
+  DRAFT
+  NEEDSREVIEW
+  PUBLISHED
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEntityStatus.<b>ARCHIVED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEntityStatus.<b>DRAFT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEntityStatus.<b>NEEDSREVIEW</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEntityStatus.<b>PUBLISHED</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product)  <Badge class="secondary" text="object"/><Bullet />[`SupplierProductUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-update-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplyEntityStatusFilterInput`](/supply/api/graphql-admin/reference/inputs/supply-entity-status-filter-input)  <Badge class="secondary" text="input"/>
+
+
+

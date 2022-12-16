@@ -1,0 +1,186 @@
+---
+id: public-product
+title: PublicProduct
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A Product is a part of the Demand Domain and represents a the basic information of a product.
+Products have many support entities, including variants, which represent SKUs of the product.
+
+```graphql
+type PublicProduct {
+  contentItem(
+  contentItemId: ID!
+): PublicProductContentItem
+  contentItems(
+  after: String
+  before: String
+  contentType: ProductContentType
+  first: Int
+  last: Int
+): ProductContentItemConnection
+  demandHqId: ID!
+  locale(
+  localeType: ResonanceLocaleType!
+): PublicProductLocale
+  optionLabels: [String!]!
+  productId: ID!
+  productMetrics: PublicProductMetrics
+  publishedAt: Date
+  seoTitle: String
+  slug: String!
+  tags: ProductTags
+  title: String!
+  variant(
+  variantId: ID
+): PublicVariant
+  variants(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): PublicVariantConnection!
+  vendor: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>contentItem</b></code>](#)<Bullet />[`PublicProductContentItem`](/demand/api/graphql-storefront/reference/objects/public-product-content-item) <Badge class="secondary" text="object"/>
+> Get a productContentItem for a product
+
+        Requires productcontentitem/read permission on the requesting identity
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.contentItem.<b>contentItemId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>contentItems</b></code>](#)<Bullet />[`ProductContentItemConnection`](/demand/api/graphql-storefront/reference/objects/product-content-item-connection) <Badge class="secondary" text="object"/>
+> Get a list of productContentItems
+
+        Requires productcontentitem/read permission on the DemandHq for the requesting identity
+
+        Sorting works differently depending on which filters are used.
+        Without any filters, the sort order is by createdAt.
+        With a contentType filter, the sort order is by position.
+        This means "featuredImage" can be retrieved by using contentType: IMAGE and first: 1.
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.contentItems.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.contentItems.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.contentItems.<b>contentType</b></code>](#)<Bullet />[`ProductContentType`](/demand/api/graphql-storefront/reference/enums/product-content-type) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.contentItems.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.contentItems.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>locale</b></code>](#)<Bullet />[`PublicProductLocale`](/demand/api/graphql-storefront/reference/objects/public-product-locale) <Badge class="secondary" text="object"/>
+> Get a single productLocale by ResonanceLocaleType.
+            
+Requires the "publicproductlocale/read" permission.
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.locale.<b>localeType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/demand/api/graphql-storefront/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>optionLabels</b></code>](#)<Bullet />[`[String!]!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The labels for the possible option groups for this product, i.e. "Color", "Size", "Material", etc.
+These will match with labelOptions in Variants.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>productId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> A short description of the product, limit 1000 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>productMetrics</b></code>](#)<Bullet />[`PublicProductMetrics`](/demand/api/graphql-storefront/reference/objects/public-product-metrics) <Badge class="secondary" text="object"/>
+> Get productMetrics for a Product
+
+    Requires product/read permission
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>publishedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> ISO format date when the product was published.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>seoTitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title specific for SEO purposes, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>slug</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Slug for the URL for this product. Limit 128 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>tags</b></code>](#)<Bullet />[`ProductTags`](/demand/api/graphql-storefront/reference/objects/product-tags) <Badge class="secondary" text="object"/>
+> Get the tags of the product.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>title</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The title of the product, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>variant</b></code>](#)<Bullet />[`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant) <Badge class="secondary" text="object"/>
+> Get a single variant by VariantId
+
+Requires publicvariant/read permission on the requesting identity.
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.variant.<b>variantId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>variants</b></code>](#)<Bullet />[`PublicVariantConnection!`](/demand/api/graphql-storefront/reference/objects/public-variant-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a list of variants
+
+Requires publicvariant/read permission on the demandHq for the requesting identity.
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.variants.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.variants.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.variants.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.variants.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>vendor</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The brand of the product, limit 256 characters.
+> 
+
+
+
+### Returned by
+
+[`product`](/demand/api/graphql-storefront/reference/queries/product)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`PublicProductConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-product-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductEdge`](/demand/api/graphql-storefront/reference/objects/public-product-edge)  <Badge class="secondary" text="object"/><Bullet />[`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant)  <Badge class="secondary" text="object"/>
+
+
+

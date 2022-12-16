@@ -1,0 +1,73 @@
+---
+id: supplier-product-update-input
+title: SupplierProductUpdateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The necessary and optional fields to update an existing SupplierProduct.
+If status is set to Publish, additional validation will be performed.
+
+```graphql
+input SupplierProductUpdateInput {
+  externalProductId: String
+  optionLabels: [String!]
+  status: SupplyEntityStatus
+  supplierProductId: ID!
+  tags: [String!]
+  title: String
+  vendor: String
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductUpdateInput.<b>externalProductId</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Passed along in PurchaseOrders so the Supplier can identify items in their warehouse.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductUpdateInput.<b>optionLabels</b></code>](#)<Bullet />[`[String!]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The labels for the options of this product, i.e. ["Color", "Size"]
+These will match with the order of the optionValues on the SupplierVariants.
+Must have 1-3, and it should match the number of options in the variants, but there is no validation to do so.
+Set the first optionLabel to "No Option" if you don't want to use options for this product.
+See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductUpdateInput.<b>status</b></code>](#)<Bullet />[`SupplyEntityStatus`](/supply/api/graphql-admin/reference/enums/supply-entity-status) <Badge class="secondary" text="enum"/>
+> Indicates whether a product is live and able to be ordered.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductUpdateInput.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductUpdateInput.<b>tags</b></code>](#)<Bullet />[`[String!]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductUpdateInput.<b>title</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The title of the product.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductUpdateInput.<b>vendor</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The brand or manufacturer of the product.
+> 
+
+
+
+### Member of
+
+[`updateSupplierProduct`](/supply/api/graphql-admin/reference/mutations/update-supplier-product)  <Badge class="secondary" text="mutation"/><Bullet />[`updateSupplierProducts`](/supply/api/graphql-admin/reference/mutations/update-supplier-products)  <Badge class="secondary" text="mutation"/>
+
+
+

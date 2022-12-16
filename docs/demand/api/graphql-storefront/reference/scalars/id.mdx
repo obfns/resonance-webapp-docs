@@ -1,0 +1,30 @@
+---
+id: id
+title: ID
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+
+```graphql
+scalar ID
+```
+
+
+
+
+### Member of
+
+[`Cart`](/demand/api/graphql-storefront/reference/objects/cart)  <Badge class="secondary" text="object"/><Bullet />[`CartItem`](/demand/api/graphql-storefront/reference/objects/cart-item)  <Badge class="secondary" text="object"/><Bullet />[`CartItemInput`](/demand/api/graphql-storefront/reference/inputs/cart-item-input)  <Badge class="secondary" text="input"/><Bullet />[`CartRemoveItemsInput`](/demand/api/graphql-storefront/reference/inputs/cart-remove-items-input)  <Badge class="secondary" text="input"/><Bullet />[`Checkout`](/demand/api/graphql-storefront/reference/objects/checkout)  <Badge class="secondary" text="object"/><Bullet />[`CheckoutOrder`](/demand/api/graphql-storefront/reference/objects/checkout-order)  <Badge class="secondary" text="object"/><Bullet />[`CheckoutOrderInput`](/demand/api/graphql-storefront/reference/inputs/checkout-order-input)  <Badge class="secondary" text="input"/><Bullet />[`CheckoutOrderItem`](/demand/api/graphql-storefront/reference/objects/checkout-order-item)  <Badge class="secondary" text="object"/><Bullet />[`CheckoutOrderItemInput`](/demand/api/graphql-storefront/reference/inputs/checkout-order-item-input)  <Badge class="secondary" text="input"/><Bullet />[`CollectionContent`](/demand/api/graphql-storefront/reference/objects/collection-content)  <Badge class="secondary" text="object"/><Bullet />[`Customer`](/demand/api/graphql-storefront/reference/objects/customer)  <Badge class="secondary" text="object"/><Bullet />[`CustomerAddress`](/demand/api/graphql-storefront/reference/objects/customer-address)  <Badge class="secondary" text="object"/><Bullet />[`CustomerAddressCreateInput`](/demand/api/graphql-storefront/reference/inputs/customer-address-create-input)  <Badge class="secondary" text="input"/><Bullet />[`CustomerAddressUpdateInput`](/demand/api/graphql-storefront/reference/inputs/customer-address-update-input)  <Badge class="secondary" text="input"/><Bullet />[`CustomerCreateInput`](/demand/api/graphql-storefront/reference/inputs/customer-create-input)  <Badge class="secondary" text="input"/><Bullet />[`CustomerUpdateInput`](/demand/api/graphql-storefront/reference/inputs/customer-update-input)  <Badge class="secondary" text="input"/><Bullet />[`deleteCustomerAddress`](/demand/api/graphql-storefront/reference/mutations/delete-customer-address)  <Badge class="secondary" text="mutation"/><Bullet />[`DeleteCustomerAddressResponse`](/demand/api/graphql-storefront/reference/objects/delete-customer-address-response)  <Badge class="secondary" text="object"/><Bullet />[`navs`](/demand/api/graphql-storefront/reference/queries/navs)  <Badge class="secondary" text="query"/><Bullet />[`order`](/demand/api/graphql-storefront/reference/queries/order)  <Badge class="secondary" text="query"/><Bullet />[`OrderItemPurchaseOrderItem`](/demand/api/graphql-storefront/reference/objects/order-item-purchase-order-item)  <Badge class="secondary" text="object"/><Bullet />[`PageContent`](/demand/api/graphql-storefront/reference/objects/page-content)  <Badge class="secondary" text="object"/><Bullet />[`PublicCollection`](/demand/api/graphql-storefront/reference/objects/public-collection)  <Badge class="secondary" text="object"/><Bullet />[`PublicCollectionTypeContent`](/demand/api/graphql-storefront/reference/objects/public-collection-type-content)  <Badge class="secondary" text="object"/><Bullet />[`PublicNav`](/demand/api/graphql-storefront/reference/objects/public-nav)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrder`](/demand/api/graphql-storefront/reference/objects/public-order)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderItem`](/demand/api/graphql-storefront/reference/objects/public-order-item)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderTransaction`](/demand/api/graphql-storefront/reference/objects/public-order-transaction)  <Badge class="secondary" text="object"/><Bullet />[`PublicPage`](/demand/api/graphql-storefront/reference/objects/public-page)  <Badge class="secondary" text="object"/><Bullet />[`PublicPageTypeContent`](/demand/api/graphql-storefront/reference/objects/public-page-type-content)  <Badge class="secondary" text="object"/><Bullet />[`PublicProduct`](/demand/api/graphql-storefront/reference/objects/public-product)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductContentItem`](/demand/api/graphql-storefront/reference/objects/public-product-content-item)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductLocale`](/demand/api/graphql-storefront/reference/objects/public-product-locale)  <Badge class="secondary" text="object"/><Bullet />[`PublicStorefront`](/demand/api/graphql-storefront/reference/objects/public-storefront)  <Badge class="secondary" text="object"/><Bullet />[`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant)  <Badge class="secondary" text="object"/><Bullet />[`SavedForLaterItem`](/demand/api/graphql-storefront/reference/objects/saved-for-later-item)  <Badge class="secondary" text="object"/><Bullet />[`SavedForLaterItemInput`](/demand/api/graphql-storefront/reference/inputs/saved-for-later-item-input)  <Badge class="secondary" text="input"/>
+
+
+

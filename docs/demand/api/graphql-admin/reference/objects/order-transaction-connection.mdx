@@ -1,0 +1,48 @@
+---
+id: order-transaction-connection
+title: OrderTransactionConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through OrderTransactions
+
+```graphql
+type OrderTransactionConnection {
+  edges: [OrderTransactionEdge]!
+  nodes: [OrderTransaction]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionConnection.<b>edges</b></code>](#)<Bullet />[`[OrderTransactionEdge]!`](/demand/api/graphql-admin/reference/objects/order-transaction-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionConnection.<b>nodes</b></code>](#)<Bullet />[`[OrderTransaction]!`](/demand/api/graphql-admin/reference/objects/order-transaction) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`Order`](/demand/api/graphql-admin/reference/objects/order)  <Badge class="secondary" text="object"/>
+
+
+

@@ -1,0 +1,49 @@
+---
+id: supplier-notification-user-names
+title: SupplierNotificationUserNames
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+These users will get notified if something requires attention for this Supplier.
+If none are provided, ownerUserName will be notified.
+
+```graphql
+type SupplierNotificationUserNames {
+  distribution: [String!]
+  management: [String!]
+  purchaseOrders: [String!]
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierNotificationUserNames.<b>distribution</b></code>](#)<Bullet />[`[String!]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> All notifications for the distribution side, besides purchaseOrders.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierNotificationUserNames.<b>management</b></code>](#)<Bullet />[`[String!]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> All notifications for the management side (Products, Variants, etc.).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierNotificationUserNames.<b>purchaseOrders</b></code>](#)<Bullet />[`[String!]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> These are part of distribution, but are a specific enough case to be handled separately.
+> 
+
+
+
+### Member of
+
+[`Supplier`](/supply/api/graphql-admin/reference/objects/supplier)  <Badge class="secondary" text="object"/>
+
+
+

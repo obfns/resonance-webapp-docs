@@ -1,0 +1,57 @@
+---
+id: page-image-from-file-response
+title: PageImageFromFileResponse
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Returned object from createPageImageFromFile
+
+```graphql
+type PageImageFromFileResponse {
+  contentItemId: ID!
+  fields: JSON!
+  page: Page!
+  url: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PageImageFromFileResponse.<b>contentItemId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The contentItemId of the image
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageImageFromFileResponse.<b>fields</b></code>](#)<Bullet />[`JSON!`](/demand/api/graphql-admin/reference/scalars/json) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Used while uploading the image
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageImageFromFileResponse.<b>page</b></code>](#)<Bullet />[`Page!`](/demand/api/graphql-admin/reference/objects/page) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageImageFromFileResponse.<b>url</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Used to upload the image
+> 
+
+
+
+### Returned by
+
+[`createPageImageFromFile`](/demand/api/graphql-admin/reference/mutations/create-page-image-from-file)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`PageImageFromFileResponses`](/demand/api/graphql-admin/reference/objects/page-image-from-file-responses)  <Badge class="secondary" text="object"/>
+
+
+

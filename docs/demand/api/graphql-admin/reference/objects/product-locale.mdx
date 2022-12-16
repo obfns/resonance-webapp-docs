@@ -1,0 +1,83 @@
+---
+id: product-locale
+title: ProductLocale
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+This has a many to one relationship with Product, and provides localized language data for the appropriate fields.
+There will often only be one of these, and it should be the one set in defaultLocale for the supplier.
+
+```graphql
+type ProductLocale {
+  createdAt: String!
+  demandHqId: ID!
+  description: String
+  descriptionAsHTML: String
+  featureBullets: [String]
+  localeType: ResonanceLocaleType!
+  productId: ID!
+  updatedAt: String!
+  updatedBy: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocale.<b>createdAt</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocale.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocale.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Can utilize Markdown
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocale.<b>descriptionAsHTML</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the product (productLocale) description as HTML.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocale.<b>featureBullets</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Limited to 5 bullets
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocale.<b>localeType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocale.<b>productId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocale.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocale.<b>updatedBy</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createProductLocale`](/demand/api/graphql-admin/reference/mutations/create-product-locale)  <Badge class="secondary" text="mutation"/><Bullet />[`updateProductLocale`](/demand/api/graphql-admin/reference/mutations/update-product-locale)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`Product`](/demand/api/graphql-admin/reference/objects/product)  <Badge class="secondary" text="object"/>
+
+
+

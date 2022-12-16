@@ -1,0 +1,42 @@
+---
+id: storefront
+title: storefront
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Get a storefront by its storefrontId.
+            
+Requires the storefront/read permission on the associated DemandHq.
+
+```graphql
+storefront(
+  storefrontId: ID!
+): Storefront
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>storefront.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`Storefront`](/demand/api/graphql-admin/reference/objects/storefront) <Badge class="secondary" text="object"/>
+> A Storefront represents a customer facing ecommerce website that consumes Resonance Demand Entities
+> 
+
+
+
+
+

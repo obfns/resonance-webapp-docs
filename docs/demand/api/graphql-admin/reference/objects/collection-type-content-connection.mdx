@@ -1,0 +1,48 @@
+---
+id: collection-type-content-connection
+title: CollectionTypeContentConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Pagination object for CollectionTypeContent.
+
+```graphql
+type CollectionTypeContentConnection {
+  edges: [CollectionTypeContentEdge]!
+  nodes: [CollectionTypeContent]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContentConnection.<b>edges</b></code>](#)<Bullet />[`[CollectionTypeContentEdge]!`](/demand/api/graphql-admin/reference/objects/collection-type-content-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContentConnection.<b>nodes</b></code>](#)<Bullet />[`[CollectionTypeContent]!`](/demand/api/graphql-admin/reference/objects/collection-type-content) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContentConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`Storefront`](/demand/api/graphql-admin/reference/objects/storefront)  <Badge class="secondary" text="object"/>
+
+
+

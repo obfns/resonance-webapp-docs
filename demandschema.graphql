@@ -28,6 +28,36 @@ type Address {
   streetAddress2: String
 }
 
+"""The input type for an Address"""
+input AddressInput {
+  """The city of the address"""
+  city: String!
+
+  """The company associated with the address"""
+  company: String
+
+  """The country of the address"""
+  country: String!
+
+  """The name associated with the address, i.e. the Person in the household"""
+  name: String!
+
+  """The phone number of the address. Format +11231231234"""
+  phoneNumber: String
+
+  """The zip or postal code of the address"""
+  postalCode: String!
+
+  """The state of the address"""
+  state: String!
+
+  """The first line of the street address"""
+  streetAddress1: String!
+
+  """The second line of the street address"""
+  streetAddress2: String
+}
+
 """
 The response recieved when an app is installed or the permissions are updated
 """
@@ -1407,6 +1437,35 @@ type DemandHq {
   """
   notificationUserNames: DemandHqNotificationUserNames
 
+  """
+  Get an order for an orderId.
+              
+  Requires the order/read scope on the associated DemandHq.
+  """
+  order(orderId: ID!): Order
+
+  """
+  Get a list of orders for a DemandHq.
+  
+  Requires the order/read scope on the associated DemandHq.
+  """
+  orders(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+    orderIds: [ID]
+  ): OrderConnection!
+
   """Get a public identity for the owner of this DemandHq"""
   ownerUser: PublicIdentity
   ownerUserName: String!
@@ -1845,6 +1904,12 @@ enum InventoryPolicy {
   HOLD
 }
 
+"""Indicates whether a variant is in or out of stock"""
+enum InventoryStatus {
+  INSTOCK
+  OUTOFSTOCK
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -1921,6 +1986,27 @@ type Mutation {
   Requires the "nav/write" permission on the associated DemandHq.
   """
   createNav(input: NavCreateInput!): Nav
+
+  """
+  Create an Order (Draft Status).
+                  
+  Requires the order/write permission on the given DemandHq.
+  """
+  createOrder(input: OrderCreateInput!): Order!
+
+  """
+  Create an OrderItem.
+              
+  Requires the orderitem/write permission on the associated DemandHq.
+  """
+  createOrderItem(input: OrderItemCreateInput!): OrderItem!
+
+  """
+  Create an OrderTransaction.
+              
+  Requires the ordertransaction/write permission on the associated DemandHq.
+  """
+  createOrderTransaction(input: OrderTransactionCreateInput!): OrderTransaction!
 
   """
   Add a new Page to a DemandHq.
@@ -2002,7 +2088,15 @@ type Mutation {
   
   Requires the collection/write permission on the given DemandHq
   """
-  deleteCollectionContentItem(collectionId: ID!, contentItemId: ID!): DeleteCollectionContentItemResponse!
+  deleteCollectionContentItem(
+    """
+    If the contentItem is present as a primaryImageUrl or secondaryImageUrl on
+    the Collection, also remove it from these fields.
+    """
+    alsoRemoveImageUrls: Boolean
+    collectionId: ID!
+    contentItemId: ID!
+  ): DeleteCollectionContentItemResponse!
 
   """
   Delete a CollectionTypeContent.
@@ -2051,7 +2145,14 @@ type Mutation {
   
   Requires the page/write permission on the given DemandHq
   """
-  deletePageContentItem(contentItemId: ID!, pageId: ID!): DeletePageContentItemResponse!
+  deletePageContentItem(
+    """
+    If the contentItem is present as a primaryImageUrl or secondaryImageUrl on the Page, also remove it from these fields.
+    """
+    alsoRemoveImageUrls: Boolean
+    contentItemId: ID!
+    pageId: ID!
+  ): DeletePageContentItemResponse!
 
   """
   Delete a PageTypeContent.
@@ -2086,6 +2187,13 @@ type Mutation {
   Requires the demandHqidentity/write permission on the given DemandHq
   """
   installApp(appId: ID!, demandHqId: ID!): AppInstallationResponse!
+
+  """
+  Place an Order (into Pending Status).
+  
+  Requires the order/write permission on the given DemandHq.
+  """
+  placeOrder(orderId: ID!): Order!
 
   """
   Request access to sell items from a Supplier.
@@ -2150,6 +2258,20 @@ type Mutation {
   Requires the "nav/write" permission on the associated DemandHq.
   """
   updateNav(input: NavUpdateInput!): Nav
+
+  """
+  Update an Order.
+  
+  Requires the order/write permission on the given DemandHq.
+  """
+  updateOrder(input: OrderUpdateInput!): Order!
+
+  """
+  Update an OrderItem.
+  
+  Requires the orderitem/write permission on the associated DemandHq.
+  """
+  updateOrderItem(input: OrderItemUpdateInput!): OrderItem!
 
   """
   Update an existing page.
@@ -2387,6 +2509,518 @@ input NavUpdateInput {
   Where this Nav should be located with respect to other Navs. Need not be sequential or unique.
   """
   position: Int
+}
+
+"""
+An order is a collection of items that a customer has purchased.
+As an order accrues transactions, it changes status until it is eventually complete.
+Orders rely on Suppliers to fulfill the OrderItems by creating PurchaseOrderItems (which are then fulfilled).
+"""
+type Order {
+  billingAddress: Address!
+  createdAt: Date!
+  customerId: ID
+
+  """A note provided by the customer at time of order"""
+  customerNote: String
+  demandHqId: ID!
+  emailAddress: String!
+
+  """
+  List the items in an order.
+              
+  Requires the orderitem/read permission on the associated DemandHq.
+  """
+  items(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): OrderItemConnection!
+  note: String
+  orderId: ID!
+
+  """
+  A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+  """
+  paymentId: ID
+  phoneNumber: String
+
+  """
+  ISO Date indicated when an order should be considered complete, closed for some changes, and started to process.
+  """
+  placedAt: Date
+  shippingAddress: Address!
+
+  """
+  The status of the order currently, this field is read-only and can change many times over the course of the order
+  """
+  status: OrderStatus!
+  storefrontId: ID
+
+  """
+  Get the tags for an order.
+  
+  Requires the order/read scope on the associated DemandHq.
+  """
+  tags: OrderTags
+
+  """
+  List the transactions in an order.
+              
+  Requires the ordertransaction/read permission on the associated DemandHq.
+  """
+  transactions(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): OrderTransactionConnection!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+
+"""Paginate through Orders"""
+type OrderConnection {
+  edges: [OrderEdge]!
+  nodes: [Order]!
+  pageInfo: PageInfo!
+}
+
+"""Input for creating an Order"""
+input OrderCreateInput {
+  billingAddress: AddressInput!
+  customerId: ID
+
+  """A note provided by the customer at time of order"""
+  customerNote: String
+  demandHqId: ID!
+  emailAddress: String!
+  note: String
+
+  """
+  A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+  """
+  paymentId: ID
+  phoneNumber: String
+  shippingAddress: AddressInput!
+  storefrontId: ID
+  tags: [String]
+}
+
+"""One edge producing one Order Node"""
+type OrderEdge {
+  node: Order
+}
+
+"""An item in an Order."""
+type OrderItem {
+  adjustments: [OrderItemAdjustment]
+  barcode: String!
+  createdAt: Date!
+  currency: ResonanceCurrency!
+  customProperties: JSON
+  deliveryMethod: VariantDeliveryMethod!
+  demandHqId: ID!
+  discounts: [OrderItemDiscount]
+  note: String
+  orderId: ID!
+  orderItemId: ID!
+  productId: ID!
+  productTitle: String!
+  purchaseOrderItems: [OrderItemPurchaseOrderItem]
+  quantity: Int!
+  shippingCharges: [OrderItemShippingCharge]
+  shippingMethod: ShippingMethod
+  sku: String
+  status: OrderItemStatus!
+  taxes: [OrderItemTax]
+
+  """Price per item, can be multiplied by quantity for total price"""
+  unitPrice: Float!
+  updatedAt: Date!
+  updatedBy: ID!
+  variantId: ID!
+  variantTitle: String!
+  vendor: String!
+}
+
+"""
+An adjustment to an OrderItem. Adjustments to orders occur for a variety of
+reasons, and are only allowed at certain stages of the order process.
+"""
+type OrderItemAdjustment {
+  adjustedAt: Date!
+
+  """The amount of the adjustment."""
+  adjustmentAmount: Float!
+
+  """The reason for the adjustment."""
+  adjustmentReason: OrderItemAdjustmentReason!
+
+  """The type of adjustment."""
+  adjustmentType: OrderItemAdjustmentType!
+}
+
+"""Input for OrderItemAdjustment"""
+input OrderItemAdjustmentInput {
+  adjustedAt: Date!
+
+  """The amount of the adjustment."""
+  adjustmentAmount: Float!
+
+  """The reason for the adjustment."""
+  adjustmentReason: OrderItemAdjustmentReason!
+
+  """The type of adjustment."""
+  adjustmentType: OrderItemAdjustmentType!
+}
+
+"""Indicates why an Adjustment occurred."""
+enum OrderItemAdjustmentReason {
+  CUSTOMER_FOUND_LOWER_PRICE
+  CUSTOMER_NO_LONGER_NEEDS
+  CUSTOMER_ORDERED_BY_ACCIDENT
+  CUSTOMER_OTHER
+  CUSTOMER_SHIPPING_TOOK_TOO_LONG
+  ITEM_NOT_AS_ADVERTISED
+  OTHER
+  OUT_OF_STOCK
+  SPOT_DISCOUNT
+  WRONG_ITEM_SHIPPED
+}
+
+"""Indicates how to apply an OrderItemAdjustment."""
+enum OrderItemAdjustmentType {
+  PRICE
+  QUANTITY
+}
+
+"""Paginate through OrderItems"""
+type OrderItemConnection {
+  edges: [OrderItemEdge]!
+  nodes: [OrderItem]!
+  pageInfo: PageInfo!
+}
+
+"""Input for creating an OrderItem"""
+input OrderItemCreateInput {
+  adjustments: [OrderItemAdjustmentInput]
+  barcode: String!
+  currency: ResonanceCurrency!
+  customProperties: JSON
+  deliveryMethod: VariantDeliveryMethod!
+  demandHqId: ID!
+  discounts: [OrderItemDiscountInput]
+  note: String
+  orderId: ID!
+  productId: ID!
+  productTitle: String!
+  quantity: Int!
+  shippingCharges: [OrderItemShippingChargeInput]
+  shippingMethod: ShippingMethod
+  sku: String
+  taxes: [OrderItemTaxInput]
+
+  """Price per item, can be multiplied by quantity for total price"""
+  unitPrice: Float!
+  variantId: ID!
+  variantTitle: String!
+  vendor: String!
+}
+
+"""
+A discount applied to an OrderItem. Discounts alter pricing of an OrderItem, and may include a coupon code to do so.
+"""
+type OrderItemDiscount {
+  code: String
+
+  """The amount of the discount."""
+  discountAmount: Float!
+
+  """The type of discount."""
+  discountType: OrderItemDiscountType!
+  discountedAt: Date!
+}
+
+"""Input for OrderItemDiscount"""
+input OrderItemDiscountInput {
+  code: String
+
+  """The amount of the discount."""
+  discountAmount: Float!
+
+  """The type of discount."""
+  discountType: OrderItemDiscountType!
+  discountedAt: Date!
+}
+
+"""Indicates how a discount should be applied"""
+enum OrderItemDiscountType {
+  PERCENTAGE
+  PRICE
+}
+
+"""One edge producing one OrderItem Node"""
+type OrderItemEdge {
+  node: OrderItem
+}
+
+"""A relationship entity between an OrderItem and a PurchaseOrderItem."""
+type OrderItemPurchaseOrderItem {
+  fulfillments: [PurchaseOrderItemFulfillment]
+  orderItemId: ID!
+  purchaseOrderItemId: ID!
+  quantity: Int!
+  status: PurchaseOrderItemStatus!
+}
+
+"""A shippingCharge applied to an OrderItem."""
+type OrderItemShippingCharge {
+  amount: Float!
+  title: String
+}
+
+"""Create or Update an OrderItemShippingCharge"""
+input OrderItemShippingChargeInput {
+  amount: Float!
+  title: String
+}
+
+"""Indicates the status of an OrderItem."""
+enum OrderItemStatus {
+  ASSIGNED
+
+  """
+  Indicates that the OrderItem was assigned, but is no longer needed to be fulfilled.
+  """
+  CANCELLED
+
+  """Indicates that the OrderItem is fully fulfilled and is now complete."""
+  FULFILLED
+
+  """
+  Indicates that the OrderItem is ready for processing, and data is complete.
+  """
+  INITIAL
+  PARTIALLY_ASSIGNED
+
+  """Indicates that the OrderItem is in the process of being fulfilled."""
+  PARTIALLY_FULFILLED
+}
+
+"""A tax applied to an OrderItem."""
+type OrderItemTax {
+  amount: Float!
+  rate: Float!
+  title: String!
+}
+
+"""Input for OrderItemTax"""
+input OrderItemTaxInput {
+  amount: Float!
+  rate: Float!
+  title: String!
+}
+
+"""Input for updating an OrderItem"""
+input OrderItemUpdateInput {
+  adjustments: [OrderItemAdjustmentInput]
+  customProperties: JSON
+  discounts: [OrderItemDiscountInput]
+  note: String
+  orderItemId: ID!
+  taxes: [OrderItemTaxInput]
+}
+
+"""Indicates the lifecycle stage an order is in"""
+enum OrderStatus {
+  """Order has been authorized, waiting on fulfillment"""
+  AUTHORIZED
+
+  """
+  Order has been paid, and is now complete. This can also indicate that an order
+  was partially or fully refunded, but that process is also complete.
+  """
+  COMPLETE
+
+  """
+  Initial state for an order, during which it can contain invalid or incomplete information
+  """
+  DRAFT
+
+  """Order has been fulfilled, waiting on payment"""
+  FULFILLED
+
+  """
+  Order has been partially fulfilled, and paid up for the currently fulfilled items
+  """
+  PARTIALLY_FULFILLED
+
+  """
+  Order has been partially fulfilled, waiting on other fulfillments and for the existing fulfillments payment
+  """
+  PARTIALLY_FULFILLED_AWAITING_PAYMENT
+
+  """Order has been placed, waiting on authorization"""
+  PENDING
+}
+
+"""These are the tags associated to the order"""
+type OrderTags {
+  demandHqId: ID!
+  orderId: ID!
+
+  """Get the tags for an order parsed into category, key, and value."""
+  parsed(
+    """Optionally filter tags by category."""
+    category: String
+
+    """
+    Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+    """
+    key: String
+  ): [ParsedTag]
+  raw: [String]
+  updatedAt: Date!
+  updatedBy: ID!
+}
+
+"""A transaction in an Order."""
+type OrderTransaction {
+  amount: Float!
+  authorizationCode: String
+  authorizationExpiresAt: Date
+  createdAt: Date!
+  currency: ResonanceCurrency!
+  currencyExchangeAdjustment: OrderTransactionCurrencyExchangeAdjustment
+  demandHqId: ID!
+  errorMessage: String
+  gateway: OrderTransactionGateway!
+  gatewayMessage: String
+  gatewayTransactionId: ID
+  orderId: ID!
+  orderTransactionId: ID!
+  orderTransactionType: OrderTransactionType!
+  processedAt: Date
+  updatedBy: ID!
+}
+
+"""Paginate through OrderTransactions"""
+type OrderTransactionConnection {
+  edges: [OrderTransactionEdge]!
+  nodes: [OrderTransaction]!
+  pageInfo: PageInfo!
+}
+
+"""Input for creating an OrderTransaction"""
+input OrderTransactionCreateInput {
+  amount: Float!
+  authorizationCode: String
+  authorizationExpiresAt: Date
+  currency: ResonanceCurrency!
+  currencyExchangeAdjustment: OrderTransactionCurrencyExchangeAdjustmentInput
+  demandHqId: ID!
+  errorMessage: String
+  gateway: OrderTransactionGateway!
+  gatewayMessage: String
+  gatewayTransactionId: ID
+  orderId: ID!
+  orderTransactionType: OrderTransactionType!
+  processedAt: Date
+}
+
+"""
+If money is accepted in a foreign currency, this object describes amounts and currencies in the Shop's default currency.
+"""
+type OrderTransactionCurrencyExchangeAdjustment {
+  """The amount in the shop's default currency."""
+  targetAmount: Float!
+
+  """Shop's default currency."""
+  targetCurrency: ResonanceCurrency!
+}
+
+"""Input for OrderTransactionCurrencyExchangeAdjustment"""
+input OrderTransactionCurrencyExchangeAdjustmentInput {
+  """The amount in the shop's default currency."""
+  targetAmount: Float!
+
+  """Shop's default currency."""
+  targetCurrency: ResonanceCurrency!
+}
+
+"""One edge producing one OrderTransaction Node"""
+type OrderTransactionEdge {
+  node: OrderTransaction
+}
+
+"""Indicates which Payment Gateway was used for a Transaction."""
+enum OrderTransactionGateway {
+  TEST
+}
+
+"""Indicates the purpose of a given OrderTransaction."""
+enum OrderTransactionType {
+  """
+  Money that the customer has agreed to pay.
+  The authorization period can be between 7 and 30 days (depending on your
+  payment service) while a store waits for a payment to be captured.
+  """
+  AUTHORIZATION
+
+  """
+  A transfer of money that was reserved during the authorization of a shop.
+  """
+  CAPTURE
+
+  """The partial or full return of captured money to the customer."""
+  REFUND
+
+  """
+  The authorization and capture of a payment performed in one single step.
+  """
+  SALE
+
+  """The cancellation of a pending authorization or capture."""
+  VOID
+}
+
+"""Input for updating an Order"""
+input OrderUpdateInput {
+  billingAddress: AddressInput
+
+  """A note provided by the customer at time of order"""
+  customerNote: String
+  emailAddress: String
+  note: String
+  orderId: ID!
+
+  """
+  A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+  """
+  paymentId: ID
+  phoneNumber: String
+  shippingAddress: AddressInput
+  tags: [String]
 }
 
 """
@@ -3028,6 +3662,13 @@ type Product {
   productId: ID!
 
   """
+  Get productMetrics for a Product
+  
+      Requires product/read permission
+  """
+  productMetrics: ProductMetrics
+
+  """
   ISO format date when the product was published. Note that ensuing updates with
   status set to PUBLISHED will republish and re-set this date.
   """
@@ -3333,6 +3974,86 @@ input ProductLocaleUpdateInput {
 }
 
 """
+Metrics for a product including msrp min/max, price min/max, and discount metrics
+"""
+type ProductMetrics {
+  """This number is mostly useful in tallying other numbers, averages, etc."""
+  countOfVariants: Int!
+  demandHqId: ID!
+
+  """The maximum discount for all of the variants"""
+  discountMaximum: Float!
+
+  """
+  The maximum discount for all in stock variants (null if no variants are in stock)
+  """
+  discountMaximumInStock: Float
+
+  """The minimum discount for all of the variants"""
+  discountMinimum: Float!
+
+  """
+  The minimum discount for all in stock variants (null if no variants are in stock)
+  """
+  discountMinimumInStock: Float
+
+  """The maximum discount percentage for all of the variants"""
+  discountPercentageMaximum: Float!
+
+  """
+  The maximum discount percentage for all in stock variants (null if no variants are in stock)
+  """
+  discountPercentageMaximumInStock: Float
+
+  """The minimum discount percentage for all of the variants"""
+  discountPercentageMinimum: Float!
+
+  """
+  The minimum discount percentage for all in stock variants (null if no variants are in stock)
+  """
+  discountPercentageMinimumInStock: Float
+
+  """In Stock if any Variant inventoryStatus is In Stock"""
+  inventoryStatus: InventoryStatus!
+
+  """The maximum MSRP from all of the variants"""
+  msrpMaximum: Float!
+
+  """
+  The maximum MSRP from all in stock variants (null if no variants are in stock)
+  """
+  msrpMaximumInStock: Float
+
+  """The minimum MSRP from all of the variants"""
+  msrpMinimum: Float!
+
+  """
+  The minimum MSRP from all in stock variants (null if no variants are in stock)
+  """
+  msrpMinimumInStock: Float
+
+  """The maximum price from all of the variants"""
+  priceMaximum: Float!
+
+  """
+  The maximum price from all in stock variants (null if no variants are in stock)
+  """
+  priceMaximumInStock: Float
+
+  """The minimum price from all of the variants"""
+  priceMinimum: Float!
+
+  """
+  The minimum price from all in stock variants (null if no variants are in stock)
+  """
+  priceMinimumInStock: Float
+
+  """Id of the associated Product"""
+  productId: ID!
+  updatedAt: String!
+}
+
+"""
 The number of results to return for each term aggregation. Defaults to 0 for each.
 """
 input ProductNumberOfTermAggregations {
@@ -3368,6 +4089,17 @@ input ProductStandardizedColorFilterInput {
 """These are the tags associated to the product"""
 type ProductTags {
   demandHqId: ID!
+
+  """Get the tags for an product parsed into category, key, and value."""
+  parsed(
+    """Optionally filter tags by category."""
+    category: String
+
+    """
+    Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+    """
+    key: String
+  ): [ParsedTag]
   productId: ID!
   raw: [String]
   updatedAt: Date!
@@ -3494,6 +4226,186 @@ type PublicSupplier {
   topVendors: [String!]
 }
 
+"""
+This is the main entity of the Supplier domain, and is used to represent a product, which is a group of SKUs.
+SKUs are represented by SupplierVariants, a child of this entity.
+This entity is less frequently updated, it is more likely that SupplyVariant will be updated frequently.
+"""
+type PublicSupplierProduct {
+  """
+  Passed along in PurchaseOrders so the Supplier can identify items in their warehouse.
+  """
+  externalProductId: String!
+
+  """The first image content item, if it exists"""
+  featuredImage: PublicSupplierProductContentItem
+
+  """
+  The labels for the options of this product, i.e. ["Color", "Size"]
+  These will match with the order of the optionValues on the SupplierVariants.
+  Must have 1-3, and it should match the number of options in the variants, but there is no validation to do so.
+  Set the first optionLabel to "No Option" if you don't want to use options for this product.
+  See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
+  """
+  optionLabels: [String!]!
+
+  """Reference to the Supplier that owns this product."""
+  supplierId: ID!
+  supplierProductId: ID!
+  tags: PublicSupplierProductTags
+
+  """The title of the product."""
+  title: String!
+
+  """The brand or manufacturer of the product."""
+  vendor: String!
+}
+
+"""Paginate through PublicSupplierProducts"""
+type PublicSupplierProductConnectionWithSearch {
+  edges: [PublicSupplierProductEdge]!
+  nodes: [PublicSupplierProduct]!
+  pageInfo: PageInfo!
+
+  """
+  This is an object with terms in the query as keys, and a suggestion for that
+  term as the value. This is often referred to as 'Did you mean?'
+  """
+  querySuggestions: JSON
+}
+
+"""
+This has a many to one relationship with SupplierProduct, and provides a connection to the CDN items.
+"""
+type PublicSupplierProductContentItem {
+  alt: String!
+  category: String
+  contentItemId: ID!
+
+  """The key to the file in the CDN"""
+  contentKey: String!
+  contentType: SupplierProductContentType!
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+  supplierId: ID!
+  supplierProductId: ID!
+}
+
+"""One edge producing one SupplierProduct Node"""
+type PublicSupplierProductEdge {
+  node: PublicSupplierProduct
+}
+
+"""Indicates which field to sort by, defaults to CREATED_AT"""
+enum PublicSupplierProductSortField {
+  COST
+  CREATED_AT
+  INVENTORY_QUANTITY
+  MSRP
+  RECOMMENDED_PRICE
+  RELEVANCE
+  TITLE
+  UPDATED_AT
+  VENDOR
+}
+
+"""Categories and other groupings that apply to this product."""
+type PublicSupplierProductTags {
+  raw: [String!]
+  supplierId: ID!
+  supplierProductId: ID!
+}
+
+"""
+The public version of SupplierVariant.  Represents a single SKU.  A
+SupplierVariant is a child of a SupplierProduct (this is a one-to-many
+relationship, where a SupplierProduct has many SupplierVariants).
+"""
+type PublicSupplierVariant {
+  averageShippingCost: Float
+
+  """Associates contentItems with this variant"""
+  contentItemIds: [ID]
+  cost: Float
+  externalVariantId: String!
+  featuredImage: PublicSupplierProductContentItem
+  handlingCost: SupplierVariantHandlingCost
+  inventoryPolicy: PublicSupplierVariantInventoryPolicy!
+  inventoryQuantity: Int!
+  inventoryStatus: InventoryStatus!
+
+  """
+  An array of the option values that make up this variant.
+  For example, a product with a color and size option would have two option values,
+  one for each of the color and size options, i.e. ["Red", "Small"]
+  Must have 1-3, and it should match the number of options in the product, but there is no validation to do so.
+  Set this to "No Option" if you don't want to use options for this product and this is the only variant.
+  See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
+  """
+  optionValues: [String!]!
+  supplierId: ID!
+  supplierProductId: ID!
+  supplierVariantId: ID!
+  title: String
+}
+
+"""Paginate through PublicSupplierVariants"""
+type PublicSupplierVariantConnection {
+  edges: [PublicSupplierVariantEdge]!
+  nodes: [PublicSupplierVariant]!
+  pageInfo: PageInfo!
+}
+
+"""One edge producing one SupplierProduct Node"""
+type PublicSupplierVariantEdge {
+  node: PublicSupplierVariant
+}
+
+"""
+Indicates how to handle inventory, whether a product should or can go out of stock
+"""
+enum PublicSupplierVariantInventoryPolicy {
+  BOTTOMLESS
+  DEFAULT
+  HOLD
+}
+
+"""A fulfillment on a PurchaseOrderItem."""
+type PurchaseOrderItemFulfillment {
+  fulfilledAt: Date!
+  fulfilledQuantity: Int!
+  shippingCarrier: String!
+  trackingNumber: String!
+}
+
+"""Indicates the status of an PurchaseOrderItem (Supply)."""
+enum PurchaseOrderItemStatus {
+  """
+  Indicates that the PurchaseOrderItem was assigned, but is no longer needed to be fulfilled.
+  """
+  CANCELLED
+
+  """
+  Indicates that the PurchaseOrderItem is fully fulfilled and is now complete.
+  """
+  FULFILLED
+
+  """
+  Indicates that the PurchaseOrderItem is ready for processing, and data is complete.
+  """
+  INITIAL
+  PARTIALLY_ASSIGNED
+
+  """
+  Indicates that the PurchaseOrderItem is in the process of being fulfilled.
+  """
+  PARTIALLY_FULFILLED
+}
+
 """The root query type for the Demand domain"""
 type Query {
   """Nothing to see here, just a workaround for Apollo Server"""
@@ -3618,6 +4530,13 @@ type Query {
   nav(navId: ID!): Nav
 
   """
+  Get an order for an orderId.
+              
+  Requires the order/read scope on the associated DemandHq.
+  """
+  order(orderId: ID!): Order
+
+  """
   Get a page by pageId.
               
   Required page/read permission on the given DemandHq.
@@ -3638,8 +4557,114 @@ type Query {
   """
   product(productId: ID!): Product
 
+  """
+  Get productMetrics for a Product by productId
+  
+      Requires product/read permission
+  """
+  productMetrics(productId: ID!): ProductMetrics
+
+  """
+  Get productMetrics for Products by productIds
+  
+      Requires product/read permission
+  """
+  productMetricses(productIds: [ID!]!): [ProductMetrics]
+
   """List PublicDemandHqs"""
   publicDemandHqs(demandHqIds: [ID!]): PublicDemandHqConnection!
+
+  """Get the expanded PublicSupplier for this DemandHqSupplier"""
+  publicSupplierProducts(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Filter SupplierProducts using cost ranges."""
+    cost: [FloatRangeFilterInput]
+
+    """The ID of the DemandHq requesting the Public Supplier Products"""
+    demandHqId: ID!
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Filter SupplierProducts using InventoryPolicy (Variant)."""
+    inventoryPolicy: [SupplierProductInventoryPolicyFilterInput]
+    inventoryStatus: InventoryStatus
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """Filter SupplierProducts using Manufacturer (VariantSupplement)."""
+    manufacturer: [StringFilterInput]
+
+    """Filter SupplierProducts using MSRP ranges."""
+    msrp: [FloatRangeFilterInput]
+
+    """
+    Query supplierProducts for certain terms. Searches several fields, including
+    supplierProduct.tags, supplierProduct.title, supplierProduct.vendor,
+    supplierProductLocales.description, supplierProductLocales.featureBullets,
+    supplierVariantSupplements.barcode, supplierVariantSupplement.mpn,
+    supplierVariantSupplement.sku
+    """
+    query: String
+
+    """Filter SupplierProducts using recommendedPrice ranges."""
+    recommendedPrice: [FloatRangeFilterInput]
+
+    """
+    Sort SupplierProducts by a series of fields and directions, defaults to CREATED_AT/ASC.
+    """
+    sortOrder: [SupplierProductSortInput]
+
+    """Filter SupplierProducts using StandardizedColor (Variant)."""
+    standardizedColor: [SupplierProductStandardizedColorFilterInput]
+
+    """The ID of the Supplier to get products for."""
+    supplierId: ID!
+
+    """Filter SupplierProducts using Tags."""
+    tags: [StringFilterInput]
+
+    """Filter SupplierProducts using Vendors."""
+    vendor: StringFilterInput
+  ): PublicSupplierProductConnectionWithSearch
+
+  """
+  Get a list of supplierVariants
+  
+  Requires suppliervariant/read permission on the supplier for the requesting identity
+  """
+  publicSupplierVariants(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """The ID of the DemandHq requesting the Public Supplier Product"""
+    demandHqId: ID!
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """The ID of the Supplier requesting the Public Supplier Product"""
+    supplierId: ID!
+
+    """The ID of the SupplierProduct to get variants for."""
+    supplierProductId: ID!
+  ): PublicSupplierVariantConnection!
 
   """
   Get a storefront by its storefrontId.
@@ -3661,6 +4686,20 @@ type Query {
       Requires demandHqvariant/read permission on the requesting identity
   """
   variant(variantId: ID): Variant
+
+  """
+  Get variantMetrics for a Variant by variantId
+              
+      Requires variant/read permission
+  """
+  variantMetrics(variantId: ID!): VariantMetrics
+
+  """
+  Get variantMetrics for Variants by variantIds
+  
+      Requires variant/read permission
+  """
+  variantMetricses(variantIds: [ID!]!): [VariantMetrics]
 
   """
   Get a single variantSupplierVariant by id (combination of variantId and supplierVariantId)
@@ -3706,6 +4745,14 @@ Used throughout the app to indicate what language and locality a given text is i
 """
 enum ResonanceLocaleType {
   EN_US
+}
+
+"""The speed with which this variant gets delivered. Defaults to GROUND."""
+enum ShippingMethod {
+  GROUND
+  OVERNIGHT
+  THREE_DAY
+  TWO_DAY
 }
 
 """Indicates which direction to sort, defaults to ASC"""
@@ -4014,6 +5061,30 @@ enum SupplierCategory {
   SPORTING_GOODS
 }
 
+"""Describes what type of content the entity is"""
+enum SupplierProductContentType {
+  IMAGE
+  VIDEO
+}
+
+"""Filter SupplierProducts using InventoryPolicy (Variant)."""
+input SupplierProductInventoryPolicyFilterInput {
+  operator: FilterOperator
+  values: [PublicSupplierVariantInventoryPolicy!]!
+}
+
+"""Sort SupplierProducts by a field and direction."""
+input SupplierProductSortInput {
+  direction: SortDirection!
+  field: PublicSupplierProductSortField!
+}
+
+"""Filter SupplierProducts using StandardizedColor (Variant)."""
+input SupplierProductStandardizedColorFilterInput {
+  operator: FilterOperator
+  values: [VariantStandardizedColor!]!
+}
+
 """Indication of whether the Supplier is live and accepting orders"""
 enum SupplierStatus {
   """Indicates a Supplier's goods are no longer available for retailing."""
@@ -4033,6 +5104,21 @@ enum SupplierStatus {
   Indicates that a Supplier is not only activated, but available in the public Supplier Marketplace.
   """
   PUBLIC
+}
+
+"""Object to indicate both amount and unit of handling cost."""
+type SupplierVariantHandlingCost {
+  amount: Float!
+  unit: SupplierVariantHandlingCostUnit!
+}
+
+"""Indicates what unit the amount is in"""
+enum SupplierVariantHandlingCostUnit {
+  """The amount is in a currency, i.e. $"""
+  CURRENCY
+
+  """The amount is a percentage of the Cost field"""
+  PERCENTAGE_OF_COST
 }
 
 """
@@ -4057,6 +5143,7 @@ type Variant {
   """Associates contentItems with this variant"""
   contentItemIds: [ID]
   createdAt: String!
+  deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
   isTaxable: Boolean
 
@@ -4111,6 +5198,13 @@ type Variant {
   variantId: ID!
 
   """
+  Get variantMetrics for a Variant
+              
+      Requires variant/read permission
+  """
+  variantMetrics: VariantMetrics
+
+  """
   Get a single variantSupplierVariant for a Variant by the SupplierVariantId
   """
   variantSupplierVariant(supplierVariantId: ID!): VariantSupplierVariant
@@ -4151,6 +5245,7 @@ input VariantCreateInput {
 
   """Associates contentItems with this variant"""
   contentItemIds: [ID]
+  deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
   isTaxable: Boolean
 
@@ -4198,6 +5293,12 @@ type VariantDeleteResponse {
   deletedId: ID!
 }
 
+"""How this variant gets delivered. Defaults to SHIPPING."""
+enum VariantDeliveryMethod {
+  EMAIL
+  SHIPPING
+}
+
 """One edge producing one Variant Node"""
 type VariantEdge {
   node: Variant
@@ -4210,6 +5311,31 @@ enum VariantHandlingCost {
 
   """The amount is a percentage of the Cost field"""
   PERCENTAGE_OF_COST
+}
+
+"""
+Metrics for a variant, including inventory quantity, status, and supplierVariant counts
+"""
+type VariantMetrics {
+  countOfInStockSupplierVariants: Int!
+  countOfSupplierVariants: Int!
+  demandHqId: ID!
+
+  """
+  This is mostly useful for determining whether a certain quantity can be added
+  to the cart. For BOTTOMLESS InventoryPolicy, a value of 10,000,000 is added here.
+  """
+  inventoryQuantity: Int!
+
+  """If any SupplierVariant is in stock, this is in stock."""
+  inventoryStatus: InventoryStatus!
+
+  """Id of the Product parent of the associated Variant"""
+  productId: ID!
+  updatedAt: String!
+
+  """Id of the associated Variant"""
+  variantId: ID!
 }
 
 """Metric or Standard Dimension?"""
@@ -4397,6 +5523,7 @@ input VariantUpdateInput {
 
   """Associates contentItems with this variant"""
   contentItemIds: [ID]
+  deliveryMethod: VariantDeliveryMethod
   isTaxable: Boolean
 
   """Often same as vendor, but not always."""

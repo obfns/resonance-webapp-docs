@@ -1,0 +1,48 @@
+---
+id: public-page-type-content-connection
+title: PublicPageTypeContentConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Pagination object for PublicPageTypeContent.
+
+```graphql
+type PublicPageTypeContentConnection {
+  edges: [PublicPageTypeContentEdge]!
+  nodes: [PublicPageTypeContent]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicPageTypeContentConnection.<b>edges</b></code>](#)<Bullet />[`[PublicPageTypeContentEdge]!`](/demand/api/graphql-storefront/reference/objects/public-page-type-content-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicPageTypeContentConnection.<b>nodes</b></code>](#)<Bullet />[`[PublicPageTypeContent]!`](/demand/api/graphql-storefront/reference/objects/public-page-type-content) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicPageTypeContentConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-storefront/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`pageTypeContents`](/demand/api/graphql-storefront/reference/queries/page-type-contents)  <Badge class="secondary" text="query"/>
+
+
+

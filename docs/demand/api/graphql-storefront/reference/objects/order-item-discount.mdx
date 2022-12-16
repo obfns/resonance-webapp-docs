@@ -1,0 +1,53 @@
+---
+id: order-item-discount
+title: OrderItemDiscount
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A discount applied to an OrderItem. Discounts alter pricing of an OrderItem, and may include a coupon code to do so.
+
+```graphql
+type OrderItemDiscount {
+  code: String
+  discountAmount: Float!
+  discountType: OrderItemDiscountType!
+  discountedAt: Date!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemDiscount.<b>code</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemDiscount.<b>discountAmount</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The amount of the discount.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemDiscount.<b>discountType</b></code>](#)<Bullet />[`OrderItemDiscountType!`](/demand/api/graphql-storefront/reference/enums/order-item-discount-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The type of discount.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemDiscount.<b>discountedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`CheckoutOrderItem`](/demand/api/graphql-storefront/reference/objects/checkout-order-item)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderItem`](/demand/api/graphql-storefront/reference/objects/public-order-item)  <Badge class="secondary" text="object"/>
+
+
+

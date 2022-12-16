@@ -1,0 +1,112 @@
+---
+id: user-notification
+title: UserNotification
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Represents a notification specific to a User
+
+```graphql
+type UserNotification {
+  category: UserNotificationCategory!
+  content: String
+  createdAt: String!
+  createdBy: ID!
+  expiresAt: Int
+  externalDeliveries: [NotificationExternalDeliveryType]
+  link: String
+  senderReferenceKey: String
+  sentiment: NotificationSentiment
+  status: NotificationStatus!
+  subject: String!
+  updatedAt: String!
+  updatedBy: ID!
+  userName: ID!
+  userNotificationId: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>category</b></code>](#)<Bullet />[`UserNotificationCategory!`](/adminidentity/api/graphql-admin/reference/enums/user-notification-category) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> These denote where the message is from and what it pertains to.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>content</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The actual message. It's optional, and potentially only the subject is needed. Should be short.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>createdAt</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> ISO Date
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>createdBy</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Identity who created the notification
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>expiresAt</b></code>](#)<Bullet />[`Int`](/adminidentity/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Epoch date when this notification will expire
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>externalDeliveries</b></code>](#)<Bullet />[`[NotificationExternalDeliveryType]`](/adminidentity/api/graphql-admin/reference/enums/notification-external-delivery-type) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> Should this notification be delivered outside the portal?
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>link</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Where the button in the notification should link to
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>senderReferenceKey</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The sender of the notification can use this to reference it later
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>sentiment</b></code>](#)<Bullet />[`NotificationSentiment`](/adminidentity/api/graphql-admin/reference/enums/notification-sentiment) <Badge class="secondary" text="enum"/>
+> Denotes the tone of the message, may affect display
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>status</b></code>](#)<Bullet />[`NotificationStatus!`](/adminidentity/api/graphql-admin/reference/enums/notification-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Denotes how urgent and whether the Notification is archived
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>subject</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The subject of the notification, is required
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> ISO Date
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The last identity to alter this record
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>userName</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The user this notification pertains to
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>userNotificationId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The ID of this userNotification
+> 
+
+
+
+### Returned by
+
+[`updateUserNotificationStatus`](/adminidentity/api/graphql-admin/reference/mutations/update-user-notification-status)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`UserNotificationConnection`](/adminidentity/api/graphql-admin/reference/objects/user-notification-connection)  <Badge class="secondary" text="object"/><Bullet />[`UserNotificationEdge`](/adminidentity/api/graphql-admin/reference/objects/user-notification-edge)  <Badge class="secondary" text="object"/>
+
+
+

@@ -1,0 +1,68 @@
+---
+id: nav-update-input
+title: NavUpdateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The input for updating a Nav.
+
+```graphql
+input NavUpdateInput {
+  href: String
+  label: String
+  linkSlug: String
+  linkType: String
+  navId: ID!
+  position: Int
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>NavUpdateInput.<b>href</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Where this Nav link should lead to. Can be an absolute or relative url. 768 character limit.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NavUpdateInput.<b>label</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The label for this Nav, limit 64 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NavUpdateInput.<b>linkSlug</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> This has two primary purposes:
+To make this Nav "lookupable" in combination with linkType.
+To make entities aware they are being referenced. This is done with the
+reserved system linkTypes in combination with entitySlugs (i.e. Collection and
+a collection slug).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NavUpdateInput.<b>linkType</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> This can be any string, but certain values have special meaning (like "collection").
+These are restricted to the specified values in NavSettings.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NavUpdateInput.<b>navId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NavUpdateInput.<b>position</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Where this Nav should be located with respect to other Navs. Need not be sequential or unique.
+> 
+
+
+
+### Member of
+
+[`updateNav`](/demand/api/graphql-admin/reference/mutations/update-nav)  <Badge class="secondary" text="mutation"/>
+
+
+

@@ -1,0 +1,160 @@
+---
+id: public-order
+title: PublicOrder
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A Order is a part of the Demand Domain and represents a the basic information of a order.
+Orders have many support entities, including variants, which represent SKUs of the order.
+
+```graphql
+type PublicOrder {
+  billingAddress: Address!
+  customerId: ID
+  customerNote: String
+  demandHqId: ID!
+  emailAddress: String!
+  items(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): PublicOrderItemConnection!
+  note: String
+  orderId: ID!
+  paymentId: ID
+  phoneNumber: String
+  placedAt: Date
+  shippingAddress: Address!
+  status: OrderStatus!
+  storefrontId: ID
+  tags: OrderTags
+  transactions(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): PublicOrderTransactionConnection!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>billingAddress</b></code>](#)<Bullet />[`Address!`](/demand/api/graphql-storefront/reference/objects/address) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>customerId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>customerNote</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A note provided by the customer at time of order
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>emailAddress</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>items</b></code>](#)<Bullet />[`PublicOrderItemConnection!`](/demand/api/graphql-storefront/reference/objects/public-order-item-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List the items in an order.
+            
+Requires the orderitem/read permission on the associated DemandHq.
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicOrder.items.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicOrder.items.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicOrder.items.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicOrder.items.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>note</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>orderId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>paymentId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>phoneNumber</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>placedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> ISO Date indicated when an order should be considered complete, closed for some changes, and started to process.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>shippingAddress</b></code>](#)<Bullet />[`Address!`](/demand/api/graphql-storefront/reference/objects/address) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>status</b></code>](#)<Bullet />[`OrderStatus!`](/demand/api/graphql-storefront/reference/enums/order-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The status of the order currently, this field is read-only and can change many times over the course of the order
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>storefrontId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>tags</b></code>](#)<Bullet />[`OrderTags`](/demand/api/graphql-storefront/reference/objects/order-tags) <Badge class="secondary" text="object"/>
+> Get the tags of the order.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>transactions</b></code>](#)<Bullet />[`PublicOrderTransactionConnection!`](/demand/api/graphql-storefront/reference/objects/public-order-transaction-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List the transactions in an order.
+            
+Requires the ordertransaction/read permission on the associated DemandHq.
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicOrder.transactions.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicOrder.transactions.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicOrder.transactions.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicOrder.transactions.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+
+
+### Returned by
+
+[`order`](/demand/api/graphql-storefront/reference/queries/order)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`PublicOrderConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-order-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderEdge`](/demand/api/graphql-storefront/reference/objects/public-order-edge)  <Badge class="secondary" text="object"/>
+
+
+

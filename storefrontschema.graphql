@@ -1,3 +1,63 @@
+"""The globally used Address of Resonance"""
+type Address {
+  """The city of the address"""
+  city: String!
+
+  """The company associated with the address"""
+  company: String
+
+  """The country of the address"""
+  country: String!
+
+  """The name associated with the address, i.e. the Person in the household"""
+  name: String!
+
+  """The phone number of the address. Format +11231231234"""
+  phoneNumber: String
+
+  """The zip or postal code of the address"""
+  postalCode: String!
+
+  """The state of the address"""
+  state: String!
+
+  """The first line of the street address"""
+  streetAddress1: String!
+
+  """The second line of the street address"""
+  streetAddress2: String
+}
+
+"""The input type for an Address"""
+input AddressInput {
+  """The city of the address"""
+  city: String!
+
+  """The company associated with the address"""
+  company: String
+
+  """The country of the address"""
+  country: String!
+
+  """The name associated with the address, i.e. the Person in the household"""
+  name: String!
+
+  """The phone number of the address. Format +11231231234"""
+  phoneNumber: String
+
+  """The zip or postal code of the address"""
+  postalCode: String!
+
+  """The state of the address"""
+  state: String!
+
+  """The first line of the street address"""
+  streetAddress1: String!
+
+  """The second line of the street address"""
+  streetAddress2: String
+}
+
 """
 A cart is a temporary container for products that a customer or anonymous user wants to buy
 """
@@ -11,7 +71,10 @@ type Cart {
   updatedAt: Date!
 }
 
-"""Input for adding or updating items in a cart or savedForLater"""
+"""
+Input for adding or updating items in a cart or savedForLater
+Can be used in combination with CartAddOrUpdateItemsInput to move items between cartItems and savedForLaterItems.
+"""
 input CartAddOrUpdateItemsInput {
   cartItems: [CartItemInput]
   savedForLaterItems: [SavedForLaterItemInput]
@@ -38,7 +101,10 @@ input CartItemInput {
   variantId: ID!
 }
 
-"""Input for removing items from a cart or savedForLater"""
+"""
+Input for removing items from a cart or savedForLater
+Can be used in combination with CartAddOrUpdateItemsInput to move items between cartItems and savedForLaterItems.
+"""
 input CartRemoveItemsInput {
   cartItems: [ID!]
   savedForLaterItems: [ID!]
@@ -50,6 +116,98 @@ enum CartType {
   CUSTOMER
 
   """Indicates this cart is anonymous and tied to a device"""
+  DEVICE
+}
+
+"""
+A checkout is a temporary container for an order and its orderItems that a customer or anonymous user wants to buy
+"""
+type Checkout {
+  checkoutType: CheckoutType!
+  createdAt: Date!
+  currency: ResonanceCurrency!
+  demandHqId: ID!
+  externalCustomerOrDeviceId: String!
+  order: CheckoutOrder
+  orderItems: [CheckoutOrderItem]
+  storefrontId: ID!
+  updatedAt: Date!
+}
+
+"""
+This is an order in the checkout process, pending creation.
+Nearly all fields are optional, but their existence is still required by the end
+of the checkout process if they are required for Orders.
+"""
+type CheckoutOrder {
+  billingAddress: Address
+
+  """A note provided by the customer at time of order"""
+  customerNote: String
+  emailAddress: String
+
+  """
+  A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+  """
+  paymentId: ID
+  phoneNumber: String
+  shippingAddress: Address
+  tags: [String]
+}
+
+"""Create or Update a CheckoutOrder"""
+input CheckoutOrderInput {
+  billingAddress: AddressInput
+
+  """A note provided by the customer at time of order"""
+  customerNote: String
+  emailAddress: String
+
+  """
+  A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+  """
+  paymentId: ID
+  phoneNumber: String
+  shippingAddress: AddressInput
+  tags: [String]
+}
+
+"""
+This is an orderItem in the checkout process, pending order creation.
+Nearly all fields are optional, but their existence is still required by the end
+of the checkout process if they are required for OrderItems.
+"""
+type CheckoutOrderItem {
+  customProperties: JSON
+  discounts: [OrderItemDiscount]
+  note: String
+  quantity: Int
+  shippingCharges: [OrderItemShippingCharge]
+  shippingMethod: ShippingMethod
+  taxes: [OrderItemTax]
+  unitPrice: Float
+  variantId: ID!
+}
+
+"""Create or Update a CheckoutOrderItem"""
+input CheckoutOrderItemInput {
+  customProperties: JSON
+  discounts: [OrderItemDiscountInput]
+  note: String
+  quantity: Int
+  shippingCharges: [OrderItemShippingChargeInput]
+  shippingMethod: ShippingMethod
+  taxes: [OrderItemTaxInput]
+  unitPrice: Float
+  variantId: ID!
+}
+
+"""Indicates the type of checkout"""
+enum CheckoutType {
+  """Indicates that the checkout is for a logged in customer"""
+  CUSTOMER
+
+  """Indicates this checkout is anonymous and tied to a device"""
   DEVICE
 }
 
@@ -488,6 +646,12 @@ input FloatRangeFilterInput {
   min: Float!
 }
 
+"""Indicates whether a variant is in or out of stock"""
+enum InventoryStatus {
+  INSTOCK
+  OUTOFSTOCK
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -497,6 +661,8 @@ scalar JSON
 type Mutation {
   """
   Add, Update, or Remove Items from a Customer Cart or SavedForLater.
+  If you are attempting to move an item from the cartItems to savedForLaterItems or vice versa, you must
+  both add and remove the item in the same mutation, which is allowed.
   
   Requires the publiccart/write scope and a valid customer authentication token.
   """
@@ -517,6 +683,8 @@ type Mutation {
 
   """
   Add, Update, or Remove Items from a Device Cart or SavedForLater.
+  If you are attempting to move an item from the cartItems to savedForLaterItems or vice versa, you must
+  both add and remove the item in the same mutation, which is allowed.
   
   Requires the publiccart/write scope.
   """
@@ -550,6 +718,14 @@ type Mutation {
   createCustomerAddress(customerToken: String!, input: CustomerAddressCreateInput!): CustomerAddress
 
   """
+  Creates a new checkout for a logged in customer.
+  Unlike most creates, this will overwrite any existing checkout for the customer, starting from scratch.
+              
+  Requires the publiccheckout/write scope and a valid customerToken.
+  """
+  createCustomerCheckout(currency: ResonanceCurrency!, customerToken: String!, orderInput: CheckoutOrderInput, orderItemInputs: [CheckoutOrderItemInput]): Checkout!
+
+  """
   Deletes a CustomerAddress
   
   Requires the customeraddress/write scope on the associated DemandHq.
@@ -578,6 +754,245 @@ type Mutation {
   Requires the customeraddress/write scope on the associated DemandHq.
   """
   updateCustomerAddress(customerToken: String!, input: CustomerAddressUpdateInput!): CustomerAddress
+
+  """
+  Updates an existing checkout's order fields for a logged in customer.
+  Updates are partial, and will only affect fields provided.
+              
+  Requires the publiccheckout/write scope and a valid customerToken.
+  """
+  updateCustomerCheckoutOrder(customerToken: String!, orderInput: CheckoutOrderInput!): Checkout!
+
+  """
+  Updates an existing checkout's order item's fields for a logged in customer.
+  Updates are partial, and will only affect fields provided for each orderItemInput.
+              
+  Requires the publiccheckout/write scope and a valid customerToken.
+  """
+  updateCustomerCheckoutOrderItems(customerToken: String!, orderItemInputs: [CheckoutOrderItemInput!]!): Checkout!
+
+  """
+  Validates an existing checkout for a logged in customer as ready to be converted to an order.
+  
+  Requires the publiccheckout/write scope and a valid customerToken.
+  """
+  validateCustomerCheckout(customerToken: String!): Checkout!
+}
+
+"""
+An adjustment to an OrderItem. Adjustments to orders occur for a variety of
+reasons, and are only allowed at certain stages of the order process.
+"""
+type OrderItemAdjustment {
+  adjustedAt: Date!
+
+  """The amount of the adjustment."""
+  adjustmentAmount: Float!
+
+  """The reason for the adjustment."""
+  adjustmentReason: OrderItemAdjustmentReason!
+
+  """The type of adjustment."""
+  adjustmentType: OrderItemAdjustmentType!
+}
+
+"""Indicates why an Adjustment occurred."""
+enum OrderItemAdjustmentReason {
+  CUSTOMER_FOUND_LOWER_PRICE
+  CUSTOMER_NO_LONGER_NEEDS
+  CUSTOMER_ORDERED_BY_ACCIDENT
+  CUSTOMER_OTHER
+  CUSTOMER_SHIPPING_TOOK_TOO_LONG
+  ITEM_NOT_AS_ADVERTISED
+  OTHER
+  OUT_OF_STOCK
+  SPOT_DISCOUNT
+  WRONG_ITEM_SHIPPED
+}
+
+"""Indicates how to apply an OrderItemAdjustment."""
+enum OrderItemAdjustmentType {
+  PRICE
+  QUANTITY
+}
+
+"""
+A discount applied to an OrderItem. Discounts alter pricing of an OrderItem, and may include a coupon code to do so.
+"""
+type OrderItemDiscount {
+  code: String
+
+  """The amount of the discount."""
+  discountAmount: Float!
+
+  """The type of discount."""
+  discountType: OrderItemDiscountType!
+  discountedAt: Date!
+}
+
+"""Create or Update an OrderItemDiscount"""
+input OrderItemDiscountInput {
+  code: String
+
+  """The amount of the discount."""
+  discountAmount: Float!
+
+  """The type of discount."""
+  discountType: OrderItemDiscountType!
+  discountedAt: Date!
+}
+
+"""Indicates how a discount should be applied"""
+enum OrderItemDiscountType {
+  PERCENTAGE
+  PRICE
+}
+
+"""A relationship entity between an OrderItem and a PurchaseOrderItem."""
+type OrderItemPurchaseOrderItem {
+  fulfillments: [PurchaseOrderItemFulfillment]
+  orderItemId: ID!
+  purchaseOrderItemId: ID!
+  quantity: Int!
+  status: PurchaseOrderItemStatus!
+}
+
+"""A shippingCharge applied to an OrderItem."""
+type OrderItemShippingCharge {
+  amount: Float!
+  title: String
+}
+
+"""Create or Update an OrderItemShippingCharge"""
+input OrderItemShippingChargeInput {
+  amount: Float!
+  title: String
+}
+
+"""Indicates the status of an OrderItem."""
+enum OrderItemStatus {
+  ASSIGNED
+
+  """
+  Indicates that the OrderItem was assigned, but is no longer needed to be fulfilled.
+  """
+  CANCELLED
+
+  """Indicates that the OrderItem is fully fulfilled and is now complete."""
+  FULFILLED
+
+  """
+  Indicates that the OrderItem is ready for processing, and data is complete.
+  """
+  INITIAL
+  PARTIALLY_ASSIGNED
+
+  """Indicates that the OrderItem is in the process of being fulfilled."""
+  PARTIALLY_FULFILLED
+}
+
+"""A tax applied to an OrderItem."""
+type OrderItemTax {
+  amount: Float!
+  rate: Float!
+  title: String!
+}
+
+"""Create or Update an OrderItemTax"""
+input OrderItemTaxInput {
+  amount: Float!
+  rate: Float!
+  title: String!
+}
+
+"""Indicates the lifecycle stage an order is in"""
+enum OrderStatus {
+  """Order has been authorized, waiting on fulfillment"""
+  AUTHORIZED
+
+  """
+  Order has been paid, and is now complete. This can also indicate that an order
+  was partially or fully refunded, but that process is also complete.
+  """
+  COMPLETE
+
+  """
+  Initial state for an order, during which it can contain invalid or incomplete information
+  """
+  DRAFT
+
+  """Order has been fulfilled, waiting on payment"""
+  FULFILLED
+
+  """
+  Order has been partially fulfilled, and paid up for the currently fulfilled items
+  """
+  PARTIALLY_FULFILLED
+
+  """
+  Order has been partially fulfilled, waiting on other fulfillments and for the existing fulfillments payment
+  """
+  PARTIALLY_FULFILLED_AWAITING_PAYMENT
+
+  """Order has been placed, waiting on authorization"""
+  PENDING
+}
+
+"""These are the tags associated to the order"""
+type OrderTags {
+  """Get parsed, and optionally filtered, tags for a Order."""
+  parsed(
+    """Optionally filter tags by category."""
+    category: String
+
+    """
+    Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+    """
+    key: String
+  ): [ParsedTag]
+  raw: [String]
+}
+
+"""
+If money is accepted in a foreign currency, this object describes amounts and currencies in the Shop's default currency.
+"""
+type OrderTransactionCurrencyExchangeAdjustment {
+  """The amount in the shop's default currency."""
+  targetAmount: Float!
+
+  """Shop's default currency."""
+  targetCurrency: ResonanceCurrency!
+}
+
+"""Indicates which Payment Gateway was used for a Transaction."""
+enum OrderTransactionGateway {
+  TEST
+}
+
+"""Indicates the purpose of a given OrderTransaction."""
+enum OrderTransactionType {
+  """
+  Money that the customer has agreed to pay.
+  The authorization period can be between 7 and 30 days (depending on your
+  payment service) while a store waits for a payment to be captured.
+  """
+  AUTHORIZATION
+
+  """
+  A transfer of money that was reserved during the authorization of a shop.
+  """
+  CAPTURE
+
+  """The partial or full return of captured money to the customer."""
+  REFUND
+
+  """
+  The authorization and capture of a payment performed in one single step.
+  """
+  SALE
+
+  """The cancellation of a pending authorization or capture."""
+  VOID
 }
 
 """This is the actual content of the page"""
@@ -1084,6 +1499,170 @@ type PublicNavEdge {
 }
 
 """
+A Order is a part of the Demand Domain and represents a the basic information of a order.
+Orders have many support entities, including variants, which represent SKUs of the order.
+"""
+type PublicOrder {
+  billingAddress: Address!
+  customerId: ID
+
+  """A note provided by the customer at time of order"""
+  customerNote: String
+  demandHqId: ID!
+  emailAddress: String!
+
+  """
+  List the items in an order.
+              
+  Requires the orderitem/read permission on the associated DemandHq.
+  """
+  items(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): PublicOrderItemConnection!
+  note: String
+  orderId: ID!
+
+  """
+  A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+  """
+  paymentId: ID
+  phoneNumber: String
+
+  """
+  ISO Date indicated when an order should be considered complete, closed for some changes, and started to process.
+  """
+  placedAt: Date
+  shippingAddress: Address!
+
+  """
+  The status of the order currently, this field is read-only and can change many times over the course of the order
+  """
+  status: OrderStatus!
+  storefrontId: ID
+
+  """Get the tags of the order."""
+  tags: OrderTags
+
+  """
+  List the transactions in an order.
+              
+  Requires the ordertransaction/read permission on the associated DemandHq.
+  """
+  transactions(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): PublicOrderTransactionConnection!
+}
+
+"""
+Paginate through PublicOrders, name is indicative of future functionality.
+"""
+type PublicOrderConnectionWithSearch {
+  edges: [PublicOrderEdge]!
+  nodes: [PublicOrder]!
+  pageInfo: PageInfo!
+}
+
+"""One edge producing one PublicOrder Node"""
+type PublicOrderEdge {
+  node: PublicOrder
+}
+
+"""An item in a PublicOrder."""
+type PublicOrderItem {
+  adjustments: [OrderItemAdjustment]
+  barcode: String!
+  currency: ResonanceCurrency!
+  customProperties: JSON
+  deliveryMethod: VariantDeliveryMethod!
+  demandHqId: ID!
+  discounts: [OrderItemDiscount]
+  note: String
+  orderId: ID!
+  orderItemId: ID!
+  productId: ID!
+  productTitle: String!
+  purchaseOrderItems: [OrderItemPurchaseOrderItem]
+  quantity: Int!
+  shippingCharges: [OrderItemShippingCharge]
+  shippingMethod: ShippingMethod
+  sku: String
+  status: OrderItemStatus!
+  taxes: [OrderItemTax]
+
+  """Price per item, can be multiplied by quantity for total price"""
+  unitPrice: Float!
+  variantId: ID!
+  variantTitle: String!
+  vendor: String!
+}
+
+"""Paginate through OrderItems"""
+type PublicOrderItemConnection {
+  edges: [PublicOrderItemEdge]!
+  nodes: [PublicOrderItem]!
+  pageInfo: PageInfo!
+}
+
+"""One edge producing one PublicOrderItem Node"""
+type PublicOrderItemEdge {
+  node: PublicOrderItem
+}
+
+"""A transaction in a PublicOrder."""
+type PublicOrderTransaction {
+  amount: Float!
+  authorizationCode: String
+  authorizationExpiresAt: Date
+  currency: ResonanceCurrency!
+  currencyExchangeAdjustment: OrderTransactionCurrencyExchangeAdjustment
+  demandHqId: ID!
+  errorMessage: String
+  gateway: OrderTransactionGateway!
+  gatewayMessage: String
+  gatewayTransactionId: ID
+  orderId: ID!
+  orderTransactionId: ID!
+  orderTransactionType: OrderTransactionType!
+  processedAt: Date
+}
+
+"""Paginate through OrderTransactions"""
+type PublicOrderTransactionConnection {
+  edges: [PublicOrderTransactionEdge]!
+  nodes: [PublicOrderTransaction]!
+  pageInfo: PageInfo!
+}
+
+"""One edge producing one PublicOrderTransaction Node"""
+type PublicOrderTransactionEdge {
+  node: PublicOrderTransaction
+}
+
+"""
 A Page is a part of the Demand Domain and represents a page with textual and
 image content on it, that has nothing to do with products.
 This can range from "About Us" pages to Blog articles. Use the "pageType" field to differentiate.
@@ -1299,6 +1878,13 @@ type PublicProduct {
   """A short description of the product, limit 1000 characters."""
   productId: ID!
 
+  """
+  Get productMetrics for a Product
+  
+      Requires product/read permission
+  """
+  productMetrics: PublicProductMetrics
+
   """ISO format date when the product was published."""
   publishedAt: Date
 
@@ -1416,6 +2002,81 @@ type PublicProductLocale {
 }
 
 """
+Metrics for a PublicProduct including msrp min/max, price min/max, and discount metrics
+"""
+type PublicProductMetrics {
+  """This number is mostly useful in tallying other numbers, averages, etc."""
+  countOfVariants: Int!
+
+  """The maximum discount for all of the variants"""
+  discountMaximum: Float!
+
+  """
+  The maximum discount for all in stock variants (null if no variants are in stock)
+  """
+  discountMaximumInStock: Float
+
+  """The minimum discount for all of the variants"""
+  discountMinimum: Float!
+
+  """
+  The minimum discount for all in stock variants (null if no variants are in stock)
+  """
+  discountMinimumInStock: Float
+
+  """The maximum discount percentage for all of the variants"""
+  discountPercentageMaximum: Float!
+
+  """
+  The maximum discount percentage for all in stock variants (null if no variants are in stock)
+  """
+  discountPercentageMaximumInStock: Float
+
+  """The minimum discount percentage for all of the variants"""
+  discountPercentageMinimum: Float!
+
+  """
+  The minimum discount percentage for all in stock variants (null if no variants are in stock)
+  """
+  discountPercentageMinimumInStock: Float
+
+  """In Stock if any Variant inventoryStatus is In Stock"""
+  inventoryStatus: InventoryStatus!
+
+  """The maximum MSRP from all of the variants"""
+  msrpMaximum: Float!
+
+  """
+  The maximum MSRP from all in stock variants (null if no variants are in stock)
+  """
+  msrpMaximumInStock: Float
+
+  """The minimum MSRP from all of the variants"""
+  msrpMinimum: Float!
+
+  """
+  The minimum MSRP from all in stock variants (null if no variants are in stock)
+  """
+  msrpMinimumInStock: Float
+
+  """The maximum price from all of the variants"""
+  priceMaximum: Float!
+
+  """
+  The maximum price from all in stock variants (null if no variants are in stock)
+  """
+  priceMaximumInStock: Float
+
+  """The minimum price from all of the variants"""
+  priceMinimum: Float!
+
+  """
+  The minimum price from all in stock variants (null if no variants are in stock)
+  """
+  priceMinimumInStock: Float
+}
+
+"""
 A Storefront is the parent-most entity in the Storefront API, and represents the entire site.
 """
 type PublicStorefront {
@@ -1438,6 +2099,7 @@ type PublicVariant {
 
   """Associates contentItems with this variant"""
   contentItemIds: [ID]
+  deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
   isTaxable: Boolean
 
@@ -1488,6 +2150,13 @@ type PublicVariant {
   """Get the title of this variant (combo of optionValues)"""
   title: String!
   variantId: ID!
+
+  """
+  Get variantMetrics for a Variant
+              
+      Requires variant/read permission
+  """
+  variantMetrics: PublicVariantMetrics
   weight: VariantWeight
 }
 
@@ -1501,6 +2170,55 @@ type PublicVariantConnection {
 """One edge producing one Variant Node"""
 type PublicVariantEdge {
   node: PublicVariant
+}
+
+"""
+Metrics for a PublicVariant, including inventory quantity, status, and supplierVariant counts
+"""
+type PublicVariantMetrics {
+  countOfInStockSupplierVariants: Int!
+  countOfSupplierVariants: Int!
+
+  """
+  This is mostly useful for determining whether a certain quantity can be added
+  to the cart. For BOTTOMLESS InventoryPolicy, a value of 10,000,000 is added here.
+  """
+  inventoryQuantity: Int!
+
+  """If any SupplierVariant is in stock, this is in stock."""
+  inventoryStatus: InventoryStatus!
+}
+
+"""A fulfillment on a PurchaseOrderItem."""
+type PurchaseOrderItemFulfillment {
+  fulfilledAt: Date!
+  fulfilledQuantity: Int!
+  shippingCarrier: String!
+  trackingNumber: String!
+}
+
+"""Indicates the status of an PurchaseOrderItem (Supply)."""
+enum PurchaseOrderItemStatus {
+  """
+  Indicates that the PurchaseOrderItem was assigned, but is no longer needed to be fulfilled.
+  """
+  CANCELLED
+
+  """
+  Indicates that the PurchaseOrderItem is fully fulfilled and is now complete.
+  """
+  FULFILLED
+
+  """
+  Indicates that the PurchaseOrderItem is ready for processing, and data is complete.
+  """
+  INITIAL
+  PARTIALLY_ASSIGNED
+
+  """
+  Indicates that the PurchaseOrderItem is in the process of being fulfilled.
+  """
+  PARTIALLY_FULFILLED
 }
 
 """The root query type for the Demand domain"""
@@ -1614,6 +2332,13 @@ type Query {
   customerCart(customerToken: String!): Cart!
 
   """
+  Get the checkout for a customer.
+              
+  Requires the publiccheckout/read scope and a valid customerToken.
+  """
+  customerCheckout(customerToken: String!): Checkout
+
+  """
   The cart for an anonymous user. Will create a blank cart if one does not exist, never returns null.
               
   Requires the publiccart/read scope.
@@ -1650,6 +2375,35 @@ type Query {
     navLevel: Int
     navType: String
   ): PublicNavConnection!
+
+  """
+  Get a order by its orderId.
+  
+  Requires the publicorder/read scope.
+  """
+  order(customerToken: String!, orderId: ID!): PublicOrder
+
+  """
+  Paginate through orders.
+  
+  Requires the publicorder/read scope.
+  """
+  orders(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    customerToken: String!
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): PublicOrderConnectionWithSearch!
 
   """
   Get a page by its slug.
@@ -1830,6 +2584,11 @@ type Query {
   storefront: PublicStorefront
 }
 
+"""Used throughout the app to give a currency to price information"""
+enum ResonanceCurrency {
+  USD
+}
+
 """
 Used throughout the app to indicate what language and locality a given text is in
 """
@@ -1858,6 +2617,14 @@ input SavedForLaterItemInput {
   variantId: ID!
 }
 
+"""The speed with which this variant gets delivered. Defaults to GROUND."""
+enum ShippingMethod {
+  GROUND
+  OVERNIGHT
+  THREE_DAY
+  TWO_DAY
+}
+
 """Indicates which direction to sort, defaults to ASC"""
 enum SortDirection {
   ASC
@@ -1876,6 +2643,12 @@ Indicates the key of the term aggregation, and approximately how many documents 
 type TermAggregation {
   docCount: Int!
   key: String!
+}
+
+"""How this variant gets delivered. Defaults to SHIPPING."""
+enum VariantDeliveryMethod {
+  EMAIL
+  SHIPPING
 }
 
 """Metric or Standard Dimension?"""

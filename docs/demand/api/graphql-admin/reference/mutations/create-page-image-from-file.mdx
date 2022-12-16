@@ -1,0 +1,42 @@
+---
+id: create-page-image-from-file
+title: createPageImageFromFile
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create an Image for a Page from a file.
+
+Requires the page/write permission on the given DemandHq
+
+```graphql
+createPageImageFromFile(
+  input: PageImageFromFileInput!
+): PageImageFromFileResponse!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createPageImageFromFile.<b>input</b></code>](#)<Bullet />[`PageImageFromFileInput!`](/demand/api/graphql-admin/reference/inputs/page-image-from-file-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`PageImageFromFileResponse`](/demand/api/graphql-admin/reference/objects/page-image-from-file-response) <Badge class="secondary" text="object"/>
+> Returned object from createPageImageFromFile
+> 
+
+
+
+
+

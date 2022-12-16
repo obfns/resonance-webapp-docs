@@ -1,0 +1,40 @@
+---
+id: update-product-content-item
+title: updateProductContentItem
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Update an existing ProductContentItem
+
+```graphql
+updateProductContentItem(
+  input: ProductContentItemUpdateInput!
+): ProductContentItem!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>updateProductContentItem.<b>input</b></code>](#)<Bullet />[`ProductContentItemUpdateInput!`](/demand/api/graphql-admin/reference/inputs/product-content-item-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`ProductContentItem`](/demand/api/graphql-admin/reference/objects/product-content-item) <Badge class="secondary" text="object"/>
+> This has a many to one relationship with Product, and provides a connection to the CDN items.
+> 
+
+
+
+
+

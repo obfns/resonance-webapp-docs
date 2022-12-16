@@ -1,0 +1,42 @@
+---
+id: upsert-collection-content
+title: upsertCollectionContent
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Add or Update CollectionContent for an existing Collection.
+
+Requires the collection/write permission on the given DemandHq
+
+```graphql
+upsertCollectionContent(
+  input: CollectionContentUpsertInput!
+): CollectionContent!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>upsertCollectionContent.<b>input</b></code>](#)<Bullet />[`CollectionContentUpsertInput!`](/demand/api/graphql-admin/reference/inputs/collection-content-upsert-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`CollectionContent`](/demand/api/graphql-admin/reference/objects/collection-content) <Badge class="secondary" text="object"/>
+> This is the actual markdown content for the collection
+> 
+
+
+
+
+

@@ -1,0 +1,38 @@
+---
+id: order-transaction-edge
+title: OrderTransactionEdge
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+One edge producing one OrderTransaction Node
+
+```graphql
+type OrderTransactionEdge {
+  node: OrderTransaction
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionEdge.<b>node</b></code>](#)<Bullet />[`OrderTransaction`](/demand/api/graphql-admin/reference/objects/order-transaction) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`OrderTransactionConnection`](/demand/api/graphql-admin/reference/objects/order-transaction-connection)  <Badge class="secondary" text="object"/>
+
+
+

@@ -1,0 +1,101 @@
+---
+id: app
+title: App
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Represents a App, which are machine users that perform a small context, unified set of tasks
+
+```graphql
+type App {
+  appClientIds: [String!]!
+  appId: ID!
+  appType: AppType!
+  createdAt: String!
+  description: String
+  name: String!
+  partner: Partner
+  partnerId: ID!
+  requestedScopes: [String]
+  status: AppStatus!
+  updatedAt: String!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>appClientIds</b></code>](#)<Bullet />[`[String!]!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>appId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>appType</b></code>](#)<Bullet />[`AppType!`](/adminidentity/api/graphql-admin/reference/enums/app-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>createdAt</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>description</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Short description of the app
+Limited to 8000 characters
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>name</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The name of the app
+Limited to 128 characters
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>partner</b></code>](#)<Bullet />[`Partner`](/adminidentity/api/graphql-admin/reference/objects/partner) <Badge class="secondary" text="object"/>
+> Get the partner this app belongs to.
+            
+Requires the partner/read scope on the associated AdminIdentity.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>partnerId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>requestedScopes</b></code>](#)<Bullet />[`[String]`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>status</b></code>](#)<Bullet />[`AppStatus!`](/adminidentity/api/graphql-admin/reference/enums/app-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>App.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`app`](/adminidentity/api/graphql-admin/reference/queries/app)  <Badge class="secondary" text="query"/><Bullet />[`updateApp`](/adminidentity/api/graphql-admin/reference/mutations/update-app)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`AppConnection`](/adminidentity/api/graphql-admin/reference/objects/app-connection)  <Badge class="secondary" text="object"/><Bullet />[`AppCreateResponse`](/adminidentity/api/graphql-admin/reference/objects/app-create-response)  <Badge class="secondary" text="object"/><Bullet />[`AppEdge`](/adminidentity/api/graphql-admin/reference/objects/app-edge)  <Badge class="secondary" text="object"/><Bullet />[`Partner`](/adminidentity/api/graphql-admin/reference/objects/partner)  <Badge class="secondary" text="object"/>
+
+
+

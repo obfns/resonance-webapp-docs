@@ -1,0 +1,54 @@
+---
+id: supply-event
+title: SupplyEvent
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Contains before and after snapshots for every event that occurs within the Supply domain
+
+```graphql
+type SupplyEvent {
+  message: SupplyEventMessage
+  messageId: String!
+  subject: String
+  timestamp: Date!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEvent.<b>message</b></code>](#)<Bullet />[`SupplyEventMessage`](/supply/api/graphql-admin/reference/objects/supply-event-message) <Badge class="secondary" text="object"/>
+> This is the event data and metadata.
+The data is variable, but most typically contains a newItem and oldItem.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEvent.<b>messageId</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> UUID
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEvent.<b>subject</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A human-friendly string summarizing the event
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEvent.<b>timestamp</b></code>](#)<Bullet />[`Date!`](/supply/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> ISO Date that the event occurred
+> 
+
+
+
+### Member of
+
+[`SupplyEventConnection`](/supply/api/graphql-admin/reference/objects/supply-event-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplyEventEdge`](/supply/api/graphql-admin/reference/objects/supply-event-edge)  <Badge class="secondary" text="object"/>
+
+
+

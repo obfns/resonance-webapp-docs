@@ -1,0 +1,52 @@
+---
+id: demand-hq-identity-connection
+title: DemandHqIdentityConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through DemandHqIdentities
+
+```graphql
+type DemandHqIdentityConnection {
+  edges: [DemandHqIdentityEdge]!
+  nodes: [DemandHqIdentity]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqIdentityConnection.<b>edges</b></code>](#)<Bullet />[`[DemandHqIdentityEdge]!`](/demand/api/graphql-admin/reference/objects/demand-hq-identity-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqIdentityConnection.<b>nodes</b></code>](#)<Bullet />[`[DemandHqIdentity]!`](/demand/api/graphql-admin/reference/objects/demand-hq-identity) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqIdentityConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`demandHqIdentities`](/demand/api/graphql-admin/reference/queries/demand-hq-identities)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/>
+
+
+

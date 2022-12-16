@@ -1,0 +1,43 @@
+---
+id: storefront-role
+title: StorefrontRole
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The roles of a storefront identity
+
+```graphql
+enum StorefrontRole {
+  CLIENT
+  SERVER
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontRole.<b>CLIENT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontRole.<b>SERVER</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`StorefrontPermissions`](/demand/api/graphql-admin/reference/objects/storefront-permissions)  <Badge class="secondary" text="object"/><Bullet />[`StorefrontPermissionsInput`](/demand/api/graphql-admin/reference/inputs/storefront-permissions-input)  <Badge class="secondary" text="input"/>
+
+
+

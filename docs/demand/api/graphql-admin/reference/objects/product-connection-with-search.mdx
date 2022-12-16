@@ -1,0 +1,60 @@
+---
+id: product-connection-with-search
+title: ProductConnectionWithSearch
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through Products
+
+```graphql
+type ProductConnectionWithSearch {
+  edges: [ProductEdge]!
+  nodes: [Product]!
+  pageInfo: PageInfo!
+  querySuggestions: JSON
+  termAggregations: ProductTermAggregations
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductConnectionWithSearch.<b>edges</b></code>](#)<Bullet />[`[ProductEdge]!`](/demand/api/graphql-admin/reference/objects/product-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductConnectionWithSearch.<b>nodes</b></code>](#)<Bullet />[`[Product]!`](/demand/api/graphql-admin/reference/objects/product) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductConnectionWithSearch.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductConnectionWithSearch.<b>querySuggestions</b></code>](#)<Bullet />[`JSON`](/demand/api/graphql-admin/reference/scalars/json) <Badge class="secondary" text="scalar"/>
+> This is an object with terms in the query as keys, and a suggestion for that
+term as the value. This is often referred to as 'Did you mean?'
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductConnectionWithSearch.<b>termAggregations</b></code>](#)<Bullet />[`ProductTermAggregations`](/demand/api/graphql-admin/reference/objects/product-term-aggregations) <Badge class="secondary" text="object"/>
+> Values and the number of times they occur for the results of the query. These
+will be the same for every page of a query, and should only be fetched on the first page.
+> 
+
+
+
+### Member of
+
+[`Collection`](/demand/api/graphql-admin/reference/objects/collection)  <Badge class="secondary" text="object"/><Bullet />[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/>
+
+
+

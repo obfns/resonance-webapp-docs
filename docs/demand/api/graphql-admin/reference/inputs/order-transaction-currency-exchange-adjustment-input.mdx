@@ -1,0 +1,43 @@
+---
+id: order-transaction-currency-exchange-adjustment-input
+title: OrderTransactionCurrencyExchangeAdjustmentInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Input for OrderTransactionCurrencyExchangeAdjustment
+
+```graphql
+input OrderTransactionCurrencyExchangeAdjustmentInput {
+  targetAmount: Float!
+  targetCurrency: ResonanceCurrency!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionCurrencyExchangeAdjustmentInput.<b>targetAmount</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The amount in the shop's default currency.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionCurrencyExchangeAdjustmentInput.<b>targetCurrency</b></code>](#)<Bullet />[`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Shop's default currency.
+> 
+
+
+
+### Member of
+
+[`OrderTransactionCreateInput`](/demand/api/graphql-admin/reference/inputs/order-transaction-create-input)  <Badge class="secondary" text="input"/>
+
+
+

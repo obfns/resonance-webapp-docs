@@ -1,0 +1,57 @@
+---
+id: page-info
+title: PageInfo
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Information on Pagination
+
+```graphql
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>endCursor</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The cursor to use when paginating forwards (using first/after). Will always be
+populated regardless of if a next page exists.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>hasNextPage</b></code>](#)<Bullet />[`Boolean!`](/demand/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Whether or not using the endCursor will result in more results. Always
+populated, but will always be false when paginating using last/before.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>hasPreviousPage</b></code>](#)<Bullet />[`Boolean!`](/demand/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Whether or not using the startCursor will result in more results. Always
+populated, but will always be false when paginating using first/after.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>startCursor</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The cursor to use when paginating backwards (using last/before). Will always
+be populated regardless of if a previous page exists
+> 
+
+
+
+### Member of
+
+[`CollectionConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/collection-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`CollectionTypeContentConnection`](/demand/api/graphql-admin/reference/objects/collection-type-content-connection)  <Badge class="secondary" text="object"/><Bullet />[`CustomerAddressConnection`](/demand/api/graphql-admin/reference/objects/customer-address-connection)  <Badge class="secondary" text="object"/><Bullet />[`CustomerConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/customer-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`DemandEventConnection`](/demand/api/graphql-admin/reference/objects/demand-event-connection)  <Badge class="secondary" text="object"/><Bullet />[`DemandHqIdentityConnection`](/demand/api/graphql-admin/reference/objects/demand-hq-identity-connection)  <Badge class="secondary" text="object"/><Bullet />[`DemandHqSupplierConnection`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier-connection)  <Badge class="secondary" text="object"/><Bullet />[`NavConnection`](/demand/api/graphql-admin/reference/objects/nav-connection)  <Badge class="secondary" text="object"/><Bullet />[`OrderConnection`](/demand/api/graphql-admin/reference/objects/order-connection)  <Badge class="secondary" text="object"/><Bullet />[`OrderItemConnection`](/demand/api/graphql-admin/reference/objects/order-item-connection)  <Badge class="secondary" text="object"/><Bullet />[`OrderTransactionConnection`](/demand/api/graphql-admin/reference/objects/order-transaction-connection)  <Badge class="secondary" text="object"/><Bullet />[`PageConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/page-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PageTypeContentConnection`](/demand/api/graphql-admin/reference/objects/page-type-content-connection)  <Badge class="secondary" text="object"/><Bullet />[`ProductConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/product-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`ProductContentItemConnection`](/demand/api/graphql-admin/reference/objects/product-content-item-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicDemandHqConnection`](/demand/api/graphql-admin/reference/objects/public-demand-hq-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicSupplierProductConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/public-supplier-product-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicSupplierVariantConnection`](/demand/api/graphql-admin/reference/objects/public-supplier-variant-connection)  <Badge class="secondary" text="object"/><Bullet />[`StorefrontConnection`](/demand/api/graphql-admin/reference/objects/storefront-connection)  <Badge class="secondary" text="object"/><Bullet />[`VariantConnection`](/demand/api/graphql-admin/reference/objects/variant-connection)  <Badge class="secondary" text="object"/><Bullet />[`VariantSupplierVariantConnection`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant-connection)  <Badge class="secondary" text="object"/>
+
+
+

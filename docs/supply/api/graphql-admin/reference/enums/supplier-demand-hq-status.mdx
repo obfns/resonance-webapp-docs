@@ -1,0 +1,48 @@
+---
+id: supplier-demand-hq-status
+title: SupplierDemandHqStatus
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates what status the current relationship between a Supplier and a DemandHQ is in.
+
+```graphql
+enum SupplierDemandHqStatus {
+  APPROVED
+  DENIED
+  PENDING
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHqStatus.<b>APPROVED</b></code>](#) 
+> The DemandHq has permission to sell items from the Supplier.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHqStatus.<b>DENIED</b></code>](#) 
+> The Supplier has denied permission to the DemandHQ to sell its items.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHqStatus.<b>PENDING</b></code>](#) 
+> The DemandHq has requested permission to sell items from the Supplier.
+> 
+
+
+
+### Member of
+
+[`SupplierDemandHq`](/supply/api/graphql-admin/reference/objects/supplier-demand-hq)  <Badge class="secondary" text="object"/><Bullet />[`SupplierDemandHqCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-demand-hq-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierDemandHqUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-demand-hq-update-input)  <Badge class="secondary" text="input"/>
+
+
+

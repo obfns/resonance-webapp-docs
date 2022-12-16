@@ -1,0 +1,48 @@
+---
+id: user-notification-connection
+title: UserNotificationConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through UserNotifications
+
+```graphql
+type UserNotificationConnection {
+  edges: [UserNotificationEdge]!
+  nodes: [UserNotification]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotificationConnection.<b>edges</b></code>](#)<Bullet />[`[UserNotificationEdge]!`](/adminidentity/api/graphql-admin/reference/objects/user-notification-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotificationConnection.<b>nodes</b></code>](#)<Bullet />[`[UserNotification]!`](/adminidentity/api/graphql-admin/reference/objects/user-notification) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>UserNotificationConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/adminidentity/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`myNotifications`](/adminidentity/api/graphql-admin/reference/queries/my-notifications)  <Badge class="secondary" text="query"/>
+
+
+

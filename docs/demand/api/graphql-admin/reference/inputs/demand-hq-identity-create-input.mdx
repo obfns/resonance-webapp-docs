@@ -1,0 +1,58 @@
+---
+id: demand-hq-identity-create-input
+title: DemandHqIdentityCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Exactly like DemandHqIdentity, but no updatedBy or identityType (always User, Apps get installed)
+
+```graphql
+input DemandHqIdentityCreateInput {
+  demandHqId: ID!
+  identityId: ID!
+  identityParentEntityId: ID
+  identityType: DemandHqIdentityType!
+  permissions: DemandHqIdentityPermissionsInput!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqIdentityCreateInput.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqIdentityCreateInput.<b>identityId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Always a user's userName (not appClientId)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqIdentityCreateInput.<b>identityParentEntityId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqIdentityCreateInput.<b>identityType</b></code>](#)<Bullet />[`DemandHqIdentityType!`](/demand/api/graphql-admin/reference/enums/demand-hq-identity-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Should always be USER
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqIdentityCreateInput.<b>permissions</b></code>](#)<Bullet />[`DemandHqIdentityPermissionsInput!`](/demand/api/graphql-admin/reference/inputs/demand-hq-identity-permissions-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+
+
+### Member of
+
+[`createDemandHqIdentity`](/demand/api/graphql-admin/reference/mutations/create-demand-hq-identity)  <Badge class="secondary" text="mutation"/>
+
+
+

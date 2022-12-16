@@ -1,0 +1,53 @@
+---
+id: customer-marketing-consent-level
+title: CustomerMarketingConsentLevel
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The level at which the Customer has opted-in to Marketing.
+
+```graphql
+enum CustomerMarketingConsentLevel {
+  CONFIRMED_OPT_IN
+  SINGLE_OPT_IN
+  SINGLE_OPT_IN_WITH_NOTIFICATION
+  UNKNOWN
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>CustomerMarketingConsentLevel.<b>CONFIRMED_OPT_IN</b></code>](#) 
+> Level 3
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CustomerMarketingConsentLevel.<b>SINGLE_OPT_IN</b></code>](#) 
+> Level 1
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CustomerMarketingConsentLevel.<b>SINGLE_OPT_IN_WITH_NOTIFICATION</b></code>](#) 
+> Level 2
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CustomerMarketingConsentLevel.<b>UNKNOWN</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`CustomerMarketingConsent`](/demand/api/graphql-storefront/reference/objects/customer-marketing-consent)  <Badge class="secondary" text="object"/><Bullet />[`CustomerMarketingConsentInput`](/demand/api/graphql-storefront/reference/inputs/customer-marketing-consent-input)  <Badge class="secondary" text="input"/>
+
+
+

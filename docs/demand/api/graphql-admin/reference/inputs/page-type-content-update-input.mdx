@@ -1,0 +1,81 @@
+---
+id: page-type-content-update-input
+title: PageTypeContentUpdateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Input object to update a PageTypeContent.
+
+```graphql
+input PageTypeContentUpdateInput {
+  contentAsString: String
+  description: String
+  pageTypeContentId: ID!
+  secondaryContentAsString: String
+  seoDescription: String
+  seoTitle: String
+  subtitle: String
+  tags: PageTypeContentTagsInput
+  title: String
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContentUpdateInput.<b>contentAsString</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContentUpdateInput.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A short description of the pageTypeContent, limit 1000 characters. This is
+typically used off of the pageTypeContent page itself.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContentUpdateInput.<b>pageTypeContentId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContentUpdateInput.<b>secondaryContentAsString</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContentUpdateInput.<b>seoDescription</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Description specific for SEO purposes, limit 170 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContentUpdateInput.<b>seoTitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title specific for SEO purposes, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContentUpdateInput.<b>subtitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The subtitle of the pageTypeContent, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContentUpdateInput.<b>tags</b></code>](#)<Bullet />[`PageTypeContentTagsInput`](/demand/api/graphql-admin/reference/inputs/page-type-content-tags-input) <Badge class="secondary" text="input"/>
+> These tags function in the opposite direction of other tags, allowing you to
+choose several to focus on while displaying the content.
+Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTypeContentUpdateInput.<b>title</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The title of the pageTypeContent, limit 256 characters.
+> 
+
+
+
+### Member of
+
+[`updatePageTypeContent`](/demand/api/graphql-admin/reference/mutations/update-page-type-content)  <Badge class="secondary" text="mutation"/>
+
+
+

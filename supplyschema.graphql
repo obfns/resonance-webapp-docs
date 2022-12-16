@@ -88,6 +88,20 @@ enum AppType {
   SUPPLIERAPP
 }
 
+"""Indicates how exactly to handle duplicates in a Composite Entity"""
+enum CompositeDuplicationCheckType {
+  """
+  Duplicates should be checked for every individual item in the inputs, both
+  parent and child, and created if any do not exist
+  """
+  INDIVIDUAL_CREATE
+
+  """
+  The parent-most item will be checked for a duplicate, and if found, an error will be thrown
+  """
+  STANDARD
+}
+
 """A date in ISO 8601 format"""
 scalar Date
 
@@ -143,7 +157,11 @@ type Mutation {
   """
   Create a new SupplierProduct and its associated ContentItems, Locales, and Variants in one mutation
   """
-  createSupplierProductComposite(input: SupplierProductCompositeCreateInput!): SupplierProduct!
+  createSupplierProductComposite(
+    """The type of duplication check to perform, defaults to STANDARD"""
+    duplicationCheckType: CompositeDuplicationCheckType
+    input: SupplierProductCompositeCreateInput!
+  ): SupplierProduct!
 
   """Create an Image SupplierProductContentItem from a File"""
   createSupplierProductImageFromFile(input: SupplierProductImageFromFileInput!): SupplierProductImageFromFileResponse!
@@ -187,9 +205,6 @@ type Mutation {
 
   """Delete a SupplierProduct (and all of its child entities)"""
   deleteSupplierProduct(supplierProductId: ID!): SupplierProductDeleteResponse!
-
-  """Delete an existing SupplierProductContentItem"""
-  deleteSupplierProductContentItem(contentItemId: ID!, supplierProductId: ID!): SupplierProductContentItemDeleteResponse!
 
   """Delete specified keys from the SupplierProductCustomData"""
   deleteSupplierProductCustomData(keysToDelete: [String!]!, supplierProductId: ID!): SupplierProductCustomData!
@@ -262,7 +277,7 @@ type Mutation {
   updateSupplierQuickLink(input: SupplierQuickLinkUpdateInput!): SupplierQuickLink!
 
   """Update an existing supplierVariant"""
-  updateSupplierVariant(input: SupplierVariantUpdateInput!): SupplierVariant!
+  updateSupplierVariant(externalInput: SupplierVariantExternalUpdateInput, input: SupplierVariantUpdateInput): SupplierVariant!
 
   """
   Update an existing supplierVariantSupplement
@@ -277,7 +292,7 @@ type Mutation {
   Requires suppliervariant/write permission on the requesting identity
   Note that if there are Permission or UserInput Errors, the entire group will fail, not partially succeed.
   """
-  updateSupplierVariants(inputs: [SupplierVariantUpdateInput!]): [SupplierVariant!]
+  updateSupplierVariants(externalInputs: [SupplierVariantExternalUpdateInput], inputs: [SupplierVariantUpdateInput]): [SupplierVariant!]
 
   """Add or update keys in the SupplierProductCustomData"""
   upsertSupplierProductCustomData(input: SupplierProductCustomDataUpsertInput!): SupplierProductCustomData!
@@ -1130,9 +1145,7 @@ type SupplierProduct {
   
   Requires supplierproductcontentitem/read permission on the supplier for the requesting identity
   
-  Sorting works differently depending on which filters are used.
-  Without any filters, the sort order is by createdAt.
-  With a contentType filter, the sort order is by position.
+  Sorts by position.
   This means "featuredImage" can be retrieved by using contentType: IMAGE and first: 1.
   """
   contentItems(
@@ -1160,6 +1173,15 @@ type SupplierProduct {
   Passed along in PurchaseOrders so the Supplier can identify items in their warehouse.
   """
   externalProductId: String!
+
+  """
+  Get the featured image for a supplierProduct
+  
+  Requires the supplierproductcontentitem/read permission on the associated Supplier.
+  
+  This is a convenience field that is equivalent to contentItems(contentType: IMAGE, first: 1)
+  """
+  featuredImage: SupplierProductContentItem
 
   """
   Get a single supplierProductLocale by ResonanceLocaleType
@@ -1229,7 +1251,8 @@ The necessary fields to create a SupplierProductComposite, or a SupplierProduct
 and its ContentItems, Locales, and Variants in one mutation
 """
 input SupplierProductCompositeCreateInput {
-  supplierProductContentItemInputs: [SupplierProductContentItemAssociationInCompositeCreateInput]
+  supplierProductContentItemAssociationInputs: [SupplierProductContentItemAssociationInCompositeCreateInput]
+  supplierProductImageFromUrlInputs: [SupplierProductImageFromUrlInCompositeCreateInput]
   supplierProductInput: SupplierProductCreateInput!
   supplierProductLocaleInputs: [SupplierProductLocaleInCompositeCreateInput]
   supplierVariantInputs: [SupplierVariantCompositeInCompositeCreateInput]
@@ -1252,7 +1275,7 @@ type SupplierProductConnectionWithSearch {
 This has a many to one relationship with SupplierProduct, and provides a connection to the CDN items.
 """
 type SupplierProductContentItem {
-  alt: String!
+  alt: String
   category: String
   contentItemId: ID!
 
@@ -1266,6 +1289,13 @@ type SupplierProductContentItem {
   Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
   """
   position: Int
+
+  """The original URL, or some kind of file pointer, based on sourceType"""
+  sourceDetail: String!
+
+  """How did we receive this content item?"""
+  sourceType: SupplierProductContentItemSourceType!
+  status: SupplierProductContentItemStatus!
   supplierId: ID!
   supplierProductId: ID!
   updatedAt: Date!
@@ -1276,7 +1306,7 @@ type SupplierProductContentItem {
 Input object to associate an existing ContentItem with a SupplierProduct
 """
 input SupplierProductContentItemAssociationCreateInput {
-  alt: String!
+  alt: String
   category: String
   contentItemId: ID!
 
@@ -1293,7 +1323,7 @@ input SupplierProductContentItemAssociationCreateInput {
 Input object to associate an existing ContentItem with a SupplierProduct inside a SupplierProductCompositeCreateInput
 """
 input SupplierProductContentItemAssociationInCompositeCreateInput {
-  alt: String!
+  alt: String
   category: String
   contentItemId: ID!
 
@@ -1311,20 +1341,22 @@ type SupplierProductContentItemConnection {
   pageInfo: PageInfo!
 }
 
-"""The response type for deleteSupplierProductContentItem"""
-type SupplierProductContentItemDeleteResponse {
-  deletedId: SupplierProductContentItemDeletedId!
-}
-
-"""The returned object for deletedId for deleteSupplierProductContentItem"""
-type SupplierProductContentItemDeletedId {
-  contentItemId: ID!
-  supplierProductId: ID!
-}
-
 """One edge producing one SupplierProduct Node"""
 type SupplierProductContentItemEdge {
   node: SupplierProductContentItem
+}
+
+"""Describes where the content originally was sourced from"""
+enum SupplierProductContentItemSourceType {
+  UPLOADMULTIPART
+  UPLOADSINGLEPART
+  URL
+}
+
+"""Indicates what the status of the content item is in"""
+enum SupplierProductContentItemStatus {
+  ACTIVE
+  ARCHIVED
 }
 
 """Input object for updating an existing SupplierProductContentItem"""
@@ -1338,6 +1370,7 @@ input SupplierProductContentItemUpdateInput {
   Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
   """
   position: Int
+  status: SupplierProductContentItemStatus!
   supplierProductId: ID!
 }
 
@@ -1461,10 +1494,32 @@ type SupplierProductImageFromFilesResponse {
 }
 
 """
+Input object to create a new SupplierProductContentItem from a URL for a
+SupplierProduct inside a SupplierProductCompositeCreateInput
+"""
+input SupplierProductImageFromUrlInCompositeCreateInput {
+  alt: String
+  category: String
+
+  """
+  Temporary ID, can be any string, to associate Variants with this Image. On
+  create, the real contentItemId will be substituted.
+  """
+  contentItemInputId: String
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+  url: String!
+}
+
+"""
 Input object for creating an Image SupplierProductContentItem from a URL
 """
 input SupplierProductImageFromUrlInput {
-  alt: String!
+  alt: String
   category: String
 
   """
@@ -1798,6 +1853,16 @@ type SupplierVariant {
   """Get the associated SupplierVariantCustomData"""
   customData: SupplierVariantCustomData
   externalVariantId: String!
+
+  """
+  Get the featured image for a supplierVariant
+  
+  Requires the supplierproductcontentitem/read permission on the associated Supplier.
+  
+  This is a convenience field that returns the first content item with the type
+  IMAGE, if exists for the associated supplierProduct.
+  """
+  featuredImage: SupplierProductContentItem
   inventoryPolicy: SupplierVariantInventoryPolicy!
   inventoryQuantity: Int!
 
@@ -1914,6 +1979,28 @@ type SupplierVariantEdge {
   node: SupplierVariant
 }
 
+"""
+The necessary fields in order to update an existing supplierVariant using an externalVariantId
+"""
+input SupplierVariantExternalUpdateInput {
+  """Associates contentItems with this variant"""
+  contentItemIds: [ID]
+  externalVariantId: String!
+  inventoryPolicy: SupplierVariantInventoryPolicy
+  inventoryQuantity: Int
+
+  """
+  An array of the option values that make up this variant.
+  For example, a product with a color and size option would have two option values,
+  one for each of the color and size options, i.e. ["Red", "Small"]
+  Must have 1-3, and it should match the number of options in the product, but there is no validation to do so.
+  Set this to "No Option" if you don't want to use options for this product and this is the only variant.
+  See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
+  """
+  optionValues: [String!]
+  supplierId: ID!
+}
+
 """Object to indicate both amount and unit of handling cost."""
 type SupplierVariantHandlingCost {
   amount: Float!
@@ -1939,8 +2026,11 @@ enum SupplierVariantHandlingCostUnit {
 The necessary fields in order to create a new supplierVariant inside a SupplierProductCompositeCreateInput
 """
 input SupplierVariantInCompositeCreateInput {
-  """Associates contentItems with this variant"""
-  contentItemIds: [ID]
+  """
+  For contentItems where you are associating an existing contentItem, input the actual contentItemId.
+  For other contentItem Inputs, match this to the contentItemInputId you have assigned.
+  """
+  contentItemInputIds: [String!]
   externalVariantId: String!
   inventoryPolicy: SupplierVariantInventoryPolicy!
   inventoryQuantity: Int!

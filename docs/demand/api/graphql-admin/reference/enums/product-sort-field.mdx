@@ -1,0 +1,73 @@
+---
+id: product-sort-field
+title: ProductSortField
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates which field to sort by, defaults to CREATED_AT
+
+```graphql
+enum ProductSortField {
+  CREATED_AT
+  MSRP
+  PRICE
+  PUBLISHED_AT
+  RELEVANCE
+  TITLE
+  UPDATED_AT
+  VENDOR
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductSortField.<b>CREATED_AT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductSortField.<b>MSRP</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductSortField.<b>PRICE</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductSortField.<b>PUBLISHED_AT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductSortField.<b>RELEVANCE</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductSortField.<b>TITLE</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductSortField.<b>UPDATED_AT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductSortField.<b>VENDOR</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`ProductSortInput`](/demand/api/graphql-admin/reference/inputs/product-sort-input)  <Badge class="secondary" text="input"/>
+
+
+

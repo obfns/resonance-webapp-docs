@@ -1,0 +1,40 @@
+---
+id: public-app
+title: publicApp
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Get a public app by id
+
+```graphql
+publicApp(
+  appId: ID!
+): PublicApp
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>publicApp.<b>appId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`PublicApp`](/adminidentity/api/graphql-admin/reference/objects/public-app) <Badge class="secondary" text="object"/>
+> Represents an App, but the fields that can be publicly consumed without scopes
+> 
+
+
+
+
+

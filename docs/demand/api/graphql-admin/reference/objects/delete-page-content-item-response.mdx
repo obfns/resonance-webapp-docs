@@ -1,0 +1,38 @@
+---
+id: delete-page-content-item-response
+title: DeletePageContentItemResponse
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Returned object from deletePageContentItem
+
+```graphql
+type DeletePageContentItemResponse {
+  deletedId: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DeletePageContentItemResponse.<b>deletedId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The contentItemId of the contentItem that was deleted.
+> 
+
+
+
+### Returned by
+
+[`deletePageContentItem`](/demand/api/graphql-admin/reference/mutations/delete-page-content-item)  <Badge class="secondary" text="mutation"/>
+
+
+

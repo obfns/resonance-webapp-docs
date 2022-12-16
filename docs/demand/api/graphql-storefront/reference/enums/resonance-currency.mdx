@@ -1,0 +1,38 @@
+---
+id: resonance-currency
+title: ResonanceCurrency
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Used throughout the app to give a currency to price information
+
+```graphql
+enum ResonanceCurrency {
+  USD
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>ResonanceCurrency.<b>USD</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`Checkout`](/demand/api/graphql-storefront/reference/objects/checkout)  <Badge class="secondary" text="object"/><Bullet />[`createCustomerCheckout`](/demand/api/graphql-storefront/reference/mutations/create-customer-checkout)  <Badge class="secondary" text="mutation"/><Bullet />[`OrderTransactionCurrencyExchangeAdjustment`](/demand/api/graphql-storefront/reference/objects/order-transaction-currency-exchange-adjustment)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderItem`](/demand/api/graphql-storefront/reference/objects/public-order-item)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderTransaction`](/demand/api/graphql-storefront/reference/objects/public-order-transaction)  <Badge class="secondary" text="object"/>
+
+
+

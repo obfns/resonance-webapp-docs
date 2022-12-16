@@ -1,0 +1,82 @@
+---
+id: supplier-identity
+title: SupplierIdentity
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates a User or App has permissions on a Supplier
+
+```graphql
+type SupplierIdentity {
+  identityId: ID!
+  identityParentEntityId: ID
+  identityType: SupplierIdentityType!
+  permissions: SupplierIdentityPermissions!
+  publicIdentity: PublicIdentity
+  publicIdentityParent: PublicIdentityParent
+  supplier: Supplier
+  supplierId: ID!
+  updatedBy: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentity.<b>identityId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Could be a userName or an appClientId
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentity.<b>identityParentEntityId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentity.<b>identityType</b></code>](#)<Bullet />[`SupplierIdentityType!`](/supply/api/graphql-admin/reference/enums/supplier-identity-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentity.<b>permissions</b></code>](#)<Bullet />[`SupplierIdentityPermissions!`](/supply/api/graphql-admin/reference/objects/supplier-identity-permissions) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentity.<b>publicIdentity</b></code>](#)<Bullet />[`PublicIdentity`](/supply/api/graphql-admin/reference/objects/public-identity) <Badge class="secondary" text="object"/>
+> Get a public identity by id
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentity.<b>publicIdentityParent</b></code>](#)<Bullet />[`PublicIdentityParent`](/supply/api/graphql-admin/reference/unions/public-identity-parent) <Badge class="secondary" text="union"/>
+> Get the expanded publicIdentityParent for this SupplierIdentity
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentity.<b>supplier</b></code>](#)<Bullet />[`Supplier`](/supply/api/graphql-admin/reference/objects/supplier) <Badge class="secondary" text="object"/>
+> Get the supplier associated with this SupplierIdentity.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentity.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentity.<b>updatedBy</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createSupplierIdentity`](/supply/api/graphql-admin/reference/mutations/create-supplier-identity)  <Badge class="secondary" text="mutation"/><Bullet />[`supplierIdentity`](/supply/api/graphql-admin/reference/queries/supplier-identity)  <Badge class="secondary" text="query"/><Bullet />[`updateSupplierIdentity`](/supply/api/graphql-admin/reference/mutations/update-supplier-identity)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`AppInstallationResponse`](/supply/api/graphql-admin/reference/objects/app-installation-response)  <Badge class="secondary" text="object"/><Bullet />[`Supplier`](/supply/api/graphql-admin/reference/objects/supplier)  <Badge class="secondary" text="object"/><Bullet />[`SupplierIdentityConnection`](/supply/api/graphql-admin/reference/objects/supplier-identity-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplierIdentityEdge`](/supply/api/graphql-admin/reference/objects/supplier-identity-edge)  <Badge class="secondary" text="object"/>
+
+
+

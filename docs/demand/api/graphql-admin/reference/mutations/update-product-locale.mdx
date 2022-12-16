@@ -1,0 +1,41 @@
+---
+id: update-product-locale
+title: updateProductLocale
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Update an existing productLocale
+
+```graphql
+updateProductLocale(
+  input: ProductLocaleUpdateInput!
+): ProductLocale!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>updateProductLocale.<b>input</b></code>](#)<Bullet />[`ProductLocaleUpdateInput!`](/demand/api/graphql-admin/reference/inputs/product-locale-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`ProductLocale`](/demand/api/graphql-admin/reference/objects/product-locale) <Badge class="secondary" text="object"/>
+> This has a many to one relationship with Product, and provides localized language data for the appropriate fields.
+There will often only be one of these, and it should be the one set in defaultLocale for the supplier.
+> 
+
+
+
+
+

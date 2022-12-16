@@ -1,0 +1,43 @@
+---
+id: inventory-status
+title: InventoryStatus
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates whether a variant is in or out of stock
+
+```graphql
+enum InventoryStatus {
+  INSTOCK
+  OUTOFSTOCK
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>InventoryStatus.<b>INSTOCK</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>InventoryStatus.<b>OUTOFSTOCK</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`PublicProductMetrics`](/demand/api/graphql-storefront/reference/objects/public-product-metrics)  <Badge class="secondary" text="object"/><Bullet />[`PublicVariantMetrics`](/demand/api/graphql-storefront/reference/objects/public-variant-metrics)  <Badge class="secondary" text="object"/>
+
+
+

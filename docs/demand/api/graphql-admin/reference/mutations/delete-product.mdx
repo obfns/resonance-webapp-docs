@@ -1,0 +1,42 @@
+---
+id: delete-product
+title: deleteProduct
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Delete a Product from a DemandHq.
+
+Requires the product/write permission on the given DemandHq
+
+```graphql
+deleteProduct(
+  productId: ID!
+): ProductDeleteResponse!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>deleteProduct.<b>productId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`ProductDeleteResponse`](/demand/api/graphql-admin/reference/objects/product-delete-response) <Badge class="secondary" text="object"/>
+> Returned object from deleteProduct
+> 
+
+
+
+
+

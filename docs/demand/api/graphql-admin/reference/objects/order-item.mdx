@@ -1,0 +1,167 @@
+---
+id: order-item
+title: OrderItem
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+An item in an Order.
+
+```graphql
+type OrderItem {
+  adjustments: [OrderItemAdjustment]
+  barcode: String!
+  createdAt: Date!
+  currency: ResonanceCurrency!
+  customProperties: JSON
+  deliveryMethod: VariantDeliveryMethod!
+  demandHqId: ID!
+  discounts: [OrderItemDiscount]
+  note: String
+  orderId: ID!
+  orderItemId: ID!
+  productId: ID!
+  productTitle: String!
+  purchaseOrderItems: [OrderItemPurchaseOrderItem]
+  quantity: Int!
+  shippingCharges: [OrderItemShippingCharge]
+  shippingMethod: ShippingMethod
+  sku: String
+  status: OrderItemStatus!
+  taxes: [OrderItemTax]
+  unitPrice: Float!
+  updatedAt: Date!
+  updatedBy: ID!
+  variantId: ID!
+  variantTitle: String!
+  vendor: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>adjustments</b></code>](#)<Bullet />[`[OrderItemAdjustment]`](/demand/api/graphql-admin/reference/objects/order-item-adjustment) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>barcode</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>currency</b></code>](#)<Bullet />[`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>customProperties</b></code>](#)<Bullet />[`JSON`](/demand/api/graphql-admin/reference/scalars/json) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>deliveryMethod</b></code>](#)<Bullet />[`VariantDeliveryMethod!`](/demand/api/graphql-admin/reference/enums/variant-delivery-method) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>discounts</b></code>](#)<Bullet />[`[OrderItemDiscount]`](/demand/api/graphql-admin/reference/objects/order-item-discount) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>note</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>orderId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>orderItemId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>productId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>productTitle</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>purchaseOrderItems</b></code>](#)<Bullet />[`[OrderItemPurchaseOrderItem]`](/demand/api/graphql-admin/reference/objects/order-item-purchase-order-item) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>quantity</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>shippingCharges</b></code>](#)<Bullet />[`[OrderItemShippingCharge]`](/demand/api/graphql-admin/reference/objects/order-item-shipping-charge) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>shippingMethod</b></code>](#)<Bullet />[`ShippingMethod`](/demand/api/graphql-admin/reference/enums/shipping-method) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>sku</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>status</b></code>](#)<Bullet />[`OrderItemStatus!`](/demand/api/graphql-admin/reference/enums/order-item-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>taxes</b></code>](#)<Bullet />[`[OrderItemTax]`](/demand/api/graphql-admin/reference/objects/order-item-tax) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>unitPrice</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Price per item, can be multiplied by quantity for total price
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>variantId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>variantTitle</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>vendor</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createOrderItem`](/demand/api/graphql-admin/reference/mutations/create-order-item)  <Badge class="secondary" text="mutation"/><Bullet />[`updateOrderItem`](/demand/api/graphql-admin/reference/mutations/update-order-item)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`OrderItemConnection`](/demand/api/graphql-admin/reference/objects/order-item-connection)  <Badge class="secondary" text="object"/><Bullet />[`OrderItemEdge`](/demand/api/graphql-admin/reference/objects/order-item-edge)  <Badge class="secondary" text="object"/>
+
+
+

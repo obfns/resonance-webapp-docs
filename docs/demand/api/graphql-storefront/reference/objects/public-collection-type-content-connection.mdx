@@ -1,0 +1,48 @@
+---
+id: public-collection-type-content-connection
+title: PublicCollectionTypeContentConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Pagination object for PublicCollectionTypeContent.
+
+```graphql
+type PublicCollectionTypeContentConnection {
+  edges: [PublicCollectionTypeContentEdge]!
+  nodes: [PublicCollectionTypeContent]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollectionTypeContentConnection.<b>edges</b></code>](#)<Bullet />[`[PublicCollectionTypeContentEdge]!`](/demand/api/graphql-storefront/reference/objects/public-collection-type-content-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollectionTypeContentConnection.<b>nodes</b></code>](#)<Bullet />[`[PublicCollectionTypeContent]!`](/demand/api/graphql-storefront/reference/objects/public-collection-type-content) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollectionTypeContentConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-storefront/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`collectionTypeContents`](/demand/api/graphql-storefront/reference/queries/collection-type-contents)  <Badge class="secondary" text="query"/>
+
+
+

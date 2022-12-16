@@ -1,0 +1,60 @@
+---
+id: supplier-quick-link-create-input
+title: SupplierQuickLinkCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The required input fields to create a new SupplierQuickLink
+            
+You must be calling from the pertaining app's AppClient
+
+```graphql
+input SupplierQuickLinkCreateInput {
+  appId: ID!
+  dynamicUrl: String!
+  label: String!
+  quickLinkType: SupplierQuickLinkType!
+  supplierId: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierQuickLinkCreateInput.<b>appId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The Id of the App this quicklink pertains to.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierQuickLinkCreateInput.<b>dynamicUrl</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> This can have dynamic parts, using [supplierProductId] format. It represents where the link goes.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierQuickLinkCreateInput.<b>label</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> What the text for the link should be to the user.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierQuickLinkCreateInput.<b>quickLinkType</b></code>](#)<Bullet />[`SupplierQuickLinkType!`](/supply/api/graphql-admin/reference/enums/supplier-quick-link-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Indicates which page the SupplierQuickLink would live on
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierQuickLinkCreateInput.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The Id of the Supplier this quicklink pertains to (the one that has installed your app).
+> 
+
+
+
+### Member of
+
+[`createSupplierQuickLink`](/supply/api/graphql-admin/reference/mutations/create-supplier-quick-link)  <Badge class="secondary" text="mutation"/>
+
+
+

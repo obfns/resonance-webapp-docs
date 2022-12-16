@@ -1,0 +1,53 @@
+---
+id: demand-entity-status
+title: DemandEntityStatus
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates what stage of creation a Demand Entity is in, i.e. a Collection, Page, or Product
+
+```graphql
+enum DemandEntityStatus {
+  ARCHIVED
+  DRAFT
+  NEEDSREVIEW
+  PUBLISHED
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandEntityStatus.<b>ARCHIVED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandEntityStatus.<b>DRAFT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandEntityStatus.<b>NEEDSREVIEW</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandEntityStatus.<b>PUBLISHED</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`Collection`](/demand/api/graphql-admin/reference/objects/collection)  <Badge class="secondary" text="object"/><Bullet />[`CollectionUpdateInput`](/demand/api/graphql-admin/reference/inputs/collection-update-input)  <Badge class="secondary" text="input"/><Bullet />[`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input)  <Badge class="secondary" text="input"/><Bullet />[`Page`](/demand/api/graphql-admin/reference/objects/page)  <Badge class="secondary" text="object"/><Bullet />[`PageUpdateInput`](/demand/api/graphql-admin/reference/inputs/page-update-input)  <Badge class="secondary" text="input"/><Bullet />[`Product`](/demand/api/graphql-admin/reference/objects/product)  <Badge class="secondary" text="object"/><Bullet />[`ProductUpdateInput`](/demand/api/graphql-admin/reference/inputs/product-update-input)  <Badge class="secondary" text="input"/>
+
+
+

@@ -1,0 +1,38 @@
+---
+id: resonance-currency
+title: ResonanceCurrency
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Used throughout the app to give a currency to price information
+
+```graphql
+enum ResonanceCurrency {
+  USD
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>ResonanceCurrency.<b>USD</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/><Bullet />[`DemandHqCreateInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-create-input)  <Badge class="secondary" text="input"/><Bullet />[`OrderItem`](/demand/api/graphql-admin/reference/objects/order-item)  <Badge class="secondary" text="object"/><Bullet />[`OrderItemCreateInput`](/demand/api/graphql-admin/reference/inputs/order-item-create-input)  <Badge class="secondary" text="input"/><Bullet />[`OrderTransaction`](/demand/api/graphql-admin/reference/objects/order-transaction)  <Badge class="secondary" text="object"/><Bullet />[`OrderTransactionCreateInput`](/demand/api/graphql-admin/reference/inputs/order-transaction-create-input)  <Badge class="secondary" text="input"/><Bullet />[`OrderTransactionCurrencyExchangeAdjustment`](/demand/api/graphql-admin/reference/objects/order-transaction-currency-exchange-adjustment)  <Badge class="secondary" text="object"/><Bullet />[`OrderTransactionCurrencyExchangeAdjustmentInput`](/demand/api/graphql-admin/reference/inputs/order-transaction-currency-exchange-adjustment-input)  <Badge class="secondary" text="input"/>
+
+
+

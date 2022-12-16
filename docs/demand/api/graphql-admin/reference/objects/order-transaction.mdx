@@ -1,0 +1,117 @@
+---
+id: order-transaction
+title: OrderTransaction
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A transaction in an Order.
+
+```graphql
+type OrderTransaction {
+  amount: Float!
+  authorizationCode: String
+  authorizationExpiresAt: Date
+  createdAt: Date!
+  currency: ResonanceCurrency!
+  currencyExchangeAdjustment: OrderTransactionCurrencyExchangeAdjustment
+  demandHqId: ID!
+  errorMessage: String
+  gateway: OrderTransactionGateway!
+  gatewayMessage: String
+  gatewayTransactionId: ID
+  orderId: ID!
+  orderTransactionId: ID!
+  orderTransactionType: OrderTransactionType!
+  processedAt: Date
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>amount</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>authorizationCode</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>authorizationExpiresAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>currency</b></code>](#)<Bullet />[`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>currencyExchangeAdjustment</b></code>](#)<Bullet />[`OrderTransactionCurrencyExchangeAdjustment`](/demand/api/graphql-admin/reference/objects/order-transaction-currency-exchange-adjustment) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>errorMessage</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>gateway</b></code>](#)<Bullet />[`OrderTransactionGateway!`](/demand/api/graphql-admin/reference/enums/order-transaction-gateway) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>gatewayMessage</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>gatewayTransactionId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>orderId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>orderTransactionId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>orderTransactionType</b></code>](#)<Bullet />[`OrderTransactionType!`](/demand/api/graphql-admin/reference/enums/order-transaction-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>processedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransaction.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createOrderTransaction`](/demand/api/graphql-admin/reference/mutations/create-order-transaction)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`OrderTransactionConnection`](/demand/api/graphql-admin/reference/objects/order-transaction-connection)  <Badge class="secondary" text="object"/><Bullet />[`OrderTransactionEdge`](/demand/api/graphql-admin/reference/objects/order-transaction-edge)  <Badge class="secondary" text="object"/>
+
+
+

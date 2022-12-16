@@ -1,0 +1,61 @@
+---
+id: supplier-product-image-from-url-in-composite-create-input
+title: SupplierProductImageFromUrlInCompositeCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Input object to create a new SupplierProductContentItem from a URL for a
+SupplierProduct inside a SupplierProductCompositeCreateInput
+
+```graphql
+input SupplierProductImageFromUrlInCompositeCreateInput {
+  alt: String
+  category: String
+  contentItemInputId: String
+  position: Int
+  url: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromUrlInCompositeCreateInput.<b>alt</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromUrlInCompositeCreateInput.<b>category</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromUrlInCompositeCreateInput.<b>contentItemInputId</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Temporary ID, can be any string, to associate Variants with this Image. On
+create, the real contentItemId will be substituted.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromUrlInCompositeCreateInput.<b>position</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Used to determine what order the content comes out in.
+Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromUrlInCompositeCreateInput.<b>url</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`SupplierProductCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-composite-create-input)  <Badge class="secondary" text="input"/>
+
+
+

@@ -1,0 +1,63 @@
+---
+id: order-item-status
+title: OrderItemStatus
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates the status of an OrderItem.
+
+```graphql
+enum OrderItemStatus {
+  ASSIGNED
+  CANCELLED
+  FULFILLED
+  INITIAL
+  PARTIALLY_ASSIGNED
+  PARTIALLY_FULFILLED
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemStatus.<b>ASSIGNED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemStatus.<b>CANCELLED</b></code>](#) 
+> Indicates that the OrderItem was assigned, but is no longer needed to be fulfilled.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemStatus.<b>FULFILLED</b></code>](#) 
+> Indicates that the OrderItem is fully fulfilled and is now complete.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemStatus.<b>INITIAL</b></code>](#) 
+> Indicates that the OrderItem is ready for processing, and data is complete.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemStatus.<b>PARTIALLY_ASSIGNED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemStatus.<b>PARTIALLY_FULFILLED</b></code>](#) 
+> Indicates that the OrderItem is in the process of being fulfilled.
+> 
+
+
+
+### Member of
+
+[`PublicOrderItem`](/demand/api/graphql-storefront/reference/objects/public-order-item)  <Badge class="secondary" text="object"/>
+
+
+

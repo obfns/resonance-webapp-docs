@@ -1,0 +1,77 @@
+---
+id: supplier-demand-hq
+title: SupplierDemandHq
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A relationship between a Supplier and a DemandHQ.
+
+```graphql
+type SupplierDemandHq {
+  createdAt: Date!
+  demandHqId: ID!
+  publicDemandHq: PublicDemandHq
+  status: SupplierDemandHqStatus!
+  supplierId: ID!
+  syncedAt: Date
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHq.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/supply/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHq.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHq.<b>publicDemandHq</b></code>](#)<Bullet />[`PublicDemandHq`](/supply/api/graphql-admin/reference/objects/public-demand-hq) <Badge class="secondary" text="object"/>
+> Get the expanded PublicDemandHq for this SupplierDemandHq
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHq.<b>status</b></code>](#)<Bullet />[`SupplierDemandHqStatus!`](/supply/api/graphql-admin/reference/enums/supplier-demand-hq-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Indicates what status the current relationship between a Supplier and a DemandHQ is in.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHq.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHq.<b>syncedAt</b></code>](#)<Bullet />[`Date`](/supply/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> If populated, this means that the last update was from the associated DemandHQ (typically a REQUEST).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHq.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/supply/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierDemandHq.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createSupplierDemandHq`](/supply/api/graphql-admin/reference/mutations/create-supplier-demand-hq)  <Badge class="secondary" text="mutation"/><Bullet />[`supplierDemandHq`](/supply/api/graphql-admin/reference/queries/supplier-demand-hq)  <Badge class="secondary" text="query"/><Bullet />[`updateSupplierDemandHq`](/supply/api/graphql-admin/reference/mutations/update-supplier-demand-hq)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`Supplier`](/supply/api/graphql-admin/reference/objects/supplier)  <Badge class="secondary" text="object"/><Bullet />[`SupplierDemandHqConnection`](/supply/api/graphql-admin/reference/objects/supplier-demand-hq-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplierDemandHqEdge`](/supply/api/graphql-admin/reference/objects/supplier-demand-hq-edge)  <Badge class="secondary" text="object"/>
+
+
+

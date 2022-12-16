@@ -1,0 +1,48 @@
+---
+id: supplier-variant-inventory-policy
+title: SupplierVariantInventoryPolicy
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates how to handle inventory, whether a product should or can go out of stock
+
+```graphql
+enum SupplierVariantInventoryPolicy {
+  BOTTOMLESS
+  DEFAULT
+  HOLD
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantInventoryPolicy.<b>BOTTOMLESS</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantInventoryPolicy.<b>DEFAULT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantInventoryPolicy.<b>HOLD</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`SupplierProductInventoryPolicyFilterInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-inventory-policy-filter-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariant`](/supply/api/graphql-admin/reference/objects/supplier-variant)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantExternalUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-external-update-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-in-composite-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-update-input)  <Badge class="secondary" text="input"/>
+
+
+

@@ -1,0 +1,30 @@
+---
+id: id
+title: ID
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+
+```graphql
+scalar ID
+```
+
+
+
+
+### Member of
+
+[`App`](/adminidentity/api/graphql-admin/reference/objects/app)  <Badge class="secondary" text="object"/><Bullet />[`app`](/adminidentity/api/graphql-admin/reference/queries/app)  <Badge class="secondary" text="query"/><Bullet />[`AppClientResponse`](/adminidentity/api/graphql-admin/reference/objects/app-client-response)  <Badge class="secondary" text="object"/><Bullet />[`AppCreateInput`](/adminidentity/api/graphql-admin/reference/inputs/app-create-input)  <Badge class="secondary" text="input"/><Bullet />[`AppUpdateInput`](/adminidentity/api/graphql-admin/reference/inputs/app-update-input)  <Badge class="secondary" text="input"/><Bullet />[`deletePartnerIdentity`](/adminidentity/api/graphql-admin/reference/mutations/delete-partner-identity)  <Badge class="secondary" text="mutation"/><Bullet />[`Partner`](/adminidentity/api/graphql-admin/reference/objects/partner)  <Badge class="secondary" text="object"/><Bullet />[`partner`](/adminidentity/api/graphql-admin/reference/queries/partner)  <Badge class="secondary" text="query"/><Bullet />[`PartnerIdentity`](/adminidentity/api/graphql-admin/reference/objects/partner-identity)  <Badge class="secondary" text="object"/><Bullet />[`PartnerIdentityCreateInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-identity-create-input)  <Badge class="secondary" text="input"/><Bullet />[`PartnerIdentityDeletedId`](/adminidentity/api/graphql-admin/reference/objects/partner-identity-deleted-id)  <Badge class="secondary" text="object"/><Bullet />[`PartnerIdentityUpdateInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-identity-update-input)  <Badge class="secondary" text="input"/><Bullet />[`PartnerUpdateInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-update-input)  <Badge class="secondary" text="input"/><Bullet />[`PublicApp`](/adminidentity/api/graphql-admin/reference/objects/public-app)  <Badge class="secondary" text="object"/><Bullet />[`publicApp`](/adminidentity/api/graphql-admin/reference/queries/public-app)  <Badge class="secondary" text="query"/><Bullet />[`publicApps`](/adminidentity/api/graphql-admin/reference/queries/public-apps)  <Badge class="secondary" text="query"/><Bullet />[`publicIdentities`](/adminidentity/api/graphql-admin/reference/queries/public-identities)  <Badge class="secondary" text="query"/><Bullet />[`PublicIdentity`](/adminidentity/api/graphql-admin/reference/objects/public-identity)  <Badge class="secondary" text="object"/><Bullet />[`publicIdentity`](/adminidentity/api/graphql-admin/reference/queries/public-identity)  <Badge class="secondary" text="query"/><Bullet />[`User`](/adminidentity/api/graphql-admin/reference/objects/user)  <Badge class="secondary" text="object"/><Bullet />[`UserNotification`](/adminidentity/api/graphql-admin/reference/objects/user-notification)  <Badge class="secondary" text="object"/><Bullet />[`UserNotificationUpdateStatusInput`](/adminidentity/api/graphql-admin/reference/inputs/user-notification-update-status-input)  <Badge class="secondary" text="input"/><Bullet />[`UserUpdateInput`](/adminidentity/api/graphql-admin/reference/inputs/user-update-input)  <Badge class="secondary" text="input"/>
+
+
+

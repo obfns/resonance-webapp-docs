@@ -1,0 +1,39 @@
+---
+id: demand-entity-status-filter-input
+title: DemandEntityStatusFilterInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Filter using DemandEntityStatus.
+
+```graphql
+input DemandEntityStatusFilterInput {
+  operator: FilterOperator
+  values: [DemandEntityStatus!]!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandEntityStatusFilterInput.<b>operator</b></code>](#)<Bullet />[`FilterOperator`](/demand/api/graphql-admin/reference/enums/filter-operator) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandEntityStatusFilterInput.<b>values</b></code>](#)<Bullet />[`[DemandEntityStatus!]!`](/demand/api/graphql-admin/reference/enums/demand-entity-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+
+
+
+

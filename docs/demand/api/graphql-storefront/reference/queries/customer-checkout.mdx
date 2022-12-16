@@ -1,0 +1,42 @@
+---
+id: customer-checkout
+title: customerCheckout
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Get the checkout for a customer.
+            
+Requires the publiccheckout/read scope and a valid customerToken.
+
+```graphql
+customerCheckout(
+  customerToken: String!
+): Checkout
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>customerCheckout.<b>customerToken</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`Checkout`](/demand/api/graphql-storefront/reference/objects/checkout) <Badge class="secondary" text="object"/>
+> A checkout is a temporary container for an order and its orderItems that a customer or anonymous user wants to buy
+> 
+
+
+
+
+

@@ -1,0 +1,54 @@
+---
+id: supplier-product-locale-update-input
+title: SupplierProductLocaleUpdateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The necessary fields in order to update a supplierProductLocale.
+ID fields are required, others are optional, only included fields will be updated.
+
+```graphql
+input SupplierProductLocaleUpdateInput {
+  description: String
+  featureBullets: [String]
+  localeType: ResonanceLocaleType!
+  supplierProductId: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocaleUpdateInput.<b>description</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocaleUpdateInput.<b>featureBullets</b></code>](#)<Bullet />[`[String]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Limited to 5 bullets
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocaleUpdateInput.<b>localeType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/supply/api/graphql-admin/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocaleUpdateInput.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`updateSupplierProductLocale`](/supply/api/graphql-admin/reference/mutations/update-supplier-product-locale)  <Badge class="secondary" text="mutation"/>
+
+
+

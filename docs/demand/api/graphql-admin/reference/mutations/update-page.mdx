@@ -1,0 +1,46 @@
+---
+id: update-page
+title: updatePage
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Update an existing page.
+
+Requires the page/write permission on the given DemandHq
+
+```graphql
+updatePage(
+  input: PageUpdateInput!
+): Page!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>updatePage.<b>input</b></code>](#)<Bullet />[`PageUpdateInput!`](/demand/api/graphql-admin/reference/inputs/page-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`Page`](/demand/api/graphql-admin/reference/objects/page) <Badge class="secondary" text="object"/>
+> A Page is a part of the Demand Domain and represents a page with textual and
+image content on it, that has nothing to do with products.
+This can range from "About Us" pages to Blog articles. Use the "pageType" field to differentiate.
+Pages do not have locales specified, but since everything would be different
+anyway, "pageType" can be a composite key with locale in it.
+> 
+
+
+
+
+

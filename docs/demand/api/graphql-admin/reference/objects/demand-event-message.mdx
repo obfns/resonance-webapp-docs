@@ -1,0 +1,44 @@
+---
+id: demand-event-message
+title: DemandEventMessage
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+This is the event data and metadata.
+The data is variable, but most typically contains a newItem and oldItem.
+
+```graphql
+type DemandEventMessage {
+  data: JSON
+  metadata: DemandEventMetadata
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandEventMessage.<b>data</b></code>](#)<Bullet />[`JSON`](/demand/api/graphql-admin/reference/scalars/json) <Badge class="secondary" text="scalar"/>
+> Variable, but most typically contains a newItem and oldItem.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandEventMessage.<b>metadata</b></code>](#)<Bullet />[`DemandEventMetadata`](/demand/api/graphql-admin/reference/objects/demand-event-metadata) <Badge class="secondary" text="object"/>
+> Items consistent to every event
+> 
+
+
+
+### Member of
+
+[`DemandEvent`](/demand/api/graphql-admin/reference/objects/demand-event)  <Badge class="secondary" text="object"/>
+
+
+

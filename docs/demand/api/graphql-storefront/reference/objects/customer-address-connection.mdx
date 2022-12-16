@@ -1,0 +1,48 @@
+---
+id: customer-address-connection
+title: CustomerAddressConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through CustomerAddresses
+
+```graphql
+type CustomerAddressConnection {
+  edges: [CustomerAddressEdge]!
+  nodes: [CustomerAddress]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>CustomerAddressConnection.<b>edges</b></code>](#)<Bullet />[`[CustomerAddressEdge]!`](/demand/api/graphql-storefront/reference/objects/customer-address-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CustomerAddressConnection.<b>nodes</b></code>](#)<Bullet />[`[CustomerAddress]!`](/demand/api/graphql-storefront/reference/objects/customer-address) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CustomerAddressConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-storefront/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`Customer`](/demand/api/graphql-storefront/reference/objects/customer)  <Badge class="secondary" text="object"/>
+
+
+

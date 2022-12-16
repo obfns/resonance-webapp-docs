@@ -1,0 +1,38 @@
+---
+id: public-collection-type-content-edge
+title: PublicCollectionTypeContentEdge
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+An edge containing a PublicCollectionTypeContent.
+
+```graphql
+type PublicCollectionTypeContentEdge {
+  node: PublicCollectionTypeContent
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicCollectionTypeContentEdge.<b>node</b></code>](#)<Bullet />[`PublicCollectionTypeContent`](/demand/api/graphql-storefront/reference/objects/public-collection-type-content) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`PublicCollectionTypeContentConnection`](/demand/api/graphql-storefront/reference/objects/public-collection-type-content-connection)  <Badge class="secondary" text="object"/>
+
+
+

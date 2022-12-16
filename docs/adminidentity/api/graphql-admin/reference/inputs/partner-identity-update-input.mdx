@@ -1,0 +1,48 @@
+---
+id: partner-identity-update-input
+title: PartnerIdentityUpdateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Input object to update a PartnerIdentity, the permissions given to an Identity for a Partner
+
+```graphql
+input PartnerIdentityUpdateInput {
+  identityId: ID!
+  partnerId: ID!
+  permissions: PartnerIdentityPermissionsInput
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentityUpdateInput.<b>identityId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The identityId these permissions pertain to
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentityUpdateInput.<b>partnerId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The ID of the Partner this permission pertains to
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentityUpdateInput.<b>permissions</b></code>](#)<Bullet />[`PartnerIdentityPermissionsInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-identity-permissions-input) <Badge class="secondary" text="input"/>
+> Object representing exactly what permissions are given
+> 
+
+
+
+### Member of
+
+[`updatePartnerIdentity`](/adminidentity/api/graphql-admin/reference/mutations/update-partner-identity)  <Badge class="secondary" text="mutation"/>
+
+
+

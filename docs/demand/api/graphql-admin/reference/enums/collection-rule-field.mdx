@@ -1,0 +1,43 @@
+---
+id: collection-rule-field
+title: CollectionRuleField
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates which field a CollectionRule applies to
+
+```graphql
+enum CollectionRuleField {
+  TAG
+  VENDOR
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>CollectionRuleField.<b>TAG</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CollectionRuleField.<b>VENDOR</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`CollectionRule`](/demand/api/graphql-admin/reference/objects/collection-rule)  <Badge class="secondary" text="object"/><Bullet />[`CollectionRuleInput`](/demand/api/graphql-admin/reference/inputs/collection-rule-input)  <Badge class="secondary" text="input"/>
+
+
+

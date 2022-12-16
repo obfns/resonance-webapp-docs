@@ -1,0 +1,48 @@
+---
+id: storefront-authentication-type
+title: StorefrontAuthenticationType
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates what type of authentication is used for the storefront.
+
+```graphql
+enum StorefrontAuthenticationType {
+  COGNITO
+  JWKS
+  NONE
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontAuthenticationType.<b>COGNITO</b></code>](#) 
+> Indicates that the storefront uses Cognito for auth.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontAuthenticationType.<b>JWKS</b></code>](#) 
+> Indicates that the storefront uses a JWT that has a JWKS for auth.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontAuthenticationType.<b>NONE</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`Storefront`](/demand/api/graphql-admin/reference/objects/storefront)  <Badge class="secondary" text="object"/><Bullet />[`StorefrontCreateInput`](/demand/api/graphql-admin/reference/inputs/storefront-create-input)  <Badge class="secondary" text="input"/><Bullet />[`StorefrontUpdateInput`](/demand/api/graphql-admin/reference/inputs/storefront-update-input)  <Badge class="secondary" text="input"/>
+
+
+

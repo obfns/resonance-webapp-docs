@@ -1,0 +1,48 @@
+---
+id: product-content-item-connection
+title: ProductContentItemConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through ProductContentItems
+
+```graphql
+type ProductContentItemConnection {
+  edges: [PublicProductContentItemEdge]!
+  nodes: [PublicProductContentItem]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductContentItemConnection.<b>edges</b></code>](#)<Bullet />[`[PublicProductContentItemEdge]!`](/demand/api/graphql-storefront/reference/objects/public-product-content-item-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductContentItemConnection.<b>nodes</b></code>](#)<Bullet />[`[PublicProductContentItem]!`](/demand/api/graphql-storefront/reference/objects/public-product-content-item) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductContentItemConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-storefront/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`PublicProduct`](/demand/api/graphql-storefront/reference/objects/public-product)  <Badge class="secondary" text="object"/>
+
+
+

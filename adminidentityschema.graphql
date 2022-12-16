@@ -18,6 +18,13 @@ type App {
   Limited to 128 characters
   """
   name: String!
+
+  """
+  Get the partner this app belongs to.
+              
+  Requires the partner/read scope on the associated AdminIdentity.
+  """
+  partner: Partner
   partnerId: ID!
   requestedScopes: [String]
   status: AppStatus!

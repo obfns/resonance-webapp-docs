@@ -1,0 +1,30 @@
+---
+id: int
+title: Int
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+
+```graphql
+scalar Int
+```
+
+
+
+
+### Member of
+
+[`CartItem`](/demand/api/graphql-storefront/reference/objects/cart-item)  <Badge class="secondary" text="object"/><Bullet />[`CartItemInput`](/demand/api/graphql-storefront/reference/inputs/cart-item-input)  <Badge class="secondary" text="input"/><Bullet />[`CheckoutOrderItem`](/demand/api/graphql-storefront/reference/objects/checkout-order-item)  <Badge class="secondary" text="object"/><Bullet />[`CheckoutOrderItemInput`](/demand/api/graphql-storefront/reference/inputs/checkout-order-item-input)  <Badge class="secondary" text="input"/><Bullet />[`CollectionNumberOfTermAggregations`](/demand/api/graphql-storefront/reference/inputs/collection-number-of-term-aggregations)  <Badge class="secondary" text="input"/><Bullet />[`collections`](/demand/api/graphql-storefront/reference/queries/collections)  <Badge class="secondary" text="query"/><Bullet />[`collectionTermAggregations`](/demand/api/graphql-storefront/reference/queries/collection-term-aggregations)  <Badge class="secondary" text="query"/><Bullet />[`collectionTypeContents`](/demand/api/graphql-storefront/reference/queries/collection-type-contents)  <Badge class="secondary" text="query"/><Bullet />[`navs`](/demand/api/graphql-storefront/reference/queries/navs)  <Badge class="secondary" text="query"/><Bullet />[`OrderItemPurchaseOrderItem`](/demand/api/graphql-storefront/reference/objects/order-item-purchase-order-item)  <Badge class="secondary" text="object"/><Bullet />[`orders`](/demand/api/graphql-storefront/reference/queries/orders)  <Badge class="secondary" text="query"/><Bullet />[`PageNumberOfTermAggregations`](/demand/api/graphql-storefront/reference/inputs/page-number-of-term-aggregations)  <Badge class="secondary" text="input"/><Bullet />[`pages`](/demand/api/graphql-storefront/reference/queries/pages)  <Badge class="secondary" text="query"/><Bullet />[`pageTermAggregations`](/demand/api/graphql-storefront/reference/queries/page-term-aggregations)  <Badge class="secondary" text="query"/><Bullet />[`pageTypeContents`](/demand/api/graphql-storefront/reference/queries/page-type-contents)  <Badge class="secondary" text="query"/><Bullet />[`ProductNumberOfTermAggregations`](/demand/api/graphql-storefront/reference/inputs/product-number-of-term-aggregations)  <Badge class="secondary" text="input"/><Bullet />[`products`](/demand/api/graphql-storefront/reference/queries/products)  <Badge class="secondary" text="query"/><Bullet />[`productTermAggregations`](/demand/api/graphql-storefront/reference/queries/product-term-aggregations)  <Badge class="secondary" text="query"/><Bullet />[`PublicNav`](/demand/api/graphql-storefront/reference/objects/public-nav)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderItem`](/demand/api/graphql-storefront/reference/objects/public-order-item)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductContentItem`](/demand/api/graphql-storefront/reference/objects/public-product-content-item)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductMetrics`](/demand/api/graphql-storefront/reference/objects/public-product-metrics)  <Badge class="secondary" text="object"/><Bullet />[`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant)  <Badge class="secondary" text="object"/><Bullet />[`PublicVariantMetrics`](/demand/api/graphql-storefront/reference/objects/public-variant-metrics)  <Badge class="secondary" text="object"/><Bullet />[`PurchaseOrderItemFulfillment`](/demand/api/graphql-storefront/reference/objects/purchase-order-item-fulfillment)  <Badge class="secondary" text="object"/><Bullet />[`SavedForLaterItem`](/demand/api/graphql-storefront/reference/objects/saved-for-later-item)  <Badge class="secondary" text="object"/><Bullet />[`SavedForLaterItemInput`](/demand/api/graphql-storefront/reference/inputs/saved-for-later-item-input)  <Badge class="secondary" text="input"/><Bullet />[`TermAggregation`](/demand/api/graphql-storefront/reference/objects/term-aggregation)  <Badge class="secondary" text="object"/>
+
+
+

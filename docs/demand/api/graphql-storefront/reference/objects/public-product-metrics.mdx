@@ -1,0 +1,123 @@
+---
+id: public-product-metrics
+title: PublicProductMetrics
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Metrics for a PublicProduct including msrp min/max, price min/max, and discount metrics
+
+```graphql
+type PublicProductMetrics {
+  countOfVariants: Int!
+  discountMaximum: Float!
+  discountMaximumInStock: Float
+  discountMinimum: Float!
+  discountMinimumInStock: Float
+  discountPercentageMaximum: Float!
+  discountPercentageMaximumInStock: Float
+  discountPercentageMinimum: Float!
+  discountPercentageMinimumInStock: Float
+  inventoryStatus: InventoryStatus!
+  msrpMaximum: Float!
+  msrpMaximumInStock: Float
+  msrpMinimum: Float!
+  msrpMinimumInStock: Float
+  priceMaximum: Float!
+  priceMaximumInStock: Float
+  priceMinimum: Float!
+  priceMinimumInStock: Float
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>countOfVariants</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> This number is mostly useful in tallying other numbers, averages, etc.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>discountMaximum</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The maximum discount for all of the variants
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>discountMaximumInStock</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> The maximum discount for all in stock variants (null if no variants are in stock)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>discountMinimum</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The minimum discount for all of the variants
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>discountMinimumInStock</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> The minimum discount for all in stock variants (null if no variants are in stock)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>discountPercentageMaximum</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The maximum discount percentage for all of the variants
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>discountPercentageMaximumInStock</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> The maximum discount percentage for all in stock variants (null if no variants are in stock)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>discountPercentageMinimum</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The minimum discount percentage for all of the variants
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>discountPercentageMinimumInStock</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> The minimum discount percentage for all in stock variants (null if no variants are in stock)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>inventoryStatus</b></code>](#)<Bullet />[`InventoryStatus!`](/demand/api/graphql-storefront/reference/enums/inventory-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> In Stock if any Variant inventoryStatus is In Stock
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>msrpMaximum</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The maximum MSRP from all of the variants
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>msrpMaximumInStock</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> The maximum MSRP from all in stock variants (null if no variants are in stock)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>msrpMinimum</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The minimum MSRP from all of the variants
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>msrpMinimumInStock</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> The minimum MSRP from all in stock variants (null if no variants are in stock)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>priceMaximum</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The maximum price from all of the variants
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>priceMaximumInStock</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> The maximum price from all in stock variants (null if no variants are in stock)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>priceMinimum</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The minimum price from all of the variants
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>priceMinimumInStock</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> The minimum price from all in stock variants (null if no variants are in stock)
+> 
+
+
+
+### Member of
+
+[`PublicProduct`](/demand/api/graphql-storefront/reference/objects/public-product)  <Badge class="secondary" text="object"/>
+
+
+

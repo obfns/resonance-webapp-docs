@@ -1,0 +1,177 @@
+---
+id: page
+title: Page
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A Page is a part of the Demand Domain and represents a page with textual and
+image content on it, that has nothing to do with products.
+This can range from "About Us" pages to Blog articles. Use the "pageType" field to differentiate.
+Pages do not have locales specified, but since everything would be different
+anyway, "pageType" can be a composite key with locale in it.
+
+```graphql
+type Page {
+  author: String
+  content: PageContent
+  contentItemIds: [ID!]
+  contentItems: [PageContentItem]
+  createdAt: Date!
+  demandHqId: ID!
+  description: String
+  descriptionOrExcerpt(
+  numberOfCharacters: Int
+): String
+  pageId: ID!
+  pageType: String!
+  primaryImageUrl: String
+  primaryImageUrlWithFallback(
+  height: Int
+  width: Int
+): String
+  publishedAt: Date
+  secondaryImageUrl: String
+  seoDescription: String
+  seoTitle: String
+  slug: String!
+  status: DemandEntityStatus!
+  storefrontIds: [ID]
+  subtitle: String
+  tags: PageTags
+  title: String!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>author</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The author of the page, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>content</b></code>](#)<Bullet />[`PageContent`](/demand/api/graphql-admin/reference/objects/page-content) <Badge class="secondary" text="object"/>
+> Get the content of the page.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>contentItemIds</b></code>](#)<Bullet />[`[ID!]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The ContentItemIds of the Content Items that are associated with this page.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>contentItems</b></code>](#)<Bullet />[`[PageContentItem]`](/demand/api/graphql-admin/reference/objects/page-content-item) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> Get the content items of the page.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A short description of the page, limit 1000 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>descriptionOrExcerpt</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the description if it exists, or fallback to the excerpt of content for the page.
+> ##### [<code style={{ fontWeight: 'normal' }}>Page.descriptionOrExcerpt.<b>numberOfCharacters</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The number of characters to return, defaults to 200.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>pageId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>pageType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Any string to declare a category of this page, can be used to filter pages, limit 128 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>primaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A primary image url for this page, can be generated from a Page ContentItem.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>primaryImageUrlWithFallback</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the primary image URL if exists, otherwise attempts to construct an
+image url from the first (featured) image of the page.  If the primary image
+URL is a CDN URL, it can be passed width and height properties to return a resized image.
+> ##### [<code style={{ fontWeight: 'normal' }}>Page.primaryImageUrlWithFallback.<b>height</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The height of the image to return in pixels.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Page.primaryImageUrlWithFallback.<b>width</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The width of the image to return in pixels.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>publishedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> ISO format date when the page was published. Note that ensuing updates with
+status set to PUBLISHED will republish and re-set this date.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>secondaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A secondary image url for this page, often a logo or related item.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>seoDescription</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Description specific for SEO purposes, limit 170 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>seoTitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title specific for SEO purposes, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>slug</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Slug for the URL for this page. Limit 128 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>status</b></code>](#)<Bullet />[`DemandEntityStatus!`](/demand/api/graphql-admin/reference/enums/demand-entity-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The status of the page, can be DRAFT or PUBLISHED.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>storefrontIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Which storefronts should have access to this page?
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>subtitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The subtitle of the page, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>tags</b></code>](#)<Bullet />[`PageTags`](/demand/api/graphql-admin/reference/objects/page-tags) <Badge class="secondary" text="object"/>
+> Get the tags of the page.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>title</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The title of the page, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Page.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createPage`](/demand/api/graphql-admin/reference/mutations/create-page)  <Badge class="secondary" text="mutation"/><Bullet />[`createPageImageFromUrl`](/demand/api/graphql-admin/reference/mutations/create-page-image-from-url)  <Badge class="secondary" text="mutation"/><Bullet />[`page`](/demand/api/graphql-admin/reference/queries/page)  <Badge class="secondary" text="query"/><Bullet />[`updatePage`](/demand/api/graphql-admin/reference/mutations/update-page)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/><Bullet />[`PageConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/page-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PageEdge`](/demand/api/graphql-admin/reference/objects/page-edge)  <Badge class="secondary" text="object"/><Bullet />[`PageImageFromFileResponse`](/demand/api/graphql-admin/reference/objects/page-image-from-file-response)  <Badge class="secondary" text="object"/>
+
+
+

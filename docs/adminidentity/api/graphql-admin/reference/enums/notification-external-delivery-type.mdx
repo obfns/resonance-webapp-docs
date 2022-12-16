@@ -1,0 +1,43 @@
+---
+id: notification-external-delivery-type
+title: NotificationExternalDeliveryType
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Should this notification be delivered outside the portal?
+
+```graphql
+enum NotificationExternalDeliveryType {
+  EMAIL
+  SMS
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>NotificationExternalDeliveryType.<b>EMAIL</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NotificationExternalDeliveryType.<b>SMS</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`UserNotification`](/adminidentity/api/graphql-admin/reference/objects/user-notification)  <Badge class="secondary" text="object"/>
+
+
+

@@ -1,0 +1,42 @@
+---
+id: query-public-identity-by-email
+title: queryPublicIdentityByEmail
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Given an email, returns PublicUser if the user exists. Exact match.
+
+```graphql
+queryPublicIdentityByEmail(
+  email: String!
+): PublicIdentity
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>queryPublicIdentityByEmail.<b>email</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`PublicIdentity`](/adminidentity/api/graphql-admin/reference/objects/public-identity) <Badge class="secondary" text="object"/>
+> This type is returned on routes with no permissions attached to protect
+Personally Identifiable Information, but still provide minimal data.
+Can be a User or Identity.
+> 
+
+
+
+
+

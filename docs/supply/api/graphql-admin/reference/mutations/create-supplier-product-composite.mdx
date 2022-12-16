@@ -1,0 +1,47 @@
+---
+id: create-supplier-product-composite
+title: createSupplierProductComposite
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create a new SupplierProduct and its associated ContentItems, Locales, and Variants in one mutation
+
+```graphql
+createSupplierProductComposite(
+  duplicationCheckType: CompositeDuplicationCheckType
+  input: SupplierProductCompositeCreateInput!
+): SupplierProduct!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createSupplierProductComposite.<b>duplicationCheckType</b></code>](#)<Bullet />[`CompositeDuplicationCheckType`](/supply/api/graphql-admin/reference/enums/composite-duplication-check-type) <Badge class="secondary" text="enum"/>
+> The type of duplication check to perform, defaults to STANDARD
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>createSupplierProductComposite.<b>input</b></code>](#)<Bullet />[`SupplierProductCompositeCreateInput!`](/supply/api/graphql-admin/reference/inputs/supplier-product-composite-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product) <Badge class="secondary" text="object"/>
+> This is the main entity of the Supplier domain, and is used to represent a product, which is a group of SKUs.
+SKUs are represented by SupplierVariants, a child of this entity.
+This entity is less frequently updated, it is more likely that SupplyVariant will be updated frequently.
+> 
+
+
+
+
+

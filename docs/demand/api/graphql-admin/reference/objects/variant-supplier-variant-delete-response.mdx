@@ -1,0 +1,38 @@
+---
+id: variant-supplier-variant-delete-response
+title: VariantSupplierVariantDeleteResponse
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Response from deleting a VariantSupplierVariant
+
+```graphql
+type VariantSupplierVariantDeleteResponse {
+  deletedId: VariantSupplierVariantId!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariantDeleteResponse.<b>deletedId</b></code>](#)<Bullet />[`VariantSupplierVariantId!`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant-id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`deleteVariantSupplierVariant`](/demand/api/graphql-admin/reference/mutations/delete-variant-supplier-variant)  <Badge class="secondary" text="mutation"/>
+
+
+

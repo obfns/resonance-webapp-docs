@@ -1,0 +1,52 @@
+---
+id: page-term-aggregations
+title: PageTermAggregations
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A Map of several fields of Page and term aggregations for each
+
+```graphql
+type PageTermAggregations {
+  authors: [TermAggregation!]
+  pageTypes: [TermAggregation!]
+  tags: [TermAggregation!]
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTermAggregations.<b>authors</b></code>](#)<Bullet />[`[TermAggregation!]`](/demand/api/graphql-storefront/reference/objects/term-aggregation) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTermAggregations.<b>pageTypes</b></code>](#)<Bullet />[`[TermAggregation!]`](/demand/api/graphql-storefront/reference/objects/term-aggregation) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageTermAggregations.<b>tags</b></code>](#)<Bullet />[`[TermAggregation!]`](/demand/api/graphql-storefront/reference/objects/term-aggregation) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`pageTermAggregations`](/demand/api/graphql-storefront/reference/queries/page-term-aggregations)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`PublicPageConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-page-connection-with-search)  <Badge class="secondary" text="object"/>
+
+
+

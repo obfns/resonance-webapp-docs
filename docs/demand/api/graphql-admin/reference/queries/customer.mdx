@@ -1,0 +1,42 @@
+---
+id: customer
+title: customer
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Get a Customer by their customerId.
+            
+Requires the customer/read permission for the associated DemandHq.
+
+```graphql
+customer(
+  customerId: ID!
+): Customer
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>customer.<b>customerId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`Customer`](/demand/api/graphql-admin/reference/objects/customer) <Badge class="secondary" text="object"/>
+> A customer of a given Storefront is a user who places orders on the Storefront
+> 
+
+
+
+
+

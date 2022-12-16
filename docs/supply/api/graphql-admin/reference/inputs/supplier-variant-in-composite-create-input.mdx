@@ -1,0 +1,64 @@
+---
+id: supplier-variant-in-composite-create-input
+title: SupplierVariantInCompositeCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The necessary fields in order to create a new supplierVariant inside a SupplierProductCompositeCreateInput
+
+```graphql
+input SupplierVariantInCompositeCreateInput {
+  contentItemInputIds: [String!]
+  externalVariantId: String!
+  inventoryPolicy: SupplierVariantInventoryPolicy!
+  inventoryQuantity: Int!
+  optionValues: [String!]!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantInCompositeCreateInput.<b>contentItemInputIds</b></code>](#)<Bullet />[`[String!]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> For contentItems where you are associating an existing contentItem, input the actual contentItemId.
+For other contentItem Inputs, match this to the contentItemInputId you have assigned.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantInCompositeCreateInput.<b>externalVariantId</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantInCompositeCreateInput.<b>inventoryPolicy</b></code>](#)<Bullet />[`SupplierVariantInventoryPolicy!`](/supply/api/graphql-admin/reference/enums/supplier-variant-inventory-policy) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantInCompositeCreateInput.<b>inventoryQuantity</b></code>](#)<Bullet />[`Int!`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantInCompositeCreateInput.<b>optionValues</b></code>](#)<Bullet />[`[String!]!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> An array of the option values that make up this variant.
+For example, a product with a color and size option would have two option values,
+one for each of the color and size options, i.e. ["Red", "Small"]
+Must have 1-3, and it should match the number of options in the product, but there is no validation to do so.
+Set this to "No Option" if you don't want to use options for this product and this is the only variant.
+See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
+> 
+
+
+
+### Member of
+
+[`SupplierVariantCompositeInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-composite-in-composite-create-input)  <Badge class="secondary" text="input"/>
+
+
+

@@ -1,0 +1,42 @@
+---
+id: update-demand-hq
+title: updateDemandHq
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Update an existing demandHq
+
+Requires demandHq/write permission on the requesting identity
+
+```graphql
+updateDemandHq(
+  input: DemandHqUpdateInput!
+): DemandHq!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>updateDemandHq.<b>input</b></code>](#)<Bullet />[`DemandHqUpdateInput!`](/demand/api/graphql-admin/reference/inputs/demand-hq-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq) <Badge class="secondary" text="object"/>
+> The parent-most entity of the DemandHq Domain
+> 
+
+
+
+
+

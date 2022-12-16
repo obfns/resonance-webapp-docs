@@ -1,0 +1,54 @@
+---
+id: public-variant-metrics
+title: PublicVariantMetrics
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Metrics for a PublicVariant, including inventory quantity, status, and supplierVariant counts
+
+```graphql
+type PublicVariantMetrics {
+  countOfInStockSupplierVariants: Int!
+  countOfSupplierVariants: Int!
+  inventoryQuantity: Int!
+  inventoryStatus: InventoryStatus!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicVariantMetrics.<b>countOfInStockSupplierVariants</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicVariantMetrics.<b>countOfSupplierVariants</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicVariantMetrics.<b>inventoryQuantity</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> This is mostly useful for determining whether a certain quantity can be added
+to the cart. For BOTTOMLESS InventoryPolicy, a value of 10,000,000 is added here.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicVariantMetrics.<b>inventoryStatus</b></code>](#)<Bullet />[`InventoryStatus!`](/demand/api/graphql-storefront/reference/enums/inventory-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> If any SupplierVariant is in stock, this is in stock.
+> 
+
+
+
+### Member of
+
+[`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant)  <Badge class="secondary" text="object"/>
+
+
+

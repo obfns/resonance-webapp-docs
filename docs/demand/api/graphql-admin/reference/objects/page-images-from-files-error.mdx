@@ -1,0 +1,43 @@
+---
+id: page-images-from-files-error
+title: PageImagesFromFilesError
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Returned object for any failed CreatePageImagesFromFiles inputs
+
+```graphql
+type PageImagesFromFilesError {
+  error: String!
+  input: PageImageFromFileInputResponse!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PageImagesFromFilesError.<b>error</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The error message
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageImagesFromFilesError.<b>input</b></code>](#)<Bullet />[`PageImageFromFileInputResponse!`](/demand/api/graphql-admin/reference/objects/page-image-from-file-input-response) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`PageImageFromFileResponses`](/demand/api/graphql-admin/reference/objects/page-image-from-file-responses)  <Badge class="secondary" text="object"/>
+
+
+

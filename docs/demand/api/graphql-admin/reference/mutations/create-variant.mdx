@@ -1,0 +1,43 @@
+---
+id: create-variant
+title: createVariant
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create a new variant
+            
+Requires variant/write permission on the associated demandHq for the requesting identity
+
+```graphql
+createVariant(
+  input: VariantCreateInput!
+): Variant!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createVariant.<b>input</b></code>](#)<Bullet />[`VariantCreateInput!`](/demand/api/graphql-admin/reference/inputs/variant-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`Variant`](/demand/api/graphql-admin/reference/objects/variant) <Badge class="secondary" text="object"/>
+> The main item of the Supplier Domain, represents a single SKU of a product
+Only the variant level exists, there is no parent product.
+> 
+
+
+
+
+

@@ -1,0 +1,52 @@
+---
+id: product-term-aggregations
+title: ProductTermAggregations
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A Map of several fields of Product and term aggregations for each
+
+```graphql
+type ProductTermAggregations {
+  manufacturers: [TermAggregation!]
+  tags: [TermAggregation!]
+  vendors: [TermAggregation!]
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductTermAggregations.<b>manufacturers</b></code>](#)<Bullet />[`[TermAggregation!]`](/demand/api/graphql-storefront/reference/objects/term-aggregation) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductTermAggregations.<b>tags</b></code>](#)<Bullet />[`[TermAggregation!]`](/demand/api/graphql-storefront/reference/objects/term-aggregation) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductTermAggregations.<b>vendors</b></code>](#)<Bullet />[`[TermAggregation!]`](/demand/api/graphql-storefront/reference/objects/term-aggregation) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`productTermAggregations`](/demand/api/graphql-storefront/reference/queries/product-term-aggregations)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`PublicProductConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-product-connection-with-search)  <Badge class="secondary" text="object"/>
+
+
+

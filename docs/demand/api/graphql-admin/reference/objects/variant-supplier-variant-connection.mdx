@@ -1,0 +1,52 @@
+---
+id: variant-supplier-variant-connection
+title: VariantSupplierVariantConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through VariantSupplierVariants
+
+```graphql
+type VariantSupplierVariantConnection {
+  edges: [VariantSupplierVariantEdge]!
+  nodes: [VariantSupplierVariant]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariantConnection.<b>edges</b></code>](#)<Bullet />[`[VariantSupplierVariantEdge]!`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariantConnection.<b>nodes</b></code>](#)<Bullet />[`[VariantSupplierVariant]!`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariantConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`variantSupplierVariants`](/demand/api/graphql-admin/reference/queries/variant-supplier-variants)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`Variant`](/demand/api/graphql-admin/reference/objects/variant)  <Badge class="secondary" text="object"/>
+
+
+

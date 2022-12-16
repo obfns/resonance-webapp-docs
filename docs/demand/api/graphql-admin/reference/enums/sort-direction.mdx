@@ -1,0 +1,43 @@
+---
+id: sort-direction
+title: SortDirection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates which direction to sort, defaults to ASC
+
+```graphql
+enum SortDirection {
+  ASC
+  DESC
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>SortDirection.<b>ASC</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SortDirection.<b>DESC</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`CollectionSortInput`](/demand/api/graphql-admin/reference/inputs/collection-sort-input)  <Badge class="secondary" text="input"/><Bullet />[`PageSortInput`](/demand/api/graphql-admin/reference/inputs/page-sort-input)  <Badge class="secondary" text="input"/><Bullet />[`ProductSortInput`](/demand/api/graphql-admin/reference/inputs/product-sort-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierProductSortInput`](/demand/api/graphql-admin/reference/inputs/supplier-product-sort-input)  <Badge class="secondary" text="input"/>
+
+
+

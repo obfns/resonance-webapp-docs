@@ -1,0 +1,38 @@
+---
+id: demand-hq-supplier-edge
+title: DemandHqSupplierEdge
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+One edge producing one DemandHqSupplier Node
+
+```graphql
+type DemandHqSupplierEdge {
+  node: DemandHqSupplier
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqSupplierEdge.<b>node</b></code>](#)<Bullet />[`DemandHqSupplier`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`DemandHqSupplierConnection`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier-connection)  <Badge class="secondary" text="object"/>
+
+
+

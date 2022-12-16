@@ -1,0 +1,57 @@
+---
+id: page-info
+title: PageInfo
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Information on Pagination
+
+```graphql
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>endCursor</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The cursor to use when paginating forwards (using first/after). Will always be
+populated regardless of if a next page exists.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>hasNextPage</b></code>](#)<Bullet />[`Boolean!`](/demand/api/graphql-storefront/reference/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Whether or not using the endCursor will result in more results. Always
+populated, but will always be false when paginating using last/before.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>hasPreviousPage</b></code>](#)<Bullet />[`Boolean!`](/demand/api/graphql-storefront/reference/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Whether or not using the startCursor will result in more results. Always
+populated, but will always be false when paginating using first/after.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>startCursor</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The cursor to use when paginating backwards (using last/before). Will always
+be populated regardless of if a previous page exists
+> 
+
+
+
+### Member of
+
+[`CustomerAddressConnection`](/demand/api/graphql-storefront/reference/objects/customer-address-connection)  <Badge class="secondary" text="object"/><Bullet />[`ProductContentItemConnection`](/demand/api/graphql-storefront/reference/objects/product-content-item-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicCollectionConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-collection-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicCollectionTypeContentConnection`](/demand/api/graphql-storefront/reference/objects/public-collection-type-content-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicNavConnection`](/demand/api/graphql-storefront/reference/objects/public-nav-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-order-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderItemConnection`](/demand/api/graphql-storefront/reference/objects/public-order-item-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderTransactionConnection`](/demand/api/graphql-storefront/reference/objects/public-order-transaction-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicPageConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-page-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicPageTypeContentConnection`](/demand/api/graphql-storefront/reference/objects/public-page-type-content-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-product-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicVariantConnection`](/demand/api/graphql-storefront/reference/objects/public-variant-connection)  <Badge class="secondary" text="object"/>
+
+
+

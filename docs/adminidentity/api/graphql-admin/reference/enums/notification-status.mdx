@@ -1,0 +1,48 @@
+---
+id: notification-status
+title: NotificationStatus
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Denotes how urgent and whether the Notification is archived
+
+```graphql
+enum NotificationStatus {
+  ARCHIVED
+  STANDARD
+  URGENT
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>NotificationStatus.<b>ARCHIVED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NotificationStatus.<b>STANDARD</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NotificationStatus.<b>URGENT</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`myNotifications`](/adminidentity/api/graphql-admin/reference/queries/my-notifications)  <Badge class="secondary" text="query"/><Bullet />[`UserNotification`](/adminidentity/api/graphql-admin/reference/objects/user-notification)  <Badge class="secondary" text="object"/><Bullet />[`UserNotificationUpdateStatusInput`](/adminidentity/api/graphql-admin/reference/inputs/user-notification-update-status-input)  <Badge class="secondary" text="input"/>
+
+
+

@@ -1,0 +1,130 @@
+---
+id: supplier-variant
+title: SupplierVariant
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The main item of the Supplier Domain, represents a single SKU of a product
+Only the variant level exists, there is no parent product.
+
+```graphql
+type SupplierVariant {
+  contentItemIds: [ID]
+  createdAt: String!
+  customData: SupplierVariantCustomData
+  externalVariantId: String!
+  featuredImage: SupplierProductContentItem
+  inventoryPolicy: SupplierVariantInventoryPolicy!
+  inventoryQuantity: Int!
+  inventoryStatus: VariantInventoryStatus
+  optionValues: [String!]!
+  supplement: SupplierVariantSupplement
+  supplierId: ID!
+  supplierProductId: ID!
+  supplierVariantId: ID!
+  title: String!
+  updatedAt: String!
+  updatedBy: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>contentItemIds</b></code>](#)<Bullet />[`[ID]`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Associates contentItems with this variant
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>createdAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>customData</b></code>](#)<Bullet />[`SupplierVariantCustomData`](/supply/api/graphql-admin/reference/objects/supplier-variant-custom-data) <Badge class="secondary" text="object"/>
+> Get the associated SupplierVariantCustomData
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>externalVariantId</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>featuredImage</b></code>](#)<Bullet />[`SupplierProductContentItem`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item) <Badge class="secondary" text="object"/>
+> Get the featured image for a supplierVariant
+
+Requires the supplierproductcontentitem/read permission on the associated Supplier.
+
+This is a convenience field that returns the first content item with the type
+IMAGE, if exists for the associated supplierProduct.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>inventoryPolicy</b></code>](#)<Bullet />[`SupplierVariantInventoryPolicy!`](/supply/api/graphql-admin/reference/enums/supplier-variant-inventory-policy) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>inventoryQuantity</b></code>](#)<Bullet />[`Int!`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>inventoryStatus</b></code>](#)<Bullet />[`VariantInventoryStatus`](/supply/api/graphql-admin/reference/enums/variant-inventory-status) <Badge class="secondary" text="enum"/>
+> Get the inventory status of this variant
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>optionValues</b></code>](#)<Bullet />[`[String!]!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> An array of the option values that make up this variant.
+For example, a product with a color and size option would have two option values,
+one for each of the color and size options, i.e. ["Red", "Small"]
+Must have 1-3, and it should match the number of options in the product, but there is no validation to do so.
+Set this to "No Option" if you don't want to use options for this product and this is the only variant.
+See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>supplement</b></code>](#)<Bullet />[`SupplierVariantSupplement`](/supply/api/graphql-admin/reference/objects/supplier-variant-supplement) <Badge class="secondary" text="object"/>
+> Get the supplierVariantSupplement for a supplierVariant
+
+Requires suppliervariantsupplement/read permission on the requesting identity
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>supplierVariantId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>title</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Get the title of this variant (combo of optionValues)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>updatedBy</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createSupplierVariant`](/supply/api/graphql-admin/reference/mutations/create-supplier-variant)  <Badge class="secondary" text="mutation"/><Bullet />[`supplierVariant`](/supply/api/graphql-admin/reference/queries/supplier-variant)  <Badge class="secondary" text="query"/><Bullet />[`updateSupplierVariant`](/supply/api/graphql-admin/reference/mutations/update-supplier-variant)  <Badge class="secondary" text="mutation"/><Bullet />[`updateSupplierVariants`](/supply/api/graphql-admin/reference/mutations/update-supplier-variants)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantComposite`](/supply/api/graphql-admin/reference/objects/supplier-variant-composite)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantConnection`](/supply/api/graphql-admin/reference/objects/supplier-variant-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantEdge`](/supply/api/graphql-admin/reference/objects/supplier-variant-edge)  <Badge class="secondary" text="object"/>
+
+
+

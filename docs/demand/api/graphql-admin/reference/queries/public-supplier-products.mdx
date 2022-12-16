@@ -1,0 +1,124 @@
+---
+id: public-supplier-products
+title: publicSupplierProducts
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Get the expanded PublicSupplier for this DemandHqSupplier
+
+```graphql
+publicSupplierProducts(
+  after: String
+  before: String
+  cost: [FloatRangeFilterInput]
+  demandHqId: ID!
+  first: Int
+  inventoryPolicy: [SupplierProductInventoryPolicyFilterInput]
+  inventoryStatus: InventoryStatus
+  last: Int
+  manufacturer: [StringFilterInput]
+  msrp: [FloatRangeFilterInput]
+  query: String
+  recommendedPrice: [FloatRangeFilterInput]
+  sortOrder: [SupplierProductSortInput]
+  standardizedColor: [SupplierProductStandardizedColorFilterInput]
+  supplierId: ID!
+  tags: [StringFilterInput]
+  vendor: StringFilterInput
+): PublicSupplierProductConnectionWithSearch
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>cost</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using cost ranges.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The ID of the DemandHq requesting the Public Supplier Products
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>inventoryPolicy</b></code>](#)<Bullet />[`[SupplierProductInventoryPolicyFilterInput]`](/demand/api/graphql-admin/reference/inputs/supplier-product-inventory-policy-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using InventoryPolicy (Variant).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>inventoryStatus</b></code>](#)<Bullet />[`InventoryStatus`](/demand/api/graphql-admin/reference/enums/inventory-status) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>manufacturer</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Manufacturer (VariantSupplement).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>msrp</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using MSRP ranges.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>query</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Query supplierProducts for certain terms. Searches several fields, including
+supplierProduct.tags, supplierProduct.title, supplierProduct.vendor,
+supplierProductLocales.description, supplierProductLocales.featureBullets,
+supplierVariantSupplements.barcode, supplierVariantSupplement.mpn,
+supplierVariantSupplement.sku
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>recommendedPrice</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using recommendedPrice ranges.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>sortOrder</b></code>](#)<Bullet />[`[SupplierProductSortInput]`](/demand/api/graphql-admin/reference/inputs/supplier-product-sort-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Sort SupplierProducts by a series of fields and directions, defaults to CREATED_AT/ASC.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>standardizedColor</b></code>](#)<Bullet />[`[SupplierProductStandardizedColorFilterInput]`](/demand/api/graphql-admin/reference/inputs/supplier-product-standardized-color-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using StandardizedColor (Variant).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The ID of the Supplier to get products for.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Tags.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierProducts.<b>vendor</b></code>](#)<Bullet />[`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Vendors.
+> 
+
+### Type
+
+#### [`PublicSupplierProductConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/public-supplier-product-connection-with-search) <Badge class="secondary" text="object"/>
+> Paginate through PublicSupplierProducts
+> 
+
+
+
+
+

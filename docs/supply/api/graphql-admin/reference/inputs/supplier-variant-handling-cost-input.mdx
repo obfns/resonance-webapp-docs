@@ -1,0 +1,43 @@
+---
+id: supplier-variant-handling-cost-input
+title: SupplierVariantHandlingCostInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Input object to indicate both amount and unit of handling cost.
+
+```graphql
+input SupplierVariantHandlingCostInput {
+  amount: Float!
+  unit: SupplierVariantHandlingCostUnit!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantHandlingCostInput.<b>amount</b></code>](#)<Bullet />[`Float!`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantHandlingCostInput.<b>unit</b></code>](#)<Bullet />[`SupplierVariantHandlingCostUnit!`](/supply/api/graphql-admin/reference/enums/supplier-variant-handling-cost-unit) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+
+
+### Member of
+
+[`SupplierVariantSupplementCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantSupplementInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-in-composite-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantSupplementUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-update-input)  <Badge class="secondary" text="input"/>
+
+
+

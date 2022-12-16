@@ -1,0 +1,65 @@
+---
+id: my-notifications
+title: myNotifications
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+List your UserNotifications
+
+```graphql
+myNotifications(
+  after: String
+  before: String
+  category: UserNotificationCategory
+  first: Int
+  last: Int
+  status: NotificationStatus
+): UserNotificationConnection!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>myNotifications.<b>after</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>myNotifications.<b>before</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>myNotifications.<b>category</b></code>](#)<Bullet />[`UserNotificationCategory`](/adminidentity/api/graphql-admin/reference/enums/user-notification-category) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>myNotifications.<b>first</b></code>](#)<Bullet />[`Int`](/adminidentity/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>myNotifications.<b>last</b></code>](#)<Bullet />[`Int`](/adminidentity/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>myNotifications.<b>status</b></code>](#)<Bullet />[`NotificationStatus`](/adminidentity/api/graphql-admin/reference/enums/notification-status) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+### Type
+
+#### [`UserNotificationConnection`](/adminidentity/api/graphql-admin/reference/objects/user-notification-connection) <Badge class="secondary" text="object"/>
+> Paginate through UserNotifications
+> 
+
+
+
+
+

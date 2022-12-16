@@ -1,0 +1,83 @@
+---
+id: order-item-adjustment-reason
+title: OrderItemAdjustmentReason
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates why an Adjustment occurred.
+
+```graphql
+enum OrderItemAdjustmentReason {
+  CUSTOMER_FOUND_LOWER_PRICE
+  CUSTOMER_NO_LONGER_NEEDS
+  CUSTOMER_ORDERED_BY_ACCIDENT
+  CUSTOMER_OTHER
+  CUSTOMER_SHIPPING_TOOK_TOO_LONG
+  ITEM_NOT_AS_ADVERTISED
+  OTHER
+  OUT_OF_STOCK
+  SPOT_DISCOUNT
+  WRONG_ITEM_SHIPPED
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemAdjustmentReason.<b>CUSTOMER_FOUND_LOWER_PRICE</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemAdjustmentReason.<b>CUSTOMER_NO_LONGER_NEEDS</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemAdjustmentReason.<b>CUSTOMER_ORDERED_BY_ACCIDENT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemAdjustmentReason.<b>CUSTOMER_OTHER</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemAdjustmentReason.<b>CUSTOMER_SHIPPING_TOOK_TOO_LONG</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemAdjustmentReason.<b>ITEM_NOT_AS_ADVERTISED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemAdjustmentReason.<b>OTHER</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemAdjustmentReason.<b>OUT_OF_STOCK</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemAdjustmentReason.<b>SPOT_DISCOUNT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemAdjustmentReason.<b>WRONG_ITEM_SHIPPED</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`OrderItemAdjustment`](/demand/api/graphql-admin/reference/objects/order-item-adjustment)  <Badge class="secondary" text="object"/><Bullet />[`OrderItemAdjustmentInput`](/demand/api/graphql-admin/reference/inputs/order-item-adjustment-input)  <Badge class="secondary" text="input"/>
+
+
+

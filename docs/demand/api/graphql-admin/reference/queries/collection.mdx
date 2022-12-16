@@ -1,0 +1,44 @@
+---
+id: collection
+title: collection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Get a collection by collectionId.
+            
+Required collection/read permission on the given DemandHq.
+
+```graphql
+collection(
+  collectionId: ID!
+): Collection
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>collection.<b>collectionId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`Collection`](/demand/api/graphql-admin/reference/objects/collection) <Badge class="secondary" text="object"/>
+> A Collection is a group of products, what may often be referred to as a "Category Page" of some variety.
+In reality, a collection is far more flexible and can be used to represent any
+product grouping, and the collectionType can help differentiate between them.
+> 
+
+
+
+
+

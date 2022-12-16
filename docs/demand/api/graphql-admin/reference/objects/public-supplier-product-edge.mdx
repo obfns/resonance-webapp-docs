@@ -1,0 +1,38 @@
+---
+id: public-supplier-product-edge
+title: PublicSupplierProductEdge
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+One edge producing one SupplierProduct Node
+
+```graphql
+type PublicSupplierProductEdge {
+  node: PublicSupplierProduct
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplierProductEdge.<b>node</b></code>](#)<Bullet />[`PublicSupplierProduct`](/demand/api/graphql-admin/reference/objects/public-supplier-product) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`PublicSupplierProductConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/public-supplier-product-connection-with-search)  <Badge class="secondary" text="object"/>
+
+
+

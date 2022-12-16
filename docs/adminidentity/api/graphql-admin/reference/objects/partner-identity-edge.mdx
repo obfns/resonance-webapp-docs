@@ -1,0 +1,38 @@
+---
+id: partner-identity-edge
+title: PartnerIdentityEdge
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+One edge producing one PartnerIdentity node
+
+```graphql
+type PartnerIdentityEdge {
+  node: PartnerIdentity
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentityEdge.<b>node</b></code>](#)<Bullet />[`PartnerIdentity`](/adminidentity/api/graphql-admin/reference/objects/partner-identity) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`PartnerIdentityConnection`](/adminidentity/api/graphql-admin/reference/objects/partner-identity-connection)  <Badge class="secondary" text="object"/>
+
+
+

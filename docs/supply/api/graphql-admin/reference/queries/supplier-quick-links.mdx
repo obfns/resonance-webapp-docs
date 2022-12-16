@@ -1,0 +1,76 @@
+---
+id: supplier-quick-links
+title: supplierQuickLinks
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+List multiple SupplierQuickLinks for an app.
+
+At least one filter is required, supplierId and quickLinkType are required to be used together.
+
+Permissions vary by filter:
+- appId: You must be an appClient for the app.
+- supplierId: You must have supplier/read permission for the supplier.
+
+```graphql
+supplierQuickLinks(
+  after: String
+  appId: ID
+  before: String
+  first: Int
+  last: Int
+  quickLinkType: SupplierQuickLinkType
+  supplierId: ID
+): SupplierQuickLinkConnection!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>supplierQuickLinks.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>supplierQuickLinks.<b>appId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter for AppId, cannot be used with other filters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>supplierQuickLinks.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>supplierQuickLinks.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>supplierQuickLinks.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>supplierQuickLinks.<b>quickLinkType</b></code>](#)<Bullet />[`SupplierQuickLinkType`](/supply/api/graphql-admin/reference/enums/supplier-quick-link-type) <Badge class="secondary" text="enum"/>
+> Filter to be used with supplierId, cannot be used with other filters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>supplierQuickLinks.<b>supplierId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter to be used with quickLinkType, cannot be used with other filters.
+> 
+
+### Type
+
+#### [`SupplierQuickLinkConnection`](/supply/api/graphql-admin/reference/objects/supplier-quick-link-connection) <Badge class="secondary" text="object"/>
+> Paginate through SupplierQuickLinks
+> 
+
+
+
+
+

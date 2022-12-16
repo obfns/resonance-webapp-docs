@@ -1,0 +1,43 @@
+---
+id: supplier-variant-shipping-dimension-unit
+title: SupplierVariantShippingDimensionUnit
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Metric or Standard Dimension?
+
+```graphql
+enum SupplierVariantShippingDimensionUnit {
+  CM
+  IN
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantShippingDimensionUnit.<b>CM</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantShippingDimensionUnit.<b>IN</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`SupplierVariantShippingDimensions`](/supply/api/graphql-admin/reference/objects/supplier-variant-shipping-dimensions)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantShippingDimensionsInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-shipping-dimensions-input)  <Badge class="secondary" text="input"/>
+
+
+
