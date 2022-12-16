@@ -33,8 +33,8 @@ module.exports = {
                             label: "Admin GraphQL API Reference",
                         },
                         {
-                            href: "/adminidentity/api/rest/reference",
-                            label: "REST API Reference",
+                            href: "/adminidentity/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
                         },
                     ],
                 },
@@ -48,8 +48,16 @@ module.exports = {
                             label: "Admin GraphQL API Reference",
                         },
                         {
+                            href: "/demand/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
+                        },
+                        {
                             href: "/demand/api/graphql-storefront/reference",
                             label: "Storefront GraphQL API Reference",
+                        },
+                        {
+                            href: "/demand/api/rest-storefront/reference",
+                            label: "Storefront REST API Reference",
                         },
                     ],
                 },
@@ -61,6 +69,10 @@ module.exports = {
                         {
                             href: "/supply/api/graphql-admin/reference",
                             label: "Admin GraphQL API Reference",
+                        },
+                        {
+                            href: "/supply/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
                         },
                     ],
                 },
@@ -75,16 +87,59 @@ module.exports = {
             style: "dark",
             links: [
                 {
-                    title: "Docs",
+                    title: "Concepts",
                     items: [
                         {
                             label: "Getting Started",
                             to: "/concepts/why",
                         },
-                        // {
-                        //     label: "Admin Identity",
-                        //     to: "/concepts/api/overall-concepts",
-                        // },
+                    ],
+                },
+                {
+                    title: "Admin Identity",
+                    items: [
+                        {
+                            to: "/adminidentity/api/graphql-admin/reference",
+                            label: "Admin GraphQL API Reference",
+                        },
+                        {
+                            to: "/adminidentity/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
+                        },
+                    ],
+                },
+                {
+                    title: "Demand",
+                    items: [
+                        {
+                            to: "/demand/api/graphql-admin/reference",
+                            label: "Admin GraphQL API Reference",
+                        },
+                        {
+                            to: "/demand/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
+                        },
+                        {
+                            to: "/demand/api/graphql-storefront/reference",
+                            label: "Storefront GraphQL API Reference",
+                        },
+                        {
+                            to: "/demand/api/rest-storefront/reference",
+                            label: "Storefront REST API Reference",
+                        },
+                    ],
+                },
+                {
+                    title: "Supply",
+                    items: [
+                        {
+                            to: "/supply/api/graphql-admin/reference",
+                            label: "Admin GraphQL API Reference",
+                        },
+                        {
+                            to: "/supply/api/rest-admin/reference",
+                            label: "Admin REST API Reference",
+                        },
                     ],
                 },
                 {
@@ -125,8 +180,20 @@ module.exports = {
             {
                 specs: [
                     {
-                        spec: "https://22ykohfjth.execute-api.us-east-1.amazonaws.com/openapi",
-                        route: "/adminidentity/api/rest/reference",
+                        spec: "https://api.staging.adminidentity.buildresonance.com/openapi",
+                        route: "/adminidentity/api/rest-admin/reference",
+                    },
+                    {
+                        spec: "https://api.staging.demand.buildresonance.com/openapi",
+                        route: "/demand/api/rest-admin/reference",
+                    },
+                    {
+                        spec: "https://staging.storefrontapi.buildresonance.com/openapi",
+                        route: "/demand/api/rest-storefront/reference",
+                    },
+                    {
+                        spec: "https://api.staging.supply.buildresonance.com/openapi",
+                        route: "/supply/api/rest-admin/reference",
                     },
                 ],
             },
