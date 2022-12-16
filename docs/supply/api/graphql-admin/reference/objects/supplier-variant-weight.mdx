@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Object to indicate both amount and unit of weight.
 
 ```graphql
@@ -17,15 +25,19 @@ type SupplierVariantWeight {
 
 ### Fields
 
-#### [`amount`](#) ([`Float!`](/supply/api/graphql-admin/reference/scalars/float))
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantWeight.<b>amount</b></code>](#)<Bullet />[`Float!`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantWeight.<b>unit</b></code>](#)<Bullet />[`SupplierVariantWeightUnit!`](/supply/api/graphql-admin/reference/enums/supplier-variant-weight-unit) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
 
 
+### Member of
 
-#### [`unit`](#) ([`SupplierVariantWeightUnit!`](/supply/api/graphql-admin/reference/enums/supplier-variant-weight-unit))
-
-
-
+[`SupplierVariantSupplement`](/supply/api/graphql-admin/reference/objects/supplier-variant-supplement)  <Badge class="secondary" text="object"/>
 
 
 

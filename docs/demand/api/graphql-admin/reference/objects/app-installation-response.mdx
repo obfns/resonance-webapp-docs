@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The response recieved when an app is installed or the permissions are updated
 
 ```graphql
@@ -16,10 +24,15 @@ type AppInstallationResponse {
 
 ### Fields
 
-#### [`demandHqIdentities`](#) ([`[DemandHqIdentity]!`](/demand/api/graphql-admin/reference/objects/demand-hq-identity))
+#### [<code style={{ fontWeight: 'normal' }}>AppInstallationResponse.<b>demandHqIdentities</b></code>](#)<Bullet />[`[DemandHqIdentity]!`](/demand/api/graphql-admin/reference/objects/demand-hq-identity) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
 
 
+### Returned by
+
+[`installApp`](/demand/api/graphql-admin/reference/mutations/install-app)  <Badge class="secondary" text="mutation"/><Bullet />[`updateAppPermissions`](/demand/api/graphql-admin/reference/mutations/update-app-permissions)  <Badge class="secondary" text="mutation"/>
 
 
 

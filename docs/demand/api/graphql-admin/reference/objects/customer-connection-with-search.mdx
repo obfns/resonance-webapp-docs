@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Paginate through Customers
 
 ```graphql
@@ -19,26 +27,28 @@ type CustomerConnectionWithSearch {
 
 ### Fields
 
-#### [`edges`](#) ([`[CustomerEdge]!`](/demand/api/graphql-admin/reference/objects/customer-edge))
+#### [<code style={{ fontWeight: 'normal' }}>CustomerConnectionWithSearch.<b>edges</b></code>](#)<Bullet />[`[CustomerEdge]!`](/demand/api/graphql-admin/reference/objects/customer-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CustomerConnectionWithSearch.<b>nodes</b></code>](#)<Bullet />[`[Customer]!`](/demand/api/graphql-admin/reference/objects/customer) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CustomerConnectionWithSearch.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-
-#### [`nodes`](#) ([`[Customer]!`](/demand/api/graphql-admin/reference/objects/customer))
-
-
-
-
-#### [`pageInfo`](#) ([`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info))
-
-
-
-
-#### [`querySuggestions`](#) ([`JSON`](/demand/api/graphql-admin/reference/scalars/json))
-
-This is an object with terms in the query as keys, and a suggestion for that
+#### [<code style={{ fontWeight: 'normal' }}>CustomerConnectionWithSearch.<b>querySuggestions</b></code>](#)<Bullet />[`JSON`](/demand/api/graphql-admin/reference/scalars/json) <Badge class="secondary" text="scalar"/>
+> This is an object with terms in the query as keys, and a suggestion for that
 term as the value. This is often referred to as 'Did you mean?'
+> 
 
+
+
+### Member of
+
+[`Storefront`](/demand/api/graphql-admin/reference/objects/storefront)  <Badge class="secondary" text="object"/>
 
 
 

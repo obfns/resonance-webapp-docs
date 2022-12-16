@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Paginate through PublicApps
 
 ```graphql
@@ -18,20 +26,23 @@ type PublicAppConnection {
 
 ### Fields
 
-#### [`edges`](#) ([`[PublicAppEdge]!`](/adminidentity/api/graphql-admin/reference/objects/public-app-edge))
+#### [<code style={{ fontWeight: 'normal' }}>PublicAppConnection.<b>edges</b></code>](#)<Bullet />[`[PublicAppEdge]!`](/adminidentity/api/graphql-admin/reference/objects/public-app-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicAppConnection.<b>nodes</b></code>](#)<Bullet />[`[PublicApp]!`](/adminidentity/api/graphql-admin/reference/objects/public-app) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicAppConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/adminidentity/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
 
 
+### Returned by
 
-#### [`nodes`](#) ([`[PublicApp]!`](/adminidentity/api/graphql-admin/reference/objects/public-app))
-
-
-
-
-#### [`pageInfo`](#) ([`PageInfo!`](/adminidentity/api/graphql-admin/reference/objects/page-info))
-
-
-
+[`publicApps`](/adminidentity/api/graphql-admin/reference/queries/public-apps)  <Badge class="secondary" text="query"/>
 
 
 

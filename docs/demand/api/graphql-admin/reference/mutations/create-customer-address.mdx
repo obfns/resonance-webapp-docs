@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Creates a new CustomerAddress
                 
 Requires the customeraddress/write scope on the associated DemandHq.
@@ -18,16 +26,16 @@ createCustomerAddress(
 
 ### Arguments
 
-#### [`input`](#) ([`CustomerAddressCreateInput!`](/demand/api/graphql-admin/reference/inputs/customer-address-create-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>createCustomerAddress.<b>input</b></code>](#)<Bullet />[`CustomerAddressCreateInput!`](/demand/api/graphql-admin/reference/inputs/customer-address-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`CustomerAddress`](/demand/api/graphql-admin/reference/objects/customer-address)
+#### [`CustomerAddress`](/demand/api/graphql-admin/reference/objects/customer-address) <Badge class="secondary" text="object"/>
+> A customerAddress is an Address entity that is associated with a customer
+> 
 
-A customerAddress is an Address entity that is associated with a customer
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Necessary fields to update an existing storefront. Only the fields that are not null will be updated.
 
 ```graphql
@@ -22,40 +30,39 @@ input StorefrontUpdateInput {
 
 ### Fields
 
-#### [`authenticationSettings`](#) ([`StorefrontAuthenticationSettingsInput`](/demand/api/graphql-admin/reference/inputs/storefront-authentication-settings-input))
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontUpdateInput.<b>authenticationSettings</b></code>](#)<Bullet />[`StorefrontAuthenticationSettingsInput`](/demand/api/graphql-admin/reference/inputs/storefront-authentication-settings-input) <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontUpdateInput.<b>authenticationType</b></code>](#)<Bullet />[`StorefrontAuthenticationType`](/demand/api/graphql-admin/reference/enums/storefront-authentication-type) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontUpdateInput.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontUpdateInput.<b>name</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontUpdateInput.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontUpdateInput.<b>storefrontIdentities</b></code>](#)<Bullet />[`[StorefrontIdentityInput!]`](/demand/api/graphql-admin/reference/inputs/storefront-identity-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontUpdateInput.<b>urlDomain</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
+### Member of
 
-#### [`authenticationType`](#) ([`StorefrontAuthenticationType`](/demand/api/graphql-admin/reference/enums/storefront-authentication-type))
-
-
-
-
-#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`name`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`storefrontIdentities`](#) ([`[StorefrontIdentityInput!]`](/demand/api/graphql-admin/reference/inputs/storefront-identity-input))
-
-
-
-
-#### [`urlDomain`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
+[`updateStorefront`](/demand/api/graphql-admin/reference/mutations/update-storefront)  <Badge class="secondary" text="mutation"/>
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Exactly like DemandHqNotificationUserNames
 
 ```graphql
@@ -18,20 +26,23 @@ input DemandHqNotificationUserNamesInput {
 
 ### Fields
 
-#### [`catalog`](#) ([`[String!]`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotificationUserNamesInput.<b>catalog</b></code>](#)<Bullet />[`[String!]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> All notifications for the catalog side (Products, Variants, etc.).
+> 
 
-All notifications for the catalog side (Products, Variants, etc.).
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotificationUserNamesInput.<b>commerce</b></code>](#)<Bullet />[`[String!]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> All notifications for the commerce side, besides orders.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotificationUserNamesInput.<b>orders</b></code>](#)<Bullet />[`[String!]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> These are part of commerce, but are a specific enough case to be handled separately.
+> 
 
 
-#### [`commerce`](#) ([`[String!]`](/demand/api/graphql-admin/reference/scalars/string))
 
-All notifications for the commerce side, besides orders.
+### Member of
 
-
-#### [`orders`](#) ([`[String!]`](/demand/api/graphql-admin/reference/scalars/string))
-
-These are part of commerce, but are a specific enough case to be handled separately.
-
+[`DemandHqCreateInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-create-input)  <Badge class="secondary" text="input"/><Bullet />[`DemandHqUpdateInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-update-input)  <Badge class="secondary" text="input"/>
 
 
 

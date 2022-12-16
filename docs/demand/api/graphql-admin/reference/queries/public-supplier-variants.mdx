@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Get a list of supplierVariants
 
 Requires suppliervariant/read permission on the supplier for the requesting identity
@@ -24,46 +32,40 @@ publicSupplierVariants(
 
 ### Arguments
 
-#### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierVariants.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierVariants.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierVariants.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The ID of the DemandHq requesting the Public Supplier Product
+> 
 
-#### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierVariants.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-Returns the elements in the list that come before the specified cursor.
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierVariants.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierVariants.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The ID of the Supplier requesting the Public Supplier Product
+> 
 
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-The ID of the DemandHq requesting the Public Supplier Product
-
-
-#### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the first n elements from the list.
-
-
-#### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-#### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-The ID of the Supplier requesting the Public Supplier Product
-
-
-#### [`supplierProductId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-The ID of the SupplierProduct to get variants for.
-
+#### [<code style={{ fontWeight: 'normal' }}>publicSupplierVariants.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The ID of the SupplierProduct to get variants for.
+> 
 
 ### Type
 
-#### [`PublicSupplierVariantConnection`](/demand/api/graphql-admin/reference/objects/public-supplier-variant-connection)
+#### [`PublicSupplierVariantConnection`](/demand/api/graphql-admin/reference/objects/public-supplier-variant-connection) <Badge class="secondary" text="object"/>
+> Paginate through PublicSupplierVariants
+> 
 
-Paginate through PublicSupplierVariants
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The parent-most entity of the DemandHq Domain
 
 ```graphql
@@ -143,561 +151,460 @@ type DemandHq {
 
 ### Fields
 
-#### [`collection`](#) ([`Collection!`](/demand/api/graphql-admin/reference/objects/collection))
-
-Get a collection by collectionId or slug (one must be provided).
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>collection</b></code>](#)<Bullet />[`Collection!`](/demand/api/graphql-admin/reference/objects/collection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a collection by collectionId or slug (one must be provided).
             
 Required collection/read permission on the given DemandHq.
-- ##### [`collectionId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collection.<b>collectionId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collection.<b>slug</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>collectionTermAggregations</b></code>](#)<Bullet />[`CollectionTermAggregations`](/demand/api/graphql-admin/reference/objects/collection-term-aggregations) <Badge class="secondary" text="object"/>
+> Term aggregations for Collections, typically used to suggest terms to use in Search Filters.
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collectionTermAggregations.<b>numberOfResults</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The number of aggregations to return for each type.
+> 
 
-
-- ##### [`slug`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`collectionTermAggregations`](#) ([`CollectionTermAggregations`](/demand/api/graphql-admin/reference/objects/collection-term-aggregations))
-
-Term aggregations for Collections, typically used to suggest terms to use in Search Filters.
-- ##### [`numberOfResults`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
-
-The number of aggregations to return for each type.
-
-
-#### [`collections`](#) ([`CollectionConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/collection-connection-with-search))
-
-List collections for a DemandHq with optional filters.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>collections</b></code>](#)<Bullet />[`CollectionConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/collection-connection-with-search) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List collections for a DemandHq with optional filters.
             
 Required collection/read permission on the given DemandHq.
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>collectionIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter Collections to a set of collectionIds
+> 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>collectionType</b></code>](#)<Bullet />[`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Filter Collections using collectionType
+> 
 
-Returns the elements in the list that come before the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
-- ##### [`collectionIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>numberOfTermAggregations</b></code>](#)<Bullet />[`CollectionNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/collection-number-of-term-aggregations) <Badge class="secondary" text="input"/>
+> The number of results to return for each term aggregation. Defaults to 0 for each.
+> 
 
-Filter Collections to a set of collectionIds
-
-
-- ##### [`collectionType`](#) ([`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Filter Collections using collectionType
-
-
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the first n elements from the list.
-
-
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-- ##### [`numberOfTermAggregations`](#) ([`CollectionNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/collection-number-of-term-aggregations))
-
-The number of results to return for each term aggregation. Defaults to 0 for each.
-
-
-- ##### [`query`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Query collections for certain terms. Searches several fields, including
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>query</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Query collections for certain terms. Searches several fields, including
 collection.description, collection.subtitle, collection.title,
 collectionTags, and the actual primary and secondary content of the collection.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>slugs</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter Collections to a set of slugs
+> 
 
-- ##### [`slugs`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>sortOrder</b></code>](#)<Bullet />[`[CollectionSortInput]`](/demand/api/graphql-admin/reference/inputs/collection-sort-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Sort Collections by a series of fields and directions, defaults to CREATED_AT/ASC.
+> 
 
-Filter Collections to a set of slugs
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>status</b></code>](#)<Bullet />[`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input) <Badge class="secondary" text="input"/>
+> Filter Collections using status
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>storefrontIds</b></code>](#)<Bullet />[`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by storefrontIds.
+> 
 
-- ##### [`sortOrder`](#) ([`[CollectionSortInput]`](/demand/api/graphql-admin/reference/inputs/collection-sort-input))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>tagPrefixes</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Collections using Tag Prefixes (starts with).
+> 
 
-Sort Collections by a series of fields and directions, defaults to CREATED_AT/ASC.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.collections.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Collections using Tags.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>createdAt</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input))
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>defaultCurrency</b></code>](#)<Bullet />[`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
-Filter Collections using status
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>defaultLocaleType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-- ##### [`storefrontIds`](#) ([`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input))
-
-Optionally filter by storefrontIds.
-
-
-- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Filter Collections using Tag Prefixes (starts with).
-
-
-- ##### [`tags`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Filter Collections using Tags.
-
-
-#### [`createdAt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`defaultCurrency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency))
-
-
-
-
-#### [`defaultLocaleType`](#) ([`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type))
-
-
-
-
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`demandHqIdentities`](#) ([`DemandHqIdentityConnection!`](/demand/api/graphql-admin/reference/objects/demand-hq-identity-connection))
-
-Returns DemandHqIdentities for the given DemandHq
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>demandHqIdentities</b></code>](#)<Bullet />[`DemandHqIdentityConnection!`](/demand/api/graphql-admin/reference/objects/demand-hq-identity-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Returns DemandHqIdentities for the given DemandHq
 
 Requires demandHqidentity/read permission on the requesting identity
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqIdentities.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqIdentities.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqIdentities.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqIdentities.<b>identityParentEntityId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter the results to a specific identityParentEntityId (optional)
+> 
 
-Returns the elements in the list that come before the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqIdentities.<b>identityType</b></code>](#)<Bullet />[`DemandHqIdentityType`](/demand/api/graphql-admin/reference/enums/demand-hq-identity-type) <Badge class="secondary" text="enum"/>
+> Filter the results to a specific identity type (optional)
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqIdentities.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the first n elements from the list.
-
-
-- ##### [`identityParentEntityId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
-
-Filter the results to a specific identityParentEntityId (optional)
-
-
-- ##### [`identityType`](#) ([`DemandHqIdentityType`](/demand/api/graphql-admin/reference/enums/demand-hq-identity-type))
-
-Filter the results to a specific identity type (optional)
-
-
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-#### [`demandHqIdentity`](#) ([`DemandHqIdentity`](/demand/api/graphql-admin/reference/objects/demand-hq-identity))
-
-Returns a DemandHqIdentity for the given DemandHq
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>demandHqIdentity</b></code>](#)<Bullet />[`DemandHqIdentity`](/demand/api/graphql-admin/reference/objects/demand-hq-identity) <Badge class="secondary" text="object"/>
+> Returns a DemandHqIdentity for the given DemandHq
 
 Requires demandHqidentity/read permission on the requesting identity, or you can request your own identity.
-- ##### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqIdentity.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqIdentity.<b>identityId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-- ##### [`identityId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`demandHqSupplier`](#) ([`DemandHqSupplier`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier))
-
-Get a DemandHqSupplier by SupplierId.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>demandHqSupplier</b></code>](#)<Bullet />[`DemandHqSupplier`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier) <Badge class="secondary" text="object"/>
+> Get a DemandHqSupplier by SupplierId.
             
 Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
-- ##### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqSupplier.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`demandHqSuppliers`](#) ([`DemandHqSupplierConnection!`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier-connection))
-
-Get a list of DemandHqSuppliers for a DemandHQ.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>demandHqSuppliers</b></code>](#)<Bullet />[`DemandHqSupplierConnection!`](/demand/api/graphql-admin/reference/objects/demand-hq-supplier-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a list of DemandHqSuppliers for a DemandHQ.
 
 Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqSuppliers.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqSuppliers.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqSuppliers.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqSuppliers.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
-Returns the elements in the list that come before the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.demandHqSuppliers.<b>status</b></code>](#)<Bullet />[`DemandHqSupplierStatus`](/demand/api/graphql-admin/reference/enums/demand-hq-supplier-status) <Badge class="secondary" text="enum"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>demandSubscriptionCodes</b></code>](#)<Bullet />[`[DemandSubscriptionCode!]`](/demand/api/graphql-admin/reference/enums/demand-subscription-code) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-Returns the first n elements from the list.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>name</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-- ##### [`status`](#) ([`DemandHqSupplierStatus`](/demand/api/graphql-admin/reference/enums/demand-hq-supplier-status))
-
-
-
-
-#### [`demandSubscriptionCodes`](#) ([`[DemandSubscriptionCode!]`](/demand/api/graphql-admin/reference/enums/demand-subscription-code))
-
-
-
-
-#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`name`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`notificationUserNames`](#) ([`DemandHqNotificationUserNames`](/demand/api/graphql-admin/reference/objects/demand-hq-notification-user-names))
-
-These users will get notified if something requires attention for this DemandHq.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>notificationUserNames</b></code>](#)<Bullet />[`DemandHqNotificationUserNames`](/demand/api/graphql-admin/reference/objects/demand-hq-notification-user-names) <Badge class="secondary" text="object"/>
+> These users will get notified if something requires attention for this DemandHq.
 If none are provided, ownerUserName will be notified.
+> 
 
-
-#### [`order`](#) ([`Order`](/demand/api/graphql-admin/reference/objects/order))
-
-Get an order for an orderId.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>order</b></code>](#)<Bullet />[`Order`](/demand/api/graphql-admin/reference/objects/order) <Badge class="secondary" text="object"/>
+> Get an order for an orderId.
             
 Requires the order/read scope on the associated DemandHq.
-- ##### [`orderId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.order.<b>orderId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`orders`](#) ([`OrderConnection!`](/demand/api/graphql-admin/reference/objects/order-connection))
-
-Get a list of orders for a DemandHq.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>orders</b></code>](#)<Bullet />[`OrderConnection!`](/demand/api/graphql-admin/reference/objects/order-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a list of orders for a DemandHq.
 
 Requires the order/read scope on the associated DemandHq.
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.orders.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.orders.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.orders.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.orders.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
-Returns the elements in the list that come before the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.orders.<b>orderIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>ownerUser</b></code>](#)<Bullet />[`PublicIdentity`](/demand/api/graphql-admin/reference/objects/public-identity) <Badge class="secondary" text="object"/>
+> Get a public identity for the owner of this DemandHq
+> 
 
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>ownerUserName</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-Returns the first n elements from the list.
-
-
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-- ##### [`orderIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`ownerUser`](#) ([`PublicIdentity`](/demand/api/graphql-admin/reference/objects/public-identity))
-
-Get a public identity for the owner of this DemandHq
-
-
-#### [`ownerUserName`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`page`](#) ([`Page!`](/demand/api/graphql-admin/reference/objects/page))
-
-Get a page by pageId or slug (one must be provided).
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>page</b></code>](#)<Bullet />[`Page!`](/demand/api/graphql-admin/reference/objects/page) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a page by pageId or slug (one must be provided).
             
 Required page/read permission on the given DemandHq.
-- ##### [`pageId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.page.<b>pageId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.page.<b>slug</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>pageTermAggregations</b></code>](#)<Bullet />[`PageTermAggregations`](/demand/api/graphql-admin/reference/objects/page-term-aggregations) <Badge class="secondary" text="object"/>
+> Term aggregations for Pages, typically used to suggest terms to use in Search Filters.
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pageTermAggregations.<b>numberOfResults</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The number of aggregations to return for each type.
+> 
 
-
-- ##### [`slug`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`pageTermAggregations`](#) ([`PageTermAggregations`](/demand/api/graphql-admin/reference/objects/page-term-aggregations))
-
-Term aggregations for Pages, typically used to suggest terms to use in Search Filters.
-- ##### [`numberOfResults`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
-
-The number of aggregations to return for each type.
-
-
-#### [`pages`](#) ([`PageConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/page-connection-with-search))
-
-List pages for a DemandHq with optional filters.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>pages</b></code>](#)<Bullet />[`PageConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/page-connection-with-search) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List pages for a DemandHq with optional filters.
             
 Required page/read permission on the given DemandHq.
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>author</b></code>](#)<Bullet />[`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Filter Pages using author
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
-- ##### [`author`](#) ([`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-Filter Pages using author
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>numberOfTermAggregations</b></code>](#)<Bullet />[`PageNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/page-number-of-term-aggregations) <Badge class="secondary" text="input"/>
+> The number of results to return for each term aggregation. Defaults to 0 for each.
+> 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>pageIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter Pages to a set of pageIds
+> 
 
-Returns the elements in the list that come before the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>pageType</b></code>](#)<Bullet />[`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Filter Pages using pageType
+> 
 
-
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the first n elements from the list.
-
-
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-- ##### [`numberOfTermAggregations`](#) ([`PageNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/page-number-of-term-aggregations))
-
-The number of results to return for each term aggregation. Defaults to 0 for each.
-
-
-- ##### [`pageIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
-
-Filter Pages to a set of pageIds
-
-
-- ##### [`pageType`](#) ([`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Filter Pages using pageType
-
-
-- ##### [`query`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Query pages for certain terms. Searches several fields, including
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>query</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Query pages for certain terms. Searches several fields, including
 page.author, page.description, page.subtitle, page.title, pageTags, and the
 actual content of the page.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>slugs</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter Pages to a set of slugs
+> 
 
-- ##### [`slugs`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>sortOrder</b></code>](#)<Bullet />[`[PageSortInput]`](/demand/api/graphql-admin/reference/inputs/page-sort-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Sort Pages by a series of fields and directions, defaults to CREATED_AT/ASC.
+> 
 
-Filter Pages to a set of slugs
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>status</b></code>](#)<Bullet />[`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input) <Badge class="secondary" text="input"/>
+> Filter Pages using status
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>storefrontIds</b></code>](#)<Bullet />[`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by storefrontIds.
+> 
 
-- ##### [`sortOrder`](#) ([`[PageSortInput]`](/demand/api/graphql-admin/reference/inputs/page-sort-input))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>tagPrefixes</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Pages using Tag Prefixes (starts with).
+> 
 
-Sort Pages by a series of fields and directions, defaults to CREATED_AT/ASC.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.pages.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Pages using Tags.
+> 
 
-
-- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input))
-
-Filter Pages using status
-
-
-- ##### [`storefrontIds`](#) ([`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input))
-
-Optionally filter by storefrontIds.
-
-
-- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Filter Pages using Tag Prefixes (starts with).
-
-
-- ##### [`tags`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Filter Pages using Tags.
-
-
-#### [`product`](#) ([`Product`](/demand/api/graphql-admin/reference/objects/product))
-
-Get a single product by ID or slug.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>product</b></code>](#)<Bullet />[`Product`](/demand/api/graphql-admin/reference/objects/product) <Badge class="secondary" text="object"/>
+> Get a single product by ID or slug.
 
 Requires the product/read scope on the associated DemandHq.
-- ##### [`productId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.product.<b>productId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.product.<b>slug</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>productTermAggregations</b></code>](#)<Bullet />[`ProductTermAggregations`](/demand/api/graphql-admin/reference/objects/product-term-aggregations) <Badge class="secondary" text="object"/>
+> Term aggregations for Products, typically used to suggest terms to use in Search Filters.
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.productTermAggregations.<b>numberOfResults</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The number of aggregations to return for each type.
+> 
 
-
-- ##### [`slug`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`productTermAggregations`](#) ([`ProductTermAggregations`](/demand/api/graphql-admin/reference/objects/product-term-aggregations))
-
-Term aggregations for Products, typically used to suggest terms to use in Search Filters.
-- ##### [`numberOfResults`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
-
-The number of aggregations to return for each type.
-
-
-#### [`products`](#) ([`ProductConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/product-connection-with-search))
-
-Get a list of products.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>products</b></code>](#)<Bullet />[`ProductConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/product-connection-with-search) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a list of products.
 
 Requires the product/read scope on the associated DemandHq.
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
-Returns the elements in the list that come before the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>manufacturer</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by manufacturer.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>msrp</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by msrp.
+> 
 
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>numberOfTermAggregationResults</b></code>](#)<Bullet />[`ProductNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/product-number-of-term-aggregations) <Badge class="secondary" text="input"/>
+> The number of results to return for each term aggregation. Defaults to 0 for each.
+> 
 
-Returns the first n elements from the list.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>price</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by price.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>productIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter Products to a set of productIds
+> 
 
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-- ##### [`manufacturer`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Optionally filter by manufacturer.
-
-
-- ##### [`msrp`](#) ([`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input))
-
-Optionally filter by msrp.
-
-
-- ##### [`numberOfTermAggregationResults`](#) ([`ProductNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/product-number-of-term-aggregations))
-
-The number of results to return for each term aggregation. Defaults to 0 for each.
-
-
-- ##### [`price`](#) ([`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input))
-
-Optionally filter by price.
-
-
-- ##### [`productIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
-
-Filter Products to a set of productIds
-
-
-- ##### [`query`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Query products for certain terms. Searches several fields, including
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>query</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Query products for certain terms. Searches several fields, including
 product.tags, product.title, product.vendor, productLocales.description,
 productLocales.featureBullets, variant.barcode, variant.mpn, variant.sku
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>slugs</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter Products to a set of slugs
+> 
 
-- ##### [`slugs`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>sortOrder</b></code>](#)<Bullet />[`[ProductSortInput]`](/demand/api/graphql-admin/reference/inputs/product-sort-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
+> 
 
-Filter Products to a set of slugs
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>standardizedColor</b></code>](#)<Bullet />[`[ProductStandardizedColorFilterInput]`](/demand/api/graphql-admin/reference/inputs/product-standardized-color-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by standardized color.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>status</b></code>](#)<Bullet />[`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input) <Badge class="secondary" text="input"/>
+> Filter Products using Status.
+> 
 
-- ##### [`sortOrder`](#) ([`[ProductSortInput]`](/demand/api/graphql-admin/reference/inputs/product-sort-input))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>storefrontIds</b></code>](#)<Bullet />[`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by storefrontIds.
+> 
 
-Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>tagPrefixes</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Products using Tag Prefixes (starts with).
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Products using Tags.
+> 
 
-- ##### [`standardizedColor`](#) ([`[ProductStandardizedColorFilterInput]`](/demand/api/graphql-admin/reference/inputs/product-standardized-color-filter-input))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.products.<b>vendor</b></code>](#)<Bullet />[`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by vendor.
+> 
 
-Optionally filter by standardized color.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>status</b></code>](#)<Bullet />[`DemandHqStatus!`](/demand/api/graphql-admin/reference/enums/demand-hq-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
-
-- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input))
-
-Filter Products using Status.
-
-
-- ##### [`storefrontIds`](#) ([`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input))
-
-Optionally filter by storefrontIds.
-
-
-- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Filter Products using Tag Prefixes (starts with).
-
-
-- ##### [`tags`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Filter Products using Tags.
-
-
-- ##### [`vendor`](#) ([`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Optionally filter by vendor.
-
-
-#### [`status`](#) ([`DemandHqStatus!`](/demand/api/graphql-admin/reference/enums/demand-hq-status))
-
-
-
-
-#### [`storefront`](#) ([`Storefront`](/demand/api/graphql-admin/reference/objects/storefront))
-
-Get a storefront by its storefrontId.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>storefront</b></code>](#)<Bullet />[`Storefront`](/demand/api/graphql-admin/reference/objects/storefront) <Badge class="secondary" text="object"/>
+> Get a storefront by its storefrontId.
             
 Requires the storefront/read permission on the associated DemandHq.
-- ##### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.storefront.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`storefronts`](#) ([`StorefrontConnection`](/demand/api/graphql-admin/reference/objects/storefront-connection))
-
-List storefronts for a DemandHq.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>storefronts</b></code>](#)<Bullet />[`StorefrontConnection`](/demand/api/graphql-admin/reference/objects/storefront-connection) <Badge class="secondary" text="object"/>
+> List storefronts for a DemandHq.
             
 Requires the storefront/read permission on the associated DemandHq.
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>DemandHq.storefronts.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.storefronts.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.storefronts.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>DemandHq.storefronts.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
-Returns the elements in the list that come before the specified cursor.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the first n elements from the list.
-
-
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-#### [`updatedAt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>DemandHq.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
+### Returned by
+
+[`createDemandHq`](/demand/api/graphql-admin/reference/mutations/create-demand-hq)  <Badge class="secondary" text="mutation"/><Bullet />[`demandHq`](/demand/api/graphql-admin/reference/queries/demand-hq)  <Badge class="secondary" text="query"/><Bullet />[`updateDemandHq`](/demand/api/graphql-admin/reference/mutations/update-demand-hq)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`DemandHqIdentity`](/demand/api/graphql-admin/reference/objects/demand-hq-identity)  <Badge class="secondary" text="object"/>
 
 
 

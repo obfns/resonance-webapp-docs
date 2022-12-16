@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Returned object from createPageImagesFromFiles
 
 ```graphql
@@ -17,15 +25,19 @@ type PageImageFromFileResponses {
 
 ### Fields
 
-#### [`errors`](#) ([`[PageImagesFromFilesError!]`](/demand/api/graphql-admin/reference/objects/page-images-from-files-error))
+#### [<code style={{ fontWeight: 'normal' }}>PageImageFromFileResponses.<b>errors</b></code>](#)<Bullet />[`[PageImagesFromFilesError!]`](/demand/api/graphql-admin/reference/objects/page-images-from-files-error) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageImageFromFileResponses.<b>mutationResponses</b></code>](#)<Bullet />[`[PageImageFromFileResponse!]!`](/demand/api/graphql-admin/reference/objects/page-image-from-file-response) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> A signed S3 url to upload the image to along with supporting data about the image
+> 
 
 
 
+### Returned by
 
-#### [`mutationResponses`](#) ([`[PageImageFromFileResponse!]!`](/demand/api/graphql-admin/reference/objects/page-image-from-file-response))
-
-A signed S3 url to upload the image to along with supporting data about the image
-
+[`createPageImagesFromFiles`](/demand/api/graphql-admin/reference/mutations/create-page-images-from-files)  <Badge class="secondary" text="mutation"/>
 
 
 

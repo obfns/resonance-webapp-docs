@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Update an OrderItem.
 
 Requires the orderitem/write permission on the associated DemandHq.
@@ -18,16 +26,16 @@ updateOrderItem(
 
 ### Arguments
 
-#### [`input`](#) ([`OrderItemUpdateInput!`](/demand/api/graphql-admin/reference/inputs/order-item-update-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>updateOrderItem.<b>input</b></code>](#)<Bullet />[`OrderItemUpdateInput!`](/demand/api/graphql-admin/reference/inputs/order-item-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`OrderItem`](/demand/api/graphql-admin/reference/objects/order-item)
+#### [`OrderItem`](/demand/api/graphql-admin/reference/objects/order-item) <Badge class="secondary" text="object"/>
+> An item in an Order.
+> 
 
-An item in an Order.
 
 
 

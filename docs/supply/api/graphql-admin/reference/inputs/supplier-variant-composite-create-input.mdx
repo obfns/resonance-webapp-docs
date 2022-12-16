@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The necessary fields in order to create a new supplierVariant and supplierVariantSupplement.
 
 ```graphql
@@ -17,15 +25,19 @@ input SupplierVariantCompositeCreateInput {
 
 ### Fields
 
-#### [`supplierVariantInput`](#) ([`SupplierVariantCreateInput!`](/supply/api/graphql-admin/reference/inputs/supplier-variant-create-input))
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantCompositeCreateInput.<b>supplierVariantInput</b></code>](#)<Bullet />[`SupplierVariantCreateInput!`](/supply/api/graphql-admin/reference/inputs/supplier-variant-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantCompositeCreateInput.<b>supplierVariantSupplementInput</b></code>](#)<Bullet />[`SupplierVariantSupplementInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-in-composite-create-input) <Badge class="secondary" text="input"/>
+> 
+> 
 
 
 
+### Member of
 
-#### [`supplierVariantSupplementInput`](#) ([`SupplierVariantSupplementInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-in-composite-create-input))
-
-
-
+[`createSupplierVariantComposite`](/supply/api/graphql-admin/reference/mutations/create-supplier-variant-composite)  <Badge class="secondary" text="mutation"/>
 
 
 

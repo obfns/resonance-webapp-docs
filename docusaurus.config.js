@@ -201,9 +201,12 @@ module.exports = {
     ],
     plugins: [
         [
-            "@edno/docusaurus2-graphql-doc-generator",
+            "@graphql-markdown/docusaurus",
             {
                 rootPath: "./docs",
+                loaders: {
+                    GraphQLFileLoader: "@graphql-tools/graphql-file-loader",
+                },
             },
         ],
         [

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 These are the tags associated to the product
 
 ```graphql
@@ -20,23 +28,25 @@ type ProductTags {
 
 ### Fields
 
-#### [`parsed`](#) ([`[ParsedTag]`](/demand/api/graphql-storefront/reference/objects/parsed-tag))
+#### [<code style={{ fontWeight: 'normal' }}>ProductTags.<b>parsed</b></code>](#)<Bullet />[`[ParsedTag]`](/demand/api/graphql-storefront/reference/objects/parsed-tag) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> Get parsed, and optionally filtered, tags for a Product.
+> ##### [<code style={{ fontWeight: 'normal' }}>ProductTags.parsed.<b>category</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Optionally filter tags by category.
+> 
 
-Get parsed, and optionally filtered, tags for a Product.
-- ##### [`category`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>ProductTags.parsed.<b>key</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+> 
 
-Optionally filter tags by category.
-
-
-- ##### [`key`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
-
-
-#### [`raw`](#) ([`[String]`](/demand/api/graphql-storefront/reference/scalars/string))
-
+#### [<code style={{ fontWeight: 'normal' }}>ProductTags.<b>raw</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
+
+### Member of
+
+[`PublicProduct`](/demand/api/graphql-storefront/reference/objects/public-product)  <Badge class="secondary" text="object"/>
 
 
 

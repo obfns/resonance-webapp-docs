@@ -5,12 +5,30 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 
 ```graphql
 scalar String
 ```
 
+
+
+
+### Returned by
+
+[`_empty`](/adminidentity/api/graphql-admin/reference/queries/empty)  <Badge class="secondary" text="query"/><Bullet />[`_makeEmpty`](/adminidentity/api/graphql-admin/reference/mutations/make-empty)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`_makeEmpty`](/adminidentity/api/graphql-admin/reference/mutations/make-empty)  <Badge class="secondary" text="mutation"/><Bullet />[`App`](/adminidentity/api/graphql-admin/reference/objects/app)  <Badge class="secondary" text="object"/><Bullet />[`AppClientResponse`](/adminidentity/api/graphql-admin/reference/objects/app-client-response)  <Badge class="secondary" text="object"/><Bullet />[`AppCreateInput`](/adminidentity/api/graphql-admin/reference/inputs/app-create-input)  <Badge class="secondary" text="input"/><Bullet />[`AppUpdateInput`](/adminidentity/api/graphql-admin/reference/inputs/app-update-input)  <Badge class="secondary" text="input"/><Bullet />[`deprecated`](/adminidentity/api/graphql-admin/reference/directives/deprecated)  <Badge class="secondary" text="directive"/><Bullet />[`inviteUser`](/adminidentity/api/graphql-admin/reference/mutations/invite-user)  <Badge class="secondary" text="mutation"/><Bullet />[`myNotifications`](/adminidentity/api/graphql-admin/reference/queries/my-notifications)  <Badge class="secondary" text="query"/><Bullet />[`PageInfo`](/adminidentity/api/graphql-admin/reference/objects/page-info)  <Badge class="secondary" text="object"/><Bullet />[`Partner`](/adminidentity/api/graphql-admin/reference/objects/partner)  <Badge class="secondary" text="object"/><Bullet />[`PartnerCreateInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-create-input)  <Badge class="secondary" text="input"/><Bullet />[`PartnerIdentityPermissions`](/adminidentity/api/graphql-admin/reference/objects/partner-identity-permissions)  <Badge class="secondary" text="object"/><Bullet />[`PartnerIdentityPermissionsInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-identity-permissions-input)  <Badge class="secondary" text="input"/><Bullet />[`PartnerNotificationUserNames`](/adminidentity/api/graphql-admin/reference/objects/partner-notification-user-names)  <Badge class="secondary" text="object"/><Bullet />[`PartnerNotificationUserNamesInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-notification-user-names-input)  <Badge class="secondary" text="input"/><Bullet />[`partners`](/adminidentity/api/graphql-admin/reference/queries/partners)  <Badge class="secondary" text="query"/><Bullet />[`PartnerUpdateInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-update-input)  <Badge class="secondary" text="input"/><Bullet />[`PublicApp`](/adminidentity/api/graphql-admin/reference/objects/public-app)  <Badge class="secondary" text="object"/><Bullet />[`publicApps`](/adminidentity/api/graphql-admin/reference/queries/public-apps)  <Badge class="secondary" text="query"/><Bullet />[`publicIdentities`](/adminidentity/api/graphql-admin/reference/queries/public-identities)  <Badge class="secondary" text="query"/><Bullet />[`PublicIdentity`](/adminidentity/api/graphql-admin/reference/objects/public-identity)  <Badge class="secondary" text="object"/><Bullet />[`queryPublicIdentityByEmail`](/adminidentity/api/graphql-admin/reference/queries/query-public-identity-by-email)  <Badge class="secondary" text="query"/><Bullet />[`specifiedBy`](/adminidentity/api/graphql-admin/reference/directives/specified-by)  <Badge class="secondary" text="directive"/><Bullet />[`User`](/adminidentity/api/graphql-admin/reference/objects/user)  <Badge class="secondary" text="object"/><Bullet />[`UserNotification`](/adminidentity/api/graphql-admin/reference/objects/user-notification)  <Badge class="secondary" text="object"/><Bullet />[`UserUpdateInput`](/adminidentity/api/graphql-admin/reference/inputs/user-update-input)  <Badge class="secondary" text="input"/>
 
 
 

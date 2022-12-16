@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The parent-most entity of the Demand Domain
 
 ```graphql
@@ -18,20 +26,23 @@ type PublicDemandHq {
 
 ### Fields
 
-#### [`demandHqId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>PublicDemandHq.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicDemandHq.<b>description</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicDemandHq.<b>name</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
+### Member of
 
-#### [`description`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`name`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
-
-
-
+[`SupplierDemandHq`](/supply/api/graphql-admin/reference/objects/supplier-demand-hq)  <Badge class="secondary" text="object"/>
 
 
 

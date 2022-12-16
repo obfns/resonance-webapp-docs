@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Bulk update supplierVariants
 
 Requires suppliervariant/write permission on the requesting identity
@@ -20,22 +28,21 @@ updateSupplierVariants(
 
 ### Arguments
 
-#### [`externalInputs`](#) ([`[SupplierVariantExternalUpdateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-variant-external-update-input))
+#### [<code style={{ fontWeight: 'normal' }}>updateSupplierVariants.<b>externalInputs</b></code>](#)<Bullet />[`[SupplierVariantExternalUpdateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-variant-external-update-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
-
-
-
-#### [`inputs`](#) ([`[SupplierVariantUpdateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-variant-update-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>updateSupplierVariants.<b>inputs</b></code>](#)<Bullet />[`[SupplierVariantUpdateInput]`](/supply/api/graphql-admin/reference/inputs/supplier-variant-update-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`SupplierVariant`](/supply/api/graphql-admin/reference/objects/supplier-variant)
-
-The main item of the Supplier Domain, represents a single SKU of a product
+#### [`SupplierVariant`](/supply/api/graphql-admin/reference/objects/supplier-variant) <Badge class="secondary" text="object"/>
+> The main item of the Supplier Domain, represents a single SKU of a product
 Only the variant level exists, there is no parent product.
+> 
+
 
 
 

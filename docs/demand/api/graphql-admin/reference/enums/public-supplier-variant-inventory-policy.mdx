@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Indicates how to handle inventory, whether a product should or can go out of stock
 
 ```graphql
@@ -18,20 +26,23 @@ enum PublicSupplierVariantInventoryPolicy {
 
 ### Values
 
-#### [`BOTTOMLESS`](#)
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplierVariantInventoryPolicy.<b>BOTTOMLESS</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplierVariantInventoryPolicy.<b>DEFAULT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplierVariantInventoryPolicy.<b>HOLD</b></code>](#) 
+> 
+> 
 
 
 
+### Member of
 
-#### [`DEFAULT`](#)
-
-
-
-
-#### [`HOLD`](#)
-
-
-
+[`PublicSupplierVariant`](/demand/api/graphql-admin/reference/objects/public-supplier-variant)  <Badge class="secondary" text="object"/><Bullet />[`SupplierProductInventoryPolicyFilterInput`](/demand/api/graphql-admin/reference/inputs/supplier-product-inventory-policy-filter-input)  <Badge class="secondary" text="input"/>
 
 
 

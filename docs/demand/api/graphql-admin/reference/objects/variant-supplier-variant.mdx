@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 A VariantSupplierVariant has a 1:1 relationship with a SupplierVariant.
 VariantSupplierVariants are the Demand window into the SupplierVariant and can
 be used to determine inventory and cost as well as for assigning OrderItems.
@@ -32,77 +40,73 @@ type VariantSupplierVariant {
 
 ### Fields
 
-#### [`averageShippingCost`](#) ([`Float`](/demand/api/graphql-admin/reference/scalars/float))
-
-A calculated metric for some kind of average for a common region. Uncommon.
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>averageShippingCost</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
+> A calculated metric for some kind of average for a common region. Uncommon.
 Must be a positive number.
+> 
 
-
-#### [`cost`](#) ([`Float!`](/demand/api/graphql-admin/reference/scalars/float))
-
-COGS, or Cost of Goods Sold for this VariantSupplierVariant
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>cost</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> COGS, or Cost of Goods Sold for this VariantSupplierVariant
 Must be a positive number.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>createdAt</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`createdAt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>handlingCost</b></code>](#)<Bullet />[`VariantSupplierVariantHandlingCost`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant-handling-cost) <Badge class="secondary" text="object"/>
+> Additional warehouse handling charge, typically for larger items.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>inventoryPolicy</b></code>](#)<Bullet />[`InventoryPolicy!`](/demand/api/graphql-admin/reference/enums/inventory-policy) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>inventoryQuantity</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>productId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Id of the Product the parent Variant is associated with
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Id of the Supplier for the associated SupplierVariant
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Id of the SupplierProduct for the associated SupplierVariant
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>supplierVariantId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Id of the SupplierVariant
+> 
 
-#### [`handlingCost`](#) ([`VariantSupplierVariantHandlingCost`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant-handling-cost))
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-Additional warehouse handling charge, typically for larger items.
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-#### [`inventoryPolicy`](#) ([`InventoryPolicy!`](/demand/api/graphql-admin/reference/enums/inventory-policy))
-
-
-
-
-#### [`inventoryQuantity`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
-
-
-
-
-#### [`productId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-Id of the Product the parent Variant is associated with
-
-
-#### [`supplierId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-Id of the Supplier for the associated SupplierVariant
-
-
-#### [`supplierProductId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-Id of the SupplierProduct for the associated SupplierVariant
-
-
-#### [`supplierVariantId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-Id of the SupplierVariant
-
-
-#### [`updatedAt`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariant.<b>variantId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Id of the parent Variant
+> 
 
 
 
+### Returned by
 
-#### [`variantId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+[`createVariantSupplierVariant`](/demand/api/graphql-admin/reference/mutations/create-variant-supplier-variant)  <Badge class="secondary" text="mutation"/><Bullet />[`variantSupplierVariant`](/demand/api/graphql-admin/reference/queries/variant-supplier-variant)  <Badge class="secondary" text="query"/>
 
-Id of the parent Variant
+### Member of
 
+[`Variant`](/demand/api/graphql-admin/reference/objects/variant)  <Badge class="secondary" text="object"/><Bullet />[`VariantSupplierVariantConnection`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant-connection)  <Badge class="secondary" text="object"/><Bullet />[`VariantSupplierVariantEdge`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant-edge)  <Badge class="secondary" text="object"/>
 
 
 

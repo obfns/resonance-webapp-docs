@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 ID Fields are required, but all other fields are optional, only included fields will be updated.
 
 ```graphql
@@ -31,86 +39,76 @@ input CollectionUpdateInput {
 
 ### Fields
 
-#### [`collectionId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>collectionId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>collectionType</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Any string to declare a category of this collection, can be used to filter collections, limit 128 characters.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>contentItemIds</b></code>](#)<Bullet />[`[ID!]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The ContentItemIds of the Content Items that are associated with this collection.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A short description of the collection, limit 1000 characters.
+> 
 
-#### [`collectionType`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>primaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A primary image url for this collection, can be generated from a Collection ContentItem.
+> 
 
-Any string to declare a category of this collection, can be used to filter collections, limit 128 characters.
-
-
-#### [`contentItemIds`](#) ([`[ID!]`](/demand/api/graphql-admin/reference/scalars/id))
-
-The ContentItemIds of the Content Items that are associated with this collection.
-
-
-#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-A short description of the collection, limit 1000 characters.
-
-
-#### [`primaryImageUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-A primary image url for this collection, can be generated from a Collection ContentItem.
-
-
-#### [`publishedAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
-
-ISO format date when the collection was published. Note that ensuing updates
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>publishedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> ISO format date when the collection was published. Note that ensuing updates
 with status set to PUBLISHED will republish and re-set this date.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>rules</b></code>](#)<Bullet />[`CollectionRulesInput`](/demand/api/graphql-admin/reference/inputs/collection-rules-input) <Badge class="secondary" text="input"/>
+> A map of rules to determine whether a Product should be part of this Collection.
+> 
 
-#### [`rules`](#) ([`CollectionRulesInput`](/demand/api/graphql-admin/reference/inputs/collection-rules-input))
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>secondaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A secondary image url for this collection, often a logo or related item.
+> 
 
-A map of rules to determine whether a Product should be part of this Collection.
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>seoDescription</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Description specific for SEO purposes, limit 170 characters.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>seoTitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title specific for SEO purposes, limit 256 characters.
+> 
 
-#### [`secondaryImageUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>slug</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Slug for the URL for this collection. Limit 128 characters.
+> 
 
-A secondary image url for this collection, often a logo or related item.
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>status</b></code>](#)<Bullet />[`DemandEntityStatus`](/demand/api/graphql-admin/reference/enums/demand-entity-status) <Badge class="secondary" text="enum"/>
+> The status of the collection, can be DRAFT or PUBLISHED.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>storefrontIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Which storefronts should have access to this collection?
+> 
 
-#### [`seoDescription`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>subtitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The subtitle of the collection, limit 256 characters.
+> 
 
-Description specific for SEO purposes, limit 170 characters.
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>tags</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-#### [`seoTitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Title specific for SEO purposes, limit 256 characters.
-
-
-#### [`slug`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Slug for the URL for this collection. Limit 128 characters.
-
-
-#### [`status`](#) ([`DemandEntityStatus`](/demand/api/graphql-admin/reference/enums/demand-entity-status))
-
-The status of the collection, can be DRAFT or PUBLISHED.
-
-
-#### [`storefrontIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
-
-Which storefronts should have access to this collection?
-
-
-#### [`subtitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-The subtitle of the collection, limit 256 characters.
-
-
-#### [`tags`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
-
+#### [<code style={{ fontWeight: 'normal' }}>CollectionUpdateInput.<b>title</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The title of the collection, limit 256 characters.
+> 
 
 
 
-#### [`title`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+### Member of
 
-The title of the collection, limit 256 characters.
-
+[`updateCollection`](/demand/api/graphql-admin/reference/mutations/update-collection)  <Badge class="secondary" text="mutation"/>
 
 
 

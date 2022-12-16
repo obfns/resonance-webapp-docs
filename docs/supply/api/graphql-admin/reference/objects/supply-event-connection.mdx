@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Paginate through SupplyEvents
 
 ```graphql
@@ -18,20 +26,23 @@ type SupplyEventConnection {
 
 ### Fields
 
-#### [`edges`](#) ([`[SupplyEventEdge]!`](/supply/api/graphql-admin/reference/objects/supply-event-edge))
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventConnection.<b>edges</b></code>](#)<Bullet />[`[SupplyEventEdge]!`](/supply/api/graphql-admin/reference/objects/supply-event-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventConnection.<b>nodes</b></code>](#)<Bullet />[`[SupplyEvent]!`](/supply/api/graphql-admin/reference/objects/supply-event) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/supply/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
 
 
+### Returned by
 
-#### [`nodes`](#) ([`[SupplyEvent]!`](/supply/api/graphql-admin/reference/objects/supply-event))
-
-
-
-
-#### [`pageInfo`](#) ([`PageInfo!`](/supply/api/graphql-admin/reference/objects/page-info))
-
-
-
+[`events`](/supply/api/graphql-admin/reference/queries/events)  <Badge class="secondary" text="query"/>
 
 
 

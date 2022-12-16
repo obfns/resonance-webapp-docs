@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Get several supplierVariants by SupplierVariantIds (currently)
 
 Requires suppliervariant/read permission on the requesting identity for all associated suppliers
@@ -18,16 +26,16 @@ supplierVariants(
 
 ### Arguments
 
-#### [`supplierVariantIds`](#) ([`[ID!]!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>supplierVariants.<b>supplierVariantIds</b></code>](#)<Bullet />[`[ID!]!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 ### Type
 
-#### [`SupplierVariantConnection`](/supply/api/graphql-admin/reference/objects/supplier-variant-connection)
+#### [`SupplierVariantConnection`](/supply/api/graphql-admin/reference/objects/supplier-variant-connection) <Badge class="secondary" text="object"/>
+> Paginate through SupplierVariants
+> 
 
-Paginate through SupplierVariants
 
 
 

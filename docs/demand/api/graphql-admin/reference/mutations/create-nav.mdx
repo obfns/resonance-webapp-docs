@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Create a new Nav.
                 
 Requires the "nav/write" permission on the associated DemandHq.
@@ -18,16 +26,16 @@ createNav(
 
 ### Arguments
 
-#### [`input`](#) ([`NavCreateInput!`](/demand/api/graphql-admin/reference/inputs/nav-create-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>createNav.<b>input</b></code>](#)<Bullet />[`NavCreateInput!`](/demand/api/graphql-admin/reference/inputs/nav-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`Nav`](/demand/api/graphql-admin/reference/objects/nav)
+#### [`Nav`](/demand/api/graphql-admin/reference/objects/nav) <Badge class="secondary" text="object"/>
+> Nav is an item within a navigational heirarchy of some kind, most often viewed as a menu.
+> 
 
-Nav is an item within a navigational heirarchy of some kind, most often viewed as a menu.
 
 
 

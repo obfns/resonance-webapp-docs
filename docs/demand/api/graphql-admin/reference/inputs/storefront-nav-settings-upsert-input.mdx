@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The input for upserting a StorefrontNavSettings
 
 ```graphql
@@ -18,21 +26,24 @@ input StorefrontNavSettingsUpsertInput {
 
 ### Fields
 
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontNavSettingsUpsertInput.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`linkTypes`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
-
-This sets what linkTypes are allowed for Navs in this storefront. Helps correct human error.
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontNavSettingsUpsertInput.<b>linkTypes</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> This sets what linkTypes are allowed for Navs in this storefront. Helps correct human error.
 Maximum of 50 types.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontNavSettingsUpsertInput.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
-#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
 
+### Member of
 
-
+[`upsertStorefrontNavSettings`](/demand/api/graphql-admin/reference/mutations/upsert-storefront-nav-settings)  <Badge class="secondary" text="mutation"/>
 
 
 

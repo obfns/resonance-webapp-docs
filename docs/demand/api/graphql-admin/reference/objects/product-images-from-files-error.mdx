@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Returned object for any failed createProductImagesFromFiles inputs
 
 ```graphql
@@ -17,15 +25,19 @@ type ProductImagesFromFilesError {
 
 ### Fields
 
-#### [`error`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>ProductImagesFromFilesError.<b>error</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The error message
+> 
 
-The error message
+#### [<code style={{ fontWeight: 'normal' }}>ProductImagesFromFilesError.<b>input</b></code>](#)<Bullet />[`ProductImageFromFileInputResponse!`](/demand/api/graphql-admin/reference/objects/product-image-from-file-input-response) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
 
-#### [`input`](#) ([`ProductImageFromFileInputResponse!`](/demand/api/graphql-admin/reference/objects/product-image-from-file-input-response))
 
+### Member of
 
-
+[`ProductImagesFromFilesResponse`](/demand/api/graphql-admin/reference/objects/product-images-from-files-response)  <Badge class="secondary" text="object"/>
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Associate an existing ContentItem with a new SupplierProduct
 
 ```graphql
@@ -16,16 +24,16 @@ associateSupplierProductContentItem(
 
 ### Arguments
 
-#### [`input`](#) ([`SupplierProductContentItemAssociationCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-content-item-association-create-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>associateSupplierProductContentItem.<b>input</b></code>](#)<Bullet />[`SupplierProductContentItemAssociationCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-content-item-association-create-input) <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`SupplierProductContentItem`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item)
+#### [`SupplierProductContentItem`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item) <Badge class="secondary" text="object"/>
+> This has a many to one relationship with SupplierProduct, and provides a connection to the CDN items.
+> 
 
-This has a many to one relationship with SupplierProduct, and provides a connection to the CDN items.
 
 
 

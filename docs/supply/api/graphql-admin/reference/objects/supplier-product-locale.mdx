@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 This has a many to one relationship with SupplierProduct, and provides localized language data for the appropriate fields.
 There will often only be one of these, and it should be the one set in defaultLocale for the supplier.
 
@@ -24,45 +32,47 @@ type SupplierProductLocale {
 
 ### Fields
 
-#### [`createdAt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocale.<b>createdAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocale.<b>description</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocale.<b>featureBullets</b></code>](#)<Bullet />[`[String]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Limited to 5 bullets
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocale.<b>localeType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/supply/api/graphql-admin/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocale.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocale.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocale.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocale.<b>updatedBy</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
+### Returned by
 
-#### [`description`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+[`createSupplierProductLocale`](/supply/api/graphql-admin/reference/mutations/create-supplier-product-locale)  <Badge class="secondary" text="mutation"/><Bullet />[`updateSupplierProductLocale`](/supply/api/graphql-admin/reference/mutations/update-supplier-product-locale)  <Badge class="secondary" text="mutation"/>
 
+### Member of
 
-
-
-#### [`featureBullets`](#) ([`[String]`](/supply/api/graphql-admin/reference/scalars/string))
-
-Limited to 5 bullets
-
-
-#### [`localeType`](#) ([`ResonanceLocaleType!`](/supply/api/graphql-admin/reference/enums/resonance-locale-type))
-
-
-
-
-#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`supplierProductId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`updatedAt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`updatedBy`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
-
-
-
+[`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product)  <Badge class="secondary" text="object"/>
 
 
 

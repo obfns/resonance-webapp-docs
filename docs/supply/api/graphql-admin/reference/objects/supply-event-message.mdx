@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 This is the event data and metadata.
 The data is variable, but most typically contains a newItem and oldItem.
 
@@ -18,15 +26,19 @@ type SupplyEventMessage {
 
 ### Fields
 
-#### [`data`](#) ([`JSON`](/supply/api/graphql-admin/reference/scalars/json))
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventMessage.<b>data</b></code>](#)<Bullet />[`JSON`](/supply/api/graphql-admin/reference/scalars/json) <Badge class="secondary" text="scalar"/>
+> Variable, but most typically contains a newItem and oldItem.
+> 
 
-Variable, but most typically contains a newItem and oldItem.
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventMessage.<b>metadata</b></code>](#)<Bullet />[`SupplyEventMetadata`](/supply/api/graphql-admin/reference/objects/supply-event-metadata) <Badge class="secondary" text="object"/>
+> Items consistent to every event
+> 
 
 
-#### [`metadata`](#) ([`SupplyEventMetadata`](/supply/api/graphql-admin/reference/objects/supply-event-metadata))
 
-Items consistent to every event
+### Member of
 
+[`SupplyEvent`](/supply/api/graphql-admin/reference/objects/supply-event)  <Badge class="secondary" text="object"/>
 
 
 

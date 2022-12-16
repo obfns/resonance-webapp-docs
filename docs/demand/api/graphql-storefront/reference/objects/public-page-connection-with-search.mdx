@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Paginate through PublicPages
 
 ```graphql
@@ -20,32 +28,33 @@ type PublicPageConnectionWithSearch {
 
 ### Fields
 
-#### [`edges`](#) ([`[PublicPageEdge]!`](/demand/api/graphql-storefront/reference/objects/public-page-edge))
+#### [<code style={{ fontWeight: 'normal' }}>PublicPageConnectionWithSearch.<b>edges</b></code>](#)<Bullet />[`[PublicPageEdge]!`](/demand/api/graphql-storefront/reference/objects/public-page-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicPageConnectionWithSearch.<b>nodes</b></code>](#)<Bullet />[`[PublicPage]!`](/demand/api/graphql-storefront/reference/objects/public-page) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicPageConnectionWithSearch.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-storefront/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
-
-#### [`nodes`](#) ([`[PublicPage]!`](/demand/api/graphql-storefront/reference/objects/public-page))
-
-
-
-
-#### [`pageInfo`](#) ([`PageInfo!`](/demand/api/graphql-storefront/reference/objects/page-info))
-
-
-
-
-#### [`querySuggestions`](#) ([`JSON`](/demand/api/graphql-storefront/reference/scalars/json))
-
-This is an object with terms in the query as keys, and a suggestion for that
+#### [<code style={{ fontWeight: 'normal' }}>PublicPageConnectionWithSearch.<b>querySuggestions</b></code>](#)<Bullet />[`JSON`](/demand/api/graphql-storefront/reference/scalars/json) <Badge class="secondary" text="scalar"/>
+> This is an object with terms in the query as keys, and a suggestion for that
 term as the value. This is often referred to as 'Did you mean?'
+> 
 
-
-#### [`termAggregations`](#) ([`PageTermAggregations`](/demand/api/graphql-storefront/reference/objects/page-term-aggregations))
-
-Values and the number of times they occur for the results of the query. These
+#### [<code style={{ fontWeight: 'normal' }}>PublicPageConnectionWithSearch.<b>termAggregations</b></code>](#)<Bullet />[`PageTermAggregations`](/demand/api/graphql-storefront/reference/objects/page-term-aggregations) <Badge class="secondary" text="object"/>
+> Values and the number of times they occur for the results of the query. These
 will be the same for every page of a query, and should only be fetched on the first page.
+> 
 
+
+
+### Returned by
+
+[`pages`](/demand/api/graphql-storefront/reference/queries/pages)  <Badge class="secondary" text="query"/>
 
 
 

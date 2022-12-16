@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Update an existing supplierVariantSupplement
 
 Requires suppliervariantsupplement/write permission on the requesting identity
@@ -18,17 +26,17 @@ updateSupplierVariantSupplement(
 
 ### Arguments
 
-#### [`input`](#) ([`SupplierVariantSupplementUpdateInput!`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-update-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>updateSupplierVariantSupplement.<b>input</b></code>](#)<Bullet />[`SupplierVariantSupplementUpdateInput!`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`SupplierVariantSupplement`](/supply/api/graphql-admin/reference/objects/supplier-variant-supplement)
-
-This has a one to one relationship with SupplierVariant, and provides supplemental data for the SupplierVariant.
+#### [`SupplierVariantSupplement`](/supply/api/graphql-admin/reference/objects/supplier-variant-supplement) <Badge class="secondary" text="object"/>
+> This has a one to one relationship with SupplierVariant, and provides supplemental data for the SupplierVariant.
 These items get updated at a lower frequency, and are therefore separate.
+> 
+
 
 
 

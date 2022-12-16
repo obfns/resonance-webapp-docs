@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Add or update keys in the SupplierVariantCustomData
 
 ```graphql
@@ -16,16 +24,16 @@ upsertSupplierVariantCustomData(
 
 ### Arguments
 
-#### [`input`](#) ([`SupplierVariantCustomDataUpsertInput!`](/supply/api/graphql-admin/reference/inputs/supplier-variant-custom-data-upsert-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>upsertSupplierVariantCustomData.<b>input</b></code>](#)<Bullet />[`SupplierVariantCustomDataUpsertInput!`](/supply/api/graphql-admin/reference/inputs/supplier-variant-custom-data-upsert-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`SupplierVariantCustomData`](/supply/api/graphql-admin/reference/objects/supplier-variant-custom-data)
+#### [`SupplierVariantCustomData`](/supply/api/graphql-admin/reference/objects/supplier-variant-custom-data) <Badge class="secondary" text="object"/>
+> Data that doesn't fit in the provided SupplierVariant fields needs to live here.
+> 
 
-Data that doesn't fit in the provided SupplierVariant fields needs to live here.
 
 
 

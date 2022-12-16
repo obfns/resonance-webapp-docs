@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Get a filtered list of DemandHqIdentities
 
 All of the filters are optional, but you must include at least one.
@@ -34,53 +42,46 @@ demandHqIdentities(
 
 ### Arguments
 
-#### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>demandHqIdentities.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+#### [<code style={{ fontWeight: 'normal' }}>demandHqIdentities.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>demandHqIdentities.<b>demandHqId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter the results to a specific demandHqId. (optional)
+> 
 
-#### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>demandHqIdentities.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-Returns the elements in the list that come before the specified cursor.
-
-
-#### [`demandHqId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
-
-Filter the results to a specific demandHqId. (optional)
-
-
-#### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the first n elements from the list.
-
-
-#### [`identityId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
-
-Filter the results to a specific identityId.
+#### [<code style={{ fontWeight: 'normal' }}>demandHqIdentities.<b>identityId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter the results to a specific identityId.
 Use this with your own userName or appClientId in order to see "My DemandHqIdentities".
 You automatically have access to your own DemandHqIdentities.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>demandHqIdentities.<b>identityParentEntityId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter the results to a specific identityParentEntityId (optional)
+> 
 
-#### [`identityParentEntityId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>demandHqIdentities.<b>identityType</b></code>](#)<Bullet />[`DemandHqIdentityType`](/demand/api/graphql-admin/reference/enums/demand-hq-identity-type) <Badge class="secondary" text="enum"/>
+> Filter the results to a specific identity type (optional)
+> 
 
-Filter the results to a specific identityParentEntityId (optional)
-
-
-#### [`identityType`](#) ([`DemandHqIdentityType`](/demand/api/graphql-admin/reference/enums/demand-hq-identity-type))
-
-Filter the results to a specific identity type (optional)
-
-
-#### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
+#### [<code style={{ fontWeight: 'normal' }}>demandHqIdentities.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
 ### Type
 
-#### [`DemandHqIdentityConnection`](/demand/api/graphql-admin/reference/objects/demand-hq-identity-connection)
+#### [`DemandHqIdentityConnection`](/demand/api/graphql-admin/reference/objects/demand-hq-identity-connection) <Badge class="secondary" text="object"/>
+> Paginate through DemandHqIdentities
+> 
 
-Paginate through DemandHqIdentities
 
 
 

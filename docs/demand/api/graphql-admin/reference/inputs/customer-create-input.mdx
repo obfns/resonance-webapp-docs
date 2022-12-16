@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Input for creating a Customer
 
 ```graphql
@@ -28,71 +36,64 @@ input CustomerCreateInput {
 
 ### Fields
 
-#### [`defaultBillingAddressId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>defaultBillingAddressId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> The CustomerAddressId for the default billing address for this Customer
+> 
 
-The CustomerAddressId for the default billing address for this Customer
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>defaultShippingAddressId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> The CustomerAddressId for the default shipping address for this Customer
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`defaultShippingAddressId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>emailAddress</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The email address associated with the Customer, must be unique to the storefront, limit 256 characters
+> 
 
-The CustomerAddressId for the default shipping address for this Customer
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>emailMarketingConsent</b></code>](#)<Bullet />[`CustomerMarketingConsentInput`](/demand/api/graphql-admin/reference/inputs/customer-marketing-consent-input) <Badge class="secondary" text="input"/>
+> 
+> 
 
-
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`emailAddress`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-The email address associated with the Customer, must be unique to the storefront, limit 256 characters
-
-
-#### [`emailMarketingConsent`](#) ([`CustomerMarketingConsentInput`](/demand/api/graphql-admin/reference/inputs/customer-marketing-consent-input))
-
-
-
-
-#### [`externalCustomerId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
-
-Reference to the storefront's customer authentication system. Limit 256 characters.
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>externalCustomerId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Reference to the storefront's customer authentication system. Limit 256 characters.
 This field is required if this customer is going to access any authenticated data (like their orders).
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>firstName</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The first name of the Customer, limit 256 characters
+> 
 
-#### [`firstName`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>lastName</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The last name of the Customer, limit 256 characters
+> 
 
-The first name of the Customer, limit 256 characters
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>phoneNumber</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Must be unique to the Storefront. Limit 64 characters. Format +11231231234
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>smsMarketingConsent</b></code>](#)<Bullet />[`CustomerMarketingConsentInput`](/demand/api/graphql-admin/reference/inputs/customer-marketing-consent-input) <Badge class="secondary" text="input"/>
+> 
+> 
 
-#### [`lastName`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>status</b></code>](#)<Bullet />[`CustomerStatus!`](/demand/api/graphql-admin/reference/enums/customer-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
-The last name of the Customer, limit 256 characters
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-#### [`phoneNumber`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Must be unique to the Storefront. Limit 64 characters. Format +11231231234
-
-
-#### [`smsMarketingConsent`](#) ([`CustomerMarketingConsentInput`](/demand/api/graphql-admin/reference/inputs/customer-marketing-consent-input))
-
-
-
-
-#### [`status`](#) ([`CustomerStatus!`](/demand/api/graphql-admin/reference/enums/customer-status))
-
-
-
-
-#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`tags`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>CustomerCreateInput.<b>tags</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
+### Member of
+
+[`createCustomer`](/demand/api/graphql-admin/reference/mutations/create-customer)  <Badge class="secondary" text="mutation"/>
 
 
 

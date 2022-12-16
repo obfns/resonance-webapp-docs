@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Represents an App, but the fields that can be publicly consumed without scopes
 
 ```graphql
@@ -23,45 +31,47 @@ type PublicApp {
 
 ### Fields
 
-#### [`appClientIds`](#) ([`[String!]!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PublicApp.<b>appClientIds</b></code>](#)<Bullet />[`[String!]!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicApp.<b>appId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicApp.<b>appType</b></code>](#)<Bullet />[`AppType!`](/adminidentity/api/graphql-admin/reference/enums/app-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicApp.<b>description</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicApp.<b>name</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicApp.<b>partnerId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicApp.<b>requestedScopes</b></code>](#)<Bullet />[`[String]`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicApp.<b>status</b></code>](#)<Bullet />[`AppStatus!`](/adminidentity/api/graphql-admin/reference/enums/app-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
 
 
+### Returned by
 
-#### [`appId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+[`publicApp`](/adminidentity/api/graphql-admin/reference/queries/public-app)  <Badge class="secondary" text="query"/>
 
+### Member of
 
-
-
-#### [`appType`](#) ([`AppType!`](/adminidentity/api/graphql-admin/reference/enums/app-type))
-
-
-
-
-#### [`description`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`name`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`partnerId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`requestedScopes`](#) ([`[String]`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`status`](#) ([`AppStatus!`](/adminidentity/api/graphql-admin/reference/enums/app-status))
-
-
-
+[`PublicAppConnection`](/adminidentity/api/graphql-admin/reference/objects/public-app-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicAppEdge`](/adminidentity/api/graphql-admin/reference/objects/public-app-edge)  <Badge class="secondary" text="object"/>
 
 
 

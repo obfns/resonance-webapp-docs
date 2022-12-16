@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Update an existing supplierProductLocale
 
 ```graphql
@@ -16,17 +24,17 @@ updateSupplierProductLocale(
 
 ### Arguments
 
-#### [`input`](#) ([`SupplierProductLocaleUpdateInput!`](/supply/api/graphql-admin/reference/inputs/supplier-product-locale-update-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>updateSupplierProductLocale.<b>input</b></code>](#)<Bullet />[`SupplierProductLocaleUpdateInput!`](/supply/api/graphql-admin/reference/inputs/supplier-product-locale-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`SupplierProductLocale`](/supply/api/graphql-admin/reference/objects/supplier-product-locale)
-
-This has a many to one relationship with SupplierProduct, and provides localized language data for the appropriate fields.
+#### [`SupplierProductLocale`](/supply/api/graphql-admin/reference/objects/supplier-product-locale) <Badge class="secondary" text="object"/>
+> This has a many to one relationship with SupplierProduct, and provides localized language data for the appropriate fields.
 There will often only be one of these, and it should be the one set in defaultLocale for the supplier.
+> 
+
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 This is the primary determination of which permission scopes can be requested.
 An app cannot be more than one of these.
 If something cross domain needs to exist, it should be two apps and they can communicate.
@@ -20,20 +28,23 @@ enum AppType {
 
 ### Values
 
-#### [`DEMANDHQAPP`](#)
+#### [<code style={{ fontWeight: 'normal' }}>AppType.<b>DEMANDHQAPP</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AppType.<b>STOREFRONTAPP</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>AppType.<b>SUPPLIERAPP</b></code>](#) 
+> 
+> 
 
 
 
+### Member of
 
-#### [`STOREFRONTAPP`](#)
-
-
-
-
-#### [`SUPPLIERAPP`](#)
-
-
-
+[`PublicApp`](/supply/api/graphql-admin/reference/objects/public-app)  <Badge class="secondary" text="object"/>
 
 
 

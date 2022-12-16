@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 What type of event to listen for.
 
 ```graphql
@@ -18,20 +26,23 @@ enum SupplyEventMutationType {
 
 ### Values
 
-#### [`CREATED`](#)
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventMutationType.<b>CREATED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventMutationType.<b>DELETED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventMutationType.<b>UPDATED</b></code>](#) 
+> 
+> 
 
 
 
+### Member of
 
-#### [`DELETED`](#)
-
-
-
-
-#### [`UPDATED`](#)
-
-
-
+[`SupplyEventSubscription`](/supply/api/graphql-admin/reference/objects/supply-event-subscription)  <Badge class="secondary" text="object"/><Bullet />[`SupplyEventSubscriptionCreateInput`](/supply/api/graphql-admin/reference/inputs/supply-event-subscription-create-input)  <Badge class="secondary" text="input"/><Bullet />[`supplyEventSubscriptions`](/supply/api/graphql-admin/reference/queries/supply-event-subscriptions)  <Badge class="secondary" text="query"/>
 
 
 

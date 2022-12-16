@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Delete a PageContentItem from a Page.
 
 Requires the page/write permission on the given DemandHq
@@ -20,26 +28,24 @@ deletePageContentItem(
 
 ### Arguments
 
-#### [`alsoRemoveImageUrls`](#) ([`Boolean`](/demand/api/graphql-admin/reference/scalars/boolean))
+#### [<code style={{ fontWeight: 'normal' }}>deletePageContentItem.<b>alsoRemoveImageUrls</b></code>](#)<Bullet />[`Boolean`](/demand/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> If the contentItem is present as a primaryImageUrl or secondaryImageUrl on the Page, also remove it from these fields.
+> 
 
-If the contentItem is present as a primaryImageUrl or secondaryImageUrl on the Page, also remove it from these fields.
+#### [<code style={{ fontWeight: 'normal' }}>deletePageContentItem.<b>contentItemId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-#### [`contentItemId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`pageId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>deletePageContentItem.<b>pageId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 ### Type
 
-#### [`DeletePageContentItemResponse`](/demand/api/graphql-admin/reference/objects/delete-page-content-item-response)
+#### [`DeletePageContentItemResponse`](/demand/api/graphql-admin/reference/objects/delete-page-content-item-response) <Badge class="secondary" text="object"/>
+> Returned object from deletePageContentItem
+> 
 
-Returned object from deletePageContentItem
 
 
 

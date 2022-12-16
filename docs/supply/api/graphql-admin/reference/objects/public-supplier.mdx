@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The parent-most entity of the Supplier Domain
 
 ```graphql
@@ -23,45 +31,43 @@ type PublicSupplier {
 
 ### Fields
 
-#### [`category`](#) ([`SupplierCategory`](/supply/api/graphql-admin/reference/enums/supplier-category))
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplier.<b>category</b></code>](#)<Bullet />[`SupplierCategory`](/supply/api/graphql-admin/reference/enums/supplier-category) <Badge class="secondary" text="enum"/>
+> Indicates the vertical the majority of a Supplier's goods are in.
+> 
 
-Indicates the vertical the majority of a Supplier's goods are in.
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplier.<b>description</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplier.<b>inStockProducts</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The approximate number of in stock products this Supplier has on a typical basis.
+> 
 
-#### [`description`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplier.<b>name</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplier.<b>shipFromAddress</b></code>](#)<Bullet />[`Address`](/supply/api/graphql-admin/reference/objects/address) <Badge class="secondary" text="object"/>
+> The address where this Supplier's goods ship from.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplier.<b>status</b></code>](#)<Bullet />[`SupplierStatus!`](/supply/api/graphql-admin/reference/enums/supplier-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplier.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`inStockProducts`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
-
-The approximate number of in stock products this Supplier has on a typical basis.
-
-
-#### [`name`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`shipFromAddress`](#) ([`Address`](/supply/api/graphql-admin/reference/objects/address))
-
-The address where this Supplier's goods ship from.
-
-
-#### [`status`](#) ([`SupplierStatus!`](/supply/api/graphql-admin/reference/enums/supplier-status))
-
-
-
-
-#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
+#### [<code style={{ fontWeight: 'normal' }}>PublicSupplier.<b>topVendors</b></code>](#)<Bullet />[`[String!]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The top Brands or Vendors this Supplier carries, limit 5 and 256 characters each.
+> 
 
 
-#### [`topVendors`](#) ([`[String!]`](/supply/api/graphql-admin/reference/scalars/string))
 
-The top Brands or Vendors this Supplier carries, limit 5 and 256 characters each.
+### Member of
 
+[`PublicSupplierConnection`](/supply/api/graphql-admin/reference/objects/public-supplier-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicSupplierEdge`](/supply/api/graphql-admin/reference/objects/public-supplier-edge)  <Badge class="secondary" text="object"/>
 
 
 

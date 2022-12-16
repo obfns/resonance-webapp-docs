@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 One edge producing one SupplierProduct Node
 
 ```graphql
@@ -16,10 +24,15 @@ type SupplierProductEdge {
 
 ### Fields
 
-#### [`node`](#) ([`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product))
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductEdge.<b>node</b></code>](#)<Bullet />[`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product) <Badge class="secondary" text="object"/>
+> 
+> 
 
 
 
+### Member of
+
+[`SupplierProductConnectionWithSearch`](/supply/api/graphql-admin/reference/objects/supplier-product-connection-with-search)  <Badge class="secondary" text="object"/>
 
 
 

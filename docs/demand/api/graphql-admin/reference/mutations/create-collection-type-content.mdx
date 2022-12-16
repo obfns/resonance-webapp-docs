@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Create a new CollectionTypeContent.
                 
 Requires the collectiontypecontent/write scope on the associated DemandHq.
@@ -18,17 +26,17 @@ createCollectionTypeContent(
 
 ### Arguments
 
-#### [`input`](#) ([`CollectionTypeContentCreateInput!`](/demand/api/graphql-admin/reference/inputs/collection-type-content-create-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>createCollectionTypeContent.<b>input</b></code>](#)<Bullet />[`CollectionTypeContentCreateInput!`](/demand/api/graphql-admin/reference/inputs/collection-type-content-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`CollectionTypeContent`](/demand/api/graphql-admin/reference/objects/collection-type-content)
-
-This holds content specific to a collectionType. This is generally used on a
+#### [`CollectionTypeContent`](/demand/api/graphql-admin/reference/objects/collection-type-content) <Badge class="secondary" text="object"/>
+> This holds content specific to a collectionType. This is generally used on a
 page that lists all collections for a collectionType.
+> 
+
 
 
 

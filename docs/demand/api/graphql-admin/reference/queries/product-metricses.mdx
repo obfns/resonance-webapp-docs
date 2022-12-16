@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Get productMetrics for Products by productIds
 
     Requires product/read permission
@@ -18,16 +26,16 @@ productMetricses(
 
 ### Arguments
 
-#### [`productIds`](#) ([`[ID!]!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>productMetricses.<b>productIds</b></code>](#)<Bullet />[`[ID!]!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 ### Type
 
-#### [`ProductMetrics`](/demand/api/graphql-admin/reference/objects/product-metrics)
+#### [`ProductMetrics`](/demand/api/graphql-admin/reference/objects/product-metrics) <Badge class="secondary" text="object"/>
+> Metrics for a product including msrp min/max, price min/max, and discount metrics
+> 
 
-Metrics for a product including msrp min/max, price min/max, and discount metrics
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Represents a notification specific to a User
 
 ```graphql
@@ -30,80 +38,75 @@ type UserNotification {
 
 ### Fields
 
-#### [`category`](#) ([`UserNotificationCategory!`](/adminidentity/api/graphql-admin/reference/enums/user-notification-category))
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>category</b></code>](#)<Bullet />[`UserNotificationCategory!`](/adminidentity/api/graphql-admin/reference/enums/user-notification-category) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> These denote where the message is from and what it pertains to.
+> 
 
-These denote where the message is from and what it pertains to.
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>content</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The actual message. It's optional, and potentially only the subject is needed. Should be short.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>createdAt</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> ISO Date
+> 
 
-#### [`content`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>createdBy</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Identity who created the notification
+> 
 
-The actual message. It's optional, and potentially only the subject is needed. Should be short.
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>expiresAt</b></code>](#)<Bullet />[`Int`](/adminidentity/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Epoch date when this notification will expire
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>externalDeliveries</b></code>](#)<Bullet />[`[NotificationExternalDeliveryType]`](/adminidentity/api/graphql-admin/reference/enums/notification-external-delivery-type) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> Should this notification be delivered outside the portal?
+> 
 
-#### [`createdAt`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>link</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Where the button in the notification should link to
+> 
 
-ISO Date
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>senderReferenceKey</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The sender of the notification can use this to reference it later
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>sentiment</b></code>](#)<Bullet />[`NotificationSentiment`](/adminidentity/api/graphql-admin/reference/enums/notification-sentiment) <Badge class="secondary" text="enum"/>
+> Denotes the tone of the message, may affect display
+> 
 
-#### [`createdBy`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>status</b></code>](#)<Bullet />[`NotificationStatus!`](/adminidentity/api/graphql-admin/reference/enums/notification-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Denotes how urgent and whether the Notification is archived
+> 
 
-Identity who created the notification
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>subject</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The subject of the notification, is required
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> ISO Date
+> 
 
-#### [`expiresAt`](#) ([`Int`](/adminidentity/api/graphql-admin/reference/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The last identity to alter this record
+> 
 
-Epoch date when this notification will expire
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>userName</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The user this notification pertains to
+> 
 
-
-#### [`externalDeliveries`](#) ([`[NotificationExternalDeliveryType]`](/adminidentity/api/graphql-admin/reference/enums/notification-external-delivery-type))
-
-Should this notification be delivered outside the portal?
-
-
-#### [`link`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-Where the button in the notification should link to
-
-
-#### [`senderReferenceKey`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-The sender of the notification can use this to reference it later
-
-
-#### [`sentiment`](#) ([`NotificationSentiment`](/adminidentity/api/graphql-admin/reference/enums/notification-sentiment))
-
-Denotes the tone of the message, may affect display
-
-
-#### [`status`](#) ([`NotificationStatus!`](/adminidentity/api/graphql-admin/reference/enums/notification-status))
-
-Denotes how urgent and whether the Notification is archived
-
-
-#### [`subject`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-The subject of the notification, is required
-
-
-#### [`updatedAt`](#) ([`String!`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-ISO Date
-
-
-#### [`updatedBy`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
-
-The last identity to alter this record
+#### [<code style={{ fontWeight: 'normal' }}>UserNotification.<b>userNotificationId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The ID of this userNotification
+> 
 
 
-#### [`userName`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
 
-The user this notification pertains to
+### Returned by
 
+[`updateUserNotificationStatus`](/adminidentity/api/graphql-admin/reference/mutations/update-user-notification-status)  <Badge class="secondary" text="mutation"/>
 
-#### [`userNotificationId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+### Member of
 
-The ID of this userNotification
-
+[`UserNotificationConnection`](/adminidentity/api/graphql-admin/reference/objects/user-notification-connection)  <Badge class="secondary" text="object"/><Bullet />[`UserNotificationEdge`](/adminidentity/api/graphql-admin/reference/objects/user-notification-edge)  <Badge class="secondary" text="object"/>
 
 
 

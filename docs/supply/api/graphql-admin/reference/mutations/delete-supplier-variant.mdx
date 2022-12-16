@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Delete a supplierVariant
 
 ```graphql
@@ -16,16 +24,16 @@ deleteSupplierVariant(
 
 ### Arguments
 
-#### [`supplierVariantId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>deleteSupplierVariant.<b>supplierVariantId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 ### Type
 
-#### [`SupplierVariantDeleteResponse`](/supply/api/graphql-admin/reference/objects/supplier-variant-delete-response)
+#### [`SupplierVariantDeleteResponse`](/supply/api/graphql-admin/reference/objects/supplier-variant-delete-response) <Badge class="secondary" text="object"/>
+> Response for when deleting a supplierVariant
+> 
 
-Response for when deleting a supplierVariant
 
 
 

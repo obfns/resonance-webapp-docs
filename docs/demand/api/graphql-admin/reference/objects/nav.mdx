@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Nav is an item within a navigational heirarchy of some kind, most often viewed as a menu.
 
 ```graphql
@@ -35,106 +43,97 @@ type Nav {
 
 ### Fields
 
-#### [`createdAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>href</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Where this Nav link should lead to. Can be an absolute or relative url. 768 character limit.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>label</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The label for this Nav, limit 64 characters.
+> 
 
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`href`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-Where this Nav link should lead to. Can be an absolute or relative url. 768 character limit.
-
-
-#### [`label`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-The label for this Nav, limit 64 characters.
-
-
-#### [`linkSlug`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-This has two primary purposes:
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>linkSlug</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> This has two primary purposes:
 To make this Nav "lookupable" in combination with linkType.
 To make entities aware they are being referenced. This is done with the
 reserved system linkTypes in combination with entitySlugs (i.e. Collection and
 a collection slug).
+> 
 
-
-#### [`linkType`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-This can be any string, but certain values have special meaning (like "collection").
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>linkType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> This can be any string, but certain values have special meaning (like "collection").
 These are restricted to the specified values in NavSettings.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>navId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`navId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`navLevel`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
-
-A number, representing where this Nav resides in the heirarchy. Immutable, and
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>navLevel</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> A number, representing where this Nav resides in the heirarchy. Immutable, and
 limited to 0 through 6. 0 is the top level, 1 is the second level, etc.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>navType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> A string indicating the purpose of this Nav hierarchy, must match parentNav if applicable. Limit 128 characters.
+> 
 
-#### [`navType`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-A string indicating the purpose of this Nav hierarchy, must match parentNav if applicable. Limit 128 characters.
-
-
-#### [`navs`](#) ([`NavConnection!`](/demand/api/graphql-admin/reference/objects/nav-connection))
-
-List Child Navs for a nav.
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>navs</b></code>](#)<Bullet />[`NavConnection!`](/demand/api/graphql-admin/reference/objects/nav-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List Child Navs for a nav.
 
 Requires the user to have the nav/read permission on the associated DemandHq.
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>Nav.navs.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>Nav.navs.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>Nav.navs.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>Nav.navs.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
-Returns the elements in the list that come before the specified cursor.
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>parentNavId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> All Navs besides the root (Level 0) have a parentNavId. Immutable.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>position</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Where this Nav should be located with respect to other Navs. Need not be sequential or unique.
+> 
 
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-Returns the first n elements from the list.
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-#### [`parentNavId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
-
-All Navs besides the root (Level 0) have a parentNavId. Immutable.
-
-
-#### [`position`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Where this Nav should be located with respect to other Navs. Need not be sequential or unique.
-
-
-#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
-
+#### [<code style={{ fontWeight: 'normal' }}>Nav.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
-#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+### Returned by
 
+[`createNav`](/demand/api/graphql-admin/reference/mutations/create-nav)  <Badge class="secondary" text="mutation"/><Bullet />[`nav`](/demand/api/graphql-admin/reference/queries/nav)  <Badge class="secondary" text="query"/><Bullet />[`updateNav`](/demand/api/graphql-admin/reference/mutations/update-nav)  <Badge class="secondary" text="mutation"/>
 
+### Member of
 
+[`NavConnection`](/demand/api/graphql-admin/reference/objects/nav-connection)  <Badge class="secondary" text="object"/><Bullet />[`NavEdge`](/demand/api/graphql-admin/reference/objects/nav-edge)  <Badge class="secondary" text="object"/>
 
 
 

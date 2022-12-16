@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Type representing a PartnerIdentity, the permissions given to a User for a Partner
 
 ```graphql
@@ -22,40 +30,43 @@ type PartnerIdentity {
 
 ### Fields
 
-#### [`identityId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentity.<b>identityId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The identityId these permissions pertain to
+> 
 
-The identityId these permissions pertain to
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentity.<b>identityParentEntityId</b></code>](#)<Bullet />[`ID`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Unlikely to be used, unless we have Partner Apps
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentity.<b>identityType</b></code>](#)<Bullet />[`ResonanceIdentityType!`](/adminidentity/api/graphql-admin/reference/enums/resonance-identity-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The type of identity an identityId refers to
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentity.<b>partnerId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The ID of the Partner this permission pertains to
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentity.<b>permissions</b></code>](#)<Bullet />[`PartnerIdentityPermissions!`](/adminidentity/api/graphql-admin/reference/objects/partner-identity-permissions) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Object representing exactly what permissions are given
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentity.<b>publicIdentity</b></code>](#)<Bullet />[`PublicIdentity`](/adminidentity/api/graphql-admin/reference/objects/public-identity) <Badge class="secondary" text="object"/>
+> Get a PublicIdentity for a given PartnerIdentity
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentity.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The identity to last update this entity
+> 
 
 
-#### [`identityParentEntityId`](#) ([`ID`](/adminidentity/api/graphql-admin/reference/scalars/id))
 
-Unlikely to be used, unless we have Partner Apps
+### Returned by
 
+[`createPartnerIdentity`](/adminidentity/api/graphql-admin/reference/mutations/create-partner-identity)  <Badge class="secondary" text="mutation"/><Bullet />[`updatePartnerIdentity`](/adminidentity/api/graphql-admin/reference/mutations/update-partner-identity)  <Badge class="secondary" text="mutation"/>
 
-#### [`identityType`](#) ([`ResonanceIdentityType!`](/adminidentity/api/graphql-admin/reference/enums/resonance-identity-type))
+### Member of
 
-The type of identity an identityId refers to
-
-
-#### [`partnerId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
-
-The ID of the Partner this permission pertains to
-
-
-#### [`permissions`](#) ([`PartnerIdentityPermissions!`](/adminidentity/api/graphql-admin/reference/objects/partner-identity-permissions))
-
-Object representing exactly what permissions are given
-
-
-#### [`publicIdentity`](#) ([`PublicIdentity`](/adminidentity/api/graphql-admin/reference/objects/public-identity))
-
-Get a PublicIdentity for a given PartnerIdentity
-
-
-#### [`updatedBy`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
-
-The identity to last update this entity
-
+[`Partner`](/adminidentity/api/graphql-admin/reference/objects/partner)  <Badge class="secondary" text="object"/><Bullet />[`PartnerIdentityConnection`](/adminidentity/api/graphql-admin/reference/objects/partner-identity-connection)  <Badge class="secondary" text="object"/><Bullet />[`PartnerIdentityEdge`](/adminidentity/api/graphql-admin/reference/objects/partner-identity-edge)  <Badge class="secondary" text="object"/>
 
 
 

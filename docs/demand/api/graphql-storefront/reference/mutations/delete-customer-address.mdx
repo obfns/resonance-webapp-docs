@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Deletes a CustomerAddress
 
 Requires the customeraddress/write scope on the associated DemandHq.
@@ -19,21 +27,20 @@ deleteCustomerAddress(
 
 ### Arguments
 
-#### [`customerAddressId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>deleteCustomerAddress.<b>customerAddressId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`customerToken`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>deleteCustomerAddress.<b>customerToken</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 ### Type
 
-#### [`DeleteCustomerAddressResponse`](/demand/api/graphql-storefront/reference/objects/delete-customer-address-response)
+#### [`DeleteCustomerAddressResponse`](/demand/api/graphql-storefront/reference/objects/delete-customer-address-response) <Badge class="secondary" text="object"/>
+> Returned object from deleteCustomerAddress
+> 
 
-Returned object from deleteCustomerAddress
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 A Page is a part of the Demand Domain and represents a page with textual and
 image content on it, that has nothing to do with products.
 This can range from "About Us" pages to Blog articles. Use the "pageType" field to differentiate.
@@ -36,84 +44,78 @@ type PublicPage {
 
 ### Fields
 
-#### [`author`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>author</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The author of the page, limit 256 characters.
+> 
 
-The author of the page, limit 256 characters.
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>content</b></code>](#)<Bullet />[`PageContent`](/demand/api/graphql-storefront/reference/objects/page-content) <Badge class="secondary" text="object"/>
+> Get the content of the page.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`content`](#) ([`PageContent`](/demand/api/graphql-storefront/reference/objects/page-content))
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A short description of the page, limit 1000 characters.
+> 
 
-Get the content of the page.
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>descriptionOrExcerpt</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the description if it exists, or fallback to the content excerpt for the page.
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicPage.descriptionOrExcerpt.<b>numberOfCharacters</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The number of characters to return, defaults to 200.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>pageId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>pageType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Any string to declare a category of this page, can be used to filter pages, limit 128 characters.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>primaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A primary image url for this page, can be generated from a Page ContentItem.
+> 
 
-
-
-#### [`description`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-A short description of the page, limit 1000 characters.
-
-
-#### [`descriptionOrExcerpt`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-Get the description if it exists, or fallback to the content excerpt for the page.
-- ##### [`numberOfCharacters`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
-
-The number of characters to return, defaults to 200.
-
-
-#### [`pageId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
-
-
-
-
-#### [`pageType`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
-
-Any string to declare a category of this page, can be used to filter pages, limit 128 characters.
-
-
-#### [`primaryImageUrl`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-A primary image url for this page, can be generated from a Page ContentItem.
-
-
-#### [`publishedAt`](#) ([`Date`](/demand/api/graphql-storefront/reference/scalars/date))
-
-ISO format date when the page was published. Note that ensuing updates with
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>publishedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> ISO format date when the page was published. Note that ensuing updates with
 status set to PUBLISHED will republish and re-set this date.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>secondaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A secondary image url for this page, often a logo or related item.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>seoTitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title specific for SEO purposes, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>slug</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Slug for the URL for this page. Limit 128 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>subtitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The subtitle of the page, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>tags</b></code>](#)<Bullet />[`PageTags`](/demand/api/graphql-storefront/reference/objects/page-tags) <Badge class="secondary" text="object"/>
+> Get the tags of the page.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>title</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The title of the page, limit 256 characters.
+> 
 
 
-#### [`secondaryImageUrl`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
 
-A secondary image url for this page, often a logo or related item.
+### Returned by
 
+[`page`](/demand/api/graphql-storefront/reference/queries/page)  <Badge class="secondary" text="query"/>
 
-#### [`seoTitle`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+### Member of
 
-Title specific for SEO purposes, limit 256 characters.
-
-
-#### [`slug`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
-
-Slug for the URL for this page. Limit 128 characters.
-
-
-#### [`subtitle`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-The subtitle of the page, limit 256 characters.
-
-
-#### [`tags`](#) ([`PageTags`](/demand/api/graphql-storefront/reference/objects/page-tags))
-
-Get the tags of the page.
-
-
-#### [`title`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
-
-The title of the page, limit 256 characters.
-
+[`PublicPageConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-page-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicPageEdge`](/demand/api/graphql-storefront/reference/objects/public-page-edge)  <Badge class="secondary" text="object"/>
 
 
 

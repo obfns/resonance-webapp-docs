@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 This type is the extension of SupplierIdentity's identityParentEntityId into the Public version of the entity,
 and encompasses all possible uses of that field.
 Currently, this is for Apps only.
@@ -16,12 +24,17 @@ union PublicIdentityParent = PublicApp
 
 ### Possible types
 
-#### [`PublicApp`](/supply/api/graphql-admin/reference/objects/public-app)
-
-This type is returned on routes with no permissions attached to protect
+#### [`PublicApp`](/supply/api/graphql-admin/reference/objects/public-app) <Badge class="secondary" text="object"/>
+> This type is returned on routes with no permissions attached to protect
 Personally Identifiable Information, but still provide minimal data.
 Provides a subset of App from the Identity domain.
+> 
 
+
+
+### Member of
+
+[`SupplierIdentity`](/supply/api/graphql-admin/reference/objects/supplier-identity)  <Badge class="secondary" text="object"/>
 
 
 

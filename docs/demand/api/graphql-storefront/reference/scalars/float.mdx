@@ -5,12 +5,26 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
 
 ```graphql
 scalar Float
 ```
 
+
+
+
+### Member of
+
+[`CheckoutOrderItem`](/demand/api/graphql-storefront/reference/objects/checkout-order-item)  <Badge class="secondary" text="object"/><Bullet />[`CheckoutOrderItemInput`](/demand/api/graphql-storefront/reference/inputs/checkout-order-item-input)  <Badge class="secondary" text="input"/><Bullet />[`FloatRangeFilterInput`](/demand/api/graphql-storefront/reference/inputs/float-range-filter-input)  <Badge class="secondary" text="input"/><Bullet />[`OrderItemAdjustment`](/demand/api/graphql-storefront/reference/objects/order-item-adjustment)  <Badge class="secondary" text="object"/><Bullet />[`OrderItemDiscount`](/demand/api/graphql-storefront/reference/objects/order-item-discount)  <Badge class="secondary" text="object"/><Bullet />[`OrderItemDiscountInput`](/demand/api/graphql-storefront/reference/inputs/order-item-discount-input)  <Badge class="secondary" text="input"/><Bullet />[`OrderItemShippingCharge`](/demand/api/graphql-storefront/reference/objects/order-item-shipping-charge)  <Badge class="secondary" text="object"/><Bullet />[`OrderItemShippingChargeInput`](/demand/api/graphql-storefront/reference/inputs/order-item-shipping-charge-input)  <Badge class="secondary" text="input"/><Bullet />[`OrderItemTax`](/demand/api/graphql-storefront/reference/objects/order-item-tax)  <Badge class="secondary" text="object"/><Bullet />[`OrderItemTaxInput`](/demand/api/graphql-storefront/reference/inputs/order-item-tax-input)  <Badge class="secondary" text="input"/><Bullet />[`OrderTransactionCurrencyExchangeAdjustment`](/demand/api/graphql-storefront/reference/objects/order-transaction-currency-exchange-adjustment)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderItem`](/demand/api/graphql-storefront/reference/objects/public-order-item)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderTransaction`](/demand/api/graphql-storefront/reference/objects/public-order-transaction)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductMetrics`](/demand/api/graphql-storefront/reference/objects/public-product-metrics)  <Badge class="secondary" text="object"/><Bullet />[`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant)  <Badge class="secondary" text="object"/><Bullet />[`VariantShippingDimensions`](/demand/api/graphql-storefront/reference/objects/variant-shipping-dimensions)  <Badge class="secondary" text="object"/><Bullet />[`VariantWeight`](/demand/api/graphql-storefront/reference/objects/variant-weight)  <Badge class="secondary" text="object"/>
 
 
 

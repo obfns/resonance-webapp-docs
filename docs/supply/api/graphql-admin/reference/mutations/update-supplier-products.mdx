@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Bulk Update SupplierProducts
 
 Note that if there are Permission or UserInput Errors, the entire group will fail, not partially succeed.
@@ -18,18 +26,18 @@ updateSupplierProducts(
 
 ### Arguments
 
-#### [`inputs`](#) ([`[SupplierProductUpdateInput!]`](/supply/api/graphql-admin/reference/inputs/supplier-product-update-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>updateSupplierProducts.<b>inputs</b></code>](#)<Bullet />[`[SupplierProductUpdateInput!]`](/supply/api/graphql-admin/reference/inputs/supplier-product-update-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product)
-
-This is the main entity of the Supplier domain, and is used to represent a product, which is a group of SKUs.
+#### [`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product) <Badge class="secondary" text="object"/>
+> This is the main entity of the Supplier domain, and is used to represent a product, which is a group of SKUs.
 SKUs are represented by SupplierVariants, a child of this entity.
 This entity is less frequently updated, it is more likely that SupplyVariant will be updated frequently.
+> 
+
 
 
 

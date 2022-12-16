@@ -5,12 +5,26 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
 
 ```graphql
 scalar Float
 ```
 
+
+
+
+### Member of
+
+[`FloatRangeFilterInput`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantHandlingCost`](/supply/api/graphql-admin/reference/objects/supplier-variant-handling-cost)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantHandlingCostInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-handling-cost-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantShippingDimensions`](/supply/api/graphql-admin/reference/objects/supplier-variant-shipping-dimensions)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantShippingDimensionsInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-shipping-dimensions-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantSupplement`](/supply/api/graphql-admin/reference/objects/supplier-variant-supplement)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantSupplementCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantSupplementInCompositeCreateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-in-composite-create-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantSupplementUpdateInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-update-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierVariantWeight`](/supply/api/graphql-admin/reference/objects/supplier-variant-weight)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantWeightInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-weight-input)  <Badge class="secondary" text="input"/>
 
 
 

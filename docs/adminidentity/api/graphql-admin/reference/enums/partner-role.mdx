@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Roles are groups of permission scopes, for ease of assigning
 
 ```graphql
@@ -16,10 +24,15 @@ enum PartnerRole {
 
 ### Values
 
-#### [`ADMIN`](#)
+#### [<code style={{ fontWeight: 'normal' }}>PartnerRole.<b>ADMIN</b></code>](#) 
+> ADMIN represents all possible scopes being given write permission
+> 
 
-ADMIN represents all possible scopes being given write permission
 
+
+### Member of
+
+[`PartnerIdentityPermissions`](/adminidentity/api/graphql-admin/reference/objects/partner-identity-permissions)  <Badge class="secondary" text="object"/><Bullet />[`PartnerIdentityPermissionsInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-identity-permissions-input)  <Badge class="secondary" text="input"/>
 
 
 

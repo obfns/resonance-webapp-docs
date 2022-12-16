@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Get a pageTypeContent by pageType.
                 
 Requires the pagetypecontent/read scope on the associated DemandHq
@@ -18,16 +26,16 @@ pageTypeContent(
 
 ### Arguments
 
-#### [`pageType`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>pageTypeContent.<b>pageType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 ### Type
 
-#### [`PublicPageTypeContent`](/demand/api/graphql-storefront/reference/objects/public-page-type-content)
+#### [`PublicPageTypeContent`](/demand/api/graphql-storefront/reference/objects/public-page-type-content) <Badge class="secondary" text="object"/>
+> This holds content specific to a pageType. This is generally used on a page that lists all pages for a pageType.
+> 
 
-This holds content specific to a pageType. This is generally used on a page that lists all pages for a pageType.
 
 
 

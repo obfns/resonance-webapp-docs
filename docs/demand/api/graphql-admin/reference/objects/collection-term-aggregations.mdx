@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 A Map of several fields of Collection and term aggregations for each
 
 ```graphql
@@ -17,15 +25,19 @@ type CollectionTermAggregations {
 
 ### Fields
 
-#### [`collectionTypes`](#) ([`[TermAggregation!]`](/demand/api/graphql-admin/reference/objects/term-aggregation))
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTermAggregations.<b>collectionTypes</b></code>](#)<Bullet />[`[TermAggregation!]`](/demand/api/graphql-admin/reference/objects/term-aggregation) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTermAggregations.<b>tags</b></code>](#)<Bullet />[`[TermAggregation!]`](/demand/api/graphql-admin/reference/objects/term-aggregation) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
 
 
+### Member of
 
-#### [`tags`](#) ([`[TermAggregation!]`](/demand/api/graphql-admin/reference/objects/term-aggregation))
-
-
-
+[`CollectionConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/collection-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/>
 
 
 

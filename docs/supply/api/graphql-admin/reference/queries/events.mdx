@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 See changes that have been made to this SupplierVariant
 
 ```graphql
@@ -21,41 +29,36 @@ events(
 
 ### Arguments
 
-#### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>events.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+#### [<code style={{ fontWeight: 'normal' }}>events.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>events.<b>entityId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The entity to retrieve events for, like a SupplierVariantId
+> 
 
-#### [`before`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>events.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-Returns the elements in the list that come before the specified cursor.
+#### [<code style={{ fontWeight: 'normal' }}>events.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
-
-#### [`entityId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-The entity to retrieve events for, like a SupplierVariantId
-
-
-#### [`first`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
-
-Returns the first n elements from the list.
-
-
-#### [`last`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-The SupplierId to retrieve events for
-
+#### [<code style={{ fontWeight: 'normal' }}>events.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The SupplierId to retrieve events for
+> 
 
 ### Type
 
-#### [`SupplyEventConnection`](/supply/api/graphql-admin/reference/objects/supply-event-connection)
+#### [`SupplyEventConnection`](/supply/api/graphql-admin/reference/objects/supply-event-connection) <Badge class="secondary" text="object"/>
+> Paginate through SupplyEvents
+> 
 
-Paginate through SupplyEvents
 
 
 

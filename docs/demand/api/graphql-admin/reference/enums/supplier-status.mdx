@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Indication of whether the Supplier is live and accepting orders
 
 ```graphql
@@ -19,25 +27,27 @@ enum SupplierStatus {
 
 ### Values
 
-#### [`ARCHIVED`](#)
+#### [<code style={{ fontWeight: 'normal' }}>SupplierStatus.<b>ARCHIVED</b></code>](#) 
+> Indicates a Supplier's goods are no longer available for retailing.
+> 
 
-Indicates a Supplier's goods are no longer available for retailing.
+#### [<code style={{ fontWeight: 'normal' }}>SupplierStatus.<b>DRAFT</b></code>](#) 
+> Indicates that a Supplier's goods are not yet available for retailing. Functionally identical to ARCHIVED.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierStatus.<b>PRIVATE</b></code>](#) 
+> Indicates that a Supplier is activated and available, but not in the public Supplier Marketplace.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierStatus.<b>PUBLIC</b></code>](#) 
+> Indicates that a Supplier is not only activated, but available in the public Supplier Marketplace.
+> 
 
 
-#### [`DRAFT`](#)
 
-Indicates that a Supplier's goods are not yet available for retailing. Functionally identical to ARCHIVED.
+### Member of
 
-
-#### [`PRIVATE`](#)
-
-Indicates that a Supplier is activated and available, but not in the public Supplier Marketplace.
-
-
-#### [`PUBLIC`](#)
-
-Indicates that a Supplier is not only activated, but available in the public Supplier Marketplace.
-
+[`PublicSupplier`](/demand/api/graphql-admin/reference/objects/public-supplier)  <Badge class="secondary" text="object"/>
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Information on Pagination
 
 ```graphql
@@ -19,29 +27,31 @@ type PageInfo {
 
 ### Fields
 
-#### [`endCursor`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
-
-The cursor to use when paginating forwards (using first/after). Will always be
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>endCursor</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The cursor to use when paginating forwards (using first/after). Will always be
 populated regardless of if a next page exists.
+> 
 
-
-#### [`hasNextPage`](#) ([`Boolean!`](/supply/api/graphql-admin/reference/scalars/boolean))
-
-Whether or not using the endCursor will result in more results. Always
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>hasNextPage</b></code>](#)<Bullet />[`Boolean!`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Whether or not using the endCursor will result in more results. Always
 populated, but will always be false when paginating using last/before.
+> 
 
-
-#### [`hasPreviousPage`](#) ([`Boolean!`](/supply/api/graphql-admin/reference/scalars/boolean))
-
-Whether or not using the startCursor will result in more results. Always
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>hasPreviousPage</b></code>](#)<Bullet />[`Boolean!`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Whether or not using the startCursor will result in more results. Always
 populated, but will always be false when paginating using first/after.
+> 
 
-
-#### [`startCursor`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
-
-The cursor to use when paginating backwards (using last/before). Will always
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>startCursor</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The cursor to use when paginating backwards (using last/before). Will always
 be populated regardless of if a previous page exists
+> 
 
+
+
+### Member of
+
+[`PublicSupplierConnection`](/supply/api/graphql-admin/reference/objects/public-supplier-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplierDemandHqConnection`](/supply/api/graphql-admin/reference/objects/supplier-demand-hq-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplierIdentityConnection`](/supply/api/graphql-admin/reference/objects/supplier-identity-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplierProductConnectionWithSearch`](/supply/api/graphql-admin/reference/objects/supplier-product-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`SupplierProductContentItemConnection`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplierQuickLinkConnection`](/supply/api/graphql-admin/reference/objects/supplier-quick-link-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariantConnection`](/supply/api/graphql-admin/reference/objects/supplier-variant-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplyEventConnection`](/supply/api/graphql-admin/reference/objects/supply-event-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplyEventSubscriptionConnection`](/supply/api/graphql-admin/reference/objects/supply-event-subscription-connection)  <Badge class="secondary" text="object"/>
 
 
 

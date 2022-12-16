@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The possible fields in order to update an existing partner
 
 ```graphql
@@ -20,32 +28,33 @@ input PartnerUpdateInput {
 
 ### Fields
 
-#### [`description`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-Description of the partner
+#### [<code style={{ fontWeight: 'normal' }}>PartnerUpdateInput.<b>description</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Description of the partner
 Limited to 8000 characters
+> 
 
-
-#### [`name`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-The name of the partner
+#### [<code style={{ fontWeight: 'normal' }}>PartnerUpdateInput.<b>name</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The name of the partner
 Limited to 128 characters
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerUpdateInput.<b>notificationUserNames</b></code>](#)<Bullet />[`PartnerNotificationUserNamesInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-notification-user-names-input) <Badge class="secondary" text="input"/>
+> Represents the users to be notified for certain events
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerUpdateInput.<b>ownerUserName</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PartnerUpdateInput.<b>partnerId</b></code>](#)<Bullet />[`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
-#### [`notificationUserNames`](#) ([`PartnerNotificationUserNamesInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-notification-user-names-input))
 
-Represents the users to be notified for certain events
+### Member of
 
-
-#### [`ownerUserName`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`partnerId`](#) ([`ID!`](/adminidentity/api/graphql-admin/reference/scalars/id))
-
-
-
+[`updatePartner`](/adminidentity/api/graphql-admin/reference/mutations/update-partner)  <Badge class="secondary" text="mutation"/>
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 A Collection is a group of products, what may often be referred to as a "Category Page" of some variety.
 In reality, a collection is far more flexible and can be used to represent any
 product grouping, and the collectionType can help differentiate between them.
@@ -67,242 +75,205 @@ type Collection {
 
 ### Fields
 
-#### [`collectionId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>collectionId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>collectionType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Any string to declare a category of this collection, can be used to filter collections, limit 128 characters.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>content</b></code>](#)<Bullet />[`CollectionContent`](/demand/api/graphql-admin/reference/objects/collection-content) <Badge class="secondary" text="object"/>
+> Get the content of the collection.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>contentItemIds</b></code>](#)<Bullet />[`[ID!]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The ContentItemIds of the Content Items that are associated with this collection.
+> 
 
-#### [`collectionType`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>contentItems</b></code>](#)<Bullet />[`[CollectionContentItem]`](/demand/api/graphql-admin/reference/objects/collection-content-item) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> Get the content items of the collection.
+> 
 
-Any string to declare a category of this collection, can be used to filter collections, limit 128 characters.
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`content`](#) ([`CollectionContent`](/demand/api/graphql-admin/reference/objects/collection-content))
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A short description of the collection, limit 1000 characters.
+> 
 
-Get the content of the collection.
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>descriptionOrExcerpt</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the description if it exists, or fallback to the excerpt of content for the collection.
+> ##### [<code style={{ fontWeight: 'normal' }}>Collection.descriptionOrExcerpt.<b>numberOfCharacters</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The number of characters to return, defaults to 200.
+> 
 
-
-#### [`contentItemIds`](#) ([`[ID!]`](/demand/api/graphql-admin/reference/scalars/id))
-
-The ContentItemIds of the Content Items that are associated with this collection.
-
-
-#### [`contentItems`](#) ([`[CollectionContentItem]`](/demand/api/graphql-admin/reference/objects/collection-content-item))
-
-Get the content items of the collection.
-
-
-#### [`createdAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
-
-
-
-
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-A short description of the collection, limit 1000 characters.
-
-
-#### [`descriptionOrExcerpt`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Get the description if it exists, or fallback to the excerpt of content for the collection.
-- ##### [`numberOfCharacters`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-The number of characters to return, defaults to 200.
-
-
-#### [`featuredProductIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
-
-This can be used to pin certain products to the top of a collection when using certain sorts.
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>featuredProductIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> This can be used to pin certain products to the top of a collection when using certain sorts.
 Max number of products is 20.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>primaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A primary image url for this collection, can be generated from a Collection ContentItem.
+> 
 
-#### [`primaryImageUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-A primary image url for this collection, can be generated from a Collection ContentItem.
-
-
-#### [`primaryImageUrlWithFallback`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Returns the primary image URL if exists, otherwise attempts to construct an
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>primaryImageUrlWithFallback</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the primary image URL if exists, otherwise attempts to construct an
 image url from the first (featured) image of the page.  If the primary image
 URL is a CDN URL, it can be passed width and height properties to return a resized image.
-- ##### [`height`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+> ##### [<code style={{ fontWeight: 'normal' }}>Collection.primaryImageUrlWithFallback.<b>height</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The height of the image to return in pixels.
+> 
 
-The height of the image to return in pixels.
+##### [<code style={{ fontWeight: 'normal' }}>Collection.primaryImageUrlWithFallback.<b>width</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The width of the image to return in pixels.
+> 
 
-
-- ##### [`width`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-The width of the image to return in pixels.
-
-
-#### [`products`](#) ([`ProductConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/product-connection-with-search))
-
-Paginate through products in a collection.
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>products</b></code>](#)<Bullet />[`ProductConnectionWithSearch!`](/demand/api/graphql-admin/reference/objects/product-connection-with-search) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Paginate through products in a collection.
 
 Requires the product/read scope.
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
-Returns the elements in the list that come before the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>manufacturer</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by manufacturer.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>msrp</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by msrp.
+> 
 
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>numberOfTermAggregationResults</b></code>](#)<Bullet />[`ProductNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/product-number-of-term-aggregations) <Badge class="secondary" text="input"/>
+> The number of results to return for each term aggregation. Defaults to 0 for each.
+> 
 
-Returns the first n elements from the list.
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>price</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by price.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>productIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter Products to a set of productIds
+> 
 
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-- ##### [`manufacturer`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Optionally filter by manufacturer.
-
-
-- ##### [`msrp`](#) ([`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input))
-
-Optionally filter by msrp.
-
-
-- ##### [`numberOfTermAggregationResults`](#) ([`ProductNumberOfTermAggregations`](/demand/api/graphql-admin/reference/inputs/product-number-of-term-aggregations))
-
-The number of results to return for each term aggregation. Defaults to 0 for each.
-
-
-- ##### [`price`](#) ([`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input))
-
-Optionally filter by price.
-
-
-- ##### [`productIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
-
-Filter Products to a set of productIds
-
-
-- ##### [`query`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Query products for certain terms. Searches several fields, including
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>query</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Query products for certain terms. Searches several fields, including
 product.tags, product.title, product.vendor, productLocales.description,
 productLocales.featureBullets, variant.barcode, variant.mpn, variant.sku
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>slugs</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter Products to a set of slugs
+> 
 
-- ##### [`slugs`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>sortOrder</b></code>](#)<Bullet />[`[ProductSortInput]`](/demand/api/graphql-admin/reference/inputs/product-sort-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
+> 
 
-Filter Products to a set of slugs
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>standardizedColor</b></code>](#)<Bullet />[`[ProductStandardizedColorFilterInput]`](/demand/api/graphql-admin/reference/inputs/product-standardized-color-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by standardized color.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>status</b></code>](#)<Bullet />[`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input) <Badge class="secondary" text="input"/>
+> Filter Products using Status.
+> 
 
-- ##### [`sortOrder`](#) ([`[ProductSortInput]`](/demand/api/graphql-admin/reference/inputs/product-sort-input))
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>storefrontIds</b></code>](#)<Bullet />[`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by storefrontIds.
+> 
 
-Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>tagPrefixes</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Products using Tag Prefixes (starts with).
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Products using Tags.
+> 
 
-- ##### [`standardizedColor`](#) ([`[ProductStandardizedColorFilterInput]`](/demand/api/graphql-admin/reference/inputs/product-standardized-color-filter-input))
+##### [<code style={{ fontWeight: 'normal' }}>Collection.products.<b>vendor</b></code>](#)<Bullet />[`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by vendor.
+> 
 
-Optionally filter by standardized color.
-
-
-- ##### [`status`](#) ([`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input))
-
-Filter Products using Status.
-
-
-- ##### [`storefrontIds`](#) ([`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input))
-
-Optionally filter by storefrontIds.
-
-
-- ##### [`tagPrefixes`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Filter Products using Tag Prefixes (starts with).
-
-
-- ##### [`tags`](#) ([`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Filter Products using Tags.
-
-
-- ##### [`vendor`](#) ([`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input))
-
-Optionally filter by vendor.
-
-
-#### [`publishedAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
-
-ISO format date when the collection was published. Note that ensuing updates
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>publishedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> ISO format date when the collection was published. Note that ensuing updates
 with status set to PUBLISHED will republish and re-set this date.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>rules</b></code>](#)<Bullet />[`CollectionRules`](/demand/api/graphql-admin/reference/objects/collection-rules) <Badge class="secondary" text="object"/>
+> A map of rules to determine whether a Product should be part of this Collection.
+> 
 
-#### [`rules`](#) ([`CollectionRules`](/demand/api/graphql-admin/reference/objects/collection-rules))
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>secondaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A secondary image url for this collection, often a logo or related item.
+> 
 
-A map of rules to determine whether a Product should be part of this Collection.
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>seoDescription</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Description specific for SEO purposes, limit 170 characters.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>seoTitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title specific for SEO purposes, limit 256 characters.
+> 
 
-#### [`secondaryImageUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>slug</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Slug for the URL for this collection. Limit 128 characters.
+> 
 
-A secondary image url for this collection, often a logo or related item.
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>status</b></code>](#)<Bullet />[`DemandEntityStatus!`](/demand/api/graphql-admin/reference/enums/demand-entity-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The status of the collection, can be DRAFT or PUBLISHED.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>storefrontIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Which storefronts should have access to this collection?
+> 
 
-#### [`seoDescription`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>subtitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The subtitle of the collection, limit 256 characters.
+> 
 
-Description specific for SEO purposes, limit 170 characters.
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>tags</b></code>](#)<Bullet />[`CollectionTags`](/demand/api/graphql-admin/reference/objects/collection-tags) <Badge class="secondary" text="object"/>
+> Get the tags of the collection.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>title</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The title of the collection, limit 256 characters.
+> 
 
-#### [`seoTitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-Title specific for SEO purposes, limit 256 characters.
-
-
-#### [`slug`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-Slug for the URL for this collection. Limit 128 characters.
-
-
-#### [`status`](#) ([`DemandEntityStatus!`](/demand/api/graphql-admin/reference/enums/demand-entity-status))
-
-The status of the collection, can be DRAFT or PUBLISHED.
-
-
-#### [`storefrontIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
-
-Which storefronts should have access to this collection?
-
-
-#### [`subtitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-The subtitle of the collection, limit 256 characters.
-
-
-#### [`tags`](#) ([`CollectionTags`](/demand/api/graphql-admin/reference/objects/collection-tags))
-
-Get the tags of the collection.
-
-
-#### [`title`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-The title of the collection, limit 256 characters.
-
-
-#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+#### [<code style={{ fontWeight: 'normal' }}>Collection.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
+### Returned by
 
-#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+[`collection`](/demand/api/graphql-admin/reference/queries/collection)  <Badge class="secondary" text="query"/><Bullet />[`createCollection`](/demand/api/graphql-admin/reference/mutations/create-collection)  <Badge class="secondary" text="mutation"/><Bullet />[`createCollectionImageFromUrl`](/demand/api/graphql-admin/reference/mutations/create-collection-image-from-url)  <Badge class="secondary" text="mutation"/><Bullet />[`updateCollection`](/demand/api/graphql-admin/reference/mutations/update-collection)  <Badge class="secondary" text="mutation"/>
 
+### Member of
 
-
+[`CollectionConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/collection-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`CollectionEdge`](/demand/api/graphql-admin/reference/objects/collection-edge)  <Badge class="secondary" text="object"/><Bullet />[`CollectionImageFromFileResponse`](/demand/api/graphql-admin/reference/objects/collection-image-from-file-response)  <Badge class="secondary" text="object"/><Bullet />[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/>
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Used throughout the app to indicate what language and locality a given text is in
 
 ```graphql
@@ -16,10 +24,15 @@ enum ResonanceLocaleType {
 
 ### Values
 
-#### [`EN_US`](#)
+#### [<code style={{ fontWeight: 'normal' }}>ResonanceLocaleType.<b>EN_US</b></code>](#) 
+> 
+> 
 
 
 
+### Member of
+
+[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/><Bullet />[`DemandHqCreateInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-create-input)  <Badge class="secondary" text="input"/><Bullet />[`ProductLocale`](/demand/api/graphql-admin/reference/objects/product-locale)  <Badge class="secondary" text="object"/><Bullet />[`ProductLocaleCreateInput`](/demand/api/graphql-admin/reference/inputs/product-locale-create-input)  <Badge class="secondary" text="input"/><Bullet />[`ProductLocaleUpdateInput`](/demand/api/graphql-admin/reference/inputs/product-locale-update-input)  <Badge class="secondary" text="input"/>
 
 
 

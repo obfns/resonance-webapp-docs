@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Input for creating an Order
 
 ```graphql
@@ -26,60 +34,55 @@ input OrderCreateInput {
 
 ### Fields
 
-#### [`billingAddress`](#) ([`AddressInput!`](/demand/api/graphql-admin/reference/inputs/address-input))
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>billingAddress</b></code>](#)<Bullet />[`AddressInput!`](/demand/api/graphql-admin/reference/inputs/address-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>customerId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>customerNote</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A note provided by the customer at time of order
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>emailAddress</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>note</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>paymentId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>phoneNumber</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>shippingAddress</b></code>](#)<Bullet />[`AddressInput!`](/demand/api/graphql-admin/reference/inputs/address-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>storefrontId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderCreateInput.<b>tags</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
+### Member of
 
-#### [`customerId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`customerNote`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-A note provided by the customer at time of order
-
-
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`emailAddress`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`note`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`paymentId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
-
-A reference to an outside payment gateway, used for tracking transactions. May be an orderID, or a paymentID.
-
-
-#### [`phoneNumber`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`shippingAddress`](#) ([`AddressInput!`](/demand/api/graphql-admin/reference/inputs/address-input))
-
-
-
-
-#### [`storefrontId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`tags`](#) ([`[String]`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
+[`createOrder`](/demand/api/graphql-admin/reference/mutations/create-order)  <Badge class="secondary" text="mutation"/>
 
 
 

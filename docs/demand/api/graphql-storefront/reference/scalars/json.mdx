@@ -5,12 +5,26 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 
 ```graphql
 scalar JSON
 ```
 
+
+
+
+### Member of
+
+[`CartItem`](/demand/api/graphql-storefront/reference/objects/cart-item)  <Badge class="secondary" text="object"/><Bullet />[`CartItemInput`](/demand/api/graphql-storefront/reference/inputs/cart-item-input)  <Badge class="secondary" text="input"/><Bullet />[`CheckoutOrderItem`](/demand/api/graphql-storefront/reference/objects/checkout-order-item)  <Badge class="secondary" text="object"/><Bullet />[`CheckoutOrderItemInput`](/demand/api/graphql-storefront/reference/inputs/checkout-order-item-input)  <Badge class="secondary" text="input"/><Bullet />[`PublicCollectionConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-collection-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderItem`](/demand/api/graphql-storefront/reference/objects/public-order-item)  <Badge class="secondary" text="object"/><Bullet />[`PublicPageConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-page-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-product-connection-with-search)  <Badge class="secondary" text="object"/>
 
 
 

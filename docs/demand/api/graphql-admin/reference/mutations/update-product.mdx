@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Update an existing product.
 
 Requires the product/write permission on the given DemandHq
@@ -18,17 +26,17 @@ updateProduct(
 
 ### Arguments
 
-#### [`input`](#) ([`ProductUpdateInput!`](/demand/api/graphql-admin/reference/inputs/product-update-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>updateProduct.<b>input</b></code>](#)<Bullet />[`ProductUpdateInput!`](/demand/api/graphql-admin/reference/inputs/product-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`Product`](/demand/api/graphql-admin/reference/objects/product)
-
-A Product is a part of the Demand Domain and represents a the basic information of a product.
+#### [`Product`](/demand/api/graphql-admin/reference/objects/product) <Badge class="secondary" text="object"/>
+> A Product is a part of the Demand Domain and represents a the basic information of a product.
 Products have many support entities, including variants, which represent SKUs of the product.
+> 
+
 
 
 

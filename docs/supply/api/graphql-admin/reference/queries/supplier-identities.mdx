@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Get a filtered list of SupplierIdentities
 
 All of the filters are optional, but you must include at least one.
@@ -34,53 +42,46 @@ supplierIdentities(
 
 ### Arguments
 
-#### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>supplierIdentities.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+#### [<code style={{ fontWeight: 'normal' }}>supplierIdentities.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>supplierIdentities.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-#### [`before`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
-
-Returns the elements in the list that come before the specified cursor.
-
-
-#### [`first`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
-
-Returns the first n elements from the list.
-
-
-#### [`identityId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
-
-Filter the results to a specific identityId.
+#### [<code style={{ fontWeight: 'normal' }}>supplierIdentities.<b>identityId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter the results to a specific identityId.
 Use this with your own userName or appClientId in order to see "My SupplierIdentities".
 You automatically have access to your own SupplierIdentities.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>supplierIdentities.<b>identityParentEntityId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter the results to a specific identityParentEntityId (optional)
+> 
 
-#### [`identityParentEntityId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>supplierIdentities.<b>identityType</b></code>](#)<Bullet />[`SupplierIdentityType`](/supply/api/graphql-admin/reference/enums/supplier-identity-type) <Badge class="secondary" text="enum"/>
+> Filter the results to a specific identity type (optional)
+> 
 
-Filter the results to a specific identityParentEntityId (optional)
+#### [<code style={{ fontWeight: 'normal' }}>supplierIdentities.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
-
-#### [`identityType`](#) ([`SupplierIdentityType`](/supply/api/graphql-admin/reference/enums/supplier-identity-type))
-
-Filter the results to a specific identity type (optional)
-
-
-#### [`last`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-#### [`supplierId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
-
-Filter the results to a specific supplierId. (optional)
-
+#### [<code style={{ fontWeight: 'normal' }}>supplierIdentities.<b>supplierId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter the results to a specific supplierId. (optional)
+> 
 
 ### Type
 
-#### [`SupplierIdentityConnection`](/supply/api/graphql-admin/reference/objects/supplier-identity-connection)
+#### [`SupplierIdentityConnection`](/supply/api/graphql-admin/reference/objects/supplier-identity-connection) <Badge class="secondary" text="object"/>
+> Paginate through SupplierIdentities
+> 
 
-Paginate through SupplierIdentities
 
 
 

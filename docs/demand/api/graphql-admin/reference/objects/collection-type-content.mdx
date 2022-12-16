@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 This holds content specific to a collectionType. This is generally used on a
 page that lists all collections for a collectionType.
 
@@ -39,111 +47,100 @@ type CollectionTypeContent {
 
 ### Fields
 
-#### [`collectionType`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>collectionType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>collectionTypeContentId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-#### [`collectionTypeContentId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`contentAsHtml`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Get the markdown content of the collectionTypeContent as parsed HTML. Do not
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>contentAsHtml</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the markdown content of the collectionTypeContent as parsed HTML. Do not
 use this field without purifying or sanitizing the HTML in your webapp.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>contentAsString</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`contentAsString`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-#### [`createdAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
-
-
-
-
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-A short description of the collectionTypeContent, limit 1000 characters. This
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A short description of the collectionTypeContent, limit 1000 characters. This
 is typically used off of the collectionTypeContent page itself.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>descriptionOrExcerpt</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the description if it exists, or fallback to the excerpt of content for the CollectionTypeContent.
+> ##### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.descriptionOrExcerpt.<b>numberOfCharacters</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The number of characters to return, defaults to 200.
+> 
 
-#### [`descriptionOrExcerpt`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>excerpt</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get an excerpt of the CollectionTypeContent.
+> ##### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.excerpt.<b>numberOfCharacters</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The number of characters to return, defaults to 200.
+> 
 
-Get the description if it exists, or fallback to the excerpt of content for the CollectionTypeContent.
-- ##### [`numberOfCharacters`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-The number of characters to return, defaults to 200.
-
-
-#### [`excerpt`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Get an excerpt of the CollectionTypeContent.
-- ##### [`numberOfCharacters`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-The number of characters to return, defaults to 200.
-
-
-#### [`secondaryContentAsHtml`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Get the secondary markdown content of the collectionTypeContent as parsed
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>secondaryContentAsHtml</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the secondary markdown content of the collectionTypeContent as parsed
 HTML. Do not use this field without purifying or sanitizing the HTML in your webapp.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>secondaryContentAsString</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`secondaryContentAsString`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>seoDescription</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Description specific for SEO purposes, limit 170 characters.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>seoTitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title specific for SEO purposes, limit 256 characters.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>subtitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The subtitle of the collectionTypeContent, limit 256 characters.
+> 
 
-#### [`seoDescription`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Description specific for SEO purposes, limit 170 characters.
-
-
-#### [`seoTitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Title specific for SEO purposes, limit 256 characters.
-
-
-#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`subtitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-The subtitle of the collectionTypeContent, limit 256 characters.
-
-
-#### [`tags`](#) ([`CollectionTypeContentTags`](/demand/api/graphql-admin/reference/objects/collection-type-content-tags))
-
-These tags function in the opposite direction of other tags, allowing you to
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>tags</b></code>](#)<Bullet />[`CollectionTypeContentTags`](/demand/api/graphql-admin/reference/objects/collection-type-content-tags) <Badge class="secondary" text="object"/>
+> These tags function in the opposite direction of other tags, allowing you to
 choose several to focus on while displaying the content.
 Commonly, these are used to filter or categorize content by providing options that match tags on the content itself.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>title</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The title of the collectionTypeContent, limit 256 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CollectionTypeContent.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
-#### [`title`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
 
-The title of the collectionTypeContent, limit 256 characters.
+### Returned by
 
+[`collectionTypeContent`](/demand/api/graphql-admin/reference/queries/collection-type-content)  <Badge class="secondary" text="query"/><Bullet />[`createCollectionTypeContent`](/demand/api/graphql-admin/reference/mutations/create-collection-type-content)  <Badge class="secondary" text="mutation"/><Bullet />[`updateCollectionTypeContent`](/demand/api/graphql-admin/reference/mutations/update-collection-type-content)  <Badge class="secondary" text="mutation"/>
 
-#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
+### Member of
 
-
-
-
-#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
+[`CollectionTypeContentConnection`](/demand/api/graphql-admin/reference/objects/collection-type-content-connection)  <Badge class="secondary" text="object"/><Bullet />[`CollectionTypeContentEdge`](/demand/api/graphql-admin/reference/objects/collection-type-content-edge)  <Badge class="secondary" text="object"/>
 
 
 

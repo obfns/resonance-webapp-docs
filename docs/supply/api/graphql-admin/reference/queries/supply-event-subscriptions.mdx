@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 List supplyEventSubscriptions by filtering. Requires you to own the subscriptions.
 
 ```graphql
@@ -24,59 +32,51 @@ supplyEventSubscriptions(
 
 ### Arguments
 
-#### [`after`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>supplyEventSubscriptions.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+#### [<code style={{ fontWeight: 'normal' }}>supplyEventSubscriptions.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
-
-#### [`before`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
-
-Returns the elements in the list that come before the specified cursor.
-
-
-#### [`eventSubscriptionIds`](#) ([`[ID!]`](/supply/api/graphql-admin/reference/scalars/id))
-
-This filter should be used alone, including without any relay parameters.
+#### [<code style={{ fontWeight: 'normal' }}>supplyEventSubscriptions.<b>eventSubscriptionIds</b></code>](#)<Bullet />[`[ID!]`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> This filter should be used alone, including without any relay parameters.
             It will supercede all other parameters.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>supplyEventSubscriptions.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-#### [`first`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>supplyEventSubscriptions.<b>itemType</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> In order to use this filter, you must also provide subscriptionEntityId
+> 
 
-Returns the first n elements from the list.
+#### [<code style={{ fontWeight: 'normal' }}>supplyEventSubscriptions.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>supplyEventSubscriptions.<b>mutationType</b></code>](#)<Bullet />[`SupplyEventMutationType`](/supply/api/graphql-admin/reference/enums/supply-event-mutation-type) <Badge class="secondary" text="enum"/>
+> In order to use this filter, you must also include itemType and subscriptionEntityId
+> 
 
-#### [`itemType`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>supplyEventSubscriptions.<b>subscriptionEntityId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> This filter can be used with or without subscriptionOwnerId
+> 
 
-In order to use this filter, you must also provide subscriptionEntityId
-
-
-#### [`last`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-#### [`mutationType`](#) ([`SupplyEventMutationType`](/supply/api/graphql-admin/reference/enums/supply-event-mutation-type))
-
-In order to use this filter, you must also include itemType and subscriptionEntityId
-
-
-#### [`subscriptionEntityId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
-
-This filter can be used with or without subscriptionOwnerId
-
-
-#### [`subscriptionOwnerId`](#) ([`ID`](/supply/api/graphql-admin/reference/scalars/id))
-
-If you are not using eventSubscriptionIds, and are not querying for an identityId event subscription,
+#### [<code style={{ fontWeight: 'normal' }}>supplyEventSubscriptions.<b>subscriptionOwnerId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> If you are not using eventSubscriptionIds, and are not querying for an identityId event subscription,
 this filter is highly recommended to use to ensure you have permissions on the returned eventSubscriptions.
 Otherwise, you may not have permissions on the returned eventSubscriptions, and see blank results.
-
+> 
 
 ### Type
 
-#### [`SupplyEventSubscriptionConnection`](/supply/api/graphql-admin/reference/objects/supply-event-subscription-connection)
+#### [`SupplyEventSubscriptionConnection`](/supply/api/graphql-admin/reference/objects/supply-event-subscription-connection) <Badge class="secondary" text="object"/>
+> Paginate through SupplyEventSubscriptions
+> 
 
-Paginate through SupplyEventSubscriptions
 
 
 

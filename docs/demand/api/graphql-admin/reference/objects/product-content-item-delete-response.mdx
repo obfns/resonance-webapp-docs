@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The response type from a ProductContentItem delete mutation
 
 ```graphql
@@ -16,10 +24,15 @@ type ProductContentItemDeleteResponse {
 
 ### Fields
 
-#### [`deletedId`](#) ([`ProductContentItemDeleteId`](/demand/api/graphql-admin/reference/objects/product-content-item-delete-id))
+#### [<code style={{ fontWeight: 'normal' }}>ProductContentItemDeleteResponse.<b>deletedId</b></code>](#)<Bullet />[`ProductContentItemDeleteId`](/demand/api/graphql-admin/reference/objects/product-content-item-delete-id) <Badge class="secondary" text="object"/>
+> 
+> 
 
 
 
+### Returned by
+
+[`deleteProductContentItem`](/demand/api/graphql-admin/reference/mutations/delete-product-content-item)  <Badge class="secondary" text="mutation"/>
 
 
 

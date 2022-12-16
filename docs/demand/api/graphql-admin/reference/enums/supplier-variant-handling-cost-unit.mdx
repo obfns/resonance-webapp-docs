@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Indicates what unit the amount is in
 
 ```graphql
@@ -17,15 +25,19 @@ enum SupplierVariantHandlingCostUnit {
 
 ### Values
 
-#### [`CURRENCY`](#)
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantHandlingCostUnit.<b>CURRENCY</b></code>](#) 
+> The amount is in a currency, i.e. $
+> 
 
-The amount is in a currency, i.e. $
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantHandlingCostUnit.<b>PERCENTAGE_OF_COST</b></code>](#) 
+> The amount is a percentage of the Cost field
+> 
 
 
-#### [`PERCENTAGE_OF_COST`](#)
 
-The amount is a percentage of the Cost field
+### Member of
 
+[`SupplierVariantHandlingCost`](/demand/api/graphql-admin/reference/objects/supplier-variant-handling-cost)  <Badge class="secondary" text="object"/>
 
 
 

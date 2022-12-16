@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The input for creating a Nav.
 
 ```graphql
@@ -25,61 +33,57 @@ input NavCreateInput {
 
 ### Fields
 
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>NavCreateInput.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>NavCreateInput.<b>href</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Where this Nav link should lead to. Can be an absolute or relative url. 768 character limit.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>NavCreateInput.<b>label</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The label for this Nav, limit 64 characters.
+> 
 
-
-#### [`href`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-Where this Nav link should lead to. Can be an absolute or relative url. 768 character limit.
-
-
-#### [`label`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-The label for this Nav, limit 64 characters.
-
-
-#### [`linkSlug`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-This has two primary purposes:
+#### [<code style={{ fontWeight: 'normal' }}>NavCreateInput.<b>linkSlug</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> This has two primary purposes:
 To make this Nav "lookupable" in combination with linkType.
 To make entities aware they are being referenced. This is done with the
 reserved system linkTypes in combination with entitySlugs (i.e. Collection and
 a collection slug).
+> 
 
-
-#### [`linkType`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-This can be any string, but certain values have special meaning (like "collection").
+#### [<code style={{ fontWeight: 'normal' }}>NavCreateInput.<b>linkType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> This can be any string, but certain values have special meaning (like "collection").
 These are restricted to the specified values in NavSettings.
+> 
 
-
-#### [`navLevel`](#) ([`Int!`](/demand/api/graphql-admin/reference/scalars/int))
-
-A number, representing where this Nav resides in the heirarchy. Immutable, and
+#### [<code style={{ fontWeight: 'normal' }}>NavCreateInput.<b>navLevel</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> A number, representing where this Nav resides in the heirarchy. Immutable, and
 limited to 0 through 6. 0 is the top level, 1 is the second level, etc.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NavCreateInput.<b>navType</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> A string indicating the purpose of this Nav hierarchy, must match parentNav if applicable. Limit 128 characters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NavCreateInput.<b>parentNavId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> All Navs besides the root (Level 0) have a parentNavId. Immutable.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NavCreateInput.<b>position</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Where this Nav should be located with respect to other Navs. Need not be sequential or unique.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>NavCreateInput.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
-#### [`navType`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
 
-A string indicating the purpose of this Nav hierarchy, must match parentNav if applicable. Limit 128 characters.
+### Member of
 
-
-#### [`parentNavId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
-
-All Navs besides the root (Level 0) have a parentNavId. Immutable.
-
-
-#### [`position`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Where this Nav should be located with respect to other Navs. Need not be sequential or unique.
-
-
-#### [`storefrontId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
+[`createNav`](/demand/api/graphql-admin/reference/mutations/create-nav)  <Badge class="secondary" text="mutation"/>
 
 
 

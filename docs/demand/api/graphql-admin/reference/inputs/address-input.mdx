@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The input type for an Address
 
 ```graphql
@@ -24,50 +32,47 @@ input AddressInput {
 
 ### Fields
 
-#### [`city`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>AddressInput.<b>city</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The city of the address
+> 
 
-The city of the address
+#### [<code style={{ fontWeight: 'normal' }}>AddressInput.<b>company</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The company associated with the address
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>AddressInput.<b>country</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The country of the address
+> 
 
-#### [`company`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>AddressInput.<b>name</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The name associated with the address, i.e. the Person in the household
+> 
 
-The company associated with the address
+#### [<code style={{ fontWeight: 'normal' }}>AddressInput.<b>phoneNumber</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The phone number of the address. Format +11231231234
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>AddressInput.<b>postalCode</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The zip or postal code of the address
+> 
 
-#### [`country`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>AddressInput.<b>state</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The state of the address
+> 
 
-The country of the address
+#### [<code style={{ fontWeight: 'normal' }}>AddressInput.<b>streetAddress1</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The first line of the street address
+> 
 
-
-#### [`name`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-The name associated with the address, i.e. the Person in the household
-
-
-#### [`phoneNumber`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-The phone number of the address. Format +11231231234
-
-
-#### [`postalCode`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-The zip or postal code of the address
-
-
-#### [`state`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-The state of the address
-
-
-#### [`streetAddress1`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-The first line of the street address
+#### [<code style={{ fontWeight: 'normal' }}>AddressInput.<b>streetAddress2</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The second line of the street address
+> 
 
 
-#### [`streetAddress2`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
 
-The second line of the street address
+### Member of
 
+[`OrderCreateInput`](/demand/api/graphql-admin/reference/inputs/order-create-input)  <Badge class="secondary" text="input"/><Bullet />[`OrderUpdateInput`](/demand/api/graphql-admin/reference/inputs/order-update-input)  <Badge class="secondary" text="input"/>
 
 
 

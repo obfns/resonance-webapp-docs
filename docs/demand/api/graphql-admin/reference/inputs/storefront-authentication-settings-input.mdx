@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Necessary fields to set authentication related settings for a Storefront.
 
 ```graphql
@@ -18,20 +26,23 @@ input StorefrontAuthenticationSettingsInput {
 
 ### Fields
 
-#### [`externalCustomerIdFieldName`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontAuthenticationSettingsInput.<b>externalCustomerIdFieldName</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Required for authenticationType JWKS. This is the name of the field containing the customerId, normally 'sub'
+> 
 
-Required for authenticationType JWKS. This is the name of the field containing the customerId, normally 'sub'
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontAuthenticationSettingsInput.<b>issuer</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Required for authenticationType COGNITO or JWKS. This indicates the issuer of the JWT.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontAuthenticationSettingsInput.<b>jwksUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Required for authenticationType JWKS. This is the URL of the JWKS endpoint.
+> 
 
 
-#### [`issuer`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
 
-Required for authenticationType COGNITO or JWKS. This indicates the issuer of the JWT.
+### Member of
 
-
-#### [`jwksUrl`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-Required for authenticationType JWKS. This is the URL of the JWKS endpoint.
-
+[`StorefrontCreateInput`](/demand/api/graphql-admin/reference/inputs/storefront-create-input)  <Badge class="secondary" text="input"/><Bullet />[`StorefrontUpdateInput`](/demand/api/graphql-admin/reference/inputs/storefront-update-input)  <Badge class="secondary" text="input"/>
 
 
 

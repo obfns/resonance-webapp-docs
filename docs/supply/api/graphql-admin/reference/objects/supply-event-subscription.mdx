@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Entity representing a subscription to supply events.
 
 ```graphql
@@ -26,65 +34,64 @@ type SupplyEventSubscription {
 
 ### Fields
 
-#### [`createdAt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>createdAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>endpoint</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Changes based on protocol, but indicates the exact target.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>eventSubscriptionId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>itemType</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The SupplyEntity to subscribe to, all lowercase.
+> 
 
-#### [`endpoint`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>mutationType</b></code>](#)<Bullet />[`SupplyEventMutationType!`](/supply/api/graphql-admin/reference/enums/supply-event-mutation-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> What type of event to listen for.
+> 
 
-Changes based on protocol, but indicates the exact target.
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>protocol</b></code>](#)<Bullet />[`SupplyEventProtocol!`](/supply/api/graphql-admin/reference/enums/supply-event-protocol) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The protocol to use to supply the event.
+> 
 
-
-#### [`eventSubscriptionId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`itemType`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
-
-The SupplyEntity to subscribe to, all lowercase.
-
-
-#### [`mutationType`](#) ([`SupplyEventMutationType!`](/supply/api/graphql-admin/reference/enums/supply-event-mutation-type))
-
-What type of event to listen for.
-
-
-#### [`protocol`](#) ([`SupplyEventProtocol!`](/supply/api/graphql-admin/reference/enums/supply-event-protocol))
-
-The protocol to use to supply the event.
-
-
-#### [`subscriptionEntityId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-This is the "main" entity that is being subscribed to.
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>subscriptionEntityId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> This is the "main" entity that is being subscribed to.
 This can either be a ResonanceDomainEntityId (SupplierId, DemandHqId) to subscribe to an entity to which they have access.
 This is useful to monitor things like changes to Products and such.
 Or an Identity (AppClientId, UserName) to subscribe to THEMSELF.
 This is useful to monitor things like app installations, uninstallations, and such.
 subscriptionEntityType indicates what type of entity this is.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>subscriptionEntityType</b></code>](#)<Bullet />[`SupplyEventSubscriptionEntityType!`](/supply/api/graphql-admin/reference/enums/supply-event-subscription-entity-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> This distinguishes between the types of subscriptions.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>subscriptionOwnerId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The app (not appClient) or user that owns the subscription.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyEventSubscription.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
-#### [`subscriptionEntityType`](#) ([`SupplyEventSubscriptionEntityType!`](/supply/api/graphql-admin/reference/enums/supply-event-subscription-entity-type))
 
-This distinguishes between the types of subscriptions.
+### Returned by
 
+[`createSupplyEventSubscription`](/supply/api/graphql-admin/reference/mutations/create-supply-event-subscription)  <Badge class="secondary" text="mutation"/><Bullet />[`supplyEventSubscription`](/supply/api/graphql-admin/reference/queries/supply-event-subscription)  <Badge class="secondary" text="query"/>
 
-#### [`subscriptionOwnerId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+### Member of
 
-The app (not appClient) or user that owns the subscription.
-
-
-#### [`updatedAt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`updatedBy`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
+[`SupplyEventSubscriptionConnection`](/supply/api/graphql-admin/reference/objects/supply-event-subscription-connection)  <Badge class="secondary" text="object"/><Bullet />[`SupplyEventSubscriptionEdge`](/supply/api/graphql-admin/reference/objects/supply-event-subscription-edge)  <Badge class="secondary" text="object"/>
 
 
 

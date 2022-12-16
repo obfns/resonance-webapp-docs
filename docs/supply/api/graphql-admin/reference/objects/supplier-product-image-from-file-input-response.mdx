@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The original input that errored
 
 ```graphql
@@ -22,41 +30,40 @@ type SupplierProductImageFromFileInputResponse {
 
 ### Fields
 
-#### [`alt`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromFileInputResponse.<b>alt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromFileInputResponse.<b>category</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromFileInputResponse.<b>fileExtension</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromFileInputResponse.<b>fileName</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`category`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`fileExtension`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`fileName`](#) ([`String!`](/supply/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`position`](#) ([`Int`](/supply/api/graphql-admin/reference/scalars/int))
-
-Used to determine what order the content comes out in.
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromFileInputResponse.<b>position</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Used to determine what order the content comes out in.
 Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromFileInputResponse.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductImageFromFileInputResponse.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
-#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
 
+### Member of
 
-
-
-#### [`supplierProductId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
+[`SupplierProductImagesFromFilesError`](/supply/api/graphql-admin/reference/objects/supplier-product-images-from-files-error)  <Badge class="secondary" text="object"/>
 
 
 

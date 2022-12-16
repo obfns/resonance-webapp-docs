@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 A Product is a part of the Demand Domain and represents a the basic information of a product.
 Products have many support entities, including variants, which represent SKUs of the product.
 
@@ -53,19 +61,16 @@ type Product {
 
 ### Fields
 
-#### [`contentItem`](#) ([`ProductContentItem`](/demand/api/graphql-admin/reference/objects/product-content-item))
-
-Get a productContentItem for a product
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>contentItem</b></code>](#)<Bullet />[`ProductContentItem`](/demand/api/graphql-admin/reference/objects/product-content-item) <Badge class="secondary" text="object"/>
+> Get a productContentItem for a product
 
         Requires productcontentitem/read permission on the requesting identity
-- ##### [`contentItemId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+> ##### [<code style={{ fontWeight: 'normal' }}>Product.contentItem.<b>contentItemId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`contentItems`](#) ([`ProductContentItemConnection`](/demand/api/graphql-admin/reference/objects/product-content-item-connection))
-
-Get a list of productContentItems
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>contentItems</b></code>](#)<Bullet />[`ProductContentItemConnection`](/demand/api/graphql-admin/reference/objects/product-content-item-connection) <Badge class="secondary" text="object"/>
+> Get a list of productContentItems
 
 Requires productcontentitem/read permission on the DemandHq for the requesting identity
 
@@ -73,154 +78,135 @@ Sorting works differently depending on which filters are used.
 Without any filters, the sort order is by createdAt.
 With a contentType filter, the sort order is by position.
 This means "featuredImage" can be retrieved by using contentType: IMAGE and first: 1.
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>Product.contentItems.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>Product.contentItems.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
 
+##### [<code style={{ fontWeight: 'normal' }}>Product.contentItems.<b>contentType</b></code>](#)<Bullet />[`ProductContentType`](/demand/api/graphql-admin/reference/enums/product-content-type) <Badge class="secondary" text="enum"/>
+> 
+> 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>Product.contentItems.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
 
-Returns the elements in the list that come before the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>Product.contentItems.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-- ##### [`contentType`](#) ([`ProductContentType`](/demand/api/graphql-admin/reference/enums/product-content-type))
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the first n elements from the list.
-
-
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-#### [`createdAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
-
-
-
-
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`locale`](#) ([`ProductLocale`](/demand/api/graphql-admin/reference/objects/product-locale))
-
-Get a single productLocale by ResonanceLocaleType
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>locale</b></code>](#)<Bullet />[`ProductLocale`](/demand/api/graphql-admin/reference/objects/product-locale) <Badge class="secondary" text="object"/>
+> Get a single productLocale by ResonanceLocaleType
 
     Requires productlocale/read permission on the requesting identity
-- ##### [`localeType`](#) ([`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type))
+> ##### [<code style={{ fontWeight: 'normal' }}>Product.locale.<b>localeType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
-
-
-
-#### [`optionLabels`](#) ([`[String!]!`](/demand/api/graphql-admin/reference/scalars/string))
-
-The labels for the possible option groups for this product, i.e. "Color", "Size", "Material", etc.
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>optionLabels</b></code>](#)<Bullet />[`[String!]!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The labels for the possible option groups for this product, i.e. "Color", "Size", "Material", etc.
 These will match with labelOptions in Variants.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>productId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`productId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`productMetrics`](#) ([`ProductMetrics`](/demand/api/graphql-admin/reference/objects/product-metrics))
-
-Get productMetrics for a Product
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>productMetrics</b></code>](#)<Bullet />[`ProductMetrics`](/demand/api/graphql-admin/reference/objects/product-metrics) <Badge class="secondary" text="object"/>
+> Get productMetrics for a Product
 
     Requires product/read permission
+> 
 
-
-#### [`publishedAt`](#) ([`Date`](/demand/api/graphql-admin/reference/scalars/date))
-
-ISO format date when the product was published. Note that ensuing updates with
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>publishedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> ISO format date when the product was published. Note that ensuing updates with
 status set to PUBLISHED will republish and re-set this date.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>seoTitle</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Title specific for SEO purposes, limit 256 characters.
+> 
 
-#### [`seoTitle`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>slug</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Slug for the URL for this product. Limit 128 characters.
+> 
 
-Title specific for SEO purposes, limit 256 characters.
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>status</b></code>](#)<Bullet />[`DemandEntityStatus!`](/demand/api/graphql-admin/reference/enums/demand-entity-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The status of the product, can be DRAFT or PUBLISHED.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>storefrontIds</b></code>](#)<Bullet />[`[ID]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Which storefronts should have access to this product?
+> 
 
-#### [`slug`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>tags</b></code>](#)<Bullet />[`ProductTags`](/demand/api/graphql-admin/reference/objects/product-tags) <Badge class="secondary" text="object"/>
+> Get the tags for this product
+> 
 
-Slug for the URL for this product. Limit 128 characters.
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>title</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The title of the product, limit 256 characters.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`status`](#) ([`DemandEntityStatus!`](/demand/api/graphql-admin/reference/enums/demand-entity-status))
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-The status of the product, can be DRAFT or PUBLISHED.
-
-
-#### [`storefrontIds`](#) ([`[ID]`](/demand/api/graphql-admin/reference/scalars/id))
-
-Which storefronts should have access to this product?
-
-
-#### [`tags`](#) ([`ProductTags`](/demand/api/graphql-admin/reference/objects/product-tags))
-
-Get the tags for this product
-
-
-#### [`title`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-The title of the product, limit 256 characters.
-
-
-#### [`updatedAt`](#) ([`Date!`](/demand/api/graphql-admin/reference/scalars/date))
-
-
-
-
-#### [`updatedBy`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`variant`](#) ([`Variant`](/demand/api/graphql-admin/reference/objects/variant))
-
-Get a single variant by VariantId
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>variant</b></code>](#)<Bullet />[`Variant`](/demand/api/graphql-admin/reference/objects/variant) <Badge class="secondary" text="object"/>
+> Get a single variant by VariantId
 
     Requires demandHqvariant/read permission on the requesting identity
-- ##### [`variantId`](#) ([`ID`](/demand/api/graphql-admin/reference/scalars/id))
+> ##### [<code style={{ fontWeight: 'normal' }}>Product.variant.<b>variantId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`variants`](#) ([`VariantConnection!`](/demand/api/graphql-admin/reference/objects/variant-connection))
-
-Get a list of variants
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>variants</b></code>](#)<Bullet />[`VariantConnection!`](/demand/api/graphql-admin/reference/objects/variant-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a list of variants
 
     Requires demandHqvariant/read permission on the demandHq for the requesting identity
-- ##### [`after`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
+> ##### [<code style={{ fontWeight: 'normal' }}>Product.variants.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
 
-Returns the elements in the list that come after the specified cursor.
+##### [<code style={{ fontWeight: 'normal' }}>Product.variants.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Product.variants.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Product.variants.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Product.<b>vendor</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> AKA Brand. Limit 256 characters.
+> 
 
 
-- ##### [`before`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
 
-Returns the elements in the list that come before the specified cursor.
+### Returned by
 
+[`createProduct`](/demand/api/graphql-admin/reference/mutations/create-product)  <Badge class="secondary" text="mutation"/><Bullet />[`product`](/demand/api/graphql-admin/reference/queries/product)  <Badge class="secondary" text="query"/><Bullet />[`updateProduct`](/demand/api/graphql-admin/reference/mutations/update-product)  <Badge class="secondary" text="mutation"/>
 
-- ##### [`first`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
+### Member of
 
-Returns the first n elements from the list.
-
-
-- ##### [`last`](#) ([`Int`](/demand/api/graphql-admin/reference/scalars/int))
-
-Returns the last n elements from the list.
-
-
-#### [`vendor`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-AKA Brand. Limit 256 characters.
-
+[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/><Bullet />[`ProductConnectionWithSearch`](/demand/api/graphql-admin/reference/objects/product-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`ProductEdge`](/demand/api/graphql-admin/reference/objects/product-edge)  <Badge class="secondary" text="object"/><Bullet />[`Variant`](/demand/api/graphql-admin/reference/objects/variant)  <Badge class="secondary" text="object"/>
 
 
 

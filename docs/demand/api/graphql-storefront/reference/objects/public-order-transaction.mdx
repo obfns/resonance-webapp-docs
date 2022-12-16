@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 A transaction in a PublicOrder.
 
 ```graphql
@@ -29,75 +37,67 @@ type PublicOrderTransaction {
 
 ### Fields
 
-#### [`amount`](#) ([`Float!`](/demand/api/graphql-storefront/reference/scalars/float))
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>amount</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>authorizationCode</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>authorizationExpiresAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>currency</b></code>](#)<Bullet />[`ResonanceCurrency!`](/demand/api/graphql-storefront/reference/enums/resonance-currency) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>currencyExchangeAdjustment</b></code>](#)<Bullet />[`OrderTransactionCurrencyExchangeAdjustment`](/demand/api/graphql-storefront/reference/objects/order-transaction-currency-exchange-adjustment) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>errorMessage</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>gateway</b></code>](#)<Bullet />[`OrderTransactionGateway!`](/demand/api/graphql-storefront/reference/enums/order-transaction-gateway) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>gatewayMessage</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>gatewayTransactionId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>orderId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>orderTransactionId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>orderTransactionType</b></code>](#)<Bullet />[`OrderTransactionType!`](/demand/api/graphql-storefront/reference/enums/order-transaction-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderTransaction.<b>processedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
+### Member of
 
-#### [`authorizationCode`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-
-
-
-#### [`authorizationExpiresAt`](#) ([`Date`](/demand/api/graphql-storefront/reference/scalars/date))
-
-
-
-
-#### [`currency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-storefront/reference/enums/resonance-currency))
-
-
-
-
-#### [`currencyExchangeAdjustment`](#) ([`OrderTransactionCurrencyExchangeAdjustment`](/demand/api/graphql-storefront/reference/objects/order-transaction-currency-exchange-adjustment))
-
-
-
-
-#### [`demandHqId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
-
-
-
-
-#### [`errorMessage`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-
-
-
-#### [`gateway`](#) ([`OrderTransactionGateway!`](/demand/api/graphql-storefront/reference/enums/order-transaction-gateway))
-
-
-
-
-#### [`gatewayMessage`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-
-
-
-#### [`gatewayTransactionId`](#) ([`ID`](/demand/api/graphql-storefront/reference/scalars/id))
-
-
-
-
-#### [`orderId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
-
-
-
-
-#### [`orderTransactionId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
-
-
-
-
-#### [`orderTransactionType`](#) ([`OrderTransactionType!`](/demand/api/graphql-storefront/reference/enums/order-transaction-type))
-
-
-
-
-#### [`processedAt`](#) ([`Date`](/demand/api/graphql-storefront/reference/scalars/date))
-
-
-
+[`PublicOrderTransactionConnection`](/demand/api/graphql-storefront/reference/objects/public-order-transaction-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicOrderTransactionEdge`](/demand/api/graphql-storefront/reference/objects/public-order-transaction-edge)  <Badge class="secondary" text="object"/>
 
 
 

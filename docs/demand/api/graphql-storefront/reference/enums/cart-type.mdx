@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Indicates the type of cart
 
 ```graphql
@@ -17,15 +25,19 @@ enum CartType {
 
 ### Values
 
-#### [`CUSTOMER`](#)
+#### [<code style={{ fontWeight: 'normal' }}>CartType.<b>CUSTOMER</b></code>](#) 
+> Indicates that the cart is for a logged in customer
+> 
 
-Indicates that the cart is for a logged in customer
+#### [<code style={{ fontWeight: 'normal' }}>CartType.<b>DEVICE</b></code>](#) 
+> Indicates this cart is anonymous and tied to a device
+> 
 
 
-#### [`DEVICE`](#)
 
-Indicates this cart is anonymous and tied to a device
+### Member of
 
+[`Cart`](/demand/api/graphql-storefront/reference/objects/cart)  <Badge class="secondary" text="object"/>
 
 
 

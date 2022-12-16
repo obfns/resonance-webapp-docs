@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Sort SupplierProducts by a field and direction.
 
 ```graphql
@@ -17,15 +25,19 @@ input SupplierProductSortInput {
 
 ### Fields
 
-#### [`direction`](#) ([`SortDirection!`](/demand/api/graphql-admin/reference/enums/sort-direction))
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductSortInput.<b>direction</b></code>](#)<Bullet />[`SortDirection!`](/demand/api/graphql-admin/reference/enums/sort-direction) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductSortInput.<b>field</b></code>](#)<Bullet />[`PublicSupplierProductSortField!`](/demand/api/graphql-admin/reference/enums/public-supplier-product-sort-field) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
 
 
+### Member of
 
-#### [`field`](#) ([`PublicSupplierProductSortField!`](/demand/api/graphql-admin/reference/enums/public-supplier-product-sort-field))
-
-
-
+[`publicSupplierProducts`](/demand/api/graphql-admin/reference/queries/public-supplier-products)  <Badge class="secondary" text="query"/>
 
 
 

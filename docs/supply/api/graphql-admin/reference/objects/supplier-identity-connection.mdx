@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Paginate through SupplierIdentities
 
 ```graphql
@@ -18,20 +26,27 @@ type SupplierIdentityConnection {
 
 ### Fields
 
-#### [`edges`](#) ([`[SupplierIdentityEdge]!`](/supply/api/graphql-admin/reference/objects/supplier-identity-edge))
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentityConnection.<b>edges</b></code>](#)<Bullet />[`[SupplierIdentityEdge]!`](/supply/api/graphql-admin/reference/objects/supplier-identity-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentityConnection.<b>nodes</b></code>](#)<Bullet />[`[SupplierIdentity]!`](/supply/api/graphql-admin/reference/objects/supplier-identity) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierIdentityConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/supply/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
 
 
 
+### Returned by
 
-#### [`nodes`](#) ([`[SupplierIdentity]!`](/supply/api/graphql-admin/reference/objects/supplier-identity))
+[`supplierIdentities`](/supply/api/graphql-admin/reference/queries/supplier-identities)  <Badge class="secondary" text="query"/>
 
+### Member of
 
-
-
-#### [`pageInfo`](#) ([`PageInfo!`](/supply/api/graphql-admin/reference/objects/page-info))
-
-
-
+[`Supplier`](/supply/api/graphql-admin/reference/objects/supplier)  <Badge class="secondary" text="object"/>
 
 
 

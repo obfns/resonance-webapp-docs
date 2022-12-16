@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Upsert storefront nav settings.
                 
 Requires the storefrontnavsettings/write permission on the associated DemandHq.
@@ -18,16 +26,16 @@ upsertStorefrontNavSettings(
 
 ### Arguments
 
-#### [`input`](#) ([`StorefrontNavSettingsUpsertInput!`](/demand/api/graphql-admin/reference/inputs/storefront-nav-settings-upsert-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>upsertStorefrontNavSettings.<b>input</b></code>](#)<Bullet />[`StorefrontNavSettingsUpsertInput!`](/demand/api/graphql-admin/reference/inputs/storefront-nav-settings-upsert-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`StorefrontNavSettings`](/demand/api/graphql-admin/reference/objects/storefront-nav-settings)
+#### [`StorefrontNavSettings`](/demand/api/graphql-admin/reference/objects/storefront-nav-settings) <Badge class="secondary" text="object"/>
+> The settings for a storefront's Navs
+> 
 
-The settings for a storefront's Navs
 
 
 

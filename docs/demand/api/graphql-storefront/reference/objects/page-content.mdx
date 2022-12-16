@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 This is the actual content of the page
 
 ```graphql
@@ -22,34 +30,34 @@ type PageContent {
 
 ### Fields
 
-#### [`contentAsHtml`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-Get the markdown content of the page as parsed HTML. Do not use this field
+#### [<code style={{ fontWeight: 'normal' }}>PageContent.<b>contentAsHtml</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get the markdown content of the page as parsed HTML. Do not use this field
 without purifying or sanitizing the HTML in your webapp.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PageContent.<b>contentAsString</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`contentAsString`](#) ([`String!`](/demand/api/graphql-storefront/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PageContent.<b>excerpt</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Get an excerpt of the page content.
+> ##### [<code style={{ fontWeight: 'normal' }}>PageContent.excerpt.<b>numberOfCharacters</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The number of characters to return, defaults to 200.
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>PageContent.<b>pageId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-#### [`excerpt`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-Get an excerpt of the page content.
-- ##### [`numberOfCharacters`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
-
-The number of characters to return, defaults to 200.
-
-
-#### [`pageId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
-
-
-
-
-#### [`updatedAt`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>PageContent.<b>updatedAt</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
+### Member of
+
+[`PublicPage`](/demand/api/graphql-storefront/reference/objects/public-page)  <Badge class="secondary" text="object"/>
 
 
 

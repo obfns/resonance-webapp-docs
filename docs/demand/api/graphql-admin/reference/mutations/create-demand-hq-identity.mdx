@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Add a new DemandHqIdentity to a DemandHq (give a user permissions)
 
 Requires the demandHqidentity/write permission on the given DemandHq
@@ -18,16 +26,16 @@ createDemandHqIdentity(
 
 ### Arguments
 
-#### [`input`](#) ([`DemandHqIdentityCreateInput!`](/demand/api/graphql-admin/reference/inputs/demand-hq-identity-create-input))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>createDemandHqIdentity.<b>input</b></code>](#)<Bullet />[`DemandHqIdentityCreateInput!`](/demand/api/graphql-admin/reference/inputs/demand-hq-identity-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
 
 ### Type
 
-#### [`DemandHqIdentity`](/demand/api/graphql-admin/reference/objects/demand-hq-identity)
+#### [`DemandHqIdentity`](/demand/api/graphql-admin/reference/objects/demand-hq-identity) <Badge class="secondary" text="object"/>
+> Indicates a User or App has permissions on a DemandHq
+> 
 
-Indicates a User or App has permissions on a DemandHq
 
 
 

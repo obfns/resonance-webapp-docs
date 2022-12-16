@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Input for updating a Customer's marketing consent
 
 ```graphql
@@ -19,25 +27,27 @@ input CustomerMarketingConsentInput {
 
 ### Fields
 
-#### [`consentLevel`](#) ([`CustomerMarketingConsentLevel!`](/demand/api/graphql-storefront/reference/enums/customer-marketing-consent-level))
+#### [<code style={{ fontWeight: 'normal' }}>CustomerMarketingConsentInput.<b>consentLevel</b></code>](#)<Bullet />[`CustomerMarketingConsentLevel!`](/demand/api/graphql-storefront/reference/enums/customer-marketing-consent-level) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The level at which the Customer has consented to marketing
+> 
 
-The level at which the Customer has consented to marketing
+#### [<code style={{ fontWeight: 'normal' }}>CustomerMarketingConsentInput.<b>consentedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The date the associated Customer agreed to the marketing consent
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CustomerMarketingConsentInput.<b>hasConsented</b></code>](#)<Bullet />[`Boolean!`](/demand/api/graphql-storefront/reference/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CustomerMarketingConsentInput.<b>source</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Optional field to store where consent was sourced from
+> 
 
 
-#### [`consentedAt`](#) ([`Date!`](/demand/api/graphql-storefront/reference/scalars/date))
 
-The date the associated Customer agreed to the marketing consent
+### Member of
 
-
-#### [`hasConsented`](#) ([`Boolean!`](/demand/api/graphql-storefront/reference/scalars/boolean))
-
-
-
-
-#### [`source`](#) ([`String`](/demand/api/graphql-storefront/reference/scalars/string))
-
-Optional field to store where consent was sourced from
-
+[`CustomerCreateInput`](/demand/api/graphql-storefront/reference/inputs/customer-create-input)  <Badge class="secondary" text="input"/><Bullet />[`CustomerUpdateInput`](/demand/api/graphql-storefront/reference/inputs/customer-update-input)  <Badge class="secondary" text="input"/>
 
 
 

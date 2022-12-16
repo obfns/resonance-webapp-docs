@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Information on Pagination
 
 ```graphql
@@ -19,29 +27,31 @@ type PageInfo {
 
 ### Fields
 
-#### [`endCursor`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-The cursor to use when paginating forwards (using first/after). Will always be
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>endCursor</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The cursor to use when paginating forwards (using first/after). Will always be
 populated regardless of if a next page exists.
+> 
 
-
-#### [`hasNextPage`](#) ([`Boolean!`](/adminidentity/api/graphql-admin/reference/scalars/boolean))
-
-Whether or not using the endCursor will result in more results. Always
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>hasNextPage</b></code>](#)<Bullet />[`Boolean!`](/adminidentity/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Whether or not using the endCursor will result in more results. Always
 populated, but will always be false when paginating using last/before.
+> 
 
-
-#### [`hasPreviousPage`](#) ([`Boolean!`](/adminidentity/api/graphql-admin/reference/scalars/boolean))
-
-Whether or not using the startCursor will result in more results. Always
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>hasPreviousPage</b></code>](#)<Bullet />[`Boolean!`](/adminidentity/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Whether or not using the startCursor will result in more results. Always
 populated, but will always be false when paginating using first/after.
+> 
 
-
-#### [`startCursor`](#) ([`String`](/adminidentity/api/graphql-admin/reference/scalars/string))
-
-The cursor to use when paginating backwards (using last/before). Will always
+#### [<code style={{ fontWeight: 'normal' }}>PageInfo.<b>startCursor</b></code>](#)<Bullet />[`String`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The cursor to use when paginating backwards (using last/before). Will always
 be populated regardless of if a previous page exists
+> 
 
+
+
+### Member of
+
+[`AppConnection`](/adminidentity/api/graphql-admin/reference/objects/app-connection)  <Badge class="secondary" text="object"/><Bullet />[`PartnerConnection`](/adminidentity/api/graphql-admin/reference/objects/partner-connection)  <Badge class="secondary" text="object"/><Bullet />[`PartnerIdentityConnection`](/adminidentity/api/graphql-admin/reference/objects/partner-identity-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicAppConnection`](/adminidentity/api/graphql-admin/reference/objects/public-app-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicIdentityConnection`](/adminidentity/api/graphql-admin/reference/objects/public-identity-connection)  <Badge class="secondary" text="object"/><Bullet />[`UserNotificationConnection`](/adminidentity/api/graphql-admin/reference/objects/user-notification-connection)  <Badge class="secondary" text="object"/>
 
 
 

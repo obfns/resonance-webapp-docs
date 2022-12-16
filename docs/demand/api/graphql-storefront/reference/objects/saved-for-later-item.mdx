@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 This is an item being saved for later, waiting for a future purchase day.
 
 ```graphql
@@ -18,22 +26,25 @@ type SavedForLaterItem {
 
 ### Fields
 
-#### [`position`](#) ([`Int`](/demand/api/graphql-storefront/reference/scalars/int))
+#### [<code style={{ fontWeight: 'normal' }}>SavedForLaterItem.<b>position</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`variant`](#) ([`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant))
-
-The variant that this saved for later item is associated with.
+#### [<code style={{ fontWeight: 'normal' }}>SavedForLaterItem.<b>variant</b></code>](#)<Bullet />[`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant) <Badge class="secondary" text="object"/>
+> The variant that this saved for later item is associated with.
             
 Requires publicvariant/read permission on the requesting identity.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SavedForLaterItem.<b>variantId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
-#### [`variantId`](#) ([`ID!`](/demand/api/graphql-storefront/reference/scalars/id))
 
+### Member of
 
-
+[`Cart`](/demand/api/graphql-storefront/reference/objects/cart)  <Badge class="secondary" text="object"/>
 
 
 

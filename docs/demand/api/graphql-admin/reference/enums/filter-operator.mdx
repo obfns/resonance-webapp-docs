@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Indicates how a filter should behave, defaults to OR
 
 ```graphql
@@ -18,20 +26,23 @@ enum FilterOperator {
 
 ### Values
 
-#### [`AND`](#)
+#### [<code style={{ fontWeight: 'normal' }}>FilterOperator.<b>AND</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>FilterOperator.<b>NOT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>FilterOperator.<b>OR</b></code>](#) 
+> 
+> 
 
 
 
+### Member of
 
-#### [`NOT`](#)
-
-
-
-
-#### [`OR`](#)
-
-
-
+[`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input)  <Badge class="secondary" text="input"/><Bullet />[`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input)  <Badge class="secondary" text="input"/><Bullet />[`ProductStandardizedColorFilterInput`](/demand/api/graphql-admin/reference/inputs/product-standardized-color-filter-input)  <Badge class="secondary" text="input"/><Bullet />[`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierProductInventoryPolicyFilterInput`](/demand/api/graphql-admin/reference/inputs/supplier-product-inventory-policy-filter-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplierProductStandardizedColorFilterInput`](/demand/api/graphql-admin/reference/inputs/supplier-product-standardized-color-filter-input)  <Badge class="secondary" text="input"/>
 
 
 

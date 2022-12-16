@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Delete a SupplierIdentity from a Supplier (remove a user's permissions)
 
 Requires the supplieridentity/write permission on the given Supplier
@@ -19,21 +27,20 @@ deleteSupplierIdentity(
 
 ### Arguments
 
-#### [`identityId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>deleteSupplierIdentity.<b>identityId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>deleteSupplierIdentity.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 ### Type
 
-#### [`SupplierIdentityDeleteResponse`](/supply/api/graphql-admin/reference/objects/supplier-identity-delete-response)
+#### [`SupplierIdentityDeleteResponse`](/supply/api/graphql-admin/reference/objects/supplier-identity-delete-response) <Badge class="secondary" text="object"/>
+> Returned object from deleteSupplierIdentity
+> 
 
-Returned object from deleteSupplierIdentity
 
 
 

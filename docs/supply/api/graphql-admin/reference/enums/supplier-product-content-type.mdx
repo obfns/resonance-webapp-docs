@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Describes what type of content the entity is
 
 ```graphql
@@ -17,15 +25,19 @@ enum SupplierProductContentType {
 
 ### Values
 
-#### [`IMAGE`](#)
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentType.<b>IMAGE</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductContentType.<b>VIDEO</b></code>](#) 
+> 
+> 
 
 
 
+### Member of
 
-#### [`VIDEO`](#)
-
-
-
+[`SupplierProductContentItem`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item)  <Badge class="secondary" text="object"/>
 
 
 

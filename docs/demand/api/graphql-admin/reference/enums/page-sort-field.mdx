@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Indicates which field to sort by, defaults to CREATED_AT
 
 ```graphql
@@ -20,30 +28,31 @@ enum PageSortField {
 
 ### Values
 
-#### [`CREATED_AT`](#)
+#### [<code style={{ fontWeight: 'normal' }}>PageSortField.<b>CREATED_AT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageSortField.<b>PUBLISHED_AT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageSortField.<b>RELEVANCE</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageSortField.<b>TITLE</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageSortField.<b>UPDATED_AT</b></code>](#) 
+> 
+> 
 
 
 
+### Member of
 
-#### [`PUBLISHED_AT`](#)
-
-
-
-
-#### [`RELEVANCE`](#)
-
-
-
-
-#### [`TITLE`](#)
-
-
-
-
-#### [`UPDATED_AT`](#)
-
-
-
+[`PageSortInput`](/demand/api/graphql-admin/reference/inputs/page-sort-input)  <Badge class="secondary" text="input"/>
 
 
 

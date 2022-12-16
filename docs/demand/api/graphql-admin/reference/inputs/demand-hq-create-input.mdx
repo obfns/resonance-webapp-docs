@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The necessary fields in order to create a new demandHq
 
 ```graphql
@@ -21,36 +29,36 @@ input DemandHqCreateInput {
 
 ### Fields
 
-#### [`defaultCurrency`](#) ([`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency))
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqCreateInput.<b>defaultCurrency</b></code>](#)<Bullet />[`ResonanceCurrency!`](/demand/api/graphql-admin/reference/enums/resonance-currency) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqCreateInput.<b>defaultLocaleType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqCreateInput.<b>demandSubscriptionCodes</b></code>](#)<Bullet />[`[DemandSubscriptionCode!]`](/demand/api/graphql-admin/reference/enums/demand-subscription-code) <Badge class="secondary" text="list"/> <Badge class="secondary" text="enum"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqCreateInput.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-#### [`defaultLocaleType`](#) ([`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type))
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqCreateInput.<b>name</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`demandSubscriptionCodes`](#) ([`[DemandSubscriptionCode!]`](/demand/api/graphql-admin/reference/enums/demand-subscription-code))
-
-
-
-
-#### [`description`](#) ([`String`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`name`](#) ([`String!`](/demand/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`notificationUserNames`](#) ([`DemandHqNotificationUserNamesInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-notification-user-names-input))
-
-These users will get notified if something requires attention for this DemandHq.
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqCreateInput.<b>notificationUserNames</b></code>](#)<Bullet />[`DemandHqNotificationUserNamesInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-notification-user-names-input) <Badge class="secondary" text="input"/>
+> These users will get notified if something requires attention for this DemandHq.
 If none are provided, ownerUserName will be notified.
+> 
 
+
+
+### Member of
+
+[`createDemandHq`](/demand/api/graphql-admin/reference/mutations/create-demand-hq)  <Badge class="secondary" text="mutation"/>
 
 
 

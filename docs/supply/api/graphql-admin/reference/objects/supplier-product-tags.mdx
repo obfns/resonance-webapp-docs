@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Categories and other groupings that apply to this product.
 
 ```graphql
@@ -24,43 +32,41 @@ type SupplierProductTags {
 
 ### Fields
 
-#### [`parsed`](#) ([`[ParsedTag]`](/supply/api/graphql-admin/reference/objects/parsed-tag))
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductTags.<b>parsed</b></code>](#)<Bullet />[`[ParsedTag]`](/supply/api/graphql-admin/reference/objects/parsed-tag) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> Get parsed, and optionally filtered, tags for a SupplierProduct.
+> ##### [<code style={{ fontWeight: 'normal' }}>SupplierProductTags.parsed.<b>category</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Optionally filter tags by category.
+> 
 
-Get parsed, and optionally filtered, tags for a SupplierProduct.
-- ##### [`category`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+##### [<code style={{ fontWeight: 'normal' }}>SupplierProductTags.parsed.<b>key</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+> 
 
-Optionally filter tags by category.
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductTags.<b>raw</b></code>](#)<Bullet />[`[String!]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductTags.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-- ##### [`key`](#) ([`String`](/supply/api/graphql-admin/reference/scalars/string))
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductTags.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-Optionally filter tags by key. If category is not provided, but key is, category must be null to be returned.
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductTags.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/supply/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-#### [`raw`](#) ([`[String!]`](/supply/api/graphql-admin/reference/scalars/string))
-
-
-
-
-#### [`supplierId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`supplierProductId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
-
-#### [`updatedAt`](#) ([`Date!`](/supply/api/graphql-admin/reference/scalars/date))
-
-
-
-
-#### [`updatedBy`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductTags.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 
 
+### Member of
+
+[`SupplierProduct`](/supply/api/graphql-admin/reference/objects/supplier-product)  <Badge class="secondary" text="object"/>
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Get a single variantSupplierVariant by id (combination of variantId and supplierVariantId)
 
 ```graphql
@@ -17,24 +25,23 @@ variantSupplierVariant(
 
 ### Arguments
 
-#### [`supplierVariantId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
+#### [<code style={{ fontWeight: 'normal' }}>variantSupplierVariant.<b>supplierVariantId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
-
-
-
-#### [`variantId`](#) ([`ID!`](/demand/api/graphql-admin/reference/scalars/id))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>variantSupplierVariant.<b>variantId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 ### Type
 
-#### [`VariantSupplierVariant`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant)
-
-A VariantSupplierVariant has a 1:1 relationship with a SupplierVariant.
+#### [`VariantSupplierVariant`](/demand/api/graphql-admin/reference/objects/variant-supplier-variant) <Badge class="secondary" text="object"/>
+> A VariantSupplierVariant has a 1:1 relationship with a SupplierVariant.
 VariantSupplierVariants are the Demand window into the SupplierVariant and can
 be used to determine inventory and cost as well as for assigning OrderItems.
 Each VariantSupplierVariant has a parent Variant,
+> 
+
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Indicates the lifecycle stage an order is in
 
 ```graphql
@@ -22,41 +30,40 @@ enum OrderStatus {
 
 ### Values
 
-#### [`AUTHORIZED`](#)
+#### [<code style={{ fontWeight: 'normal' }}>OrderStatus.<b>AUTHORIZED</b></code>](#) 
+> Order has been authorized, waiting on fulfillment
+> 
 
-Order has been authorized, waiting on fulfillment
-
-
-#### [`COMPLETE`](#)
-
-Order has been paid, and is now complete. This can also indicate that an order
+#### [<code style={{ fontWeight: 'normal' }}>OrderStatus.<b>COMPLETE</b></code>](#) 
+> Order has been paid, and is now complete. This can also indicate that an order
 was partially or fully refunded, but that process is also complete.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderStatus.<b>DRAFT</b></code>](#) 
+> Initial state for an order, during which it can contain invalid or incomplete information
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderStatus.<b>FULFILLED</b></code>](#) 
+> Order has been fulfilled, waiting on payment
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderStatus.<b>PARTIALLY_FULFILLED</b></code>](#) 
+> Order has been partially fulfilled, and paid up for the currently fulfilled items
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderStatus.<b>PARTIALLY_FULFILLED_AWAITING_PAYMENT</b></code>](#) 
+> Order has been partially fulfilled, waiting on other fulfillments and for the existing fulfillments payment
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderStatus.<b>PENDING</b></code>](#) 
+> Order has been placed, waiting on authorization
+> 
 
 
-#### [`DRAFT`](#)
 
-Initial state for an order, during which it can contain invalid or incomplete information
+### Member of
 
-
-#### [`FULFILLED`](#)
-
-Order has been fulfilled, waiting on payment
-
-
-#### [`PARTIALLY_FULFILLED`](#)
-
-Order has been partially fulfilled, and paid up for the currently fulfilled items
-
-
-#### [`PARTIALLY_FULFILLED_AWAITING_PAYMENT`](#)
-
-Order has been partially fulfilled, waiting on other fulfillments and for the existing fulfillments payment
-
-
-#### [`PENDING`](#)
-
-Order has been placed, waiting on authorization
-
+[`Order`](/demand/api/graphql-admin/reference/objects/order)  <Badge class="secondary" text="object"/>
 
 
 

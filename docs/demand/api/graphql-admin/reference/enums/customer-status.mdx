@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 The status of the associated Customer
 
 ```graphql
@@ -18,20 +26,23 @@ enum CustomerStatus {
 
 ### Values
 
-#### [`ACTIVE`](#)
+#### [<code style={{ fontWeight: 'normal' }}>CustomerStatus.<b>ACTIVE</b></code>](#) 
+> The associated Customer is active and able to login
+> 
 
-The associated Customer is active and able to login
+#### [<code style={{ fontWeight: 'normal' }}>CustomerStatus.<b>DISABLED</b></code>](#) 
+> The associated Customer is not active and unable to login
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CustomerStatus.<b>GUEST</b></code>](#) 
+> The associated Customer is active, but has not yet setup a login
+> 
 
 
-#### [`DISABLED`](#)
 
-The associated Customer is not active and unable to login
+### Member of
 
-
-#### [`GUEST`](#)
-
-The associated Customer is active, but has not yet setup a login
-
+[`Customer`](/demand/api/graphql-admin/reference/objects/customer)  <Badge class="secondary" text="object"/><Bullet />[`CustomerCreateInput`](/demand/api/graphql-admin/reference/inputs/customer-create-input)  <Badge class="secondary" text="input"/><Bullet />[`CustomerUpdateInput`](/demand/api/graphql-admin/reference/inputs/customer-update-input)  <Badge class="secondary" text="input"/>
 
 
 

@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Input object representing exactly what permissions are given
 
 ```graphql
@@ -17,15 +25,19 @@ input PartnerIdentityPermissionsInput {
 
 ### Fields
 
-#### [`roles`](#) ([`[PartnerRole]!`](/adminidentity/api/graphql-admin/reference/enums/partner-role))
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentityPermissionsInput.<b>roles</b></code>](#)<Bullet />[`[PartnerRole]!`](/adminidentity/api/graphql-admin/reference/enums/partner-role) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Roles are groups of permission scopes, for ease of assigning
+> 
 
-Roles are groups of permission scopes, for ease of assigning
+#### [<code style={{ fontWeight: 'normal' }}>PartnerIdentityPermissionsInput.<b>scopes</b></code>](#)<Bullet />[`[String]!`](/adminidentity/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Scopes are individual permissions representing a single item and action, in all lowercase, i.e. partneridentity/write
+> 
 
 
-#### [`scopes`](#) ([`[String]!`](/adminidentity/api/graphql-admin/reference/scalars/string))
 
-Scopes are individual permissions representing a single item and action, in all lowercase, i.e. partneridentity/write
+### Member of
 
+[`PartnerIdentityCreateInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-identity-create-input)  <Badge class="secondary" text="input"/><Bullet />[`PartnerIdentityUpdateInput`](/adminidentity/api/graphql-admin/reference/inputs/partner-identity-update-input)  <Badge class="secondary" text="input"/>
 
 
 

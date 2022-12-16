@@ -5,6 +5,14 @@ hide_table_of_contents: false
 ---
 
 
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+
+
 Delete a SupplierProduct (and all of its child entities)
 
 ```graphql
@@ -16,16 +24,16 @@ deleteSupplierProduct(
 
 ### Arguments
 
-#### [`supplierProductId`](#) ([`ID!`](/supply/api/graphql-admin/reference/scalars/id))
-
-
-
+#### [<code style={{ fontWeight: 'normal' }}>deleteSupplierProduct.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
 
 ### Type
 
-#### [`SupplierProductDeleteResponse`](/supply/api/graphql-admin/reference/objects/supplier-product-delete-response)
+#### [`SupplierProductDeleteResponse`](/supply/api/graphql-admin/reference/objects/supplier-product-delete-response) <Badge class="secondary" text="object"/>
+> Response for deleting a SupplierProduct
+> 
 
-Response for deleting a SupplierProduct
 
 
 
