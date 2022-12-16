@@ -180,19 +180,19 @@ module.exports = {
             {
                 specs: [
                     {
-                        spec: "https://api.staging.adminidentity.buildresonance.com/openapi",
+                        spec: "https://api.adminidentity.buildresonance.com/openapi",
                         route: "/adminidentity/api/rest-admin/reference",
                     },
                     {
-                        spec: "https://api.staging.demand.buildresonance.com/openapi",
+                        spec: "https://api.demand.buildresonance.com/openapi",
                         route: "/demand/api/rest-admin/reference",
                     },
                     {
-                        spec: "https://staging.storefrontapi.buildresonance.com/openapi",
+                        spec: "https://storefrontapi.buildresonance.com/openapi",
                         route: "/demand/api/rest-storefront/reference",
                     },
                     {
-                        spec: "https://api.staging.supply.buildresonance.com/openapi",
+                        spec: "https://api.supply.buildresonance.com/openapi",
                         route: "/supply/api/rest-admin/reference",
                     },
                 ],
