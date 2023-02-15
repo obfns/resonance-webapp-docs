@@ -43,53 +43,22 @@ const DEFAULT_QUERY = `# Welcome to GraphiQL
 {
   products(first: 3) {
     nodes {
-      optionLabels
-      publishedAt
+      optionLabels      
       productId
-      tags {
-        parsed {
-          category
-          key
-          value
-        }
-      }
       title
-      vendor
       contentItems(first: 10) {
-        nodes {
-          alt
-          category
+        nodes {         
           contentKey
-          contentType
-          position
         }
       }
       locale(localeType: EN_US) {
-        description
         featureBullets
       }
       variants(first: 10) {
         nodes {
-          barcode
-          contentItemIds
-          msrp
-          optionValues
-          position
           price
-          shippingDimensions {
-            height
-            length
-            width
-            unit
-          }
-          sku
-          standardizedColor
           title
           variantId
-          weight {
-            amount
-            unit
-          }
         }
       }
     }
