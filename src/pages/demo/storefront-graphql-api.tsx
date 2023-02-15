@@ -41,7 +41,7 @@ const DEFAULT_QUERY = `# Welcome to GraphiQL
 # (like customer, cart, or checkout).
 
 {
-  products(first: 3) {
+  products(first: 1) {
     nodes {
       optionLabels
       publishedAt
