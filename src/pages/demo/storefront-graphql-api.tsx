@@ -1,17 +1,10 @@
 import { createGraphiQLFetcher } from "@graphiql/toolkit";
 import GraphiQL from "graphiql";
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import React, { ReactElement } from "react";
 import Layout from "@theme/Layout";
 
 import "graphiql/graphiql.css";
-
-const fetcher = createGraphiQLFetcher({
-    url: "https://storefrontapi.buildresonance.com/graphql",
-    headers: {
-        "x-resonance-storefront-token":
-            "eyJzbHVnIjoicHVibGljLWtleSIsInN0b3JlZnJvbnRJZCI6InN0Zm50LTJMbVo5QUxvSGUxV09tSk45amhjOFhFQTg3eCJ9",
-    },
-});
 
 const DEFAULT_QUERY = `# Welcome to GraphiQL
 #
@@ -107,7 +100,24 @@ const StorefrontApiDemo = (): ReactElement => {
     return (
         <Layout>
             <div style={{ height: "calc(100vh - 40px)" }}>
-                <GraphiQL fetcher={fetcher} defaultQuery={DEFAULT_QUERY} />
+                <BrowserOnly fallback={<div>Loading...</div>}>
+                    {() => {
+                        const fetcher = createGraphiQLFetcher({
+                            url: "https://storefrontapi.buildresonance.com/graphql",
+                            headers: {
+                                "x-resonance-storefront-token":
+                                    "eyJzbHVnIjoicHVibGljLWtleSIsInN0b3JlZnJvbnRJZCI6InN0Zm50LTJMbVo5QUxvSGUxV09tSk45amhjOFhFQTg3eCJ9",
+                            },
+                        });
+
+                        return (
+                            <GraphiQL
+                                fetcher={fetcher}
+                                defaultQuery={DEFAULT_QUERY}
+                            />
+                        );
+                    }}
+                </BrowserOnly>
             </div>
         </Layout>
     );
