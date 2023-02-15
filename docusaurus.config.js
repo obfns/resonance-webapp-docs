@@ -56,6 +56,10 @@ module.exports = {
                             label: "Storefront GraphQL API Reference",
                         },
                         {
+                            to: "/demo/storefront-graphql-api",
+                            label: "Storefront GraphQL Playground",
+                        },
+                        {
                             href: "/demand/api/rest-storefront/reference",
                             label: "Storefront REST API Reference",
                         },
@@ -122,6 +126,10 @@ module.exports = {
                         {
                             to: "/demand/api/graphql-storefront/reference",
                             label: "Storefront GraphQL API Reference",
+                        },
+                        {
+                            to: "/demo/storefront-graphql-api",
+                            label: "Storefront GraphQL Playground",
                         },
                         {
                             to: "/demand/api/rest-storefront/reference",
