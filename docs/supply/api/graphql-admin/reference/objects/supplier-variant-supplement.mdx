@@ -10,7 +10,7 @@ export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5
 
 export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
 
-export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
 
 
 This has a one to one relationship with SupplierVariant, and provides supplemental data for the SupplierVariant.
@@ -19,9 +19,9 @@ These items get updated at a lower frequency, and are therefore separate.
 ```graphql
 type SupplierVariantSupplement {
   averageShippingCost: Float
-  barcode: String!
+  barcode: String
   casePack: Int
-  cost: Float!
+  cost: Float
   createdAt: String!
   handlingCost: SupplierVariantHandlingCost
   handlingCostAsCurrency: Float
@@ -51,7 +51,7 @@ type SupplierVariantSupplement {
 > A calculated metric for some kind of average for a common region. Uncommon.
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>barcode</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>barcode</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
 > UPC, ISBN, GTIN, etc
 > 
 
@@ -59,7 +59,7 @@ type SupplierVariantSupplement {
 > Quantity in one variant (i.e. 12-pack)
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>cost</b></code>](#)<Bullet />[`Float!`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>cost</b></code>](#)<Bullet />[`Float`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
 > COGS, or Cost of Goods Sold, in a currency
 > 
 

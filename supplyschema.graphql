@@ -302,15 +302,11 @@ type Mutation {
 
   """
   Bulk upsert supplierVariantSupplements.
-  If you are creating supplierVariantSupplements, you must provide
-  SupplierVariantSupplementCreateInput instead of
-  SupplierVariantSupplementUpdateInput.
-  (These are similar, but more fields are required)
   
   Requires suppliervariantsupplement/write permission on the requesting identity
   Note that if there are Permission or UserInput Errors, the entire group will fail, not partially succeed.
   """
-  upsertSupplierVariantSupplements(inputs: [SupplierVariantSupplementUpdateInput!]): [SupplierVariantSupplement!]
+  upsertSupplierVariantSupplements(inputs: [SupplierVariantSupplementCreateInput!]): [SupplierVariantSupplement!]
 }
 
 """Information on Pagination"""
@@ -2088,13 +2084,13 @@ type SupplierVariantSupplement {
   averageShippingCost: Float
 
   """UPC, ISBN, GTIN, etc"""
-  barcode: String!
+  barcode: String
 
   """Quantity in one variant (i.e. 12-pack)"""
   casePack: Int
 
   """COGS, or Cost of Goods Sold, in a currency"""
-  cost: Float!
+  cost: Float
 
   """ISO Date"""
   createdAt: String!
@@ -2148,13 +2144,13 @@ input SupplierVariantSupplementCreateInput {
   averageShippingCost: Float
 
   """UPC, ISBN, GTIN, etc"""
-  barcode: String!
+  barcode: String
 
   """Quantity in one variant (i.e. 12-pack)"""
   casePack: Int
 
   """COGS, or Cost of Goods Sold, in a currency"""
-  cost: Float!
+  cost: Float
 
   """Additional warehouse handling charge, typically for larger items."""
   handlingCost: SupplierVariantHandlingCostInput
@@ -2196,13 +2192,13 @@ input SupplierVariantSupplementInCompositeCreateInput {
   averageShippingCost: Float
 
   """UPC, ISBN, GTIN, etc"""
-  barcode: String!
+  barcode: String
 
   """Quantity in one variant (i.e. 12-pack)"""
   casePack: Int
 
   """COGS, or Cost of Goods Sold, in a currency"""
-  cost: Float!
+  cost: Float
 
   """Additional warehouse handling charge, typically for larger items."""
   handlingCost: SupplierVariantHandlingCostInput
