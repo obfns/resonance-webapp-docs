@@ -10,28 +10,24 @@ export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5
 
 export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
 
-export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
 
 
 Bulk upsert supplierVariantSupplements.
-If you are creating supplierVariantSupplements, you must provide
-SupplierVariantSupplementCreateInput instead of
-SupplierVariantSupplementUpdateInput.
-(These are similar, but more fields are required)
 
 Requires suppliervariantsupplement/write permission on the requesting identity
 Note that if there are Permission or UserInput Errors, the entire group will fail, not partially succeed.
 
 ```graphql
 upsertSupplierVariantSupplements(
-  inputs: [SupplierVariantSupplementUpdateInput!]
+  inputs: [SupplierVariantSupplementCreateInput!]
 ): [SupplierVariantSupplement!]
 ```
 
 
 ### Arguments
 
-#### [<code style={{ fontWeight: 'normal' }}>upsertSupplierVariantSupplements.<b>inputs</b></code>](#)<Bullet />[`[SupplierVariantSupplementUpdateInput!]`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-update-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+#### [<code style={{ fontWeight: 'normal' }}>upsertSupplierVariantSupplements.<b>inputs</b></code>](#)<Bullet />[`[SupplierVariantSupplementCreateInput!]`](/supply/api/graphql-admin/reference/inputs/supplier-variant-supplement-create-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
 > 
 > 
 

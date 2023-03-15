@@ -10,7 +10,7 @@ export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5
 
 export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
 
-export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
 
 
 This has a many to one relationship with Product, and provides a connection to the CDN items.
@@ -26,6 +26,8 @@ type ProductContentItem {
   demandHqId: ID!
   position: Int
   productId: ID!
+  sourceDetail: String!
+  sourceType: ProductContentItemSourceType!
   updatedAt: Date!
   updatedBy: String!
 }
@@ -71,6 +73,14 @@ Positive Integers are allowed, up to 9,999,999,999, and it does not have to be u
 > 
 > 
 
+#### [<code style={{ fontWeight: 'normal' }}>ProductContentItem.<b>sourceDetail</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The original URL, or some kind of file pointer, based on sourceType
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductContentItem.<b>sourceType</b></code>](#)<Bullet />[`ProductContentItemSourceType!`](/demand/api/graphql-admin/reference/enums/product-content-item-source-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> How did we receive this content item?
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>ProductContentItem.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > 
 > 
@@ -87,7 +97,7 @@ Positive Integers are allowed, up to 9,999,999,999, and it does not have to be u
 
 ### Member of
 
-[`Product`](/demand/api/graphql-admin/reference/objects/product)  <Badge class="secondary" text="object"/><Bullet />[`ProductContentItemConnection`](/demand/api/graphql-admin/reference/objects/product-content-item-connection)  <Badge class="secondary" text="object"/><Bullet />[`ProductContentItemEdge`](/demand/api/graphql-admin/reference/objects/product-content-item-edge)  <Badge class="secondary" text="object"/><Bullet />[`ProductImageFromFileResponse`](/demand/api/graphql-admin/reference/objects/product-image-from-file-response)  <Badge class="secondary" text="object"/>
+[`Product`](/demand/api/graphql-admin/reference/objects/product)  <Badge class="secondary" text="object"/><Bullet />[`ProductContentItemConnection`](/demand/api/graphql-admin/reference/objects/product-content-item-connection)  <Badge class="secondary" text="object"/><Bullet />[`ProductContentItemEdge`](/demand/api/graphql-admin/reference/objects/product-content-item-edge)  <Badge class="secondary" text="object"/><Bullet />[`ProductImageFromFileResponse`](/demand/api/graphql-admin/reference/objects/product-image-from-file-response)  <Badge class="secondary" text="object"/><Bullet />[`Variant`](/demand/api/graphql-admin/reference/objects/variant)  <Badge class="secondary" text="object"/>
 
 
 

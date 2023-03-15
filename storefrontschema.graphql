@@ -1427,21 +1427,6 @@ type PublicNav {
 
   """The label for this Nav, limit 64 characters."""
   label: String!
-
-  """
-  This has two primary purposes:
-  To make this Nav "lookupable" in combination with linkType.
-  To make entities aware they are being referenced. This is done with the
-  reserved system linkTypes in combination with entitySlugs (i.e. Collection and
-  a collection slug).
-  """
-  linkSlug: String!
-
-  """
-  This can be any string, but certain values have special meaning (like "collection").
-  These are restricted to the specified values in NavSettings.
-  """
-  linkType: String!
   navId: ID!
 
   """
@@ -1594,7 +1579,7 @@ type PublicOrderEdge {
 """An item in a PublicOrder."""
 type PublicOrderItem {
   adjustments: [OrderItemAdjustment]
-  barcode: String!
+  barcode: String
   currency: ResonanceCurrency!
   customProperties: JSON
   deliveryMethod: VariantDeliveryMethod!
@@ -2092,13 +2077,20 @@ This is the child entity to a Product, and is a variation, such as a color, size
 """
 type PublicVariant {
   """UPC, ISBN, GTIN, etc."""
-  barcode: String!
+  barcode: String
 
   """Quantity in one variant (i.e. 12-pack). Must be a positive integer."""
   casePack: Int
 
   """Associates contentItems with this variant"""
   contentItemIds: [ID]
+
+  """
+  Get a list of productContentItems for the variant.
+  
+  Requires productcontentitem/read permission on the DemandHq for the requesting identity.
+  """
+  contentItems: [PublicProductContentItem]
   deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
   isTaxable: Boolean
@@ -2369,8 +2361,6 @@ type Query {
 
     """Returns the last n elements from the list."""
     last: Int
-    linkSlug: String
-    linkType: String
     navIds: [ID]
     navLevel: Int
     navType: String

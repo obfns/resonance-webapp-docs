@@ -10,7 +10,7 @@ export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5
 
 export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
 
-export const Badge = (props) => <><span class={'badge badge--' + props.class}>{props.text}</span></>
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
 
 
 The necessary fields in order to create a new supplierVariantSupplement
@@ -18,9 +18,9 @@ The necessary fields in order to create a new supplierVariantSupplement
 ```graphql
 input SupplierVariantSupplementCreateInput {
   averageShippingCost: Float
-  barcode: String!
+  barcode: String
   casePack: Int
-  cost: Float!
+  cost: Float
   handlingCost: SupplierVariantHandlingCostInput
   isTaxable: Boolean
   manufacturer: String
@@ -45,7 +45,7 @@ input SupplierVariantSupplementCreateInput {
 > A calculated metric for some kind of average for a common region. Uncommon.
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplementCreateInput.<b>barcode</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplementCreateInput.<b>barcode</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
 > UPC, ISBN, GTIN, etc
 > 
 
@@ -53,7 +53,7 @@ input SupplierVariantSupplementCreateInput {
 > Quantity in one variant (i.e. 12-pack)
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplementCreateInput.<b>cost</b></code>](#)<Bullet />[`Float!`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplementCreateInput.<b>cost</b></code>](#)<Bullet />[`Float`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
 > COGS, or Cost of Goods Sold, in a currency
 > 
 
@@ -117,7 +117,7 @@ input SupplierVariantSupplementCreateInput {
 
 ### Member of
 
-[`createSupplierVariantSupplement`](/supply/api/graphql-admin/reference/mutations/create-supplier-variant-supplement)  <Badge class="secondary" text="mutation"/>
+[`createSupplierVariantSupplement`](/supply/api/graphql-admin/reference/mutations/create-supplier-variant-supplement)  <Badge class="secondary" text="mutation"/><Bullet />[`upsertSupplierVariantSupplements`](/supply/api/graphql-admin/reference/mutations/upsert-supplier-variant-supplements)  <Badge class="secondary" text="mutation"/>
 
 
 

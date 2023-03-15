@@ -88,6 +88,12 @@ enum AppType {
   SUPPLIERAPP
 }
 
+"""List of authorized payment gateways for a DemandHq"""
+type AuthorizedPaymentGateways {
+  authorizedPaymentGateways: [String]
+  demandHqId: ID!
+}
+
 """
 A Collection is a group of products, what may often be referred to as a "Category Page" of some variety.
 In reality, a collection is far more flexible and can be used to represent any
@@ -2335,13 +2341,6 @@ type Mutation {
   Requires the page/write permission on the given DemandHq
   """
   upsertPageContent(input: PageContentUpsertInput!): PageContent!
-
-  """
-  Upsert storefront nav settings.
-                  
-  Requires the storefrontnavsettings/write permission on the associated DemandHq.
-  """
-  upsertStorefrontNavSettings(input: StorefrontNavSettingsUpsertInput!): StorefrontNavSettings!
 }
 
 """
@@ -2358,21 +2357,6 @@ type Nav {
 
   """The label for this Nav, limit 64 characters."""
   label: String!
-
-  """
-  This has two primary purposes:
-  To make this Nav "lookupable" in combination with linkType.
-  To make entities aware they are being referenced. This is done with the
-  reserved system linkTypes in combination with entitySlugs (i.e. Collection and
-  a collection slug).
-  """
-  linkSlug: String!
-
-  """
-  This can be any string, but certain values have special meaning (like "collection").
-  These are restricted to the specified values in NavSettings.
-  """
-  linkType: String!
   navId: ID!
 
   """
@@ -2439,21 +2423,6 @@ input NavCreateInput {
   label: String!
 
   """
-  This has two primary purposes:
-  To make this Nav "lookupable" in combination with linkType.
-  To make entities aware they are being referenced. This is done with the
-  reserved system linkTypes in combination with entitySlugs (i.e. Collection and
-  a collection slug).
-  """
-  linkSlug: String!
-
-  """
-  This can be any string, but certain values have special meaning (like "collection").
-  These are restricted to the specified values in NavSettings.
-  """
-  linkType: String!
-
-  """
   A number, representing where this Nav resides in the heirarchy. Immutable, and
   limited to 0 through 6. 0 is the top level, 1 is the second level, etc.
   """
@@ -2488,21 +2457,6 @@ input NavUpdateInput {
 
   """The label for this Nav, limit 64 characters."""
   label: String
-
-  """
-  This has two primary purposes:
-  To make this Nav "lookupable" in combination with linkType.
-  To make entities aware they are being referenced. This is done with the
-  reserved system linkTypes in combination with entitySlugs (i.e. Collection and
-  a collection slug).
-  """
-  linkSlug: String
-
-  """
-  This can be any string, but certain values have special meaning (like "collection").
-  These are restricted to the specified values in NavSettings.
-  """
-  linkType: String
   navId: ID!
 
   """
@@ -2634,7 +2588,7 @@ type OrderEdge {
 """An item in an Order."""
 type OrderItem {
   adjustments: [OrderItemAdjustment]
-  barcode: String!
+  barcode: String
   createdAt: Date!
   currency: ResonanceCurrency!
   customProperties: JSON
@@ -2724,7 +2678,7 @@ type OrderItemConnection {
 """Input for creating an OrderItem"""
 input OrderItemCreateInput {
   adjustments: [OrderItemAdjustmentInput]
-  barcode: String!
+  barcode: String
   currency: ResonanceCurrency!
   customProperties: JSON
   deliveryMethod: VariantDeliveryMethod!
@@ -3765,6 +3719,12 @@ type ProductContentItem {
   """
   position: Int
   productId: ID!
+
+  """The original URL, or some kind of file pointer, based on sourceType"""
+  sourceDetail: String!
+
+  """How did we receive this content item?"""
+  sourceType: ProductContentItemSourceType!
   updatedAt: Date!
   updatedBy: String!
 }
@@ -3792,6 +3752,13 @@ type ProductContentItemDeleteResponse {
 """One edge producing one ProductContentItem Node"""
 type ProductContentItemEdge {
   node: ProductContentItem
+}
+
+"""Describes where the content originally was sourced from"""
+enum ProductContentItemSourceType {
+  UPLOADMULTIPART
+  UPLOADSINGLEPART
+  URL
 }
 
 """Input object for updating an existing ProductContentItem Image"""
@@ -4278,7 +4245,7 @@ type PublicSupplierProductConnectionWithSearch {
 This has a many to one relationship with SupplierProduct, and provides a connection to the CDN items.
 """
 type PublicSupplierProductContentItem {
-  alt: String!
+  alt: String
   category: String
   contentItemId: ID!
 
@@ -4410,6 +4377,9 @@ enum PurchaseOrderItemStatus {
 type Query {
   """Nothing to see here, just a workaround for Apollo Server"""
   _empty: String
+
+  """Get a list of authorized payment gateways for a DemandHq"""
+  authorizedPaymentGateways(demandHqId: ID!): AuthorizedPaymentGateways
 
   """
   Get a collection by collectionId.
@@ -4674,13 +4644,6 @@ type Query {
   storefront(storefrontId: ID!): Storefront
 
   """
-  Retrieve the settings for a storefront's Navs
-              
-  Requires the storefrontnavsettings/read permission on the associated DemandHq.
-  """
-  storefrontNavSettings(storefrontId: ID!): StorefrontNavSettings
-
-  """
   Get a single variant by VariantId
   
       Requires demandHqvariant/read permission on the requesting identity
@@ -4848,8 +4811,6 @@ type Storefront {
 
     """Returns the last n elements from the list."""
     last: Int
-    linkSlug: String
-    linkType: String
     navIds: [ID]
     navLevel: Int
     navType: String
@@ -4987,33 +4948,6 @@ input StorefrontIdentityInput {
   slug: String!
 }
 
-"""The settings for a storefront's Navs"""
-type StorefrontNavSettings {
-  createdAt: Date!
-  demandHqId: ID!
-
-  """
-  This sets what linkTypes are allowed for Navs in this storefront. Helps correct human error.
-  Maximum of 50 types.
-  """
-  linkTypes: [String]
-  storefrontId: ID!
-  updatedAt: Date!
-  updatedBy: ID!
-}
-
-"""The input for upserting a StorefrontNavSettings"""
-input StorefrontNavSettingsUpsertInput {
-  demandHqId: ID!
-
-  """
-  This sets what linkTypes are allowed for Navs in this storefront. Helps correct human error.
-  Maximum of 50 types.
-  """
-  linkTypes: [String]
-  storefrontId: ID!
-}
-
 """The permissions of the storefront identity"""
 type StorefrontPermissions {
   roles: [StorefrontRole!]!
@@ -5135,13 +5069,20 @@ Only the variant level exists, there is no parent product.
 """
 type Variant {
   """UPC, ISBN, GTIN, etc."""
-  barcode: String!
+  barcode: String
 
   """Quantity in one variant (i.e. 12-pack). Must be a positive integer."""
   casePack: Int
 
   """Associates contentItems with this variant"""
   contentItemIds: [ID]
+
+  """
+  Get a list of productContentItems for a variant.
+  
+  Requires productcontentitem/read permission on the DemandHq for the requesting identity.
+  """
+  contentItems: [ProductContentItem]
   createdAt: String!
   deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
@@ -5238,7 +5179,7 @@ type VariantConnection {
 """The necessary fields in order to create a new variant"""
 input VariantCreateInput {
   """UPC, ISBN, GTIN, etc."""
-  barcode: String!
+  barcode: String
 
   """Quantity in one variant (i.e. 12-pack). Must be a positive integer."""
   casePack: Int
