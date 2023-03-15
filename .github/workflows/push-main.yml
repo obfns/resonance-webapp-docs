@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest # public repo, keep this here
     steps:
     - name: Checkout 🛎️
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Extract version
       id: extract_version
       uses: Saionaro/extract-package-version@v1.0.6
@@ -28,15 +28,15 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
-      - name: Node 16
-        uses: actions/setup-node@v1
+      - name: Node
+        uses: actions/setup-node@v3
         with:
-          node-version: 18.12.0
+          node-version-file: '.nvmrc'
           registry-url: https://npm.pkg.github.com
-          scope: "@obfns"
+          scope: "@buildresonance"
       - name: Build Docusaurus
         run: |
           npm ci
@@ -45,7 +45,7 @@ jobs:
           CI: true
           NODE_AUTH_TOKEN: ${{ secrets.READ_GH_PACKAGES_TOKEN }}
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages

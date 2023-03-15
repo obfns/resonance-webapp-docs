@@ -140,18 +140,18 @@ jobs:
         with:
           app_id: ${{ secrets.GH_APP_ID }}
           private_key: ${{ secrets.GH_PRIVATE_KEY }}
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           repository: ${{ fromJSON(steps.get-pr.outputs.pr).head.repo.full_name }}
           ref: ${{ fromJSON(steps.get-pr.outputs.pr).head.ref }}
           token: ${{ steps.get-token.outputs.token }}
 
       - name: Use Node.js 16
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 18.12.0
+          node-version-file: '.nvmrc'
           registry-url: https://npm.pkg.github.com
-          scope: "@obfns"
+          scope: "@buildresonance"
 
       - run: "echo arg1 - semver - ${{ needs.detect-slash-commands.outputs.arg1 }}"
       - name: Determine SemVer Bump
