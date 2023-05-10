@@ -1,0 +1,48 @@
+---
+id: product-locale-in-composite-create-input
+title: ProductLocaleInCompositeCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The necessary fields in order to create a new productLocale as part of a ProductCompositeCreateInput
+
+```graphql
+input ProductLocaleInCompositeCreateInput {
+  description: String
+  featureBullets: [String]
+  localeType: ResonanceLocaleType!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocaleInCompositeCreateInput.<b>description</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Can utilize Markdown
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocaleInCompositeCreateInput.<b>featureBullets</b></code>](#)<Bullet />[`[String]`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Limited to 5 bullets
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocaleInCompositeCreateInput.<b>localeType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/demand/api/graphql-admin/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+
+
+### Member of
+
+[`ProductCompositeCreateInput`](/demand/api/graphql-admin/reference/inputs/product-composite-create-input)  <Badge class="secondary" text="input"/>
+
+
+

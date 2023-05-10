@@ -1,0 +1,125 @@
+---
+id: public-taxonomy-branch
+title: PublicTaxonomyBranch
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+TaxonomyBranch is an item within a taxonomyTree that maps out a Product Taxonomy
+hierarchy using Product Tags and Collections.
+
+```graphql
+type PublicTaxonomyBranch {
+  collectionId: ID
+  createdAt: Date!
+  demandHqId: ID!
+  parentTaxonomyBranchId: ID
+  productTag: String!
+  storefrontIds: [ID!]
+  taxonomyBranchId: ID!
+  taxonomyBranches(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): PublicTaxonomyBranchConnection!
+  taxonomyLevel: TaxonomyLevel!
+  taxonomyTree: String!
+  title: String!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>collectionId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> The collectionId associated with the TaxonomyBranch.
+Not required as a field, but is strongly suggested to be populated, and one is generally created with a TaxonomyBranch.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>parentTaxonomyBranchId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> All TaxonomyBranches besides the root have a parentTaxonomyBranchId. Immutable.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>productTag</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The product tag associated with this TaxonomyBranch, used for filtering or display matching.
+
+On a Root TaxonomyBranch, this is generally a taxPrefix that is used in all child TaxonomyBranches,
+i.e. "Taxonomy" for child branch productTags like "Taxonomy,Category,T-Shirts"
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>storefrontIds</b></code>](#)<Bullet />[`[ID!]`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The storefronts this taxonomyTree is published to.
+This is only present on the Root TaxonomyBranch of a taxonomyTree and applies to all child taxonomyBranches.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>taxonomyBranchId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>taxonomyBranches</b></code>](#)<Bullet />[`PublicTaxonomyBranchConnection!`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List Child TaxonomyBranches for a TaxonomyBranch.
+            
+Requires the publictaxonomybranch/read permission.
+> ##### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.taxonomyBranches.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.taxonomyBranches.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.taxonomyBranches.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.taxonomyBranches.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>taxonomyLevel</b></code>](#)<Bullet />[`TaxonomyLevel!`](/demand/api/graphql-storefront/reference/enums/taxonomy-level) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The level of the TaxonomyBranch in the hierarchy. Immutable.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>taxonomyTree</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The tree this taxonomyBranch lies within. This has slug formatting (Lowercase, no spaces). Immutable.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>title</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The name of the taxonomyBranch.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`PublicTaxonomyBranchConnection`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicTaxonomyBranchEdge`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch-edge)  <Badge class="secondary" text="object"/>
+
+
+

@@ -1,0 +1,47 @@
+---
+id: export-supplier-products
+title: exportSupplierProducts
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create an export of supplier products using set parameters.
+            
+Requires the supplierproduct/read and supplierproductlocale/read scopes on the specified Supplier.
+
+```graphql
+exportSupplierProducts(
+  input: ExportInput!
+  parameters: ExportSupplierProductsParametersInput!
+): SupplyExport!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>exportSupplierProducts.<b>input</b></code>](#)<Bullet />[`ExportInput!`](/supply/api/graphql-admin/reference/inputs/export-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>exportSupplierProducts.<b>parameters</b></code>](#)<Bullet />[`ExportSupplierProductsParametersInput!`](/supply/api/graphql-admin/reference/inputs/export-supplier-products-parameters-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`SupplyExport`](/supply/api/graphql-admin/reference/objects/supply-export) <Badge class="secondary" text="object"/>
+> An export for the Supply Domain.
+> 
+
+
+
+
+

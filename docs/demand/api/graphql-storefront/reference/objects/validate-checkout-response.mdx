@@ -1,0 +1,43 @@
+---
+id: validate-checkout-response
+title: ValidateCheckoutResponse
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The result of validating a checkout
+
+```graphql
+type ValidateCheckoutResponse {
+  checkout: Checkout!
+  errors: [CheckoutError]
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ValidateCheckoutResponse.<b>checkout</b></code>](#)<Bullet />[`Checkout!`](/demand/api/graphql-storefront/reference/objects/checkout) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ValidateCheckoutResponse.<b>errors</b></code>](#)<Bullet />[`[CheckoutError]`](/demand/api/graphql-storefront/reference/objects/checkout-error) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> A list of errors that occurred during validation, if any.
+> 
+
+
+
+### Returned by
+
+[`validateCustomerCheckout`](/demand/api/graphql-storefront/reference/mutations/validate-customer-checkout)  <Badge class="secondary" text="mutation"/>
+
+
+

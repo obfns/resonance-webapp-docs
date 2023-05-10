@@ -1,0 +1,53 @@
+---
+id: purchase-order-item-fulfillment
+title: PurchaseOrderItemFulfillment
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+This represents a package of items being shipped. May be part or all of a PurchaseOrderItem's quantity.
+
+```graphql
+type PurchaseOrderItemFulfillment {
+  fulfilledAt: Date!
+  fulfilledQuantity: Int!
+  shippingCarrier: String!
+  trackingNumber: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemFulfillment.<b>fulfilledAt</b></code>](#)<Bullet />[`Date!`](/supply/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemFulfillment.<b>fulfilledQuantity</b></code>](#)<Bullet />[`Int!`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemFulfillment.<b>shippingCarrier</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemFulfillment.<b>trackingNumber</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`PurchaseOrderItem`](/supply/api/graphql-admin/reference/objects/purchase-order-item)  <Badge class="secondary" text="object"/>
+
+
+

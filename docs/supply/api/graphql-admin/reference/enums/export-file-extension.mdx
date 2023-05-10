@@ -1,0 +1,38 @@
+---
+id: export-file-extension
+title: ExportFileExtension
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The file extension of an export. Can also be used to dictate file format.
+
+```graphql
+enum ExportFileExtension {
+  CSV
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportFileExtension.<b>CSV</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`ExportInput`](/supply/api/graphql-admin/reference/inputs/export-input)  <Badge class="secondary" text="input"/><Bullet />[`SupplyExportMetadata`](/supply/api/graphql-admin/reference/objects/supply-export-metadata)  <Badge class="secondary" text="object"/>
+
+
+

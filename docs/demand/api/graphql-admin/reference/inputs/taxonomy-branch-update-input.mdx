@@ -1,0 +1,63 @@
+---
+id: taxonomy-branch-update-input
+title: TaxonomyBranchUpdateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The input for updating a TaxonomyBranch.
+
+```graphql
+input TaxonomyBranchUpdateInput {
+  collectionId: ID
+  productTag: String
+  storefrontIds: [ID!]
+  taxonomyBranchId: ID!
+  title: String
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranchUpdateInput.<b>collectionId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> The collectionId associated with the TaxonomyBranch.
+Not required as a field, but is strongly suggested to be populated, and one is generally created with a TaxonomyBranch.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranchUpdateInput.<b>productTag</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The product tag associated with this TaxonomyBranch, used for filtering or display matching.
+
+On a Root TaxonomyBranch, this is generally a taxPrefix that is used in all child TaxonomyBranches,
+i.e. "Taxonomy" for child branch productTags like "Taxonomy,Category,T-Shirts"
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranchUpdateInput.<b>storefrontIds</b></code>](#)<Bullet />[`[ID!]`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The storefronts this taxonomyTree is published to.
+This is only present on the Root TaxonomyBranch of a taxonomyTree and applies to all child taxonomyBranches.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranchUpdateInput.<b>taxonomyBranchId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranchUpdateInput.<b>title</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The name of the taxonomyBranch.
+> 
+
+
+
+### Member of
+
+[`updateTaxonomyBranch`](/demand/api/graphql-admin/reference/mutations/update-taxonomy-branch)  <Badge class="secondary" text="mutation"/>
+
+
+

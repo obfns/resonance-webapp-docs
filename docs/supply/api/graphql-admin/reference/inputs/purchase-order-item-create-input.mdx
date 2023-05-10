@@ -1,0 +1,140 @@
+---
+id: purchase-order-item-create-input
+title: PurchaseOrderItemCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Input for creating a PurchaseOrderItem
+    
+Requires PurchaseOrderItem/write permissions
+
+```graphql
+input PurchaseOrderItemCreateInput {
+  barcode: String
+  customProperties: JSON
+  demandHqId: ID!
+  externalProductId: String!
+  externalVariantId: String!
+  fulfillments: [PurchaseOrderItemFulfillmentInput]
+  isCancelled: Boolean
+  isDraft: Boolean
+  isProcessing: Boolean
+  orderItemId: ID!
+  productTitle: String!
+  quantity: Int!
+  shippingAddress: AddressInput
+  sku: String
+  storefrontId: ID!
+  supplierId: ID!
+  supplierProductId: ID!
+  supplierVariantId: ID!
+  unitCost: Float!
+  variantTitle: String!
+  vendor: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>barcode</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>customProperties</b></code>](#)<Bullet />[`JSON`](/supply/api/graphql-admin/reference/scalars/json) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> DemandHQ that originated the PurchaseOrderItem
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>externalProductId</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Actual Supplier ID for the SupplierProduct
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>externalVariantId</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Actual Supplier ID for the SupplierVariant
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>fulfillments</b></code>](#)<Bullet />[`[PurchaseOrderItemFulfillmentInput]`](/supply/api/graphql-admin/reference/inputs/purchase-order-item-fulfillment-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Packages of items being shipped.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>isCancelled</b></code>](#)<Bullet />[`Boolean`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> When is cancelled, cannot be processed.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>isDraft</b></code>](#)<Bullet />[`Boolean`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> When is a draft, cannot be processed.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>isProcessing</b></code>](#)<Bullet />[`Boolean`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> Once in processing, can no longer be draft or cancelled.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>orderItemId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> OrderItem this PurchaseOrderItem is associated with
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>productTitle</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>quantity</b></code>](#)<Bullet />[`Int!`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>shippingAddress</b></code>](#)<Bullet />[`AddressInput`](/supply/api/graphql-admin/reference/inputs/address-input) <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>sku</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Storefront that originated the OrderItem
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> Supplier the PurchaseOrderItem is associated with
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>supplierProductId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> SupplierProduct the PurchaseOrderItem is associated with
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>supplierVariantId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> SupplierVariant the PurchaseOrderItem is associated with
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>unitCost</b></code>](#)<Bullet />[`Float!`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>variantTitle</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemCreateInput.<b>vendor</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`createPurchaseOrderItem`](/supply/api/graphql-admin/reference/mutations/create-purchase-order-item)  <Badge class="secondary" text="mutation"/>
+
+
+

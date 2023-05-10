@@ -18,7 +18,7 @@ The fields required to create a new VariantSupplierVariant
 ```graphql
 input VariantSupplierVariantCreateInput {
   averageShippingCost: Float
-  cost: Float!
+  cost: Float
   demandHqId: ID!
   handlingCost: VariantSupplierVariantHandlingCostInput
   inventoryPolicy: InventoryPolicy!
@@ -39,7 +39,7 @@ input VariantSupplierVariantCreateInput {
 Must be a positive number.
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariantCreateInput.<b>cost</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+#### [<code style={{ fontWeight: 'normal' }}>VariantSupplierVariantCreateInput.<b>cost</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
 > COGS, or Cost of Goods Sold for this VariantSupplierVariant
 Must be a positive number.
 > 

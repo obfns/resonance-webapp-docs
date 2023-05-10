@@ -1,0 +1,40 @@
+---
+id: start-import
+title: startImport
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Start an import that is in CREATED importStatus.
+
+```graphql
+startImport(
+  filename: String!
+): SupplyImport!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>startImport.<b>filename</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`SupplyImport`](/supply/api/graphql-admin/reference/objects/supply-import) <Badge class="secondary" text="object"/>
+> An import for the Supply Domain.
+> 
+
+
+
+
+

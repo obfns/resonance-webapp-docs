@@ -1,0 +1,59 @@
+---
+id: create-variant-from-supplier-variant
+title: createVariantFromSupplierVariant
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create a new Variant from a Supplier Variant.
+
+Requires variant/write permission on the associated demandHq for the requesting identity.
+Additionally, the DemandHq requires permission to the Supplier.
+
+```graphql
+createVariantFromSupplierVariant(
+  demandHqId: ID!
+  productId: ID!
+  supplierId: ID!
+  supplierVariantId: ID!
+): Variant!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createVariantFromSupplierVariant.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>createVariantFromSupplierVariant.<b>productId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>createVariantFromSupplierVariant.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>createVariantFromSupplierVariant.<b>supplierVariantId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`Variant`](/demand/api/graphql-admin/reference/objects/variant) <Badge class="secondary" text="object"/>
+> Represents a single SKU of a product
+Only the variant level exists, there is no parent product.
+> 
+
+
+
+
+

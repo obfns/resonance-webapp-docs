@@ -1,0 +1,65 @@
+---
+id: purchase-order-item-status
+title: PurchaseOrderItemStatus
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Status of the PurchaseOrderItem
+The status is a read-only calculated by the API.
+
+```graphql
+enum PurchaseOrderItemStatus {
+  CANCELLED
+  DRAFT
+  FULFILLED
+  INITIAL
+  PARTIALLY_FULFILLED
+  PROCESSING
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemStatus.<b>CANCELLED</b></code>](#) 
+> Indicates that the PurchaseOrderItem was placed, but is no longer needed to be fulfilled.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemStatus.<b>DRAFT</b></code>](#) 
+> Indicates that the PurchaseOrderItem is currently in the process of being created, and data is incomplete.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemStatus.<b>FULFILLED</b></code>](#) 
+> Indicates that the PurchaseOrderItem is fully fulfilled and is now complete.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemStatus.<b>INITIAL</b></code>](#) 
+> Indicates that the PurchaseOrderItem is ready for processing, and data is complete.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemStatus.<b>PARTIALLY_FULFILLED</b></code>](#) 
+> Indicates that the PurchaseOrderItem is in the process of being fulfilled.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemStatus.<b>PROCESSING</b></code>](#) 
+> Indicates that the PurchaseOrderItem now just beginning to be fulfilled. This
+also means that the item can no longer be cancelled.
+> 
+
+
+
+### Member of
+
+[`PurchaseOrderItem`](/supply/api/graphql-admin/reference/objects/purchase-order-item)  <Badge class="secondary" text="object"/>
+
+
+

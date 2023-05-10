@@ -1,0 +1,50 @@
+---
+id: delete-demand-hq-quick-link
+title: deleteDemandHqQuickLink
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Delete a DemandHqQuickLink
+
+```graphql
+deleteDemandHqQuickLink(
+  appId: ID!
+  demandHqId: ID!
+  quickLinkType: DemandHqQuickLinkType!
+): DemandHqQuickLinkDeletedResponse!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>deleteDemandHqQuickLink.<b>appId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>deleteDemandHqQuickLink.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>deleteDemandHqQuickLink.<b>quickLinkType</b></code>](#)<Bullet />[`DemandHqQuickLinkType!`](/demand/api/graphql-admin/reference/enums/demand-hq-quick-link-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+### Type
+
+#### [`DemandHqQuickLinkDeletedResponse`](/demand/api/graphql-admin/reference/objects/demand-hq-quick-link-deleted-response) <Badge class="secondary" text="object"/>
+> The response shape when a DemandHqQuickLink is deleted
+> 
+
+
+
+
+

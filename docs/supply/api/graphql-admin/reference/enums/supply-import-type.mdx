@@ -1,0 +1,38 @@
+---
+id: supply-import-type
+title: SupplyImportType
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The type of import requested.
+
+```graphql
+enum SupplyImportType {
+  SUPPLIER_PRODUCT_UPDATE
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyImportType.<b>SUPPLIER_PRODUCT_UPDATE</b></code>](#) 
+> Update Supplier Products (and tags) and a single SupplierProductLocale per SupplierProduct.
+> 
+
+
+
+### Member of
+
+[`createCsvImport`](/supply/api/graphql-admin/reference/mutations/create-csv-import)  <Badge class="secondary" text="mutation"/><Bullet />[`SupplyImportMetadata`](/supply/api/graphql-admin/reference/objects/supply-import-metadata)  <Badge class="secondary" text="object"/>
+
+
+

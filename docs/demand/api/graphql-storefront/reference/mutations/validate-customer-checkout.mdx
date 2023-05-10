@@ -20,7 +20,7 @@ Requires the publiccheckout/write scope and a valid customerToken.
 ```graphql
 validateCustomerCheckout(
   customerToken: String!
-): Checkout!
+): ValidateCheckoutResponse!
 ```
 
 
@@ -32,8 +32,8 @@ validateCustomerCheckout(
 
 ### Type
 
-#### [`Checkout`](/demand/api/graphql-storefront/reference/objects/checkout) <Badge class="secondary" text="object"/>
-> A checkout is a temporary container for an order and its orderItems that a customer or anonymous user wants to buy
+#### [`ValidateCheckoutResponse`](/demand/api/graphql-storefront/reference/objects/validate-checkout-response) <Badge class="secondary" text="object"/>
+> The result of validating a checkout
 > 
 
 

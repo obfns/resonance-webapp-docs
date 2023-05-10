@@ -1,0 +1,67 @@
+---
+id: taxonomy-level
+title: TaxonomyLevel
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The level of the TaxonomyBranch in the hierarchy.
+
+```graphql
+enum TaxonomyLevel {
+  CATEGORY
+  DEPARTMENT
+  ROOT
+  SUBCATEGORY1
+  SUBCATEGORY2
+  SUBCATEGORY3
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyLevel.<b>CATEGORY</b></code>](#) 
+> The second most outer categorization for a Product, generally describing a
+broad, but slightly refined grouping of products.
+"Clothing", "Shoes", "Computers", "TVs"
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyLevel.<b>DEPARTMENT</b></code>](#) 
+> The outermost categorization for a Product, generally describing a very broad grouping.
+"Apparel", "Electronics", "Home & Garden"
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyLevel.<b>ROOT</b></code>](#) 
+> Only a single TaxonomyBranch can live at this level, and it is the basis for the entire taxonomyTree.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyLevel.<b>SUBCATEGORY1</b></code>](#) 
+> The third most outer categorization for a Product, generally describing a specific grouping of products.
+"T-Shirts", "Jeans", "Sneakers", "Laptops", "Smartphones"
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyLevel.<b>SUBCATEGORY2</b></code>](#) 
+> An additional Subcategory level for a Product, generally describing a very specific grouping of products.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyLevel.<b>SUBCATEGORY3</b></code>](#) 
+> An additional Subcategory level for a Product, generally describing a very, very specific grouping of products.
+> 
+
+
+
+### Member of
+
+[`PublicTaxonomyBranch`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch)  <Badge class="secondary" text="object"/><Bullet />[`taxonomyBranches`](/demand/api/graphql-storefront/reference/queries/taxonomy-branches)  <Badge class="secondary" text="query"/>
+
+
+

@@ -1,0 +1,43 @@
+---
+id: update-products
+title: updateProducts
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Update multiple existing products.
+
+Requires the product/write permission on all given DemandHqs.
+
+```graphql
+updateProducts(
+  inputs: [ProductUpdateInput!]
+): [Product!]
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>updateProducts.<b>inputs</b></code>](#)<Bullet />[`[ProductUpdateInput!]`](/demand/api/graphql-admin/reference/inputs/product-update-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`Product`](/demand/api/graphql-admin/reference/objects/product) <Badge class="secondary" text="object"/>
+> A Product is a part of the Demand Domain and represents a the basic information of a product.
+Products have many support entities, including variants, which represent SKUs of the product.
+> 
+
+
+
+
+

@@ -37,6 +37,7 @@ type PublicPage {
   slug: String!
   subtitle: String
   tags: PageTags
+  tertiaryImageUrl: String
   title: String!
 }
 ```
@@ -101,6 +102,10 @@ status set to PUBLISHED will republish and re-set this date.
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>tags</b></code>](#)<Bullet />[`PageTags`](/demand/api/graphql-storefront/reference/objects/page-tags) <Badge class="secondary" text="object"/>
 > Get the tags of the page.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>tertiaryImageUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A tertiary image url for this page, not often used.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicPage.<b>title</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>

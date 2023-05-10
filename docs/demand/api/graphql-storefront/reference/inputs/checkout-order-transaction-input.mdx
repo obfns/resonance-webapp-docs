@@ -1,0 +1,88 @@
+---
+id: checkout-order-transaction-input
+title: CheckoutOrderTransactionInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create a CheckoutOrderTransaction
+
+```graphql
+input CheckoutOrderTransactionInput {
+  amount: Float!
+  authorizationCode: String
+  authorizationExpiresAt: Date
+  currency: ResonanceCurrency!
+  currencyExchangeAdjustment: OrderTransactionCurrencyExchangeAdjustmentInput
+  errorMessage: String
+  gateway: OrderTransactionGateway!
+  gatewayMessage: String
+  gatewayTransactionId: ID
+  orderTransactionType: OrderTransactionType!
+  processedAt: Date
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>amount</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>authorizationCode</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>authorizationExpiresAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>currency</b></code>](#)<Bullet />[`ResonanceCurrency!`](/demand/api/graphql-storefront/reference/enums/resonance-currency) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>currencyExchangeAdjustment</b></code>](#)<Bullet />[`OrderTransactionCurrencyExchangeAdjustmentInput`](/demand/api/graphql-storefront/reference/inputs/order-transaction-currency-exchange-adjustment-input) <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>errorMessage</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>gateway</b></code>](#)<Bullet />[`OrderTransactionGateway!`](/demand/api/graphql-storefront/reference/enums/order-transaction-gateway) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>gatewayMessage</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>gatewayTransactionId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>orderTransactionType</b></code>](#)<Bullet />[`OrderTransactionType!`](/demand/api/graphql-storefront/reference/enums/order-transaction-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderTransactionInput.<b>processedAt</b></code>](#)<Bullet />[`Date`](/demand/api/graphql-storefront/reference/scalars/date) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`completeCheckout`](/demand/api/graphql-storefront/reference/mutations/complete-checkout)  <Badge class="secondary" text="mutation"/>
+
+
+

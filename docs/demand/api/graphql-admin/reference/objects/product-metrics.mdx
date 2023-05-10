@@ -37,6 +37,8 @@ type ProductMetrics {
   priceMinimum: Float!
   priceMinimumInStock: Float
   productId: ID!
+  standardizedColors: [VariantStandardizedColor!]!
+  standardizedColorsInStock: [VariantStandardizedColor!]!
   updatedAt: String!
 }
 ```
@@ -122,6 +124,14 @@ type ProductMetrics {
 
 #### [<code style={{ fontWeight: 'normal' }}>ProductMetrics.<b>productId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > Id of the associated Product
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductMetrics.<b>standardizedColors</b></code>](#)<Bullet />[`[VariantStandardizedColor!]!`](/demand/api/graphql-admin/reference/enums/variant-standardized-color) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> All of the variants standardizedColors
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductMetrics.<b>standardizedColorsInStock</b></code>](#)<Bullet />[`[VariantStandardizedColor!]!`](/demand/api/graphql-admin/reference/enums/variant-standardized-color) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The standardizedColors of only in stock variants
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>ProductMetrics.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>

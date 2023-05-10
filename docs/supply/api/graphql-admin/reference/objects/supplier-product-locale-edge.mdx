@@ -1,0 +1,38 @@
+---
+id: supplier-product-locale-edge
+title: SupplierProductLocaleEdge
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+One edge producing one SupplierProductLocale Node
+
+```graphql
+type SupplierProductLocaleEdge {
+  node: SupplierProductLocale
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductLocaleEdge.<b>node</b></code>](#)<Bullet />[`SupplierProductLocale`](/supply/api/graphql-admin/reference/objects/supplier-product-locale) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`SupplierProductLocaleConnection`](/supply/api/graphql-admin/reference/objects/supplier-product-locale-connection)  <Badge class="secondary" text="object"/>
+
+
+

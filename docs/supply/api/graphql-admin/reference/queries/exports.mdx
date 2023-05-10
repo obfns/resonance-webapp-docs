@@ -1,0 +1,50 @@
+---
+id: exports
+title: exports
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Returns a list of the current user's exports.
+
+```graphql
+exports(
+  after: String
+  first: Int
+  supplierId: ID!
+): SupplyExportConnection!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>exports.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>exports.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>exports.<b>supplierId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`SupplyExportConnection`](/supply/api/graphql-admin/reference/objects/supply-export-connection) <Badge class="secondary" text="object"/>
+> A connection that returns a list of SupplyExport nodes.
+> 
+
+
+
+
+

@@ -1,0 +1,48 @@
+---
+id: supply-export-connection
+title: SupplyExportConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A connection that returns a list of SupplyExport nodes.
+
+```graphql
+type SupplyExportConnection {
+  edges: [SupplyExportEdge!]!
+  nodes: [SupplyExport!]!
+  pageInfo: SingleDirectionPageInfo
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportConnection.<b>edges</b></code>](#)<Bullet />[`[SupplyExportEdge!]!`](/supply/api/graphql-admin/reference/objects/supply-export-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportConnection.<b>nodes</b></code>](#)<Bullet />[`[SupplyExport!]!`](/supply/api/graphql-admin/reference/objects/supply-export) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportConnection.<b>pageInfo</b></code>](#)<Bullet />[`SingleDirectionPageInfo`](/supply/api/graphql-admin/reference/objects/single-direction-page-info) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`exports`](/supply/api/graphql-admin/reference/queries/exports)  <Badge class="secondary" text="query"/>
+
+
+

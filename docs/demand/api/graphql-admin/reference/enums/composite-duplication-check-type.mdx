@@ -1,0 +1,44 @@
+---
+id: composite-duplication-check-type
+title: CompositeDuplicationCheckType
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates how exactly to handle duplicates in a Composite Entity
+
+```graphql
+enum CompositeDuplicationCheckType {
+  INDIVIDUAL_CREATE
+  STANDARD
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>CompositeDuplicationCheckType.<b>INDIVIDUAL_CREATE</b></code>](#) 
+> Duplicates should be checked for every individual item in the inputs, both
+parent and child, and created if any do not exist
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CompositeDuplicationCheckType.<b>STANDARD</b></code>](#) 
+> The parent-most item will be checked for a duplicate, and if found, an error will be thrown
+> 
+
+
+
+### Member of
+
+[`createProductComposite`](/demand/api/graphql-admin/reference/mutations/create-product-composite)  <Badge class="secondary" text="mutation"/>
+
+
+

@@ -30,12 +30,17 @@ type SupplierProduct {
   last: Int
 ): SupplierProductContentItemConnection
   createdAt: Date!
-  customData: SupplierProductCustomData
   externalProductId: String!
   featuredImage: SupplierProductContentItem
   locale(
   localeType: ResonanceLocaleType!
 ): SupplierProductLocale
+  locales(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): SupplierProductLocaleConnection!
   optionLabels: [String!]!
   status: SupplyEntityStatus!
   supplierId: ID!
@@ -99,10 +104,6 @@ This means "featuredImage" can be retrieved by using contentType: IMAGE and firs
 > 
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>SupplierProduct.<b>customData</b></code>](#)<Bullet />[`SupplierProductCustomData`](/supply/api/graphql-admin/reference/objects/supplier-product-custom-data) <Badge class="secondary" text="object"/>
-> Get the associated SupplierProductCustomData
-> 
-
 #### [<code style={{ fontWeight: 'normal' }}>SupplierProduct.<b>externalProductId</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > Passed along in PurchaseOrders so the Supplier can identify items in their warehouse.
 > 
@@ -118,9 +119,29 @@ This is a convenience field that is equivalent to contentItems(contentType: IMAG
 #### [<code style={{ fontWeight: 'normal' }}>SupplierProduct.<b>locale</b></code>](#)<Bullet />[`SupplierProductLocale`](/supply/api/graphql-admin/reference/objects/supplier-product-locale) <Badge class="secondary" text="object"/>
 > Get a single supplierProductLocale by ResonanceLocaleType
 
-    Requires supplierproductlocale/read permission on the requesting identity
+Requires supplierproductlocale/read permission on the requesting identity
 > ##### [<code style={{ fontWeight: 'normal' }}>SupplierProduct.locale.<b>localeType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/supply/api/graphql-admin/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProduct.<b>locales</b></code>](#)<Bullet />[`SupplierProductLocaleConnection!`](/supply/api/graphql-admin/reference/objects/supplier-product-locale-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> List supplierProductLocales.
+
+Requires supplierproductlocale/read permission on the requesting identity
+> ##### [<code style={{ fontWeight: 'normal' }}>SupplierProduct.locales.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierProduct.locales.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierProduct.locales.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierProduct.locales.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierProduct.<b>optionLabels</b></code>](#)<Bullet />[`[String!]!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
