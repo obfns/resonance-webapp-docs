@@ -1,0 +1,60 @@
+---
+id: demand-hq-quick-link-create-input
+title: DemandHqQuickLinkCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The required input fields to create a new DemandHqQuickLink
+            
+You must be calling from the pertaining app's AppClient
+
+```graphql
+input DemandHqQuickLinkCreateInput {
+  appId: ID!
+  demandHqId: ID!
+  dynamicUrl: String!
+  label: String!
+  quickLinkType: DemandHqQuickLinkType!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqQuickLinkCreateInput.<b>appId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The Id of the App this quicklink pertains to.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqQuickLinkCreateInput.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The Id of the DemandHq this quicklink pertains to (the one that has installed your app).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqQuickLinkCreateInput.<b>dynamicUrl</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> This can have dynamic parts, using [demandHqId], [productId], and [variantId] format. It represents where the link goes.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqQuickLinkCreateInput.<b>label</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> What the text for the link should be to the user.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqQuickLinkCreateInput.<b>quickLinkType</b></code>](#)<Bullet />[`DemandHqQuickLinkType!`](/demand/api/graphql-admin/reference/enums/demand-hq-quick-link-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Indicates which page the DemandHqQuickLink would live on
+> 
+
+
+
+### Member of
+
+[`createDemandHqQuickLink`](/demand/api/graphql-admin/reference/mutations/create-demand-hq-quick-link)  <Badge class="secondary" text="mutation"/>
+
+
+

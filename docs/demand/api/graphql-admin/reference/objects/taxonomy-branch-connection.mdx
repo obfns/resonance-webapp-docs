@@ -1,0 +1,48 @@
+---
+id: taxonomy-branch-connection
+title: TaxonomyBranchConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through TaxonomyBranches
+
+```graphql
+type TaxonomyBranchConnection {
+  edges: [TaxonomyBranchEdge]!
+  nodes: [TaxonomyBranch]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranchConnection.<b>edges</b></code>](#)<Bullet />[`[TaxonomyBranchEdge]!`](/demand/api/graphql-admin/reference/objects/taxonomy-branch-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranchConnection.<b>nodes</b></code>](#)<Bullet />[`[TaxonomyBranch]!`](/demand/api/graphql-admin/reference/objects/taxonomy-branch) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranchConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/><Bullet />[`TaxonomyBranch`](/demand/api/graphql-admin/reference/objects/taxonomy-branch)  <Badge class="secondary" text="object"/>
+
+
+

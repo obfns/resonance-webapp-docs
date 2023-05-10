@@ -134,6 +134,42 @@ type Checkout {
   updatedAt: Date!
 }
 
+"""An error that occurred during checkout validation"""
+type CheckoutError {
+  """A CompleteCheckoutErrorCode"""
+  code: CheckoutErrorCode!
+
+  """A JSON object containing specific details about the error"""
+  details: JSON
+
+  """A human readable error message"""
+  message: String!
+}
+
+"""Error codes for the CheckoutError type"""
+enum CheckoutErrorCode {
+  CHECKOUT_INVALID
+  CHECKOUT_NOT_FOUND
+  CHECKOUT_ORDER_INVALID
+  CHECKOUT_ORDER_ITEMS_INVALID
+  CHECKOUT_ORDER_ITEMS_NOT_FOUND
+  CHECKOUT_ORDER_ITEM_QUANTITY_NOT_FOUND
+  CHECKOUT_ORDER_NOT_FOUND
+  CUSTOMER_NOT_FOUND
+  FAILED_TO_COMPLETE_CHECKOUT
+  INSUFFICIENT_QUANTITY
+  INVALID_AUTHORIZE_NET_TRANSACTION
+  INVALID_ORDER_TRANSACTION
+  ORDER_INPUT_INVALID
+  ORDER_ITEMS_INVALID
+  ORDER_TAGS_INVALID
+  PRODUCT_NOT_FOUND
+  UNPROCESSED_ORDER_ITEMS
+  VARIANT_DUPLICATE
+  VARIANT_METRICS_NOT_FOUND
+  VARIANT_NOT_FOUND
+}
+
 """
 This is an order in the checkout process, pending creation.
 Nearly all fields are optional, but their existence is still required by the end
@@ -185,6 +221,8 @@ type CheckoutOrderItem {
   shippingCharges: [OrderItemShippingCharge]
   shippingMethod: ShippingMethod
   taxes: [OrderItemTax]
+
+  """Price per item, can be multiplied by quantity for total price"""
   unitPrice: Float
   variantId: ID!
 }
@@ -198,8 +236,25 @@ input CheckoutOrderItemInput {
   shippingCharges: [OrderItemShippingChargeInput]
   shippingMethod: ShippingMethod
   taxes: [OrderItemTaxInput]
+
+  """Price per item, can be multiplied by quantity for total price"""
   unitPrice: Float
   variantId: ID!
+}
+
+"""Create a CheckoutOrderTransaction"""
+input CheckoutOrderTransactionInput {
+  amount: Float!
+  authorizationCode: String
+  authorizationExpiresAt: Date
+  currency: ResonanceCurrency!
+  currencyExchangeAdjustment: OrderTransactionCurrencyExchangeAdjustmentInput
+  errorMessage: String
+  gateway: OrderTransactionGateway!
+  gatewayMessage: String
+  gatewayTransactionId: ID
+  orderTransactionType: OrderTransactionType!
+  processedAt: Date
 }
 
 """Indicates the type of checkout"""
@@ -296,6 +351,13 @@ type CollectionTypeContentTags {
     key: String
   ): [ParsedTag]
   raw: [String!]
+}
+
+"""
+The process of checkout completion is asynchronous so there is no data (like an order id) to return to the caller.
+"""
+type CompleteCheckoutResponse {
+  message: String!
 }
 
 """
@@ -704,6 +766,13 @@ type Mutation {
   ): Cart!
 
   """
+  Completes a checkout, queueing a request to create an order, orderItems, and orderTransaction.
+  
+  Requires the publiccheckout/write scope and a valid customerToken.
+  """
+  completeCheckout(customerToken: String!, orderTransactionInput: CheckoutOrderTransactionInput!): CompleteCheckoutResponse!
+
+  """
   Create a Customer.
   
   Requires the publiccustomer/write scope.
@@ -776,7 +845,7 @@ type Mutation {
   
   Requires the publiccheckout/write scope and a valid customerToken.
   """
-  validateCustomerCheckout(customerToken: String!): Checkout!
+  validateCustomerCheckout(customerToken: String!): ValidateCheckoutResponse!
 }
 
 """
@@ -964,8 +1033,19 @@ type OrderTransactionCurrencyExchangeAdjustment {
   targetCurrency: ResonanceCurrency!
 }
 
+"""Input for OrderTransactionCurrencyExchangeAdjustment"""
+input OrderTransactionCurrencyExchangeAdjustmentInput {
+  """The amount in the shop's default currency."""
+  targetAmount: Float!
+
+  """Shop's default currency."""
+  targetCurrency: ResonanceCurrency!
+}
+
 """Indicates which Payment Gateway was used for a Transaction."""
 enum OrderTransactionGateway {
+  AUTHORIZE_NET
+  MANUAL
   TEST
 }
 
@@ -1310,6 +1390,9 @@ type PublicCollection {
   """Get the tags of the collection."""
   tags: CollectionTags
 
+  """A tertiary image url for this collection, not often used."""
+  tertiaryImageUrl: String
+
   """The title of the collection, limit 256 characters."""
   title: String!
 }
@@ -1578,6 +1661,11 @@ type PublicOrderEdge {
 
 """An item in a PublicOrder."""
 type PublicOrderItem {
+  """The price of the OrderItem after adjustments."""
+  adjustedPrice: Float!
+
+  """The quantity of the OrderItem after adjustments."""
+  adjustedQuantity: Int!
   adjustments: [OrderItemAdjustment]
   barcode: String
   currency: ResonanceCurrency!
@@ -1704,6 +1792,9 @@ type PublicPage {
 
   """Get the tags of the page."""
   tags: PageTags
+
+  """A tertiary image url for this page, not often used."""
+  tertiaryImageUrl: String
 
   """The title of the page, limit 256 characters."""
   title: String!
@@ -1940,7 +2031,7 @@ type PublicProductConnectionWithSearch {
 This has a many to one relationship with Product, and provides a connection to the CDN items.
 """
 type PublicProductContentItem {
-  alt: String!
+  alt: String
   category: String
   contentItemId: ID!
 
@@ -2059,6 +2150,12 @@ type PublicProductMetrics {
   The minimum price from all in stock variants (null if no variants are in stock)
   """
   priceMinimumInStock: Float
+
+  """All of the variants standardizedColors"""
+  standardizedColors: [VariantStandardizedColor!]!
+
+  """The standardizedColors of only in stock variants"""
+  standardizedColorsInStock: [VariantStandardizedColor!]!
 }
 
 """
@@ -2070,6 +2167,86 @@ type PublicStorefront {
   name: String!
   storefrontId: ID!
   urlDomain: String!
+}
+
+"""
+TaxonomyBranch is an item within a taxonomyTree that maps out a Product Taxonomy
+hierarchy using Product Tags and Collections.
+"""
+type PublicTaxonomyBranch {
+  """
+  The collectionId associated with the TaxonomyBranch.
+  Not required as a field, but is strongly suggested to be populated, and one is generally created with a TaxonomyBranch.
+  """
+  collectionId: ID
+  createdAt: Date!
+  demandHqId: ID!
+
+  """
+  All TaxonomyBranches besides the root have a parentTaxonomyBranchId. Immutable.
+  """
+  parentTaxonomyBranchId: ID
+
+  """
+  The product tag associated with this TaxonomyBranch, used for filtering or display matching.
+  
+  On a Root TaxonomyBranch, this is generally a taxPrefix that is used in all child TaxonomyBranches,
+  i.e. "Taxonomy" for child branch productTags like "Taxonomy,Category,T-Shirts"
+  """
+  productTag: String!
+
+  """
+  The storefronts this taxonomyTree is published to.
+  This is only present on the Root TaxonomyBranch of a taxonomyTree and applies to all child taxonomyBranches.
+  """
+  storefrontIds: [ID!]
+  taxonomyBranchId: ID!
+
+  """
+  List Child TaxonomyBranches for a TaxonomyBranch.
+              
+  Requires the publictaxonomybranch/read permission.
+  """
+  taxonomyBranches(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): PublicTaxonomyBranchConnection!
+
+  """The level of the TaxonomyBranch in the hierarchy. Immutable."""
+  taxonomyLevel: TaxonomyLevel!
+
+  """
+  The tree this taxonomyBranch lies within. This has slug formatting (Lowercase, no spaces). Immutable.
+  """
+  taxonomyTree: String!
+
+  """The name of the taxonomyBranch."""
+  title: String!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+
+"""Paginate through PublicTaxonomyBranches"""
+type PublicTaxonomyBranchConnection {
+  edges: [PublicTaxonomyBranchEdge]!
+  nodes: [PublicTaxonomyBranch]!
+  pageInfo: PageInfo!
+}
+
+"""One edge producing one TaxonomyBranch Node"""
+type PublicTaxonomyBranchEdge {
+  node: PublicTaxonomyBranch
 }
 
 """
@@ -2124,7 +2301,7 @@ type PublicVariant {
   position: Int
 
   """Price for the defaultCurrency, can be any positive float number value."""
-  price: Float!
+  price: Float
 
   """
   Get the product associated with the variant.
@@ -2572,6 +2749,32 @@ type Query {
   Requires the "publicstorefront/read" permission.
   """
   storefront: PublicStorefront
+
+  """
+  List TaxonomyBranches.
+              
+  Requires the publictaxonomybranch/read permission.
+  """
+  taxonomyBranches(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+    href: String
+    hrefPrefix: String
+
+    """Returns the last n elements from the list."""
+    last: Int
+    taxonomyBranchIds: [ID]
+    taxonomyBranchLevel: TaxonomyLevel
+    taxonomyBranchType: String
+  ): PublicTaxonomyBranchConnection!
 }
 
 """Used throughout the app to give a currency to price information"""
@@ -2627,12 +2830,57 @@ input StringFilterInput {
   values: [String!]!
 }
 
+"""The level of the TaxonomyBranch in the hierarchy."""
+enum TaxonomyLevel {
+  """
+  The second most outer categorization for a Product, generally describing a
+  broad, but slightly refined grouping of products.
+  "Clothing", "Shoes", "Computers", "TVs"
+  """
+  CATEGORY
+
+  """
+  The outermost categorization for a Product, generally describing a very broad grouping.
+  "Apparel", "Electronics", "Home & Garden"
+  """
+  DEPARTMENT
+
+  """
+  Only a single TaxonomyBranch can live at this level, and it is the basis for the entire taxonomyTree.
+  """
+  ROOT
+
+  """
+  The third most outer categorization for a Product, generally describing a specific grouping of products.
+  "T-Shirts", "Jeans", "Sneakers", "Laptops", "Smartphones"
+  """
+  SUBCATEGORY1
+
+  """
+  An additional Subcategory level for a Product, generally describing a very specific grouping of products.
+  """
+  SUBCATEGORY2
+
+  """
+  An additional Subcategory level for a Product, generally describing a very, very specific grouping of products.
+  """
+  SUBCATEGORY3
+}
+
 """
 Indicates the key of the term aggregation, and approximately how many documents it occurs in. 
 """
 type TermAggregation {
   docCount: Int!
   key: String!
+}
+
+"""The result of validating a checkout"""
+type ValidateCheckoutResponse {
+  checkout: Checkout!
+
+  """A list of errors that occurred during validation, if any."""
+  errors: [CheckoutError]
 }
 
 """How this variant gets delivered. Defaults to SHIPPING."""

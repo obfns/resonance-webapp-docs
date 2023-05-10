@@ -1,0 +1,47 @@
+---
+id: create-product-composite
+title: createProductComposite
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create a new Product and its associated ContentItems, Locales, and Variants in
+one mutation. Requires several write permissions and access to a Supplier.
+
+```graphql
+createProductComposite(
+  duplicationCheckType: CompositeDuplicationCheckType
+  input: ProductCompositeCreateInput!
+): Product!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createProductComposite.<b>duplicationCheckType</b></code>](#)<Bullet />[`CompositeDuplicationCheckType`](/demand/api/graphql-admin/reference/enums/composite-duplication-check-type) <Badge class="secondary" text="enum"/>
+> The type of duplication check to perform, defaults to STANDARD
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>createProductComposite.<b>input</b></code>](#)<Bullet />[`ProductCompositeCreateInput!`](/demand/api/graphql-admin/reference/inputs/product-composite-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`Product`](/demand/api/graphql-admin/reference/objects/product) <Badge class="secondary" text="object"/>
+> A Product is a part of the Demand Domain and represents a the basic information of a product.
+Products have many support entities, including variants, which represent SKUs of the product.
+> 
+
+
+
+
+

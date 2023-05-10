@@ -17,12 +17,22 @@ Indicates which Payment Gateway was used for a Transaction.
 
 ```graphql
 enum OrderTransactionGateway {
+  AUTHORIZE_NET
+  MANUAL
   TEST
 }
 ```
 
 
 ### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionGateway.<b>AUTHORIZE_NET</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderTransactionGateway.<b>MANUAL</b></code>](#) 
+> 
+> 
 
 #### [<code style={{ fontWeight: 'normal' }}>OrderTransactionGateway.<b>TEST</b></code>](#) 
 > 
@@ -32,7 +42,7 @@ enum OrderTransactionGateway {
 
 ### Member of
 
-[`PublicOrderTransaction`](/demand/api/graphql-storefront/reference/objects/public-order-transaction)  <Badge class="secondary" text="object"/>
+[`CheckoutOrderTransactionInput`](/demand/api/graphql-storefront/reference/inputs/checkout-order-transaction-input)  <Badge class="secondary" text="input"/><Bullet />[`PublicOrderTransaction`](/demand/api/graphql-storefront/reference/objects/public-order-transaction)  <Badge class="secondary" text="object"/>
 
 
 

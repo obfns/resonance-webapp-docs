@@ -13,7 +13,7 @@ export const SpecifiedBy = (props) => <>Specification<a className="link" style={
 export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
 
 
-The main item of the Supplier Domain, represents a single SKU of a product
+Represents a single SKU of a product
 Only the variant level exists, there is no parent product.
 
 ```graphql
@@ -32,7 +32,7 @@ type Variant {
   msrp: Float
   optionValues: [String!]!
   position: Int
-  price: Float!
+  price: Float
   product: Product
   productId: ID!
   shippingDimensions: VariantShippingDimensions
@@ -123,7 +123,7 @@ See https://docs.buildresonance.com/concepts/products/#no-option-products for mo
 Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>Variant.<b>price</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+#### [<code style={{ fontWeight: 'normal' }}>Variant.<b>price</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
 > Price for the defaultCurrency, can be any positive float number value.
 > 
 
@@ -203,7 +203,7 @@ Requires the product/read scope on the associated DemandHq.
 
 ### Returned by
 
-[`createVariant`](/demand/api/graphql-admin/reference/mutations/create-variant)  <Badge class="secondary" text="mutation"/><Bullet />[`updateVariant`](/demand/api/graphql-admin/reference/mutations/update-variant)  <Badge class="secondary" text="mutation"/><Bullet />[`updateVariants`](/demand/api/graphql-admin/reference/mutations/update-variants)  <Badge class="secondary" text="mutation"/><Bullet />[`variant`](/demand/api/graphql-admin/reference/queries/variant)  <Badge class="secondary" text="query"/>
+[`createVariant`](/demand/api/graphql-admin/reference/mutations/create-variant)  <Badge class="secondary" text="mutation"/><Bullet />[`createVariantFromSupplierVariant`](/demand/api/graphql-admin/reference/mutations/create-variant-from-supplier-variant)  <Badge class="secondary" text="mutation"/><Bullet />[`updateVariant`](/demand/api/graphql-admin/reference/mutations/update-variant)  <Badge class="secondary" text="mutation"/><Bullet />[`updateVariants`](/demand/api/graphql-admin/reference/mutations/update-variants)  <Badge class="secondary" text="mutation"/><Bullet />[`variant`](/demand/api/graphql-admin/reference/queries/variant)  <Badge class="secondary" text="query"/>
 
 ### Member of
 

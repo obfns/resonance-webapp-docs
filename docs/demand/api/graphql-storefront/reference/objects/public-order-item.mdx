@@ -17,6 +17,8 @@ An item in a PublicOrder.
 
 ```graphql
 type PublicOrderItem {
+  adjustedPrice: Float!
+  adjustedQuantity: Int!
   adjustments: [OrderItemAdjustment]
   barcode: String
   currency: ResonanceCurrency!
@@ -45,6 +47,14 @@ type PublicOrderItem {
 
 
 ### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>adjustedPrice</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The price of the OrderItem after adjustments.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>adjustedQuantity</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The quantity of the OrderItem after adjustments.
+> 
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>adjustments</b></code>](#)<Bullet />[`[OrderItemAdjustment]`](/demand/api/graphql-storefront/reference/objects/order-item-adjustment) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
 > 

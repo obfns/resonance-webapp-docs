@@ -1,0 +1,52 @@
+---
+id: public-taxonomy-branch-connection
+title: PublicTaxonomyBranchConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through PublicTaxonomyBranches
+
+```graphql
+type PublicTaxonomyBranchConnection {
+  edges: [PublicTaxonomyBranchEdge]!
+  nodes: [PublicTaxonomyBranch]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranchConnection.<b>edges</b></code>](#)<Bullet />[`[PublicTaxonomyBranchEdge]!`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranchConnection.<b>nodes</b></code>](#)<Bullet />[`[PublicTaxonomyBranch]!`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranchConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-storefront/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`taxonomyBranches`](/demand/api/graphql-storefront/reference/queries/taxonomy-branches)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`PublicTaxonomyBranch`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch)  <Badge class="secondary" text="object"/>
+
+
+

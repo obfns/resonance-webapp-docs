@@ -1,0 +1,76 @@
+---
+id: demand-hq-quick-links
+title: demandHqQuickLinks
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+List multiple DemandHqQuickLinks for an app.
+
+At least one filter is required, demandHqId and quickLinkType are required to be used together.
+
+Permissions vary by filter:
+- appId: You must be an appClient for the app.
+- demandHqId: You must have demandhq/read permission for the demandHq.
+
+```graphql
+demandHqQuickLinks(
+  after: String
+  appId: ID
+  before: String
+  demandHqId: ID
+  first: Int
+  last: Int
+  quickLinkType: DemandHqQuickLinkType
+): DemandHqQuickLinkConnection!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>demandHqQuickLinks.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>demandHqQuickLinks.<b>appId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter for AppId, cannot be used with other filters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>demandHqQuickLinks.<b>before</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>demandHqQuickLinks.<b>demandHqId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> Filter to be used with quickLinkType, cannot be used with other filters.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>demandHqQuickLinks.<b>first</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>demandHqQuickLinks.<b>last</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>demandHqQuickLinks.<b>quickLinkType</b></code>](#)<Bullet />[`DemandHqQuickLinkType`](/demand/api/graphql-admin/reference/enums/demand-hq-quick-link-type) <Badge class="secondary" text="enum"/>
+> Filter to be used with demandHqId, cannot be used with other filters.
+> 
+
+### Type
+
+#### [`DemandHqQuickLinkConnection`](/demand/api/graphql-admin/reference/objects/demand-hq-quick-link-connection) <Badge class="secondary" text="object"/>
+> Paginate through DemandHqQuickLinks
+> 
+
+
+
+
+

@@ -88,6 +88,14 @@ enum AppType {
   SUPPLIERAPP
 }
 
+"""The status of a given import or export."""
+enum BulkActionStatus {
+  COMPLETED
+  CREATED
+  ERROR
+  IN_PROGRESS
+}
+
 """Indicates how exactly to handle duplicates in a Composite Entity"""
 enum CompositeDuplicationCheckType {
   """
@@ -105,6 +113,76 @@ enum CompositeDuplicationCheckType {
 """A date in ISO 8601 format"""
 scalar Date
 
+"""
+The file extension of an export. Can also be used to dictate file format.
+"""
+enum ExportFileExtension {
+  CSV
+}
+
+"""The required fields to request an input."""
+input ExportInput {
+  format: ExportFileExtension!
+
+  """
+  The name of the export, something to remember it by. Must be only Letters
+  (Capital or Lowercase) and Numbers. No spaces or special characters. Maximum 36 characters.
+  """
+  name: String!
+  supplierId: ID!
+}
+
+"""The parameters for an exportSupplierProducts request."""
+input ExportSupplierProductsParametersInput {
+  """Filter SupplierProducts using cost ranges."""
+  cost: [FloatRangeFilterInput]
+
+  """Filter SupplierProducts using InventoryPolicy (Variant)."""
+  inventoryPolicy: [SupplierProductInventoryPolicyFilterInput]
+  inventoryStatus: VariantInventoryStatus
+  localeType: ResonanceLocaleType!
+
+  """Filter SupplierProducts using Manufacturer (VariantSupplement)."""
+  manufacturer: [StringFilterInput]
+
+  """
+  The maximum number of items to export. Must be a positive integer and less than or equal to 1,000,000.
+  """
+  maximumNumberOfItems: Int
+
+  """Filter SupplierProducts using MSRP ranges."""
+  msrp: [FloatRangeFilterInput]
+
+  """
+  Query supplierProducts for certain terms. Searches several fields, including
+  supplierProduct.tags, supplierProduct.title, supplierProduct.vendor,
+  supplierProductLocales.description, supplierProductLocales.featureBullets,
+  supplierVariantSupplements.barcode, supplierVariantSupplement.mpn,
+  supplierVariantSupplement.sku
+  """
+  query: String
+
+  """Filter SupplierProducts using recommendedPrice ranges."""
+  recommendedPrice: [FloatRangeFilterInput]
+
+  """
+  Sort SupplierProducts by a series of fields and directions, defaults to CREATED_AT/ASC.
+  """
+  sortOrder: [SupplierProductSortInput]
+
+  """Filter SupplierProducts using StandardizedColor (Variant)."""
+  standardizedColor: [SupplierProductStandardizedColorFilterInput]
+
+  """Filter SupplierProducts using Status."""
+  status: SupplyEntityStatusFilterInput
+
+  """Filter SupplierProducts using Tags."""
+  tags: [StringFilterInput]
+
+  """Filter SupplierProducts using Vendors."""
+  vendor: StringFilterInput
+}
+
 """Indicates how a filter should behave, defaults to OR"""
 enum FilterOperator {
   AND
@@ -120,6 +198,11 @@ input FloatRangeFilterInput {
   min: Float!
 }
 
+"""The file extension of an import's data file."""
+enum ImportFileExtension {
+  JSON
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -129,6 +212,17 @@ scalar JSON
 type Mutation {
   """Associate an existing ContentItem with a new SupplierProduct"""
   associateSupplierProductContentItem(input: SupplierProductContentItemAssociationCreateInput): SupplierProductContentItem
+
+  """
+  Create an import using a CSV file.
+  This could also be called "createPreview" as it does not actually start the import.
+              
+  The permissions required vary depending on the type of import requested.
+  """
+  createCsvImport(csvData: String!, importType: SupplyImportType!, name: String!, supplierId: ID!): SupplyImport!
+
+  """Creates a new PurchaseOrderItem"""
+  createPurchaseOrderItem(input: PurchaseOrderItemCreateInput!): PurchaseOrderItem!
 
   """
   Create a new supplier
@@ -206,20 +300,21 @@ type Mutation {
   """Delete a SupplierProduct (and all of its child entities)"""
   deleteSupplierProduct(supplierProductId: ID!): SupplierProductDeleteResponse!
 
-  """Delete specified keys from the SupplierProductCustomData"""
-  deleteSupplierProductCustomData(keysToDelete: [String!]!, supplierProductId: ID!): SupplierProductCustomData!
-
   """Delete a SupplierQuickLink"""
   deleteSupplierQuickLink(appId: ID!, quickLinkType: SupplierQuickLinkType!, supplierId: ID!): SupplierQuickLinkDeletedResponse!
 
   """Delete a supplierVariant"""
   deleteSupplierVariant(supplierVariantId: ID): SupplierVariantDeleteResponse!
 
-  """Delete specified keys from the SupplierVariantCustomData"""
-  deleteSupplierVariantCustomData(keysToDelete: [String!]!, supplierVariantId: ID!): SupplierVariantCustomData!
-
   """Delete a subscription for a type of supply event."""
   deleteSupplyEventSubscription(eventSubscriptionId: ID!): SupplyEventSubscriptionDeleteResponse!
+
+  """
+  Create an export of supplier products using set parameters.
+              
+  Requires the supplierproduct/read and supplierproductlocale/read scopes on the specified Supplier.
+  """
+  exportSupplierProducts(input: ExportInput!, parameters: ExportSupplierProductsParametersInput!): SupplyExport!
 
   """
   Install an app to a Supplier (give an app permissions)
@@ -228,6 +323,9 @@ type Mutation {
   """
   installApp(appId: ID!, supplierId: ID!): AppInstallationResponse!
 
+  """Start an import that is in CREATED importStatus."""
+  startImport(filename: String!): SupplyImport!
+
   """
   Update an app's permissions on a Supplier. This is a no-op if the app's
   requested permissions are the same as the current permissions.
@@ -235,6 +333,9 @@ type Mutation {
   Requires the supplieridentity/write permission on the given Supplier
   """
   updateAppPermissions(appId: ID!, supplierId: ID!): AppInstallationResponse!
+
+  """Updates an existing PurchaseOrderItem"""
+  updatePurchaseOrderItem(input: PurchaseOrderItemUpdateInput!): PurchaseOrderItem!
 
   """
   Update an existing supplier
@@ -293,12 +394,6 @@ type Mutation {
   Note that if there are Permission or UserInput Errors, the entire group will fail, not partially succeed.
   """
   updateSupplierVariants(externalInputs: [SupplierVariantExternalUpdateInput], inputs: [SupplierVariantUpdateInput]): [SupplierVariant!]
-
-  """Add or update keys in the SupplierProductCustomData"""
-  upsertSupplierProductCustomData(input: SupplierProductCustomDataUpsertInput!): SupplierProductCustomData!
-
-  """Add or update keys in the SupplierVariantCustomData"""
-  upsertSupplierVariantCustomData(input: SupplierVariantCustomDataUpsertInput!): SupplierVariantCustomData!
 
   """
   Bulk upsert supplierVariantSupplements.
@@ -426,6 +521,204 @@ type PublicSupplierEdge {
   node: PublicSupplier
 }
 
+"""A single item to be shipped to an address"""
+type PurchaseOrderItem {
+  barcode: String
+  createdAt: String!
+  customProperties: JSON
+
+  """DemandHQ that originated the PurchaseOrderItem"""
+  demandHqId: ID!
+
+  """Actual Supplier ID for the SupplierProduct"""
+  externalProductId: String!
+
+  """Actual Supplier ID for the SupplierVariant"""
+  externalVariantId: String!
+
+  """Packages of items being shipped."""
+  fulfillments: [PurchaseOrderItemFulfillment]
+
+  """When is cancelled, cannot be processed."""
+  isCancelled: Boolean
+
+  """When is a draft, cannot be processed."""
+  isDraft: Boolean
+
+  """Once in processing, can no longer be draft or cancelled."""
+  isProcessing: Boolean
+
+  """OrderItem this PurchaseOrderItem is associated with"""
+  orderItemId: ID!
+  productTitle: String!
+  purchaseOrderItemId: ID!
+  quantity: Int!
+  shippingAddress: Address
+  sku: String
+
+  """Status of the PurchaseOrderItem"""
+  status: PurchaseOrderItemStatus!
+
+  """Storefront that originated the OrderItem"""
+  storefrontId: ID!
+
+  """Supplier the PurchaseOrderItem is associated with"""
+  supplierId: ID!
+
+  """SupplierProduct the PurchaseOrderItem is associated with"""
+  supplierProductId: ID!
+
+  """SupplierVariant the PurchaseOrderItem is associated with"""
+  supplierVariantId: ID!
+  unitCost: Float!
+  updatedAt: String!
+  updatedBy: String!
+  variantTitle: String!
+  vendor: String!
+}
+
+"""Paginate through PurchaseOrderItems"""
+type PurchaseOrderItemConnection {
+  edges: [PurchaseOrderItemEdge]!
+  nodes: [PurchaseOrderItem]!
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a PurchaseOrderItem
+    
+Requires PurchaseOrderItem/write permissions
+"""
+input PurchaseOrderItemCreateInput {
+  barcode: String
+  customProperties: JSON
+
+  """DemandHQ that originated the PurchaseOrderItem"""
+  demandHqId: ID!
+
+  """Actual Supplier ID for the SupplierProduct"""
+  externalProductId: String!
+
+  """Actual Supplier ID for the SupplierVariant"""
+  externalVariantId: String!
+
+  """Packages of items being shipped."""
+  fulfillments: [PurchaseOrderItemFulfillmentInput]
+
+  """When is cancelled, cannot be processed."""
+  isCancelled: Boolean
+
+  """When is a draft, cannot be processed."""
+  isDraft: Boolean
+
+  """Once in processing, can no longer be draft or cancelled."""
+  isProcessing: Boolean
+
+  """OrderItem this PurchaseOrderItem is associated with"""
+  orderItemId: ID!
+  productTitle: String!
+  quantity: Int!
+  shippingAddress: AddressInput
+  sku: String
+
+  """Storefront that originated the OrderItem"""
+  storefrontId: ID!
+
+  """Supplier the PurchaseOrderItem is associated with"""
+  supplierId: ID!
+
+  """SupplierProduct the PurchaseOrderItem is associated with"""
+  supplierProductId: ID!
+
+  """SupplierVariant the PurchaseOrderItem is associated with"""
+  supplierVariantId: ID!
+  unitCost: Float!
+  variantTitle: String!
+  vendor: String!
+}
+
+"""One edge producing one PurchaseOrderItem node"""
+type PurchaseOrderItemEdge {
+  node: PurchaseOrderItem
+}
+
+"""
+This represents a package of items being shipped. May be part or all of a PurchaseOrderItem's quantity.
+"""
+type PurchaseOrderItemFulfillment {
+  fulfilledAt: Date!
+  fulfilledQuantity: Int!
+  shippingCarrier: String!
+  trackingNumber: String!
+}
+
+"""
+This represents a package of items being shipped. May be part or all of a PurchaseOrderItem's quantity.
+"""
+input PurchaseOrderItemFulfillmentInput {
+  fulfilledAt: Date!
+  fulfilledQuantity: Int!
+  shippingCarrier: String!
+  trackingNumber: String!
+}
+
+"""
+Status of the PurchaseOrderItem
+The status is a read-only calculated by the API.
+"""
+enum PurchaseOrderItemStatus {
+  """
+  Indicates that the PurchaseOrderItem was placed, but is no longer needed to be fulfilled.
+  """
+  CANCELLED
+
+  """
+  Indicates that the PurchaseOrderItem is currently in the process of being created, and data is incomplete.
+  """
+  DRAFT
+
+  """
+  Indicates that the PurchaseOrderItem is fully fulfilled and is now complete.
+  """
+  FULFILLED
+
+  """
+  Indicates that the PurchaseOrderItem is ready for processing, and data is complete.
+  """
+  INITIAL
+
+  """
+  Indicates that the PurchaseOrderItem is in the process of being fulfilled.
+  """
+  PARTIALLY_FULFILLED
+
+  """
+  Indicates that the PurchaseOrderItem now just beginning to be fulfilled. This
+  also means that the item can no longer be cancelled.
+  """
+  PROCESSING
+}
+
+"""
+Input for updating a PurchaseOrderItem
+
+Requires purchaseorderitem/write permissions on the Supplier
+"""
+input PurchaseOrderItemUpdateInput {
+  """Packages of items being shipped."""
+  fulfillments: [PurchaseOrderItemFulfillmentInput]
+
+  """When is cancelled, cannot be processed."""
+  isCancelled: Boolean
+
+  """When is a draft, cannot be processed."""
+  isDraft: Boolean
+
+  """Once in processing, can no longer be draft or cancelled."""
+  isProcessing: Boolean
+  purchaseOrderItemId: ID!
+}
+
 """The root query type for the Supply domain"""
 type Query {
   """Nothing to see here, just a workaround for Apollo Server"""
@@ -454,6 +747,31 @@ type Query {
     supplierId: ID!
   ): SupplyEventConnection!
 
+  """Returns a list of the current user's exports."""
+  exports(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+    supplierId: ID!
+  ): SupplyExportConnection!
+
+  """
+  Returns the data for an import. This is not a subresolver due to response size (large).
+  """
+  importData(filename: String!): SupplyImportDataResponse!
+
+  """Returns a list of the current user's imports."""
+  imports(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+    supplierId: ID!
+  ): SupplyImportConnection!
+
   """List PublicSuppliers"""
   publicSuppliers(
     """Returns the elements in the list that come after the specified cursor."""
@@ -472,6 +790,20 @@ type Query {
     query: String
     supplierIds: [ID!]
   ): PublicSupplierConnection!
+
+  """
+  Get a PurchaseOrderItem by ID
+              
+  Requires purchaseorderitem/read permissions on the Supplier
+  """
+  purchaseOrderItem(purchaseOrderItemId: ID!): PurchaseOrderItem!
+
+  """
+  Get a list of PurchaseOrderItems by PurchaseOrderItemIds (currently)
+  
+  Requires purchaseorderitem/read permissions on the Supplier
+  """
+  purchaseOrderItems(purchaseOrderItemIds: [ID!]!): PurchaseOrderItemConnection!
 
   """
   Get a single supplier by SupplierId
@@ -660,6 +992,21 @@ enum ResonanceLocaleType {
   EN_US
 }
 
+"""Information on Pagination"""
+type SingleDirectionPageInfo {
+  """
+  The cursor to use when paginating forwards (using first/after). Will always be
+  populated regardless of if a next page exists.
+  """
+  endCursor: String
+
+  """
+  Whether or not using the endCursor will result in more results. Always
+  populated, but will always be false when paginating using last/before.
+  """
+  hasNextPage: Boolean!
+}
+
 """Indicates which direction to sort, defaults to ASC"""
 enum SortDirection {
   ASC
@@ -725,6 +1072,34 @@ type Supplier {
   """Get the owner for a given Supplier"""
   ownerUser: PublicIdentity
   ownerUserName: String!
+
+  """
+  Get a list of PurchaseOrderItems for a Supplier.  If PurchaseOrderItem IDs are
+  provided, all other args are ignored and the requested PurchaseOrderItems are returned.
+  
+  Requires purchaseorderitem/read permissions on the Supplier
+  """
+  purchaseOrderItems(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """Filter by PurchaseOrderItem IDs"""
+    purchaseOrderItemIds: [ID!]
+
+    """Filter by the status of the PurchaseOrderItem"""
+    status: PurchaseOrderItemStatus
+  ): PurchaseOrderItemConnection!
 
   """Get a single SupplierQuickLink by its ids"""
   quickLink(appId: ID!, quickLinkType: SupplierQuickLinkType!): SupplierQuickLink
@@ -1162,9 +1537,6 @@ type SupplierProduct {
   ): SupplierProductContentItemConnection
   createdAt: Date!
 
-  """Get the associated SupplierProductCustomData"""
-  customData: SupplierProductCustomData
-
   """
   Passed along in PurchaseOrders so the Supplier can identify items in their warehouse.
   """
@@ -1182,9 +1554,30 @@ type SupplierProduct {
   """
   Get a single supplierProductLocale by ResonanceLocaleType
   
-      Requires supplierproductlocale/read permission on the requesting identity
+  Requires supplierproductlocale/read permission on the requesting identity
   """
   locale(localeType: ResonanceLocaleType!): SupplierProductLocale
+
+  """
+  List supplierProductLocales.
+  
+  Requires supplierproductlocale/read permission on the requesting identity
+  """
+  locales(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): SupplierProductLocaleConnection!
 
   """
   The labels for the options of this product, i.e. ["Color", "Size"]
@@ -1337,7 +1730,7 @@ type SupplierProductContentItemConnection {
   pageInfo: PageInfo!
 }
 
-"""One edge producing one SupplierProduct Node"""
+"""One edge producing one SupplierProductContentItem Node"""
 type SupplierProductContentItemEdge {
   node: SupplierProductContentItem
 }
@@ -1404,28 +1797,6 @@ input SupplierProductCreateInput {
 
   """The brand or manufacturer of the product."""
   vendor: String!
-}
-
-"""
-Data that doesn't fit in the provided SupplierProduct fields needs to live here.
-"""
-type SupplierProductCustomData {
-  createdAt: String!
-  data: JSON!
-  supplierId: ID!
-  supplierProductId: ID!
-  updatedAt: String!
-  updatedBy: String!
-}
-
-"""
-The input type to upsert SupplierProductCustomData.
-The data object is required, but is a partial update, and keys not mentioned will be left alone.
-"""
-input SupplierProductCustomDataUpsertInput {
-  data: JSON!
-  supplierId: ID!
-  supplierProductId: ID!
 }
 
 """Response for deleting a SupplierProduct"""
@@ -1560,6 +1931,13 @@ type SupplierProductLocale {
   updatedBy: String!
 }
 
+"""Paginate through SupplierProductLocales"""
+type SupplierProductLocaleConnection {
+  edges: [SupplierProductLocaleEdge]!
+  nodes: [SupplierProductLocale]!
+  pageInfo: PageInfo!
+}
+
 """The necessary fields in order to create a new supplierProductLocale"""
 input SupplierProductLocaleCreateInput {
   description: String
@@ -1569,6 +1947,11 @@ input SupplierProductLocaleCreateInput {
   localeType: ResonanceLocaleType!
   supplierId: ID!
   supplierProductId: ID!
+}
+
+"""One edge producing one SupplierProductLocale Node"""
+type SupplierProductLocaleEdge {
+  node: SupplierProductLocale
 }
 
 """
@@ -1845,9 +2228,6 @@ type SupplierVariant {
   """Associates contentItems with this variant"""
   contentItemIds: [ID]
   createdAt: String!
-
-  """Get the associated SupplierVariantCustomData"""
-  customData: SupplierVariantCustomData
   externalVariantId: String!
 
   """
@@ -1874,6 +2254,27 @@ type SupplierVariant {
   See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
   """
   optionValues: [String!]!
+
+  """
+  Get a list of PurchaseOrderItems for a SupplierVariant.
+  
+      Requires purchaseorderitem/read permissions on the Supplier
+  """
+  purchaseOrderItems(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): PurchaseOrderItemConnection!
 
   """
   Get the supplierVariantSupplement for a supplierVariant
@@ -1941,28 +2342,6 @@ input SupplierVariantCreateInput {
   optionValues: [String!]!
   supplierId: ID!
   supplierProductId: ID!
-}
-
-"""
-Data that doesn't fit in the provided SupplierVariant fields needs to live here.
-"""
-type SupplierVariantCustomData {
-  createdAt: String!
-  data: JSON!
-  supplierId: ID!
-  supplierVariantId: ID!
-  updatedAt: String!
-  updatedBy: String!
-}
-
-"""
-The input type to upsert SupplierVariantCustomData.
-The data object is required, but is a partial update, and keys not mentioned will be left alone.
-"""
-input SupplierVariantCustomDataUpsertInput {
-  data: JSON!
-  supplierId: ID!
-  supplierVariantId: ID!
 }
 
 """Response for when deleting a supplierVariant"""
@@ -2094,6 +2473,7 @@ type SupplierVariantSupplement {
 
   """ISO Date"""
   createdAt: String!
+  deliveryMethod: VariantDeliveryMethod
 
   """Additional warehouse handling charge, typically for larger items."""
   handlingCost: SupplierVariantHandlingCost
@@ -2490,12 +2870,168 @@ enum SupplyEventSubscriptionEntityType {
   IDENTITY
 }
 
+"""An export for the Supply Domain."""
+type SupplyExport {
+  """The filename of the export's data file, can be used similar to an ID."""
+  filename: String!
+  metadata: SupplyExportMetadata!
+
+  """The URL to download the export."""
+  url: String
+}
+
+"""A connection that returns a list of SupplyExport nodes."""
+type SupplyExportConnection {
+  edges: [SupplyExportEdge!]!
+  nodes: [SupplyExport!]!
+  pageInfo: SingleDirectionPageInfo
+}
+
+"""An edge that returns a SupplyExport node."""
+type SupplyExportEdge {
+  node: SupplyExport!
+}
+
+"""The metadata for a bulk action export."""
+type SupplyExportMetadata {
+  """The date and time the export was created."""
+  createdAt: Date!
+
+  """The SupplierId of the supplier that the export belongs to."""
+  domainEntityId: ID!
+
+  """The status of the export."""
+  exportStatus: BulkActionStatus!
+
+  """The type of export requested."""
+  exportType: String!
+
+  """Indicates the format of the underlying data."""
+  fileExtension: ExportFileExtension!
+
+  """The requesting identityId (username)."""
+  identityId: ID!
+
+  """The name of the export, something to remember it by."""
+  name: String!
+
+  """
+  The number of ticks until the end of time (figuratively). Used to sort filenames in descending order of requestedAt.
+  Note that this number is actually an Int, it is just too large to fit in 32 bits.
+  """
+  ticksTillTheEndOfTime: Float!
+}
+
+"""An import for the Supply Domain."""
+type SupplyImport {
+  """The filename of the import's data file, can be used similar to an ID."""
+  filename: String!
+  metadata: SupplyImportMetadata!
+}
+
+"""A connection that returns a list of SupplyImport nodes."""
+type SupplyImportConnection {
+  edges: [SupplyImportEdge!]!
+  nodes: [SupplyImport!]!
+  pageInfo: SingleDirectionPageInfo
+}
+
+"""The data for an import, containing which actions to undertake."""
+type SupplyImportData {
+  actions: [SupplyImportDataAction!]
+}
+
+"""An action to be performed on an import as well as its result."""
+type SupplyImportDataAction {
+  """The action to be performed on an import."""
+  action: SupplyImportDataActionAction!
+
+  """The result of the action."""
+  result: JSON
+}
+
+"""The action to be performed on an import."""
+type SupplyImportDataActionAction {
+  """The request to perform this action."""
+  actionRequest: SupplyImportDataActionActionRequest!
+
+  """The type of this action."""
+  actionType: String!
+}
+
+"""The query and variables to perform an action on an import."""
+type SupplyImportDataActionActionRequest {
+  """The GQL query to perform on the import."""
+  query: String!
+
+  """The variables to use in the query."""
+  variables: JSON
+}
+
+"""The response from importData, containing data and metadata."""
+type SupplyImportDataResponse {
+  data: SupplyImportData
+
+  """The filename of the import's data file, can be used similar to an ID."""
+  filename: String!
+  metadata: SupplyImportMetadata!
+}
+
+"""An edge that returns a SupplyImport node."""
+type SupplyImportEdge {
+  node: SupplyImport!
+}
+
+"""The metadata for a bulk action export."""
+type SupplyImportMetadata {
+  """The date and time the import was created."""
+  createdAt: Date!
+
+  """The SupplierId of the supplier that the export belongs to."""
+  domainEntityId: ID!
+
+  """Indicates the format of the underlying data."""
+  fileExtension: ImportFileExtension!
+
+  """The requesting identityId (username)."""
+  identityId: ID!
+
+  """The status of the export."""
+  importStatus: BulkActionStatus!
+
+  """The type of import requested."""
+  importType: SupplyImportType!
+
+  """The name of the export, something to remember it by."""
+  name: String!
+
+  """
+  The number of ticks until the end of time (figuratively). Used to sort filenames in descending order of requestedAt.
+  Note that this number is actually an Int, it is just too large to fit in 32 bits.
+  """
+  ticksTillTheEndOfTime: Float!
+}
+
+"""The type of import requested."""
+enum SupplyImportType {
+  """
+  Update Supplier Products (and tags) and a single SupplierProductLocale per SupplierProduct.
+  """
+  SUPPLIER_PRODUCT_UPDATE
+}
+
 """
 Indicates the key of the term aggregation, and approximately how many documents it occurs in. 
 """
 type TermAggregation {
   docCount: Int!
   key: String!
+}
+
+"""How this variant gets delivered. Defaults to SHIPPING."""
+enum VariantDeliveryMethod {
+  EMAIL
+  SHIPPING
 }
 
 """Indicates whether a variant is in or out of stock"""

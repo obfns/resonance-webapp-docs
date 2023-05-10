@@ -1,0 +1,74 @@
+---
+id: supply-export-metadata
+title: SupplyExportMetadata
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The metadata for a bulk action export.
+
+```graphql
+type SupplyExportMetadata {
+  createdAt: Date!
+  domainEntityId: ID!
+  exportStatus: BulkActionStatus!
+  exportType: String!
+  fileExtension: ExportFileExtension!
+  identityId: ID!
+  name: String!
+  ticksTillTheEndOfTime: Float!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportMetadata.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/supply/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The date and time the export was created.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportMetadata.<b>domainEntityId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The SupplierId of the supplier that the export belongs to.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportMetadata.<b>exportStatus</b></code>](#)<Bullet />[`BulkActionStatus!`](/supply/api/graphql-admin/reference/enums/bulk-action-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The status of the export.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportMetadata.<b>exportType</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The type of export requested.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportMetadata.<b>fileExtension</b></code>](#)<Bullet />[`ExportFileExtension!`](/supply/api/graphql-admin/reference/enums/export-file-extension) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Indicates the format of the underlying data.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportMetadata.<b>identityId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The requesting identityId (username).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportMetadata.<b>name</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The name of the export, something to remember it by.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplyExportMetadata.<b>ticksTillTheEndOfTime</b></code>](#)<Bullet />[`Float!`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The number of ticks until the end of time (figuratively). Used to sort filenames in descending order of requestedAt.
+Note that this number is actually an Int, it is just too large to fit in 32 bits.
+> 
+
+
+
+### Member of
+
+[`SupplyExport`](/supply/api/graphql-admin/reference/objects/supply-export)  <Badge class="secondary" text="object"/>
+
+
+

@@ -1,0 +1,107 @@
+---
+id: export-supplier-products-parameters-input
+title: ExportSupplierProductsParametersInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The parameters for an exportSupplierProducts request.
+
+```graphql
+input ExportSupplierProductsParametersInput {
+  cost: [FloatRangeFilterInput]
+  inventoryPolicy: [SupplierProductInventoryPolicyFilterInput]
+  inventoryStatus: VariantInventoryStatus
+  localeType: ResonanceLocaleType!
+  manufacturer: [StringFilterInput]
+  maximumNumberOfItems: Int
+  msrp: [FloatRangeFilterInput]
+  query: String
+  recommendedPrice: [FloatRangeFilterInput]
+  sortOrder: [SupplierProductSortInput]
+  standardizedColor: [SupplierProductStandardizedColorFilterInput]
+  status: SupplyEntityStatusFilterInput
+  tags: [StringFilterInput]
+  vendor: StringFilterInput
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>cost</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using cost ranges.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>inventoryPolicy</b></code>](#)<Bullet />[`[SupplierProductInventoryPolicyFilterInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-inventory-policy-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using InventoryPolicy (Variant).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>inventoryStatus</b></code>](#)<Bullet />[`VariantInventoryStatus`](/supply/api/graphql-admin/reference/enums/variant-inventory-status) <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>localeType</b></code>](#)<Bullet />[`ResonanceLocaleType!`](/supply/api/graphql-admin/reference/enums/resonance-locale-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>manufacturer</b></code>](#)<Bullet />[`[StringFilterInput]`](/supply/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Manufacturer (VariantSupplement).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>maximumNumberOfItems</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The maximum number of items to export. Must be a positive integer and less than or equal to 1,000,000.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>msrp</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using MSRP ranges.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>query</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Query supplierProducts for certain terms. Searches several fields, including
+supplierProduct.tags, supplierProduct.title, supplierProduct.vendor,
+supplierProductLocales.description, supplierProductLocales.featureBullets,
+supplierVariantSupplements.barcode, supplierVariantSupplement.mpn,
+supplierVariantSupplement.sku
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>recommendedPrice</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using recommendedPrice ranges.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>sortOrder</b></code>](#)<Bullet />[`[SupplierProductSortInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-sort-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Sort SupplierProducts by a series of fields and directions, defaults to CREATED_AT/ASC.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>standardizedColor</b></code>](#)<Bullet />[`[SupplierProductStandardizedColorFilterInput]`](/supply/api/graphql-admin/reference/inputs/supplier-product-standardized-color-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using StandardizedColor (Variant).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>status</b></code>](#)<Bullet />[`SupplyEntityStatusFilterInput`](/supply/api/graphql-admin/reference/inputs/supply-entity-status-filter-input) <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Status.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/supply/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Tags.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportSupplierProductsParametersInput.<b>vendor</b></code>](#)<Bullet />[`StringFilterInput`](/supply/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Filter SupplierProducts using Vendors.
+> 
+
+
+
+### Member of
+
+[`exportSupplierProducts`](/supply/api/graphql-admin/reference/mutations/export-supplier-products)  <Badge class="secondary" text="mutation"/>
+
+
+

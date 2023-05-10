@@ -1,0 +1,52 @@
+---
+id: purchase-order-item-connection
+title: PurchaseOrderItemConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Paginate through PurchaseOrderItems
+
+```graphql
+type PurchaseOrderItemConnection {
+  edges: [PurchaseOrderItemEdge]!
+  nodes: [PurchaseOrderItem]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemConnection.<b>edges</b></code>](#)<Bullet />[`[PurchaseOrderItemEdge]!`](/supply/api/graphql-admin/reference/objects/purchase-order-item-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemConnection.<b>nodes</b></code>](#)<Bullet />[`[PurchaseOrderItem]!`](/supply/api/graphql-admin/reference/objects/purchase-order-item) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/supply/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`purchaseOrderItems`](/supply/api/graphql-admin/reference/queries/purchase-order-items)  <Badge class="secondary" text="query"/>
+
+### Member of
+
+[`Supplier`](/supply/api/graphql-admin/reference/objects/supplier)  <Badge class="secondary" text="object"/><Bullet />[`SupplierVariant`](/supply/api/graphql-admin/reference/objects/supplier-variant)  <Badge class="secondary" text="object"/>
+
+
+

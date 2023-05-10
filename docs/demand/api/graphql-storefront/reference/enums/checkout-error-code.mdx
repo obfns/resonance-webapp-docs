@@ -1,0 +1,133 @@
+---
+id: checkout-error-code
+title: CheckoutErrorCode
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Error codes for the CheckoutError type
+
+```graphql
+enum CheckoutErrorCode {
+  CHECKOUT_INVALID
+  CHECKOUT_NOT_FOUND
+  CHECKOUT_ORDER_INVALID
+  CHECKOUT_ORDER_ITEMS_INVALID
+  CHECKOUT_ORDER_ITEMS_NOT_FOUND
+  CHECKOUT_ORDER_ITEM_QUANTITY_NOT_FOUND
+  CHECKOUT_ORDER_NOT_FOUND
+  CUSTOMER_NOT_FOUND
+  FAILED_TO_COMPLETE_CHECKOUT
+  INSUFFICIENT_QUANTITY
+  INVALID_AUTHORIZE_NET_TRANSACTION
+  INVALID_ORDER_TRANSACTION
+  ORDER_INPUT_INVALID
+  ORDER_ITEMS_INVALID
+  ORDER_TAGS_INVALID
+  PRODUCT_NOT_FOUND
+  UNPROCESSED_ORDER_ITEMS
+  VARIANT_DUPLICATE
+  VARIANT_METRICS_NOT_FOUND
+  VARIANT_NOT_FOUND
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>CHECKOUT_INVALID</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>CHECKOUT_NOT_FOUND</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>CHECKOUT_ORDER_INVALID</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>CHECKOUT_ORDER_ITEMS_INVALID</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>CHECKOUT_ORDER_ITEMS_NOT_FOUND</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>CHECKOUT_ORDER_ITEM_QUANTITY_NOT_FOUND</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>CHECKOUT_ORDER_NOT_FOUND</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>CUSTOMER_NOT_FOUND</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>FAILED_TO_COMPLETE_CHECKOUT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>INSUFFICIENT_QUANTITY</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>INVALID_AUTHORIZE_NET_TRANSACTION</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>INVALID_ORDER_TRANSACTION</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>ORDER_INPUT_INVALID</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>ORDER_ITEMS_INVALID</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>ORDER_TAGS_INVALID</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>PRODUCT_NOT_FOUND</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>UNPROCESSED_ORDER_ITEMS</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>VARIANT_DUPLICATE</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>VARIANT_METRICS_NOT_FOUND</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutErrorCode.<b>VARIANT_NOT_FOUND</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`CheckoutError`](/demand/api/graphql-storefront/reference/objects/checkout-error)  <Badge class="secondary" text="object"/>
+
+
+

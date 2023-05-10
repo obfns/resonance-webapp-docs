@@ -1,0 +1,38 @@
+---
+id: demand-hq-quick-link-deleted-response
+title: DemandHqQuickLinkDeletedResponse
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The response shape when a DemandHqQuickLink is deleted
+
+```graphql
+type DemandHqQuickLinkDeletedResponse {
+  deletedId: DemandHqQuickLinkDeletedId!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqQuickLinkDeletedResponse.<b>deletedId</b></code>](#)<Bullet />[`DemandHqQuickLinkDeletedId!`](/demand/api/graphql-admin/reference/objects/demand-hq-quick-link-deleted-id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`deleteDemandHqQuickLink`](/demand/api/graphql-admin/reference/mutations/delete-demand-hq-quick-link)  <Badge class="secondary" text="mutation"/>
+
+
+

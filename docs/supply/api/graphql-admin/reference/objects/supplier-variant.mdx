@@ -20,13 +20,18 @@ Only the variant level exists, there is no parent product.
 type SupplierVariant {
   contentItemIds: [ID]
   createdAt: String!
-  customData: SupplierVariantCustomData
   externalVariantId: String!
   featuredImage: SupplierProductContentItem
   inventoryPolicy: SupplierVariantInventoryPolicy!
   inventoryQuantity: Int!
   inventoryStatus: VariantInventoryStatus
   optionValues: [String!]!
+  purchaseOrderItems(
+  after: String
+  before: String
+  first: Int
+  last: Int
+): PurchaseOrderItemConnection!
   supplement: SupplierVariantSupplement
   supplierId: ID!
   supplierProductId: ID!
@@ -46,10 +51,6 @@ type SupplierVariant {
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>createdAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > 
-> 
-
-#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>customData</b></code>](#)<Bullet />[`SupplierVariantCustomData`](/supply/api/graphql-admin/reference/objects/supplier-variant-custom-data) <Badge class="secondary" text="object"/>
-> Get the associated SupplierVariantCustomData
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>externalVariantId</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
@@ -84,6 +85,26 @@ one for each of the color and size options, i.e. ["Red", "Small"]
 Must have 1-3, and it should match the number of options in the product, but there is no validation to do so.
 Set this to "No Option" if you don't want to use options for this product and this is the only variant.
 See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>purchaseOrderItems</b></code>](#)<Bullet />[`PurchaseOrderItemConnection!`](/supply/api/graphql-admin/reference/objects/purchase-order-item-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a list of PurchaseOrderItems for a SupplierVariant.
+
+    Requires purchaseorderitem/read permissions on the Supplier
+> ##### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.purchaseOrderItems.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.purchaseOrderItems.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.purchaseOrderItems.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.purchaseOrderItems.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>supplement</b></code>](#)<Bullet />[`SupplierVariantSupplement`](/supply/api/graphql-admin/reference/objects/supplier-variant-supplement) <Badge class="secondary" text="object"/>

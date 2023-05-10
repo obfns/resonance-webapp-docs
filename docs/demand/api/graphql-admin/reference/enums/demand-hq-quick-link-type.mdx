@@ -1,0 +1,43 @@
+---
+id: demand-hq-quick-link-type
+title: DemandHqQuickLinkType
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Indicates which page the DemandHqQuickLink would live on
+
+```graphql
+enum DemandHqQuickLinkType {
+  PRODUCT
+  VARIANT
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqQuickLinkType.<b>PRODUCT</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqQuickLinkType.<b>VARIANT</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`deleteDemandHqQuickLink`](/demand/api/graphql-admin/reference/mutations/delete-demand-hq-quick-link)  <Badge class="secondary" text="mutation"/><Bullet />[`DemandHqQuickLink`](/demand/api/graphql-admin/reference/objects/demand-hq-quick-link)  <Badge class="secondary" text="object"/><Bullet />[`DemandHqQuickLinkCreateInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-quick-link-create-input)  <Badge class="secondary" text="input"/><Bullet />[`DemandHqQuickLinkDeletedId`](/demand/api/graphql-admin/reference/objects/demand-hq-quick-link-deleted-id)  <Badge class="secondary" text="object"/><Bullet />[`demandHqQuickLinks`](/demand/api/graphql-admin/reference/queries/demand-hq-quick-links)  <Badge class="secondary" text="query"/><Bullet />[`DemandHqQuickLinkUpdateInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-quick-link-update-input)  <Badge class="secondary" text="input"/>
+
+
+

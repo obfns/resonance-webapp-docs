@@ -35,6 +35,14 @@ type Supplier {
   notificationUserNames: SupplierNotificationUserNames
   ownerUser: PublicIdentity
   ownerUserName: String!
+  purchaseOrderItems(
+  after: String
+  before: String
+  first: Int
+  last: Int
+  purchaseOrderItemIds: [ID!]
+  status: PurchaseOrderItemStatus
+): PurchaseOrderItemConnection!
   quickLink(
   appId: ID!
   quickLinkType: SupplierQuickLinkType!
@@ -168,6 +176,35 @@ If none are provided, ownerUserName will be notified.
 
 #### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>ownerUserName</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>purchaseOrderItems</b></code>](#)<Bullet />[`PurchaseOrderItemConnection!`](/supply/api/graphql-admin/reference/objects/purchase-order-item-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> Get a list of PurchaseOrderItems for a Supplier.  If PurchaseOrderItem IDs are
+provided, all other args are ignored and the requested PurchaseOrderItems are returned.
+
+Requires purchaseorderitem/read permissions on the Supplier
+> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.purchaseOrderItems.<b>after</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come after the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.purchaseOrderItems.<b>before</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Returns the elements in the list that come before the specified cursor.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.purchaseOrderItems.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the first n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.purchaseOrderItems.<b>last</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> Returns the last n elements from the list.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.purchaseOrderItems.<b>purchaseOrderItemIds</b></code>](#)<Bullet />[`[ID!]`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter by PurchaseOrderItem IDs
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.purchaseOrderItems.<b>status</b></code>](#)<Bullet />[`PurchaseOrderItemStatus`](/supply/api/graphql-admin/reference/enums/purchase-order-item-status) <Badge class="secondary" text="enum"/>
+> Filter by the status of the PurchaseOrderItem
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>quickLink</b></code>](#)<Bullet />[`SupplierQuickLink`](/supply/api/graphql-admin/reference/objects/supplier-quick-link) <Badge class="secondary" text="object"/>

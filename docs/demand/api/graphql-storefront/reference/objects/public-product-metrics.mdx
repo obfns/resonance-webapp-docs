@@ -35,6 +35,8 @@ type PublicProductMetrics {
   priceMaximumInStock: Float
   priceMinimum: Float!
   priceMinimumInStock: Float
+  standardizedColors: [VariantStandardizedColor!]!
+  standardizedColorsInStock: [VariantStandardizedColor!]!
 }
 ```
 
@@ -111,6 +113,14 @@ type PublicProductMetrics {
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>priceMinimumInStock</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
 > The minimum price from all in stock variants (null if no variants are in stock)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>standardizedColors</b></code>](#)<Bullet />[`[VariantStandardizedColor!]!`](/demand/api/graphql-storefront/reference/enums/variant-standardized-color) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> All of the variants standardizedColors
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicProductMetrics.<b>standardizedColorsInStock</b></code>](#)<Bullet />[`[VariantStandardizedColor!]!`](/demand/api/graphql-storefront/reference/enums/variant-standardized-color) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The standardizedColors of only in stock variants
 > 
 
 

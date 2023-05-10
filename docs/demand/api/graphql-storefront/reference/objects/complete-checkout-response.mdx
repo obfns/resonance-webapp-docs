@@ -1,0 +1,38 @@
+---
+id: complete-checkout-response
+title: CompleteCheckoutResponse
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The process of checkout completion is asynchronous so there is no data (like an order id) to return to the caller.
+
+```graphql
+type CompleteCheckoutResponse {
+  message: String!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>CompleteCheckoutResponse.<b>message</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`completeCheckout`](/demand/api/graphql-storefront/reference/mutations/complete-checkout)  <Badge class="secondary" text="mutation"/>
+
+
+

@@ -1,0 +1,43 @@
+---
+id: variant-delivery-method
+title: VariantDeliveryMethod
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+How this variant gets delivered. Defaults to SHIPPING.
+
+```graphql
+enum VariantDeliveryMethod {
+  EMAIL
+  SHIPPING
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>VariantDeliveryMethod.<b>EMAIL</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>VariantDeliveryMethod.<b>SHIPPING</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`SupplierVariantSupplement`](/supply/api/graphql-admin/reference/objects/supplier-variant-supplement)  <Badge class="secondary" text="object"/>
+
+
+

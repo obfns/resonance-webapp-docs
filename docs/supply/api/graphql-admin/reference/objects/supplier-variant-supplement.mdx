@@ -23,6 +23,7 @@ type SupplierVariantSupplement {
   casePack: Int
   cost: Float
   createdAt: String!
+  deliveryMethod: VariantDeliveryMethod
   handlingCost: SupplierVariantHandlingCost
   handlingCostAsCurrency: Float
   isTaxable: Boolean
@@ -65,6 +66,10 @@ type SupplierVariantSupplement {
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>createdAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > ISO Date
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>deliveryMethod</b></code>](#)<Bullet />[`VariantDeliveryMethod`](/supply/api/graphql-admin/reference/enums/variant-delivery-method) <Badge class="secondary" text="enum"/>
+> 
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>handlingCost</b></code>](#)<Bullet />[`SupplierVariantHandlingCost`](/supply/api/graphql-admin/reference/objects/supplier-variant-handling-cost) <Badge class="secondary" text="object"/>

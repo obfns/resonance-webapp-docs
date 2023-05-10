@@ -30,7 +30,7 @@ type PublicVariant {
   msrp: Float
   optionValues: [String!]!
   position: Int
-  price: Float!
+  price: Float
   product: PublicProduct
   productId: ID!
   shippingDimensions: VariantShippingDimensions
@@ -106,7 +106,7 @@ See https://docs.buildresonance.com/concepts/products/#no-option-products for mo
 Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>PublicVariant.<b>price</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+#### [<code style={{ fontWeight: 'normal' }}>PublicVariant.<b>price</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
 > Price for the defaultCurrency, can be any positive float number value.
 > 
 

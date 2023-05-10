@@ -1,0 +1,42 @@
+---
+id: delete-taxonomy-branch
+title: deleteTaxonomyBranch
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Delete a TaxonomyBranch.
+
+Requires the "taxonomyBranch/write" permission on the associated DemandHq.
+
+```graphql
+deleteTaxonomyBranch(
+  taxonomyBranchId: ID!
+): DeleteTaxonomyBranchResponse!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>deleteTaxonomyBranch.<b>taxonomyBranchId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`DeleteTaxonomyBranchResponse`](/demand/api/graphql-admin/reference/objects/delete-taxonomy-branch-response) <Badge class="secondary" text="object"/>
+> The response from a delete request.
+> 
+
+
+
+
+

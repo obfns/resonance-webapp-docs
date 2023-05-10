@@ -1,0 +1,58 @@
+---
+id: product-composite-create-input
+title: ProductCompositeCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The necessary fields to create a ProductComposite, or a Product and its ContentItems, Locales, and Variants in one mutation
+
+```graphql
+input ProductCompositeCreateInput {
+  productContentItemAssociationInputs: [ProductContentItemAssociationInCompositeCreateInput]
+  productImageFromUrlInputs: [ProductImageFromUrlInCompositeCreateInput]
+  productInput: ProductCreateInput!
+  productLocaleInputs: [ProductLocaleInCompositeCreateInput]
+  variantInputs: [VariantInCompositeCreateInput]
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductCompositeCreateInput.<b>productContentItemAssociationInputs</b></code>](#)<Bullet />[`[ProductContentItemAssociationInCompositeCreateInput]`](/demand/api/graphql-admin/reference/inputs/product-content-item-association-in-composite-create-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductCompositeCreateInput.<b>productImageFromUrlInputs</b></code>](#)<Bullet />[`[ProductImageFromUrlInCompositeCreateInput]`](/demand/api/graphql-admin/reference/inputs/product-image-from-url-in-composite-create-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductCompositeCreateInput.<b>productInput</b></code>](#)<Bullet />[`ProductCreateInput!`](/demand/api/graphql-admin/reference/inputs/product-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductCompositeCreateInput.<b>productLocaleInputs</b></code>](#)<Bullet />[`[ProductLocaleInCompositeCreateInput]`](/demand/api/graphql-admin/reference/inputs/product-locale-in-composite-create-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductCompositeCreateInput.<b>variantInputs</b></code>](#)<Bullet />[`[VariantInCompositeCreateInput]`](/demand/api/graphql-admin/reference/inputs/variant-in-composite-create-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+
+
+### Member of
+
+[`createProductComposite`](/demand/api/graphql-admin/reference/mutations/create-product-composite)  <Badge class="secondary" text="mutation"/>
+
+
+

@@ -1,0 +1,60 @@
+---
+id: purchase-order-item-update-input
+title: PurchaseOrderItemUpdateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Input for updating a PurchaseOrderItem
+
+Requires purchaseorderitem/write permissions on the Supplier
+
+```graphql
+input PurchaseOrderItemUpdateInput {
+  fulfillments: [PurchaseOrderItemFulfillmentInput]
+  isCancelled: Boolean
+  isDraft: Boolean
+  isProcessing: Boolean
+  purchaseOrderItemId: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemUpdateInput.<b>fulfillments</b></code>](#)<Bullet />[`[PurchaseOrderItemFulfillmentInput]`](/supply/api/graphql-admin/reference/inputs/purchase-order-item-fulfillment-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Packages of items being shipped.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemUpdateInput.<b>isCancelled</b></code>](#)<Bullet />[`Boolean`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> When is cancelled, cannot be processed.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemUpdateInput.<b>isDraft</b></code>](#)<Bullet />[`Boolean`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> When is a draft, cannot be processed.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemUpdateInput.<b>isProcessing</b></code>](#)<Bullet />[`Boolean`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> Once in processing, can no longer be draft or cancelled.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItemUpdateInput.<b>purchaseOrderItemId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`updatePurchaseOrderItem`](/supply/api/graphql-admin/reference/mutations/update-purchase-order-item)  <Badge class="secondary" text="mutation"/>
+
+
+

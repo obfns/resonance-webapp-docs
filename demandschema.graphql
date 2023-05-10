@@ -263,6 +263,9 @@ type Collection {
   """Get the tags of the collection."""
   tags: CollectionTags
 
+  """A tertiary image url for this collection, not often used."""
+  tertiaryImageUrl: String
+
   """The title of the collection, limit 256 characters."""
   title: String!
   updatedAt: Date!
@@ -382,6 +385,9 @@ input CollectionCreateInput {
   """The subtitle of the collection, limit 256 characters."""
   subtitle: String
   tags: [String]
+
+  """A tertiary image url for this collection, not often used."""
+  tertiaryImageUrl: String
 
   """The title of the collection, limit 256 characters."""
   title: String!
@@ -801,8 +807,25 @@ input CollectionUpdateInput {
   subtitle: String
   tags: [String]
 
+  """A tertiary image url for this collection, not often used."""
+  tertiaryImageUrl: String
+
   """The title of the collection, limit 256 characters."""
   title: String
+}
+
+"""Indicates how exactly to handle duplicates in a Composite Entity"""
+enum CompositeDuplicationCheckType {
+  """
+  Duplicates should be checked for every individual item in the inputs, both
+  parent and child, and created if any do not exist
+  """
+  INDIVIDUAL_CREATE
+
+  """
+  The parent-most item will be checked for a duplicate, and if found, an error will be thrown
+  """
+  STANDARD
 }
 
 """
@@ -1213,6 +1236,11 @@ type DeleteNavResponse {
 """Returned object from deletePageContentItem"""
 type DeletePageContentItemResponse {
   """The contentItemId of the contentItem that was deleted."""
+  deletedId: ID!
+}
+
+"""The response from a delete request."""
+type DeleteTaxonomyBranchResponse {
   deletedId: ID!
 }
 
@@ -1638,6 +1666,27 @@ type DemandHq {
     """Optionally filter by vendor."""
     vendor: StringFilterInput
   ): ProductConnectionWithSearch!
+
+  """Get a single DemandHqQuickLink by its ids"""
+  quickLink(appId: ID!, quickLinkType: DemandHqQuickLinkType!): DemandHqQuickLink
+
+  """List multiple DemandHqQuickLinks for a single DemandHqQuickLinkType"""
+  quickLinks(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+    quickLinkType: DemandHqQuickLinkType!
+  ): DemandHqQuickLinkConnection!
   status: DemandHqStatus!
 
   """
@@ -1667,6 +1716,32 @@ type DemandHq {
     """Returns the last n elements from the list."""
     last: Int
   ): StorefrontConnection
+
+  """
+  List TaxonomyBranches for a DemandHq.
+  
+      Requires the user to have the taxonomyBranch/read permission on the associated DemandHq.
+  """
+  taxonomyBranches(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    collectionId: ID
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+    productTag: String
+    taxonomyBranchIds: [ID]
+    taxonomyLevel: TaxonomyLevel
+    taxonomyTree: String
+  ): TaxonomyBranchConnection!
   updatedAt: String!
   updatedBy: ID!
 }
@@ -1804,6 +1879,113 @@ input DemandHqNotificationUserNamesInput {
   These are part of commerce, but are a specific enough case to be handled separately.
   """
   orders: [String!]
+}
+
+"""Represents a link to your app from inside the Resonance Demand Portal"""
+type DemandHqQuickLink {
+  """The Id of the App this quicklink pertains to."""
+  appId: ID!
+  createdAt: String!
+
+  """
+  The Id of the DemandHq this quicklink pertains to (the one that has installed your app).
+  """
+  demandHqId: ID!
+
+  """
+  This can have dynamic parts, using [demandHqId], [productId], and [variantId] format. It represents where the link goes.
+  """
+  dynamicUrl: String!
+
+  """What the text for the link should be to the user."""
+  label: String!
+
+  """Indicates which page the DemandHqQuickLink would live on"""
+  quickLinkType: DemandHqQuickLinkType!
+  updatedAt: String!
+  updatedBy: String!
+}
+
+"""Paginate through DemandHqQuickLinks"""
+type DemandHqQuickLinkConnection {
+  edges: [DemandHqQuickLinkEdge]!
+  nodes: [DemandHqQuickLink]!
+  pageInfo: PageInfo!
+}
+
+"""
+The required input fields to create a new DemandHqQuickLink
+            
+You must be calling from the pertaining app's AppClient
+"""
+input DemandHqQuickLinkCreateInput {
+  """The Id of the App this quicklink pertains to."""
+  appId: ID!
+
+  """
+  The Id of the DemandHq this quicklink pertains to (the one that has installed your app).
+  """
+  demandHqId: ID!
+
+  """
+  This can have dynamic parts, using [demandHqId], [productId], and [variantId] format. It represents where the link goes.
+  """
+  dynamicUrl: String!
+
+  """What the text for the link should be to the user."""
+  label: String!
+
+  """Indicates which page the DemandHqQuickLink would live on"""
+  quickLinkType: DemandHqQuickLinkType!
+}
+
+"""When a DemandHqQuickLink is deleted, the ID is returned"""
+type DemandHqQuickLinkDeletedId {
+  appId: ID!
+  demandHqId: ID!
+  quickLinkType: DemandHqQuickLinkType!
+}
+
+"""The response shape when a DemandHqQuickLink is deleted"""
+type DemandHqQuickLinkDeletedResponse {
+  deletedId: DemandHqQuickLinkDeletedId!
+}
+
+"""An edge for DemandHqQuickLink"""
+type DemandHqQuickLinkEdge {
+  node: DemandHqQuickLink!
+}
+
+"""Indicates which page the DemandHqQuickLink would live on"""
+enum DemandHqQuickLinkType {
+  PRODUCT
+  VARIANT
+}
+
+"""
+The required input fields to partially update an existing DemandHqQuickLink
+            
+You must be calling from the pertaining app's AppClient
+"""
+input DemandHqQuickLinkUpdateInput {
+  """The Id of the App this quicklink pertains to."""
+  appId: ID!
+
+  """
+  The Id of the DemandHq this quicklink pertains to (the one that has installed your app).
+  """
+  demandHqId: ID!
+
+  """
+  This can have dynamic parts, using [demandHqId], [productId], and [variantId] format. It represents where the link goes.
+  """
+  dynamicUrl: String
+
+  """What the text for the link should be to the user."""
+  label: String
+
+  """Indicates which page the DemandHqQuickLink would live on"""
+  quickLinkType: DemandHqQuickLinkType!
 }
 
 """Indicates the status of a DemandHq"""
@@ -1986,6 +2168,9 @@ type Mutation {
   """
   createDemandHqIdentity(input: DemandHqIdentityCreateInput!): DemandHqIdentity!
 
+  """Create a new DemandHqQuickLink"""
+  createDemandHqQuickLink(input: DemandHqQuickLinkCreateInput!): DemandHqQuickLink!
+
   """
   Create a new Nav.
                   
@@ -2056,6 +2241,23 @@ type Mutation {
   """
   createProduct(input: ProductCreateInput!): Product!
 
+  """
+  Create a new Product and its associated ContentItems, Locales, and Variants in
+  one mutation. Requires several write permissions and access to a Supplier.
+  """
+  createProductComposite(
+    """The type of duplication check to perform, defaults to STANDARD"""
+    duplicationCheckType: CompositeDuplicationCheckType
+    input: ProductCompositeCreateInput!
+  ): Product!
+
+  """
+  Create a new Product and its associated ContentItems, Locales, Variants, and
+  also VariantSupplierVariants from an existing SupplierProduct you have access
+  to. Requires several write permissions and access to a Supplier.
+  """
+  createProductCompositeFromSupplierProduct(demandHqId: ID!, supplierId: ID!, supplierProductId: ID!): Product!
+
   """Create a ProductContentItem from a URL"""
   createProductImageFromUrl(input: ProductImageFromUrlInput!): ProductContentItem!
 
@@ -2073,11 +2275,26 @@ type Mutation {
   createStorefront(input: StorefrontCreateInput): Storefront
 
   """
+  Create a new TaxonomyBranch.
+                  
+  Requires the "taxonomyBranch/write" permission on the associated DemandHq.
+  """
+  createTaxonomyBranch(input: TaxonomyBranchCreateInput!): TaxonomyBranch
+
+  """
   Create a new variant
               
   Requires variant/write permission on the associated demandHq for the requesting identity
   """
   createVariant(input: VariantCreateInput!): Variant!
+
+  """
+  Create a new Variant from a Supplier Variant.
+  
+  Requires variant/write permission on the associated demandHq for the requesting identity.
+  Additionally, the DemandHq requires permission to the Supplier.
+  """
+  createVariantFromSupplierVariant(demandHqId: ID!, productId: ID!, supplierId: ID!, supplierVariantId: ID!): Variant!
 
   """Create a new VariantSupplierVariant"""
   createVariantSupplierVariant(input: VariantSupplierVariantCreateInput!): VariantSupplierVariant!
@@ -2096,8 +2313,7 @@ type Mutation {
   """
   deleteCollectionContentItem(
     """
-    If the contentItem is present as a primaryImageUrl or secondaryImageUrl on
-    the Collection, also remove it from these fields.
+    If the contentItem is present as an ImageUrl on the Collection, also remove it from these fields.
     """
     alsoRemoveImageUrls: Boolean
     collectionId: ID!
@@ -2132,6 +2348,9 @@ type Mutation {
   """
   deleteDemandHqIdentity(demandHqId: ID!, identityId: ID!): DemandHqIdentityDeleteResponse
 
+  """Delete a DemandHqQuickLink"""
+  deleteDemandHqQuickLink(appId: ID!, demandHqId: ID!, quickLinkType: DemandHqQuickLinkType!): DemandHqQuickLinkDeletedResponse!
+
   """
   Delete a Nav.
   
@@ -2153,7 +2372,7 @@ type Mutation {
   """
   deletePageContentItem(
     """
-    If the contentItem is present as a primaryImageUrl or secondaryImageUrl on the Page, also remove it from these fields.
+    If the contentItem is present as an ImageUrl on the Page, also remove it from these fields.
     """
     alsoRemoveImageUrls: Boolean
     contentItemId: ID!
@@ -2176,6 +2395,13 @@ type Mutation {
 
   """Delete an existing ProductContentItem"""
   deleteProductContentItem(contentItemId: ID!, productId: ID!): ProductContentItemDeleteResponse!
+
+  """
+  Delete a TaxonomyBranch.
+  
+  Requires the "taxonomyBranch/write" permission on the associated DemandHq.
+  """
+  deleteTaxonomyBranch(taxonomyBranchId: ID!): DeleteTaxonomyBranchResponse!
 
   """
   Delete a variant
@@ -2258,6 +2484,9 @@ type Mutation {
   """
   updateDemandHqIdentity(input: DemandHqIdentityUpdateInput!): DemandHqIdentity!
 
+  """Update a DemandHqQuickLink"""
+  updateDemandHqQuickLink(input: DemandHqQuickLinkUpdateInput!): DemandHqQuickLink!
+
   """
   Update an existing Nav.
   
@@ -2307,11 +2536,25 @@ type Mutation {
   updateProductLocale(input: ProductLocaleUpdateInput!): ProductLocale!
 
   """
+  Update multiple existing products.
+  
+  Requires the product/write permission on all given DemandHqs.
+  """
+  updateProducts(inputs: [ProductUpdateInput!]): [Product!]
+
+  """
   Update an existing Storefront.
       
   Requires the "storefront/write" scope on the associated DemandHq.
   """
   updateStorefront(input: StorefrontUpdateInput): Storefront
+
+  """
+  Update an existing TaxonomyBranch.
+  
+  Requires the "taxonomyBranch/write" permission on the associated DemandHq.
+  """
+  updateTaxonomyBranch(input: TaxonomyBranchUpdateInput!): TaxonomyBranch
 
   """
   Update an existing variant
@@ -2481,6 +2724,13 @@ type Order {
   emailAddress: String!
 
   """
+  Get a single OrderItem by ID.
+  
+  Requires the orderitem/read permission on the associated DemandHq.
+  """
+  item(orderItemId: ID!): OrderItem!
+
+  """
   List the items in an order.
               
   Requires the orderitem/read permission on the associated DemandHq.
@@ -2587,6 +2837,11 @@ type OrderEdge {
 
 """An item in an Order."""
 type OrderItem {
+  """The price of the OrderItem after adjustments."""
+  adjustedPrice: Float!
+
+  """The quantity of the OrderItem after adjustments."""
+  adjustedQuantity: Int!
   adjustments: [OrderItemAdjustment]
   barcode: String
   createdAt: Date!
@@ -2596,6 +2851,13 @@ type OrderItem {
   demandHqId: ID!
   discounts: [OrderItemDiscount]
   note: String
+
+  """
+  Get the order for an orderItem.
+  
+  Requires the order/read scope on the associated DemandHq.
+  """
+  order: Order
   orderId: ID!
   orderItemId: ID!
   productId: ID!
@@ -2929,6 +3191,8 @@ type OrderTransactionEdge {
 
 """Indicates which Payment Gateway was used for a Transaction."""
 enum OrderTransactionGateway {
+  AUTHORIZE_NET
+  MANUAL
   TEST
 }
 
@@ -3066,6 +3330,9 @@ type Page {
   """Get the tags of the page."""
   tags: PageTags
 
+  """A tertiary image url for this page, not often used."""
+  tertiaryImageUrl: String
+
   """The title of the page, limit 256 characters."""
   title: String!
   updatedAt: Date!
@@ -3172,6 +3439,9 @@ input PageCreateInput {
   """The subtitle of the page, limit 256 characters."""
   subtitle: String
   tags: [String]
+
+  """A tertiary image url for this page, not often used."""
+  tertiaryImageUrl: String
 
   """The title of the page, limit 256 characters."""
   title: String!
@@ -3544,6 +3814,9 @@ input PageUpdateInput {
   subtitle: String
   tags: [String]
 
+  """A tertiary image url for this page, not often used."""
+  tertiaryImageUrl: String
+
   """The title of the page, limit 256 characters."""
   title: String
 }
@@ -3680,6 +3953,17 @@ type Product {
   vendor: String!
 }
 
+"""
+The necessary fields to create a ProductComposite, or a Product and its ContentItems, Locales, and Variants in one mutation
+"""
+input ProductCompositeCreateInput {
+  productContentItemAssociationInputs: [ProductContentItemAssociationInCompositeCreateInput]
+  productImageFromUrlInputs: [ProductImageFromUrlInCompositeCreateInput]
+  productInput: ProductCreateInput!
+  productLocaleInputs: [ProductLocaleInCompositeCreateInput]
+  variantInputs: [VariantInCompositeCreateInput]
+}
+
 """Paginate through Products"""
 type ProductConnectionWithSearch {
   edges: [ProductEdge]!
@@ -3703,7 +3987,7 @@ type ProductConnectionWithSearch {
 This has a many to one relationship with Product, and provides a connection to the CDN items.
 """
 type ProductContentItem {
-  alt: String!
+  alt: String
   category: String
   contentItemId: ID!
 
@@ -3727,6 +4011,21 @@ type ProductContentItem {
   sourceType: ProductContentItemSourceType!
   updatedAt: Date!
   updatedBy: String!
+}
+
+"""
+Input object to associate an existing ContentItem with a Product inside a ProductCompositeCreateInput
+"""
+input ProductContentItemAssociationInCompositeCreateInput {
+  alt: String
+  category: String
+  contentItemId: ID!
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
 }
 
 """Paginate through ProductContentItems"""
@@ -3822,7 +4121,7 @@ type ProductEdge {
 
 """Input object for creating a ProductContentItem Image from a file"""
 input ProductImageFromFileInput {
-  alt: String!
+  alt: String
   category: String
   demandHqId: ID!
   fileExtension: String!
@@ -3838,7 +4137,7 @@ input ProductImageFromFileInput {
 
 """The original input that errored"""
 type ProductImageFromFileInputResponse {
-  alt: String!
+  alt: String
   category: String
   demandHqId: ID!
   fileExtension: String!
@@ -3859,9 +4158,30 @@ type ProductImageFromFileResponse {
   url: String!
 }
 
+"""
+Input object to create a new ProductContentItem from a URL for a Product inside a ProductCompositeCreateInput
+"""
+input ProductImageFromUrlInCompositeCreateInput {
+  alt: String
+  category: String
+
+  """
+  Temporary ID, can be any string, to associate Variants with this Image. On
+  create, the real contentItemId will be substituted.
+  """
+  contentItemInputId: String
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+  url: String!
+}
+
 """Input object for creating a ProductContentItem Image from a URL"""
 input ProductImageFromUrlInput {
-  alt: String!
+  alt: String
   category: String
   demandHqId: ID!
 
@@ -3924,6 +4244,18 @@ input ProductLocaleCreateInput {
   featureBullets: [String]
   localeType: ResonanceLocaleType!
   productId: ID!
+}
+
+"""
+The necessary fields in order to create a new productLocale as part of a ProductCompositeCreateInput
+"""
+input ProductLocaleInCompositeCreateInput {
+  """Can utilize Markdown"""
+  description: String
+
+  """Limited to 5 bullets"""
+  featureBullets: [String]
+  localeType: ResonanceLocaleType!
 }
 
 """
@@ -4017,6 +4349,12 @@ type ProductMetrics {
 
   """Id of the associated Product"""
   productId: ID!
+
+  """All of the variants standardizedColors"""
+  standardizedColors: [VariantStandardizedColor!]!
+
+  """The standardizedColors of only in stock variants"""
+  standardizedColorsInStock: [VariantStandardizedColor!]!
   updatedAt: String!
 }
 
@@ -4193,154 +4531,6 @@ type PublicSupplier {
   topVendors: [String!]
 }
 
-"""
-This is the main entity of the Supplier domain, and is used to represent a product, which is a group of SKUs.
-SKUs are represented by SupplierVariants, a child of this entity.
-This entity is less frequently updated, it is more likely that SupplyVariant will be updated frequently.
-"""
-type PublicSupplierProduct {
-  """
-  Passed along in PurchaseOrders so the Supplier can identify items in their warehouse.
-  """
-  externalProductId: String!
-
-  """The first image content item, if it exists"""
-  featuredImage: PublicSupplierProductContentItem
-
-  """
-  The labels for the options of this product, i.e. ["Color", "Size"]
-  These will match with the order of the optionValues on the SupplierVariants.
-  Must have 1-3, and it should match the number of options in the variants, but there is no validation to do so.
-  Set the first optionLabel to "No Option" if you don't want to use options for this product.
-  See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
-  """
-  optionLabels: [String!]!
-
-  """Reference to the Supplier that owns this product."""
-  supplierId: ID!
-  supplierProductId: ID!
-  tags: PublicSupplierProductTags
-
-  """The title of the product."""
-  title: String!
-
-  """The brand or manufacturer of the product."""
-  vendor: String!
-}
-
-"""Paginate through PublicSupplierProducts"""
-type PublicSupplierProductConnectionWithSearch {
-  edges: [PublicSupplierProductEdge]!
-  nodes: [PublicSupplierProduct]!
-  pageInfo: PageInfo!
-
-  """
-  This is an object with terms in the query as keys, and a suggestion for that
-  term as the value. This is often referred to as 'Did you mean?'
-  """
-  querySuggestions: JSON
-}
-
-"""
-This has a many to one relationship with SupplierProduct, and provides a connection to the CDN items.
-"""
-type PublicSupplierProductContentItem {
-  alt: String
-  category: String
-  contentItemId: ID!
-
-  """The key to the file in the CDN"""
-  contentKey: String!
-  contentType: SupplierProductContentType!
-
-  """
-  Used to determine what order the content comes out in.
-  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
-  """
-  position: Int
-  supplierId: ID!
-  supplierProductId: ID!
-}
-
-"""One edge producing one SupplierProduct Node"""
-type PublicSupplierProductEdge {
-  node: PublicSupplierProduct
-}
-
-"""Indicates which field to sort by, defaults to CREATED_AT"""
-enum PublicSupplierProductSortField {
-  COST
-  CREATED_AT
-  INVENTORY_QUANTITY
-  MSRP
-  RECOMMENDED_PRICE
-  RELEVANCE
-  TITLE
-  UPDATED_AT
-  VENDOR
-}
-
-"""Categories and other groupings that apply to this product."""
-type PublicSupplierProductTags {
-  raw: [String!]
-  supplierId: ID!
-  supplierProductId: ID!
-}
-
-"""
-The public version of SupplierVariant.  Represents a single SKU.  A
-SupplierVariant is a child of a SupplierProduct (this is a one-to-many
-relationship, where a SupplierProduct has many SupplierVariants).
-"""
-type PublicSupplierVariant {
-  averageShippingCost: Float
-
-  """Associates contentItems with this variant"""
-  contentItemIds: [ID]
-  cost: Float
-  externalVariantId: String!
-  featuredImage: PublicSupplierProductContentItem
-  handlingCost: SupplierVariantHandlingCost
-  inventoryPolicy: PublicSupplierVariantInventoryPolicy!
-  inventoryQuantity: Int!
-  inventoryStatus: InventoryStatus!
-
-  """
-  An array of the option values that make up this variant.
-  For example, a product with a color and size option would have two option values,
-  one for each of the color and size options, i.e. ["Red", "Small"]
-  Must have 1-3, and it should match the number of options in the product, but there is no validation to do so.
-  Set this to "No Option" if you don't want to use options for this product and this is the only variant.
-  See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
-  """
-  optionValues: [String!]!
-  supplierId: ID!
-  supplierProductId: ID!
-  supplierVariantId: ID!
-  title: String
-}
-
-"""Paginate through PublicSupplierVariants"""
-type PublicSupplierVariantConnection {
-  edges: [PublicSupplierVariantEdge]!
-  nodes: [PublicSupplierVariant]!
-  pageInfo: PageInfo!
-}
-
-"""One edge producing one SupplierProduct Node"""
-type PublicSupplierVariantEdge {
-  node: PublicSupplierVariant
-}
-
-"""
-Indicates how to handle inventory, whether a product should or can go out of stock
-"""
-enum PublicSupplierVariantInventoryPolicy {
-  BOTTOMLESS
-  DEFAULT
-  HOLD
-}
-
 """A fulfillment on a PurchaseOrderItem."""
 type PurchaseOrderItemFulfillment {
   fulfilledAt: Date!
@@ -4463,6 +4653,42 @@ type Query {
   demandHqIdentity(demandHqId: ID!, identityId: ID!): DemandHqIdentity
 
   """
+  List multiple DemandHqQuickLinks for an app.
+  
+  At least one filter is required, demandHqId and quickLinkType are required to be used together.
+  
+  Permissions vary by filter:
+  - appId: You must be an appClient for the app.
+  - demandHqId: You must have demandhq/read permission for the demandHq.
+  """
+  demandHqQuickLinks(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """Filter for AppId, cannot be used with other filters."""
+    appId: ID
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Filter to be used with quickLinkType, cannot be used with other filters.
+    """
+    demandHqId: ID
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+
+    """Filter to be used with demandHqId, cannot be used with other filters."""
+    quickLinkType: DemandHqQuickLinkType
+  ): DemandHqQuickLinkConnection!
+
+  """
   Get a DemandHqSupplier by its IDs.
               
   Requires the requesting identity to have the "demandhqsupplier/read" permission on the associated DemandHq.
@@ -4507,6 +4733,13 @@ type Query {
   order(orderId: ID!): Order
 
   """
+  Get a single OrderItem by ID.
+  
+  Requires the orderitem/read permission on the associated DemandHq.
+  """
+  orderItem(orderItemId: ID!): OrderItem
+
+  """
   Get a page by pageId.
               
   Required page/read permission on the given DemandHq.
@@ -4544,104 +4777,32 @@ type Query {
   """List PublicDemandHqs"""
   publicDemandHqs(demandHqIds: [ID!]): PublicDemandHqConnection!
 
-  """Get the expanded PublicSupplier for this DemandHqSupplier"""
-  publicSupplierProducts(
-    """Returns the elements in the list that come after the specified cursor."""
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """Filter SupplierProducts using cost ranges."""
-    cost: [FloatRangeFilterInput]
-
-    """The ID of the DemandHq requesting the Public Supplier Products"""
-    demandHqId: ID!
-
-    """Returns the first n elements from the list."""
-    first: Int
-
-    """Filter SupplierProducts using InventoryPolicy (Variant)."""
-    inventoryPolicy: [SupplierProductInventoryPolicyFilterInput]
-    inventoryStatus: InventoryStatus
-
-    """Returns the last n elements from the list."""
-    last: Int
-
-    """Filter SupplierProducts using Manufacturer (VariantSupplement)."""
-    manufacturer: [StringFilterInput]
-
-    """Filter SupplierProducts using MSRP ranges."""
-    msrp: [FloatRangeFilterInput]
-
-    """
-    Query supplierProducts for certain terms. Searches several fields, including
-    supplierProduct.tags, supplierProduct.title, supplierProduct.vendor,
-    supplierProductLocales.description, supplierProductLocales.featureBullets,
-    supplierVariantSupplements.barcode, supplierVariantSupplement.mpn,
-    supplierVariantSupplement.sku
-    """
-    query: String
-
-    """Filter SupplierProducts using recommendedPrice ranges."""
-    recommendedPrice: [FloatRangeFilterInput]
-
-    """
-    Sort SupplierProducts by a series of fields and directions, defaults to CREATED_AT/ASC.
-    """
-    sortOrder: [SupplierProductSortInput]
-
-    """Filter SupplierProducts using StandardizedColor (Variant)."""
-    standardizedColor: [SupplierProductStandardizedColorFilterInput]
-
-    """The ID of the Supplier to get products for."""
-    supplierId: ID!
-
-    """Filter SupplierProducts using Tags."""
-    tags: [StringFilterInput]
-
-    """Filter SupplierProducts using Vendors."""
-    vendor: StringFilterInput
-  ): PublicSupplierProductConnectionWithSearch
-
-  """
-  Get a list of supplierVariants
-  
-  Requires suppliervariant/read permission on the supplier for the requesting identity
-  """
-  publicSupplierVariants(
-    """Returns the elements in the list that come after the specified cursor."""
-    after: String
-
-    """
-    Returns the elements in the list that come before the specified cursor.
-    """
-    before: String
-
-    """The ID of the DemandHq requesting the Public Supplier Product"""
-    demandHqId: ID!
-
-    """Returns the first n elements from the list."""
-    first: Int
-
-    """Returns the last n elements from the list."""
-    last: Int
-
-    """The ID of the Supplier requesting the Public Supplier Product"""
-    supplierId: ID!
-
-    """The ID of the SupplierProduct to get variants for."""
-    supplierProductId: ID!
-  ): PublicSupplierVariantConnection!
-
   """
   Get a storefront by its storefrontId.
               
   Requires the storefront/read permission on the associated DemandHq.
   """
   storefront(storefrontId: ID!): Storefront
+
+  """
+  Query the Supply GraphQL API using your DemandHqSupplier permissions.
+  Please reference the Supply GraphQL API documentation for available queries.
+  
+  Only queries (not mutations) are allowed, and only certain fields are allowed to be queried.
+  Root fields allowed: supplier, supplierProduct, supplierVariant.
+  If you select supplier, the following subfields are allowed: category,
+  description, inStockProducts, name, shipFromAddress, status, supplierId,
+  topVendors, supplierProducts, supplierProductTermAggregations.
+  Fields that are not allowed to be selected anywhere: createdAt, updatedAt, updatedBy.}
+  """
+  supplyQuery(demandHqId: ID!, query: String!, supplierId: ID!, variables: JSON): JSON
+
+  """
+  Get a TaxonomyBranch by its id.
+              
+  Requires the user to have the taxonomyBranch/read permission on the associated DemandHq.
+  """
+  taxonomyBranch(taxonomyBranchId: ID!): TaxonomyBranch
 
   """
   Get a single variant by VariantId
@@ -4995,30 +5156,6 @@ enum SupplierCategory {
   SPORTING_GOODS
 }
 
-"""Describes what type of content the entity is"""
-enum SupplierProductContentType {
-  IMAGE
-  VIDEO
-}
-
-"""Filter SupplierProducts using InventoryPolicy (Variant)."""
-input SupplierProductInventoryPolicyFilterInput {
-  operator: FilterOperator
-  values: [PublicSupplierVariantInventoryPolicy!]!
-}
-
-"""Sort SupplierProducts by a field and direction."""
-input SupplierProductSortInput {
-  direction: SortDirection!
-  field: PublicSupplierProductSortField!
-}
-
-"""Filter SupplierProducts using StandardizedColor (Variant)."""
-input SupplierProductStandardizedColorFilterInput {
-  operator: FilterOperator
-  values: [VariantStandardizedColor!]!
-}
-
 """Indication of whether the Supplier is live and accepting orders"""
 enum SupplierStatus {
   """Indicates a Supplier's goods are no longer available for retailing."""
@@ -5040,19 +5177,188 @@ enum SupplierStatus {
   PUBLIC
 }
 
-"""Object to indicate both amount and unit of handling cost."""
-type SupplierVariantHandlingCost {
-  amount: Float!
-  unit: SupplierVariantHandlingCostUnit!
+"""
+TaxonomyBranch is an item within a taxonomyTree that maps out a Product Taxonomy
+hierarchy using Product Tags and Collections.
+"""
+type TaxonomyBranch {
+  """
+  The collectionId associated with the TaxonomyBranch.
+  Not required as a field, but is strongly suggested to be populated, and one is generally created with a TaxonomyBranch.
+  """
+  collectionId: ID
+  createdAt: Date!
+  demandHqId: ID!
+
+  """
+  All TaxonomyBranches besides the root have a parentTaxonomyBranchId. Immutable.
+  """
+  parentTaxonomyBranchId: ID
+
+  """
+  The product tag associated with this TaxonomyBranch, used for filtering or display matching.
+  
+  On a Root TaxonomyBranch, this is generally a taxPrefix that is used in all child TaxonomyBranches,
+  i.e. "Taxonomy" for child branch productTags like "Taxonomy,Category,T-Shirts"
+  """
+  productTag: String!
+
+  """
+  The storefronts this taxonomyTree is published to.
+  This is only present on the Root TaxonomyBranch of a taxonomyTree and applies to all child taxonomyBranches.
+  """
+  storefrontIds: [ID!]
+  taxonomyBranchId: ID!
+
+  """
+  List Child TaxonomyBranches for a taxonomyBranch.
+  
+      Requires the user to have the taxonomyBranch/read permission on the associated DemandHq.
+  """
+  taxonomyBranches(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): TaxonomyBranchConnection!
+
+  """The level of the TaxonomyBranch in the hierarchy. Immutable."""
+  taxonomyLevel: TaxonomyLevel!
+
+  """
+  The tree this taxonomyBranch lies within. This has slug formatting (Lowercase, no spaces). Immutable.
+  """
+  taxonomyTree: String!
+
+  """The name of the taxonomyBranch."""
+  title: String!
+  updatedAt: Date!
+  updatedBy: ID!
 }
 
-"""Indicates what unit the amount is in"""
-enum SupplierVariantHandlingCostUnit {
-  """The amount is in a currency, i.e. $"""
-  CURRENCY
+"""Paginate through TaxonomyBranches"""
+type TaxonomyBranchConnection {
+  edges: [TaxonomyBranchEdge]!
+  nodes: [TaxonomyBranch]!
+  pageInfo: PageInfo!
+}
 
-  """The amount is a percentage of the Cost field"""
-  PERCENTAGE_OF_COST
+"""The input for creating a TaxonomyBranch."""
+input TaxonomyBranchCreateInput {
+  """
+  The collectionId associated with the TaxonomyBranch.
+  Not required as a field, but is strongly suggested to be populated, and one is generally created with a TaxonomyBranch.
+  """
+  collectionId: ID
+  demandHqId: ID!
+
+  """
+  All TaxonomyBranches besides the root have a parentTaxonomyBranchId. Immutable.
+  """
+  parentTaxonomyBranchId: ID
+
+  """
+  The product tag associated with this TaxonomyBranch, used for filtering or display matching.
+  
+  On a Root TaxonomyBranch, this is generally a taxPrefix that is used in all child TaxonomyBranches,
+  i.e. "Taxonomy" for child branch productTags like "Taxonomy,Category,T-Shirts"
+  """
+  productTag: String!
+
+  """
+  The storefronts this taxonomyTree is published to.
+  This is only present on the Root TaxonomyBranch of a taxonomyTree and applies to all child taxonomyBranches.
+  """
+  storefrontIds: [ID!]
+
+  """The level of the TaxonomyBranch in the hierarchy. Immutable."""
+  taxonomyLevel: TaxonomyLevel!
+
+  """
+  The tree this taxonomyBranch lies within. This has slug formatting (Lowercase, no spaces). Immutable.
+  """
+  taxonomyTree: String!
+
+  """The name of the taxonomyBranch."""
+  title: String!
+}
+
+"""One edge producing one TaxonomyBranch Node"""
+type TaxonomyBranchEdge {
+  node: TaxonomyBranch
+}
+
+"""The input for updating a TaxonomyBranch."""
+input TaxonomyBranchUpdateInput {
+  """
+  The collectionId associated with the TaxonomyBranch.
+  Not required as a field, but is strongly suggested to be populated, and one is generally created with a TaxonomyBranch.
+  """
+  collectionId: ID
+
+  """
+  The product tag associated with this TaxonomyBranch, used for filtering or display matching.
+  
+  On a Root TaxonomyBranch, this is generally a taxPrefix that is used in all child TaxonomyBranches,
+  i.e. "Taxonomy" for child branch productTags like "Taxonomy,Category,T-Shirts"
+  """
+  productTag: String
+
+  """
+  The storefronts this taxonomyTree is published to.
+  This is only present on the Root TaxonomyBranch of a taxonomyTree and applies to all child taxonomyBranches.
+  """
+  storefrontIds: [ID!]
+  taxonomyBranchId: ID!
+
+  """The name of the taxonomyBranch."""
+  title: String
+}
+
+"""The level of the TaxonomyBranch in the hierarchy."""
+enum TaxonomyLevel {
+  """
+  The second most outer categorization for a Product, generally describing a
+  broad, but slightly refined grouping of products.
+  "Clothing", "Shoes", "Computers", "TVs"
+  """
+  CATEGORY
+
+  """
+  The outermost categorization for a Product, generally describing a very broad grouping.
+  "Apparel", "Electronics", "Home & Garden"
+  """
+  DEPARTMENT
+
+  """
+  Only a single TaxonomyBranch can live at this level, and it is the basis for the entire taxonomyTree.
+  """
+  ROOT
+
+  """
+  The third most outer categorization for a Product, generally describing a specific grouping of products.
+  "T-Shirts", "Jeans", "Sneakers", "Laptops", "Smartphones"
+  """
+  SUBCATEGORY1
+
+  """
+  An additional Subcategory level for a Product, generally describing a very specific grouping of products.
+  """
+  SUBCATEGORY2
+
+  """
+  An additional Subcategory level for a Product, generally describing a very, very specific grouping of products.
+  """
+  SUBCATEGORY3
 }
 
 """
@@ -5064,7 +5370,7 @@ type TermAggregation {
 }
 
 """
-The main item of the Supplier Domain, represents a single SKU of a product
+Represents a single SKU of a product
 Only the variant level exists, there is no parent product.
 """
 type Variant {
@@ -5117,7 +5423,7 @@ type Variant {
   position: Int
 
   """Price for the defaultCurrency, can be any positive float number value."""
-  price: Float!
+  price: Float
 
   """
   Get the product this variant belongs to.
@@ -5219,7 +5525,7 @@ input VariantCreateInput {
   position: Int
 
   """Price for the defaultCurrency, can be any positive float number value."""
-  price: Float!
+  price: Float
   productId: ID!
   shippingDimensions: VariantShippingDimensionsInput
 
@@ -5252,6 +5558,62 @@ enum VariantHandlingCost {
 
   """The amount is a percentage of the Cost field"""
   PERCENTAGE_OF_COST
+}
+
+"""
+The necessary fields in order to create a new variant inside a ProductCompositeCreateInput
+"""
+input VariantInCompositeCreateInput {
+  """UPC, ISBN, GTIN, etc."""
+  barcode: String
+
+  """Quantity in one variant (i.e. 12-pack). Must be a positive integer."""
+  casePack: Int
+
+  """
+  For contentItems where you are associating an existing contentItem, input the actual contentItemId.
+  For other contentItem Inputs, match this to the contentItemInputId you have assigned.
+  """
+  contentItemInputIds: [String!]
+  deliveryMethod: VariantDeliveryMethod
+  isTaxable: Boolean
+
+  """Often same as vendor, but not always."""
+  manufacturer: String
+
+  """Minimum Advertised Price. Must be a positive number."""
+  mapPrice: Float
+
+  """Manufacturer Part Number"""
+  mpn: String
+
+  """Manufacturer's Suggested Retail Price. Must be a positive number."""
+  msrp: Float
+
+  """
+  An array of the option values that make up this variant.
+  For example, a product with a color and size option would have two option values,
+  one for each of the color and size options, i.e. ["Red", "Small"]
+  Must have 1-3, and it should match the number of options in the product, but there is no validation to do so.
+  Set this to "No Option" if you don't want to use options for this product and this is the only variant.
+  See https://docs.buildresonance.com/concepts/products/#no-option-products for more info.
+  """
+  optionValues: [String!]!
+
+  """
+  Used to determine what order the content comes out in.
+  Positive Integers are allowed, up to 9,999,999,999, and it does not have to be unique or sequential.
+  """
+  position: Int
+
+  """Price for the defaultCurrency, can be any positive float number value."""
+  price: Float
+  shippingDimensions: VariantShippingDimensionsInput
+
+  """Stock Keeping Unit"""
+  sku: String
+  standardizedColor: VariantStandardizedColor
+  weight: VariantWeightInput
 }
 
 """
@@ -5340,7 +5702,7 @@ type VariantSupplierVariant {
   COGS, or Cost of Goods Sold for this VariantSupplierVariant
   Must be a positive number.
   """
-  cost: Float!
+  cost: Float
   createdAt: String!
   demandHqId: ID!
 
@@ -5386,7 +5748,7 @@ input VariantSupplierVariantCreateInput {
   COGS, or Cost of Goods Sold for this VariantSupplierVariant
   Must be a positive number.
   """
-  cost: Float!
+  cost: Float
   demandHqId: ID!
 
   """Additional warehouse handling charge, typically for larger items."""
