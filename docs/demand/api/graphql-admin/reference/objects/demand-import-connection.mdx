@@ -1,0 +1,48 @@
+---
+id: demand-import-connection
+title: DemandImportConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A connection that returns a list of DemandImport nodes.
+
+```graphql
+type DemandImportConnection {
+  edges: [DemandImportEdge!]!
+  nodes: [DemandImport!]!
+  pageInfo: SingleDirectionPageInfo
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportConnection.<b>edges</b></code>](#)<Bullet />[`[DemandImportEdge!]!`](/demand/api/graphql-admin/reference/objects/demand-import-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportConnection.<b>nodes</b></code>](#)<Bullet />[`[DemandImport!]!`](/demand/api/graphql-admin/reference/objects/demand-import) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportConnection.<b>pageInfo</b></code>](#)<Bullet />[`SingleDirectionPageInfo`](/demand/api/graphql-admin/reference/objects/single-direction-page-info) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`imports`](/demand/api/graphql-admin/reference/queries/imports)  <Badge class="secondary" text="query"/>
+
+
+

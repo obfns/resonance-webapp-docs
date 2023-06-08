@@ -23,6 +23,7 @@ input CheckoutOrderInput {
   paymentId: ID
   phoneNumber: String
   shippingAddress: AddressInput
+  shippingCharges: [OrderShippingChargeInput]
   tags: [String]
 }
 ```
@@ -51,6 +52,10 @@ input CheckoutOrderInput {
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderInput.<b>shippingAddress</b></code>](#)<Bullet />[`AddressInput`](/demand/api/graphql-storefront/reference/inputs/address-input) <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderInput.<b>shippingCharges</b></code>](#)<Bullet />[`[OrderShippingChargeInput]`](/demand/api/graphql-storefront/reference/inputs/order-shipping-charge-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
 > 
 > 
 

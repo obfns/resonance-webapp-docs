@@ -21,7 +21,6 @@ input VariantUpdateInput {
   casePack: Int
   contentItemIds: [ID]
   deliveryMethod: VariantDeliveryMethod
-  isTaxable: Boolean
   manufacturer: String
   mapPrice: Float
   mpn: String
@@ -32,6 +31,7 @@ input VariantUpdateInput {
   shippingDimensions: VariantShippingDimensionsInput
   sku: String
   standardizedColor: VariantStandardizedColor
+  taxCode: String
   variantId: ID!
   weight: VariantWeightInput
 }
@@ -53,10 +53,6 @@ input VariantUpdateInput {
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>VariantUpdateInput.<b>deliveryMethod</b></code>](#)<Bullet />[`VariantDeliveryMethod`](/demand/api/graphql-admin/reference/enums/variant-delivery-method) <Badge class="secondary" text="enum"/>
-> 
-> 
-
-#### [<code style={{ fontWeight: 'normal' }}>VariantUpdateInput.<b>isTaxable</b></code>](#)<Bullet />[`Boolean`](/demand/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
 > 
 > 
 
@@ -104,6 +100,10 @@ Positive Integers are allowed, up to 9,999,999,999, and it does not have to be u
 
 #### [<code style={{ fontWeight: 'normal' }}>VariantUpdateInput.<b>standardizedColor</b></code>](#)<Bullet />[`VariantStandardizedColor`](/demand/api/graphql-admin/reference/enums/variant-standardized-color) <Badge class="secondary" text="enum"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>VariantUpdateInput.<b>taxCode</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Sales Tax Related Code, can match your chosen sales tax provider
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>VariantUpdateInput.<b>variantId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>

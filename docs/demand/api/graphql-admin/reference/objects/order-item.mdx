@@ -35,7 +35,7 @@ type OrderItem {
   productTitle: String!
   purchaseOrderItems: [OrderItemPurchaseOrderItem]
   quantity: Int!
-  shippingCharges: [OrderItemShippingCharge]
+  shippingCharges: [OrderShippingCharge]
   shippingMethod: ShippingMethod
   sku: String
   status: OrderItemStatus!
@@ -126,7 +126,7 @@ Requires the order/read scope on the associated DemandHq.
 > 
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>shippingCharges</b></code>](#)<Bullet />[`[OrderItemShippingCharge]`](/demand/api/graphql-admin/reference/objects/order-item-shipping-charge) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+#### [<code style={{ fontWeight: 'normal' }}>OrderItem.<b>shippingCharges</b></code>](#)<Bullet />[`[OrderShippingCharge]`](/demand/api/graphql-admin/reference/objects/order-shipping-charge) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
 > 
 > 
 
@@ -174,7 +174,7 @@ Requires the order/read scope on the associated DemandHq.
 
 ### Returned by
 
-[`createOrderItem`](/demand/api/graphql-admin/reference/mutations/create-order-item)  <Badge class="secondary" text="mutation"/><Bullet />[`orderItem`](/demand/api/graphql-admin/reference/queries/order-item)  <Badge class="secondary" text="query"/><Bullet />[`updateOrderItem`](/demand/api/graphql-admin/reference/mutations/update-order-item)  <Badge class="secondary" text="mutation"/>
+[`createOrderItem`](/demand/api/graphql-admin/reference/mutations/create-order-item)  <Badge class="secondary" text="mutation"/><Bullet />[`orderItem`](/demand/api/graphql-admin/reference/queries/order-item)  <Badge class="secondary" text="query"/><Bullet />[`updateOrderItem`](/demand/api/graphql-admin/reference/mutations/update-order-item)  <Badge class="secondary" text="mutation"/><Bullet />[`updateOrderItems`](/demand/api/graphql-admin/reference/mutations/update-order-items)  <Badge class="secondary" text="mutation"/>
 
 ### Member of
 

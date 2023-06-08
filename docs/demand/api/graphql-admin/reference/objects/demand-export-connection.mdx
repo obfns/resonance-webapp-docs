@@ -1,0 +1,48 @@
+---
+id: demand-export-connection
+title: DemandExportConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A connection that returns a list of DemandExport nodes.
+
+```graphql
+type DemandExportConnection {
+  edges: [DemandExportEdge!]!
+  nodes: [DemandExport!]!
+  pageInfo: SingleDirectionPageInfo
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandExportConnection.<b>edges</b></code>](#)<Bullet />[`[DemandExportEdge!]!`](/demand/api/graphql-admin/reference/objects/demand-export-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandExportConnection.<b>nodes</b></code>](#)<Bullet />[`[DemandExport!]!`](/demand/api/graphql-admin/reference/objects/demand-export) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandExportConnection.<b>pageInfo</b></code>](#)<Bullet />[`SingleDirectionPageInfo`](/demand/api/graphql-admin/reference/objects/single-direction-page-info) <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`exports`](/demand/api/graphql-admin/reference/queries/exports)  <Badge class="secondary" text="query"/>
+
+
+

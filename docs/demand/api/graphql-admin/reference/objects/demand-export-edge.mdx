@@ -1,0 +1,38 @@
+---
+id: demand-export-edge
+title: DemandExportEdge
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+An edge that returns a DemandExport node.
+
+```graphql
+type DemandExportEdge {
+  node: DemandExport!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandExportEdge.<b>node</b></code>](#)<Bullet />[`DemandExport!`](/demand/api/graphql-admin/reference/objects/demand-export) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`DemandExportConnection`](/demand/api/graphql-admin/reference/objects/demand-export-connection)  <Badge class="secondary" text="object"/>
+
+
+

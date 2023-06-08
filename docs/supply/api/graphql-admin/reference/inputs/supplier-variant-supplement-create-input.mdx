@@ -22,7 +22,6 @@ input SupplierVariantSupplementCreateInput {
   casePack: Int
   cost: Float
   handlingCost: SupplierVariantHandlingCostInput
-  isTaxable: Boolean
   manufacturer: String
   mapPrice: Float
   mpn: String
@@ -34,6 +33,7 @@ input SupplierVariantSupplementCreateInput {
   supplierId: ID!
   supplierProductId: ID!
   supplierVariantId: ID!
+  taxCode: String
   weight: SupplierVariantWeightInput
 }
 ```
@@ -59,10 +59,6 @@ input SupplierVariantSupplementCreateInput {
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplementCreateInput.<b>handlingCost</b></code>](#)<Bullet />[`SupplierVariantHandlingCostInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-handling-cost-input) <Badge class="secondary" text="input"/>
 > Additional warehouse handling charge, typically for larger items.
-> 
-
-#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplementCreateInput.<b>isTaxable</b></code>](#)<Bullet />[`Boolean`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
-> 
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplementCreateInput.<b>manufacturer</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
@@ -107,6 +103,10 @@ input SupplierVariantSupplementCreateInput {
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplementCreateInput.<b>supplierVariantId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplementCreateInput.<b>taxCode</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Sales Tax Related Code, can match your chosen sales tax provider
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplementCreateInput.<b>weight</b></code>](#)<Bullet />[`SupplierVariantWeightInput`](/supply/api/graphql-admin/reference/inputs/supplier-variant-weight-input) <Badge class="secondary" text="input"/>

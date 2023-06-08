@@ -1,0 +1,74 @@
+---
+id: demand-import-metadata
+title: DemandImportMetadata
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The metadata for a bulk action export.
+
+```graphql
+type DemandImportMetadata {
+  createdAt: Date!
+  domainEntityId: ID!
+  fileExtension: ImportFileExtension!
+  identityId: ID!
+  importStatus: BulkActionStatus!
+  importType: DemandImportType!
+  name: String!
+  ticksTillTheEndOfTime: Float!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportMetadata.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The date and time the import was created.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportMetadata.<b>domainEntityId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The DemandHqId of the demandHq that the export belongs to.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportMetadata.<b>fileExtension</b></code>](#)<Bullet />[`ImportFileExtension!`](/demand/api/graphql-admin/reference/enums/import-file-extension) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Indicates the format of the underlying data.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportMetadata.<b>identityId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The requesting identityId (username).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportMetadata.<b>importStatus</b></code>](#)<Bullet />[`BulkActionStatus!`](/demand/api/graphql-admin/reference/enums/bulk-action-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The status of the export.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportMetadata.<b>importType</b></code>](#)<Bullet />[`DemandImportType!`](/demand/api/graphql-admin/reference/enums/demand-import-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The type of import requested.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportMetadata.<b>name</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The name of the export, something to remember it by.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportMetadata.<b>ticksTillTheEndOfTime</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The number of ticks until the end of time (figuratively). Used to sort filenames in descending order of requestedAt.
+Note that this number is actually an Int, it is just too large to fit in 32 bits.
+> 
+
+
+
+### Member of
+
+[`DemandImport`](/demand/api/graphql-admin/reference/objects/demand-import)  <Badge class="secondary" text="object"/><Bullet />[`DemandImportDataResponse`](/demand/api/graphql-admin/reference/objects/demand-import-data-response)  <Badge class="secondary" text="object"/>
+
+
+

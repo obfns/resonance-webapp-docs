@@ -35,6 +35,7 @@ type PublicOrder {
   phoneNumber: String
   placedAt: Date
   shippingAddress: Address!
+  shippingCharges: [OrderShippingCharge]
   status: OrderStatus!
   storefrontId: ID
   tags: OrderTags
@@ -111,6 +112,10 @@ Requires the orderitem/read permission on the associated DemandHq.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>shippingAddress</b></code>](#)<Bullet />[`Address!`](/demand/api/graphql-storefront/reference/objects/address) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrder.<b>shippingCharges</b></code>](#)<Bullet />[`[OrderShippingCharge]`](/demand/api/graphql-storefront/reference/objects/order-shipping-charge) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
 > 
 > 
 

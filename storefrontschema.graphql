@@ -188,6 +188,7 @@ type CheckoutOrder {
   paymentId: ID
   phoneNumber: String
   shippingAddress: Address
+  shippingCharges: [OrderShippingCharge]
   tags: [String]
 }
 
@@ -205,6 +206,7 @@ input CheckoutOrderInput {
   paymentId: ID
   phoneNumber: String
   shippingAddress: AddressInput
+  shippingCharges: [OrderShippingChargeInput]
   tags: [String]
 }
 
@@ -218,12 +220,19 @@ type CheckoutOrderItem {
   discounts: [OrderItemDiscount]
   note: String
   quantity: Int
-  shippingCharges: [OrderItemShippingCharge]
+  shippingCharges: [OrderShippingCharge]
   shippingMethod: ShippingMethod
   taxes: [OrderItemTax]
 
   """Price per item, can be multiplied by quantity for total price"""
   unitPrice: Float
+
+  """
+  The variant that this checkout order item is associated with.
+          
+  Requires publicvariant/read permission on the requesting identity.
+  """
+  variant: PublicVariant
   variantId: ID!
 }
 
@@ -233,7 +242,7 @@ input CheckoutOrderItemInput {
   discounts: [OrderItemDiscountInput]
   note: String
   quantity: Int
-  shippingCharges: [OrderItemShippingChargeInput]
+  shippingCharges: [OrderShippingChargeInput]
   shippingMethod: ShippingMethod
   taxes: [OrderItemTaxInput]
 
@@ -295,7 +304,7 @@ type CollectionContent {
 """
 The number of results to return for each term aggregation. Defaults to 0 for each.
 """
-input CollectionNumberOfTermAggregations {
+input CollectionNumberOfTermAggregationsInput {
   collectionTypes: Int
   tags: Int
 }
@@ -926,18 +935,6 @@ type OrderItemPurchaseOrderItem {
   status: PurchaseOrderItemStatus!
 }
 
-"""A shippingCharge applied to an OrderItem."""
-type OrderItemShippingCharge {
-  amount: Float!
-  title: String
-}
-
-"""Create or Update an OrderItemShippingCharge"""
-input OrderItemShippingChargeInput {
-  amount: Float!
-  title: String
-}
-
 """Indicates the status of an OrderItem."""
 enum OrderItemStatus {
   ASSIGNED
@@ -974,10 +971,25 @@ input OrderItemTaxInput {
   title: String!
 }
 
+"""A shippingCharge applied to an Order."""
+type OrderShippingCharge {
+  amount: Float!
+  title: String
+}
+
+"""Create or Update an OrderShippingCharge"""
+input OrderShippingChargeInput {
+  amount: Float!
+  title: String
+}
+
 """Indicates the lifecycle stage an order is in"""
 enum OrderStatus {
   """Order has been authorized, waiting on fulfillment"""
   AUTHORIZED
+
+  """Order has been completely cancelled"""
+  CANCELLED
 
   """
   Order has been paid, and is now complete. This can also indicate that an order
@@ -1123,7 +1135,7 @@ type PageInfo {
 """
 The number of results to return for each term aggregation. Defaults to 0 for each.
 """
-input PageNumberOfTermAggregations {
+input PageNumberOfTermAggregationsInput {
   authors: Int
   pageTypes: Int
   tags: Int
@@ -1211,7 +1223,7 @@ enum ProductContentType {
 """
 The number of results to return for each term aggregation. Defaults to 0 for each.
 """
-input ProductNumberOfTermAggregations {
+input ProductNumberOfTermAggregationsInput {
   manufacturers: Int
   tags: Int
   vendors: Int
@@ -1331,7 +1343,7 @@ type PublicCollection {
     """
     The number of results to return for each term aggregation. Defaults to 0 for each.
     """
-    numberOfTermAggregations: ProductNumberOfTermAggregations
+    numberOfTermAggregations: ProductNumberOfTermAggregationsInput
 
     """Optionally filter by price."""
     price: FloatRangeFilterInput
@@ -1389,6 +1401,29 @@ type PublicCollection {
 
   """Get the tags of the collection."""
   tags: CollectionTags
+
+  """
+  List TaxonomyBranches for a Collection.
+  This is very highly likely to only return a single TaxonomyBranch, unless this is an unusual use case.
+  
+  Requires the publictaxonomybranch/read permission.
+  """
+  taxonomyBranches(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+    taxonomyTree: String!
+  ): PublicTaxonomyBranchConnection!
 
   """A tertiary image url for this collection, not often used."""
   tertiaryImageUrl: String
@@ -1613,6 +1648,7 @@ type PublicOrder {
   """
   placedAt: Date
   shippingAddress: Address!
+  shippingCharges: [OrderShippingCharge]
 
   """
   The status of the order currently, this field is read-only and can change many times over the course of the order
@@ -1680,7 +1716,7 @@ type PublicOrderItem {
   productTitle: String!
   purchaseOrderItems: [OrderItemPurchaseOrderItem]
   quantity: Int!
-  shippingCharges: [OrderItemShippingCharge]
+  shippingCharges: [OrderShippingCharge]
   shippingMethod: ShippingMethod
   sku: String
   status: OrderItemStatus!
@@ -2175,12 +2211,26 @@ hierarchy using Product Tags and Collections.
 """
 type PublicTaxonomyBranch {
   """
+  Get the collection for a taxonomy branch.
+              
+  Requires the publiccollection/read scope.
+  """
+  collection: PublicCollection
+
+  """
   The collectionId associated with the TaxonomyBranch.
   Not required as a field, but is strongly suggested to be populated, and one is generally created with a TaxonomyBranch.
   """
   collectionId: ID
   createdAt: Date!
   demandHqId: ID!
+
+  """
+  The parent TaxonomyBranch for this TaxonomyBranch.
+  
+  Requires the publictaxonomybranch/read permission.
+  """
+  parentTaxonomyBranch: PublicTaxonomyBranch
 
   """
   All TaxonomyBranches besides the root have a parentTaxonomyBranchId. Immutable.
@@ -2270,7 +2320,6 @@ type PublicVariant {
   contentItems: [PublicProductContentItem]
   deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
-  isTaxable: Boolean
 
   """Often same as vendor, but not always."""
   manufacturer: String
@@ -2315,6 +2364,9 @@ type PublicVariant {
   """Stock Keeping Unit"""
   sku: String
   standardizedColor: VariantStandardizedColor
+
+  """Sales Tax Related Code, can match your chosen sales tax provider"""
+  taxCode: String
 
   """Get the title of this variant (combo of optionValues)"""
   title: String!
@@ -2403,14 +2455,6 @@ type Query {
   collection(slug: String!): PublicCollection
 
   """
-  Term aggregations for Collections, typically used to suggest terms to use in Search Filters.
-  """
-  collectionTermAggregations(
-    """The number of aggregations to return for each type."""
-    numberOfResults: Int!
-  ): CollectionTermAggregations
-
-  """
   Get a collectionTypeContent by collectionType.
                   
   Requires the collectiontypecontent/read scope on the associated DemandHq
@@ -2464,7 +2508,7 @@ type Query {
     """
     The number of results to return for each term aggregation. Defaults to 0 for each.
     """
-    numberOfTermAggregations: CollectionNumberOfTermAggregations
+    numberOfTermAggregations: CollectionNumberOfTermAggregationsInput
 
     """
     Query collections for certain terms. Searches several fields, including
@@ -2580,14 +2624,6 @@ type Query {
   page(slug: String!): PublicPage
 
   """
-  Term aggregations for Pages, typically used to suggest terms to use in Search Filters.
-  """
-  pageTermAggregations(
-    """The number of aggregations to return for each type."""
-    numberOfResults: Int!
-  ): PageTermAggregations
-
-  """
   Get a pageTypeContent by pageType.
                   
   Requires the pagetypecontent/read scope on the associated DemandHq
@@ -2641,7 +2677,7 @@ type Query {
     """
     The number of results to return for each term aggregation. Defaults to 0 for each.
     """
-    numberOfTermAggregations: PageNumberOfTermAggregations
+    numberOfTermAggregations: PageNumberOfTermAggregationsInput
 
     """Filter Pages using pageType"""
     pageType: StringFilterInput
@@ -2674,14 +2710,6 @@ type Query {
   product(slug: String!): PublicProduct
 
   """
-  Term aggregations for Products, typically used to suggest terms to use in Search Filters.
-  """
-  productTermAggregations(
-    """The number of aggregations to return for each type."""
-    numberOfResults: Int!
-  ): ProductTermAggregations
-
-  """
   Paginate through products.
   
   Requires the publicproduct/read scope.
@@ -2710,7 +2738,7 @@ type Query {
     """
     The number of results to return for each term aggregation. Defaults to 0 for each.
     """
-    numberOfTermAggregations: ProductNumberOfTermAggregations
+    numberOfTermAggregations: ProductNumberOfTermAggregationsInput
 
     """Optionally filter by price."""
     price: FloatRangeFilterInput

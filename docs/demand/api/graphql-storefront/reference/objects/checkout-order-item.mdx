@@ -23,10 +23,11 @@ type CheckoutOrderItem {
   discounts: [OrderItemDiscount]
   note: String
   quantity: Int
-  shippingCharges: [OrderItemShippingCharge]
+  shippingCharges: [OrderShippingCharge]
   shippingMethod: ShippingMethod
   taxes: [OrderItemTax]
   unitPrice: Float
+  variant: PublicVariant
   variantId: ID!
 }
 ```
@@ -50,7 +51,7 @@ type CheckoutOrderItem {
 > 
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>shippingCharges</b></code>](#)<Bullet />[`[OrderItemShippingCharge]`](/demand/api/graphql-storefront/reference/objects/order-item-shipping-charge) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>shippingCharges</b></code>](#)<Bullet />[`[OrderShippingCharge]`](/demand/api/graphql-storefront/reference/objects/order-shipping-charge) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
 > 
 > 
 
@@ -64,6 +65,12 @@ type CheckoutOrderItem {
 
 #### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>unitPrice</b></code>](#)<Bullet />[`Float`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="scalar"/>
 > Price per item, can be multiplied by quantity for total price
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>variant</b></code>](#)<Bullet />[`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant) <Badge class="secondary" text="object"/>
+> The variant that this checkout order item is associated with.
+        
+Requires publicvariant/read permission on the requesting identity.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>variantId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>

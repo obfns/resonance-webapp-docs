@@ -1,0 +1,44 @@
+---
+id: page-number-of-term-aggregations-input
+title: PageNumberOfTermAggregationsInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The number of results to return for each term aggregation. Defaults to 0 for each.
+
+```graphql
+input PageNumberOfTermAggregationsInput {
+  authors: Int
+  pageTypes: Int
+  tags: Int
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PageNumberOfTermAggregationsInput.<b>authors</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageNumberOfTermAggregationsInput.<b>pageTypes</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PageNumberOfTermAggregationsInput.<b>tags</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+
+

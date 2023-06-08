@@ -25,6 +25,7 @@ type CheckoutOrder {
   paymentId: ID
   phoneNumber: String
   shippingAddress: Address
+  shippingCharges: [OrderShippingCharge]
   tags: [String]
 }
 ```
@@ -53,6 +54,10 @@ type CheckoutOrder {
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>CheckoutOrder.<b>shippingAddress</b></code>](#)<Bullet />[`Address`](/demand/api/graphql-storefront/reference/objects/address) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrder.<b>shippingCharges</b></code>](#)<Bullet />[`[OrderShippingCharge]`](/demand/api/graphql-storefront/reference/objects/order-shipping-charge) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
 > 
 > 
 

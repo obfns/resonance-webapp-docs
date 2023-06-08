@@ -1,0 +1,44 @@
+---
+id: create-demand-hq-notification
+title: createDemandHqNotification
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create a new demandHqNotification.
+                
+Requires the demandhqnotification/write permission on the associated DemandHq.
+
+```graphql
+createDemandHqNotification(
+  input: DemandHqNotificationCreateInput!
+): DemandHqNotification!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createDemandHqNotification.<b>input</b></code>](#)<Bullet />[`DemandHqNotificationCreateInput!`](/demand/api/graphql-admin/reference/inputs/demand-hq-notification-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`DemandHqNotification`](/demand/api/graphql-admin/reference/objects/demand-hq-notification) <Badge class="secondary" text="object"/>
+> An actionable notification for a DemandHq.
+A User can acknowledge, ignore, or resolve a notification.
+In some cases, a suggested action can be taken by the User to resolve the notification.
+> 
+
+
+
+
+

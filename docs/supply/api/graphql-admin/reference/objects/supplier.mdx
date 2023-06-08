@@ -81,9 +81,6 @@ type Supplier {
   supplierProduct(
   supplierProductId: ID!
 ): SupplierProduct
-  supplierProductTermAggregations(
-  numberOfResults: Int!
-): SupplierProductTermAggregations
   supplierProducts(
   after: String
   before: String
@@ -94,6 +91,7 @@ type Supplier {
   last: Int
   manufacturer: [StringFilterInput]
   msrp: [FloatRangeFilterInput]
+  numberOfTermAggregations: SupplierProductNumberOfTermAggregationsInput
   query: String
   recommendedPrice: [FloatRangeFilterInput]
   sortOrder: [SupplierProductSortInput]
@@ -327,12 +325,6 @@ Requires supplierproduct/read permission on the requesting identity
 > 
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>supplierProductTermAggregations</b></code>](#)<Bullet />[`SupplierProductTermAggregations`](/supply/api/graphql-admin/reference/objects/supplier-product-term-aggregations) <Badge class="secondary" text="object"/>
-> Term aggregations for SupplierProducts, typically used to suggest terms to use in Search Filters.
-> ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProductTermAggregations.<b>numberOfResults</b></code>](#)<Bullet />[`Int!`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
-> The number of aggregations to return for each type.
-> 
-
 #### [<code style={{ fontWeight: 'normal' }}>Supplier.<b>supplierProducts</b></code>](#)<Bullet />[`SupplierProductConnectionWithSearch!`](/supply/api/graphql-admin/reference/objects/supplier-product-connection-with-search) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
 > List SupplierProducts for a Supplier.
 
@@ -371,6 +363,10 @@ Requires supplierproduct/read permission on the requesting identity
 
 ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>msrp</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
 > Filter SupplierProducts using MSRP ranges.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>numberOfTermAggregations</b></code>](#)<Bullet />[`SupplierProductNumberOfTermAggregationsInput`](/supply/api/graphql-admin/reference/inputs/supplier-product-number-of-term-aggregations-input) <Badge class="secondary" text="input"/>
+> The number of results to return for each term aggregation. Defaults to 0 for each.
 > 
 
 ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>query</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>

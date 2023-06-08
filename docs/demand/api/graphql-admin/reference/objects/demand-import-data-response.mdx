@@ -1,0 +1,48 @@
+---
+id: demand-import-data-response
+title: DemandImportDataResponse
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The response from importData, containing data and metadata.
+
+```graphql
+type DemandImportDataResponse {
+  data: DemandImportData
+  filename: String!
+  metadata: DemandImportMetadata!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportDataResponse.<b>data</b></code>](#)<Bullet />[`DemandImportData`](/demand/api/graphql-admin/reference/objects/demand-import-data) <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportDataResponse.<b>filename</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The filename of the import's data file, can be used similar to an ID.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportDataResponse.<b>metadata</b></code>](#)<Bullet />[`DemandImportMetadata!`](/demand/api/graphql-admin/reference/objects/demand-import-metadata) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`importData`](/demand/api/graphql-admin/reference/queries/import-data)  <Badge class="secondary" text="query"/>
+
+
+

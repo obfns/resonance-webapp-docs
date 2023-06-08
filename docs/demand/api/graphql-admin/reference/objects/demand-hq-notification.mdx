@@ -1,0 +1,126 @@
+---
+id: demand-hq-notification
+title: DemandHqNotification
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+An actionable notification for a DemandHq.
+A User can acknowledge, ignore, or resolve a notification.
+In some cases, a suggested action can be taken by the User to resolve the notification.
+
+```graphql
+type DemandHqNotification {
+  acknowledgedBy: ID
+  action: DemandAction
+  actionLabel: String
+  category: DemandHqNotificationCategory!
+  content: String!
+  createdAt: Date!
+  createdBy: ID!
+  demandHqId: ID!
+  demandHqNotificationId: ID!
+  ignoredBy: ID
+  resolvedBy: ID
+  senderReferenceKey: String
+  sentiment: NotificationSentiment
+  status: DemandHqNotificationStatus!
+  subject: String!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>acknowledgedBy</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>action</b></code>](#)<Bullet />[`DemandAction`](/demand/api/graphql-admin/reference/unions/demand-action) <Badge class="secondary" text="union"/>
+> Notifications can have suggested actions that can be taken by the User.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>actionLabel</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> A verb to describe what the action will accomplish.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>category</b></code>](#)<Bullet />[`DemandHqNotificationCategory!`](/demand/api/graphql-admin/reference/enums/demand-hq-notification-category) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The category of the notification.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>content</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The actual message.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>createdAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The date the notification was created.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>createdBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>demandHqNotificationId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>ignoredBy</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>resolvedBy</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>senderReferenceKey</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The sender of the notification can use this to reference it later, this can be, but does not need to be, unique.
+(You can list several notifications under the same reference key, for
+instance, if you want to show a list of notifications for a single entity)
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>sentiment</b></code>](#)<Bullet />[`NotificationSentiment`](/demand/api/graphql-admin/reference/enums/notification-sentiment) <Badge class="secondary" text="enum"/>
+> The sentiment of the notification.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>status</b></code>](#)<Bullet />[`DemandHqNotificationStatus!`](/demand/api/graphql-admin/reference/enums/demand-hq-notification-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> The status of the notification.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>subject</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The subject or title of the notification.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotification.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createDemandHqNotification`](/demand/api/graphql-admin/reference/mutations/create-demand-hq-notification)  <Badge class="secondary" text="mutation"/><Bullet />[`updateDemandHqNotificationStatus`](/demand/api/graphql-admin/reference/mutations/update-demand-hq-notification-status)  <Badge class="secondary" text="mutation"/><Bullet />[`updateDemandHqNotificationStatuses`](/demand/api/graphql-admin/reference/mutations/update-demand-hq-notification-statuses)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`DemandHqNotificationConnection`](/demand/api/graphql-admin/reference/objects/demand-hq-notification-connection)  <Badge class="secondary" text="object"/><Bullet />[`DemandHqNotificationEdge`](/demand/api/graphql-admin/reference/objects/demand-hq-notification-edge)  <Badge class="secondary" text="object"/>
+
+
+

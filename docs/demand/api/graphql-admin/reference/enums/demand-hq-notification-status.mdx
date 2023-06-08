@@ -1,0 +1,53 @@
+---
+id: demand-hq-notification-status
+title: DemandHqNotificationStatus
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The status of a DemandHqNotification, calculated by actions that have or have not been taken.
+
+```graphql
+enum DemandHqNotificationStatus {
+  ACKNOWLEDGED
+  FRESH
+  IGNORED
+  RESOLVED
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotificationStatus.<b>ACKNOWLEDGED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotificationStatus.<b>FRESH</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotificationStatus.<b>IGNORED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotificationStatus.<b>RESOLVED</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`DemandHqNotification`](/demand/api/graphql-admin/reference/objects/demand-hq-notification)  <Badge class="secondary" text="object"/><Bullet />[`DemandHqNotificationUpdateStatusInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-notification-update-status-input)  <Badge class="secondary" text="input"/>
+
+
+

@@ -2,7 +2,7 @@
 Represents a App, which are machine users that perform a small context, unified set of tasks
 """
 type App {
-  appClientIds: [String!]!
+  appClientIds: [ID!]!
   appId: ID!
   appType: AppType!
   createdAt: String!
@@ -446,7 +446,7 @@ input PartnerUpdateInput {
 Represents an App, but the fields that can be publicly consumed without scopes
 """
 type PublicApp {
-  appClientIds: [String!]!
+  appClientIds: [ID!]!
   appId: ID!
   appType: AppType!
   description: String

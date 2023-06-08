@@ -1,0 +1,43 @@
+---
+id: demand-import-type
+title: DemandImportType
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The type of import requested.
+
+```graphql
+enum DemandImportType {
+  PRODUCT_UPDATE
+  VARIANT_UPDATE
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportType.<b>PRODUCT_UPDATE</b></code>](#) 
+> Update DemandHq Products (and tags) and a single ProductLocale per Product.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportType.<b>VARIANT_UPDATE</b></code>](#) 
+> Update DemandHq Variants.
+> 
+
+
+
+### Member of
+
+[`createCsvImport`](/demand/api/graphql-admin/reference/mutations/create-csv-import)  <Badge class="secondary" text="mutation"/><Bullet />[`DemandImportMetadata`](/demand/api/graphql-admin/reference/objects/demand-import-metadata)  <Badge class="secondary" text="object"/>
+
+
+

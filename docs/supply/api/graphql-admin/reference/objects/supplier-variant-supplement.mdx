@@ -26,7 +26,6 @@ type SupplierVariantSupplement {
   deliveryMethod: VariantDeliveryMethod
   handlingCost: SupplierVariantHandlingCost
   handlingCostAsCurrency: Float
-  isTaxable: Boolean
   manufacturer: String
   mapPrice: Float
   mpn: String
@@ -39,6 +38,7 @@ type SupplierVariantSupplement {
   supplierId: ID!
   supplierProductId: ID!
   supplierVariantId: ID!
+  taxCode: String
   updatedAt: String!
   updatedBy: String!
   weight: SupplierVariantWeight
@@ -78,10 +78,6 @@ type SupplierVariantSupplement {
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>handlingCostAsCurrency</b></code>](#)<Bullet />[`Float`](/supply/api/graphql-admin/reference/scalars/float) <Badge class="secondary" text="scalar"/>
 > Calculated field, giving the handling cost as Currency no matter how it is stored
-> 
-
-#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>isTaxable</b></code>](#)<Bullet />[`Boolean`](/supply/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
-> 
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>manufacturer</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
@@ -130,6 +126,10 @@ type SupplierVariantSupplement {
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>supplierVariantId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>taxCode</b></code>](#)<Bullet />[`String`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Sales Tax Related Code, can match your chosen sales tax provider
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariantSupplement.<b>updatedAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>

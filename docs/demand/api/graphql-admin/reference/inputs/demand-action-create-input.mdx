@@ -1,0 +1,43 @@
+---
+id: demand-action-create-input
+title: DemandActionCreateInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Input for DemandAction creation.
+
+```graphql
+input DemandActionCreateInput {
+  actionRequest: DemandActionRequestCreateInput!
+  actionType: DemandActionType!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandActionCreateInput.<b>actionRequest</b></code>](#)<Bullet />[`DemandActionRequestCreateInput!`](/demand/api/graphql-admin/reference/inputs/demand-action-request-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> Use DemandHqNotification as a guide, no such thing as union types
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandActionCreateInput.<b>actionType</b></code>](#)<Bullet />[`DemandActionType!`](/demand/api/graphql-admin/reference/enums/demand-action-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+
+
+### Member of
+
+[`DemandHqNotificationCreateInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-notification-create-input)  <Badge class="secondary" text="input"/>
+
+
+

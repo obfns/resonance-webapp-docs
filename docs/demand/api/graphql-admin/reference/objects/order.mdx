@@ -40,6 +40,7 @@ type Order {
   phoneNumber: String
   placedAt: Date
   shippingAddress: Address!
+  shippingCharges: [OrderShippingCharge]
   status: OrderStatus!
   storefrontId: ID
   tags: OrderTags
@@ -130,6 +131,10 @@ Requires the orderitem/read permission on the associated DemandHq.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>Order.<b>shippingAddress</b></code>](#)<Bullet />[`Address!`](/demand/api/graphql-admin/reference/objects/address) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>Order.<b>shippingCharges</b></code>](#)<Bullet />[`[OrderShippingCharge]`](/demand/api/graphql-admin/reference/objects/order-shipping-charge) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
 > 
 > 
 

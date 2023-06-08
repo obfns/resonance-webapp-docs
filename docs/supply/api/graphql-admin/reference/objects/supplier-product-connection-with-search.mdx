@@ -21,6 +21,7 @@ type SupplierProductConnectionWithSearch {
   nodes: [SupplierProduct]!
   pageInfo: PageInfo!
   querySuggestions: JSON
+  termAggregations: SupplierProductTermAggregations
 }
 ```
 
@@ -42,6 +43,11 @@ type SupplierProductConnectionWithSearch {
 #### [<code style={{ fontWeight: 'normal' }}>SupplierProductConnectionWithSearch.<b>querySuggestions</b></code>](#)<Bullet />[`JSON`](/supply/api/graphql-admin/reference/scalars/json) <Badge class="secondary" text="scalar"/>
 > This is an object with terms in the query as keys, and a suggestion for that
 term as the value. This is often referred to as 'Did you mean?'
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierProductConnectionWithSearch.<b>termAggregations</b></code>](#)<Bullet />[`SupplierProductTermAggregations`](/supply/api/graphql-admin/reference/objects/supplier-product-term-aggregations) <Badge class="secondary" text="object"/>
+> Values and the number of times they occur for the results of the query. These
+will be the same for every page of a query, and should only be fetched on the first page.
 > 
 
 
