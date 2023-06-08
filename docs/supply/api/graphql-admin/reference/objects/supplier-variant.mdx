@@ -19,6 +19,7 @@ Only the variant level exists, there is no parent product.
 ```graphql
 type SupplierVariant {
   contentItemIds: [ID]
+  contentItems: [SupplierProductContentItem]
   createdAt: String!
   externalVariantId: String!
   featuredImage: SupplierProductContentItem
@@ -47,6 +48,12 @@ type SupplierVariant {
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>contentItemIds</b></code>](#)<Bullet />[`[ID]`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
 > Associates contentItems with this variant
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>contentItems</b></code>](#)<Bullet />[`[SupplierProductContentItem]`](/supply/api/graphql-admin/reference/objects/supplier-product-content-item) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
+> Get a list of supplierProductContentItems for a supplierVariant.
+
+Requires supplierproductcontentitem/read permission on the supplier for the requesting identity.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>SupplierVariant.<b>createdAt</b></code>](#)<Bullet />[`String!`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>

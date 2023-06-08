@@ -1,0 +1,95 @@
+---
+id: export-variants-parameters-input
+title: ExportVariantsParametersInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The parameters for an exportVariants request.
+
+```graphql
+input ExportVariantsParametersInput {
+  manufacturer: [StringFilterInput]
+  maximumNumberOfItems: Int
+  msrp: [FloatRangeFilterInput]
+  price: [FloatRangeFilterInput]
+  query: String
+  sortOrder: [ProductSortInput]
+  standardizedColor: [ProductStandardizedColorFilterInput]
+  status: DemandEntityStatusFilterInput
+  storefrontIds: IDFilterInput
+  tagPrefixes: [StringFilterInput]
+  tags: [StringFilterInput]
+  vendor: StringFilterInput
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>manufacturer</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by manufacturer.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>maximumNumberOfItems</b></code>](#)<Bullet />[`Int`](/demand/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>
+> The maximum number of items to export. Must be a positive integer and less than or equal to 1,000,000.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>msrp</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by msrp.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>price</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/demand/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by price.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>query</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> Query products for certain terms. Searches several fields, including
+product.tags, product.title, product.vendor, productLocales.description,
+productLocales.featureBullets, variant.barcode, variant.mpn, variant.sku
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>sortOrder</b></code>](#)<Bullet />[`[ProductSortInput]`](/demand/api/graphql-admin/reference/inputs/product-sort-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>standardizedColor</b></code>](#)<Bullet />[`[ProductStandardizedColorFilterInput]`](/demand/api/graphql-admin/reference/inputs/product-standardized-color-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Optionally filter by standardized color.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>status</b></code>](#)<Bullet />[`DemandEntityStatusFilterInput`](/demand/api/graphql-admin/reference/inputs/demand-entity-status-filter-input) <Badge class="secondary" text="input"/>
+> Filter Products using Status.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>storefrontIds</b></code>](#)<Bullet />[`IDFilterInput`](/demand/api/graphql-admin/reference/inputs/idfilter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by storefrontIds.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>tagPrefixes</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Products using Tag Prefixes (starts with).
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> Filter Products using Tags.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ExportVariantsParametersInput.<b>vendor</b></code>](#)<Bullet />[`StringFilterInput`](/demand/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="input"/>
+> Optionally filter by vendor.
+> 
+
+
+
+### Member of
+
+[`exportVariants`](/demand/api/graphql-admin/reference/mutations/export-variants)  <Badge class="secondary" text="mutation"/>
+
+
+

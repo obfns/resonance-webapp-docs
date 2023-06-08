@@ -1,0 +1,38 @@
+---
+id: demand-hq-comment-edge
+title: DemandHqCommentEdge
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+An edge producing a DemandHqComment node
+
+```graphql
+type DemandHqCommentEdge {
+  node: DemandHqComment!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqCommentEdge.<b>node</b></code>](#)<Bullet />[`DemandHqComment!`](/demand/api/graphql-admin/reference/objects/demand-hq-comment) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`DemandHqCommentConnection`](/demand/api/graphql-admin/reference/objects/demand-hq-comment-connection)  <Badge class="secondary" text="object"/>
+
+
+

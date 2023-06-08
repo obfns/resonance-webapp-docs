@@ -1,0 +1,43 @@
+---
+id: demand-link-action
+title: DemandLinkAction
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A link to be opened
+
+```graphql
+type DemandLinkAction {
+  actionRequest: DemandLinkActionRequest!
+  actionType: DemandActionType!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandLinkAction.<b>actionRequest</b></code>](#)<Bullet />[`DemandLinkActionRequest!`](/demand/api/graphql-admin/reference/objects/demand-link-action-request) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandLinkAction.<b>actionType</b></code>](#)<Bullet />[`DemandActionType!`](/demand/api/graphql-admin/reference/enums/demand-action-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> Always set to LINK in this case
+> 
+
+
+
+### Implemented by
+
+[`DemandAction`](/demand/api/graphql-admin/reference/unions/demand-action)  <Badge class="secondary" text="union"/>
+
+
+

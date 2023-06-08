@@ -94,6 +94,14 @@ type AuthorizedPaymentGateways {
   demandHqId: ID!
 }
 
+"""The status of a given import or export."""
+enum BulkActionStatus {
+  COMPLETED
+  CREATED
+  ERROR
+  IN_PROGRESS
+}
+
 """
 A Collection is a group of products, what may often be referred to as a "Category Page" of some variety.
 In reality, a collection is far more flexible and can be used to represent any
@@ -184,7 +192,7 @@ type Collection {
     """
     The number of results to return for each term aggregation. Defaults to 0 for each.
     """
-    numberOfTermAggregationResults: ProductNumberOfTermAggregations
+    numberOfTermAggregations: ProductNumberOfTermAggregationsInput
 
     """Optionally filter by price."""
     price: [FloatRangeFilterInput]
@@ -262,6 +270,29 @@ type Collection {
 
   """Get the tags of the collection."""
   tags: CollectionTags
+
+  """
+  List TaxonomyBranches for a Collection.
+  This is very typically only a single collection unless there is an unusual use case.
+  
+  Requires the user to have the taxonomyBranch/read permission on the associated DemandHq.
+  """
+  taxonomyBranches(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+    taxonomyTree: String!
+  ): TaxonomyBranchConnection!
 
   """A tertiary image url for this collection, not often used."""
   tertiaryImageUrl: String
@@ -460,7 +491,7 @@ type CollectionImagesFromFilesError {
 """
 The number of results to return for each term aggregation. Defaults to 0 for each.
 """
-input CollectionNumberOfTermAggregations {
+input CollectionNumberOfTermAggregationsInput {
   collectionTypes: Int
   tags: Int
 }
@@ -1244,6 +1275,33 @@ type DeleteTaxonomyBranchResponse {
   deletedId: ID!
 }
 
+"""An action to be taken regarding the Demand Domain."""
+union DemandAction = DemandGqlAction | DemandLinkAction
+
+"""Input for DemandAction creation."""
+input DemandActionCreateInput {
+  """Use DemandHqNotification as a guide, no such thing as union types"""
+  actionRequest: DemandActionRequestCreateInput!
+  actionType: DemandActionType!
+}
+
+"""
+Input for DemandActionRequest creation. Match to the union type ResonanceActionRequest.
+"""
+input DemandActionRequestCreateInput {
+  href: String
+  query: String
+  rel: String
+  target: String
+  variables: JSON
+}
+
+"""The type of DemandAction"""
+enum DemandActionType {
+  GQL
+  LINK
+}
+
 """
 Indicates what stage of creation a Demand Entity is in, i.e. a Collection, Page, or Product
 """
@@ -1319,22 +1377,88 @@ type DemandEventMetadata {
   updatedBy: String
 }
 
+"""An export for the Demand Domain."""
+type DemandExport {
+  """The filename of the export's data file, can be used similar to an ID."""
+  filename: String!
+  metadata: DemandExportMetadata!
+
+  """The URL to download the export."""
+  url: String
+}
+
+"""A connection that returns a list of DemandExport nodes."""
+type DemandExportConnection {
+  edges: [DemandExportEdge!]!
+  nodes: [DemandExport!]!
+  pageInfo: SingleDirectionPageInfo
+}
+
+"""An edge that returns a DemandExport node."""
+type DemandExportEdge {
+  node: DemandExport!
+}
+
+"""The metadata for a bulk action export."""
+type DemandExportMetadata {
+  """The date and time the export was created."""
+  createdAt: Date!
+
+  """The DemandHqId of the demandHq that the export belongs to."""
+  domainEntityId: ID!
+
+  """The status of the export."""
+  exportStatus: BulkActionStatus!
+
+  """The type of export requested."""
+  exportType: String!
+
+  """Indicates the format of the underlying data."""
+  fileExtension: ExportFileExtension!
+
+  """The requesting identityId (username)."""
+  identityId: ID!
+
+  """The name of the export, something to remember it by."""
+  name: String!
+
+  """
+  The number of ticks until the end of time (figuratively). Used to sort filenames in descending order of requestedAt.
+  Note that this number is actually an Int, it is just too large to fit in 32 bits.
+  """
+  ticksTillTheEndOfTime: Float!
+}
+
+"""A GQL Mutation to be undertaken"""
+type DemandGqlAction {
+  actionRequest: DemandGqlActionRequest!
+
+  """Always set to GQL in this case"""
+  actionType: DemandActionType!
+}
+
+"""The GQL Request to be made"""
+type DemandGqlActionRequest {
+  """The GQL Query to be made"""
+  query: String!
+  variables: JSON
+}
+
 """The parent-most entity of the DemandHq Domain"""
 type DemandHq {
+  """
+  The settings for Automation for this DemandHq.
+  
+  Requires the demandhqautomationsettings/read permission on the associated DemandHq.
+  """
+  automationSettings: DemandHqAutomationSettings
+
   """
   Get a collection by collectionId or slug (one must be provided).
               
   Required collection/read permission on the given DemandHq.
   """
   collection(collectionId: ID, slug: String): Collection!
-
-  """
-  Term aggregations for Collections, typically used to suggest terms to use in Search Filters.
-  """
-  collectionTermAggregations(
-    """The number of aggregations to return for each type."""
-    numberOfResults: Int!
-  ): CollectionTermAggregations
 
   """
   List collections for a DemandHq with optional filters.
@@ -1365,7 +1489,7 @@ type DemandHq {
     """
     The number of results to return for each term aggregation. Defaults to 0 for each.
     """
-    numberOfTermAggregations: CollectionNumberOfTermAggregations
+    numberOfTermAggregations: CollectionNumberOfTermAggregationsInput
 
     """
     Query collections for certain terms. Searches several fields, including
@@ -1394,6 +1518,28 @@ type DemandHq {
     """Filter Collections using Tags."""
     tags: [StringFilterInput]
   ): CollectionConnectionWithSearch!
+
+  """
+  A list of comments made by DemandHqIdentities (users) about this DemandHqEntity (product, collection, etc.)
+              
+      Requires the demandhqnotification/read permission on the associated DemandHq.
+  """
+  comments(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    entityId: ID!
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+  ): DemandHqCommentConnection!
   createdAt: String!
   defaultCurrency: ResonanceCurrency!
   defaultLocaleType: ResonanceLocaleType!
@@ -1472,6 +1618,29 @@ type DemandHq {
   notificationUserNames: DemandHqNotificationUserNames
 
   """
+  List notifications for a DemandHq.
+              
+  Requires the demandhqnotification/read permission on the associated DemandHq.
+  """
+  notifications(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    category: DemandHqNotificationCategory
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+    status: DemandHqNotificationStatus!
+  ): DemandHqNotificationConnection!
+
+  """
   Get an order for an orderId.
               
   Requires the order/read scope on the associated DemandHq.
@@ -1512,14 +1681,6 @@ type DemandHq {
   page(pageId: ID, slug: String): Page!
 
   """
-  Term aggregations for Pages, typically used to suggest terms to use in Search Filters.
-  """
-  pageTermAggregations(
-    """The number of aggregations to return for each type."""
-    numberOfResults: Int!
-  ): PageTermAggregations
-
-  """
   List pages for a DemandHq with optional filters.
               
   Required page/read permission on the given DemandHq.
@@ -1545,7 +1706,7 @@ type DemandHq {
     """
     The number of results to return for each term aggregation. Defaults to 0 for each.
     """
-    numberOfTermAggregations: PageNumberOfTermAggregations
+    numberOfTermAggregations: PageNumberOfTermAggregationsInput
 
     """Filter Pages to a set of pageIds"""
     pageIds: [ID]
@@ -1589,14 +1750,6 @@ type DemandHq {
   product(productId: ID, slug: String): Product
 
   """
-  Term aggregations for Products, typically used to suggest terms to use in Search Filters.
-  """
-  productTermAggregations(
-    """The number of aggregations to return for each type."""
-    numberOfResults: Int!
-  ): ProductTermAggregations
-
-  """
   Get a list of products.
   
   Requires the product/read scope on the associated DemandHq.
@@ -1625,7 +1778,7 @@ type DemandHq {
     """
     The number of results to return for each term aggregation. Defaults to 0 for each.
     """
-    numberOfTermAggregationResults: ProductNumberOfTermAggregations
+    numberOfTermAggregations: ProductNumberOfTermAggregationsInput
 
     """Optionally filter by price."""
     price: [FloatRangeFilterInput]
@@ -1746,6 +1899,143 @@ type DemandHq {
   updatedBy: ID!
 }
 
+"""An Automation Job to be run for a DemandHq"""
+type DemandHqAutomationJob {
+  automationJobType: DemandHqAutomationJobType!
+  demandHqId: ID!
+}
+
+"""The input type for running an Automation Job for a DemandHq"""
+input DemandHqAutomationJobInput {
+  automationJobType: DemandHqAutomationJobType!
+  demandHqId: ID!
+}
+
+"""Automation Job Types that can be run for a DemandHq"""
+enum DemandHqAutomationJobType {
+  """Enforce the Price Floor for all Variants in the DemandHq"""
+  PRICE_FLOOR
+
+  """Create all Vendor Collections for the DemandHq"""
+  VENDOR_COLLECTIONS
+}
+
+"""Contains all of the settings regarding Automation for a DemandHq"""
+type DemandHqAutomationSettings {
+  defaultAverageShippingCost: Float
+
+  """The DemandHq that these settings belong to"""
+  demandHqId: ID!
+
+  """
+  An absolute price floor in default currency amount. i.e. 10 would mean the price can never drop below 10.
+  """
+  priceFloorAbsolute: Float
+
+  """
+  A price floor margin in percent that is applied in addition to all costs.
+  These costs include the current chosen SupplierVariant's Cost and Handling
+  Cost, as well as the Variant's Average Shipping Cost.
+  i.e. 10 would mean the price can never drop below 10% above the current Cost
+  of Good Sold + Handling Cost + Average Shipping Cost.
+  """
+  priceFloorMarginPercent: Float
+  updatedAt: Date!
+  updatedBy: ID!
+
+  """
+  The status to set on a newly created Vendor Collection. Defaults to 'DRAFT'
+  """
+  vendorCollectionStatus: DemandEntityStatus
+
+  """
+  The storefrontIds to publish a newly created Vendor Collection to. Defaults to none.
+  """
+  vendorCollectionStorefrontIds: [ID!]
+
+  """
+  The collectionType to create Vendor Collections in. Setting this enables Vendor Collections to be created.
+  """
+  vendorCollectionType: String
+}
+
+"""The input type for creating or updating DemandHqAutomationSettings"""
+input DemandHqAutomationSettingsUpdateInput {
+  defaultAverageShippingCost: Float
+
+  """The DemandHq that these settings belong to"""
+  demandHqId: ID!
+
+  """
+  An absolute price floor in default currency amount. i.e. 10 would mean the price can never drop below 10.
+  """
+  priceFloorAbsolute: Float
+
+  """
+  A price floor margin in percent that is applied in addition to all costs.
+  These costs include the current chosen SupplierVariant's Cost and Handling
+  Cost, as well as the Variant's Average Shipping Cost.
+  i.e. 10 would mean the price can never drop below 10% above the current Cost
+  of Good Sold + Handling Cost + Average Shipping Cost.
+  """
+  priceFloorMarginPercent: Float
+
+  """
+  The status to set on a newly created Vendor Collection. Defaults to 'DRAFT'
+  """
+  vendorCollectionStatus: DemandEntityStatus
+
+  """
+  The storefrontIds to publish a newly created Vendor Collection to. Defaults to none.
+  """
+  vendorCollectionStorefrontIds: [ID!]
+
+  """
+  The collectionType to create Vendor Collections in. Setting this enables Vendor Collections to be created.
+  """
+  vendorCollectionType: String
+}
+
+"""
+A comment made by a DemandHqIndentity (user) about any DemandHqEntity (product, collection, etc.)
+"""
+type DemandHqComment {
+  """The actual comment, markdown is allowed. Limited to 10000 characters."""
+  contentAsString: String!
+  createdAt: Date!
+  createdBy: ID!
+
+  """The id of the comment"""
+  demandHqCommentId: ID!
+  demandHqId: ID!
+
+  """The id of the entity that the comment is about, e.g. a ProductId"""
+  entityId: ID!
+  updatedAt: Date!
+}
+
+"""A connection to a list of DemandHqComments."""
+type DemandHqCommentConnection {
+  edges: [DemandHqCommentEdge!]!
+  nodes: [DemandHqComment!]!
+  pageInfo: PageInfo!
+}
+
+"""The input object for creating a DemandHqComment."""
+input DemandHqCommentCreateInput {
+  """The actual comment, markdown is allowed. Limited to 10000 characters."""
+  contentAsString: String!
+  demandHqId: ID!
+
+  """The id of the entity that the comment is about, e.g. a ProductId"""
+  entityId: ID!
+}
+
+"""An edge producing a DemandHqComment node"""
+type DemandHqCommentEdge {
+  node: DemandHqComment!
+}
+
 """The necessary fields in order to create a new demandHq"""
 input DemandHqCreateInput {
   defaultCurrency: ResonanceCurrency!
@@ -1848,6 +2138,122 @@ input DemandHqIdentityUpdateInput {
   """Could be a userName or an appClientId"""
   identityId: ID!
   permissions: DemandHqIdentityPermissionsInput
+}
+
+"""
+An actionable notification for a DemandHq.
+A User can acknowledge, ignore, or resolve a notification.
+In some cases, a suggested action can be taken by the User to resolve the notification.
+"""
+type DemandHqNotification {
+  acknowledgedBy: ID
+
+  """
+  Notifications can have suggested actions that can be taken by the User.
+  """
+  action: DemandAction
+
+  """A verb to describe what the action will accomplish."""
+  actionLabel: String
+
+  """The category of the notification."""
+  category: DemandHqNotificationCategory!
+
+  """The actual message."""
+  content: String!
+
+  """The date the notification was created."""
+  createdAt: Date!
+  createdBy: ID!
+  demandHqId: ID!
+  demandHqNotificationId: ID!
+  ignoredBy: ID
+  resolvedBy: ID
+
+  """
+  The sender of the notification can use this to reference it later, this can be, but does not need to be, unique.
+  (You can list several notifications under the same reference key, for
+  instance, if you want to show a list of notifications for a single entity)
+  """
+  senderReferenceKey: String
+
+  """The sentiment of the notification."""
+  sentiment: NotificationSentiment
+
+  """The status of the notification."""
+  status: DemandHqNotificationStatus!
+
+  """The subject or title of the notification."""
+  subject: String!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+
+"""This denotes what the notification pertains to."""
+enum DemandHqNotificationCategory {
+  ADDITIONS
+  INTEGRITY
+  OTHER
+  PRICING
+}
+
+"""A Relay Connection containing DemandHqNotifications"""
+type DemandHqNotificationConnection {
+  edges: [DemandHqNotificationEdge!]!
+  nodes: [DemandHqNotification!]!
+  pageInfo: PageInfo!
+}
+
+"""Input for DemandHqNotification creation."""
+input DemandHqNotificationCreateInput {
+  """
+  Notifications can have suggested actions that can be taken by the User.
+  """
+  action: DemandActionCreateInput
+
+  """A verb to describe what the action will accomplish."""
+  actionLabel: String
+
+  """The category of the notification."""
+  category: DemandHqNotificationCategory!
+
+  """The actual message."""
+  content: String!
+  demandHqId: ID!
+
+  """
+  The sender of the notification can use this to reference it later, this can be, but does not need to be, unique.
+  (You can list several notifications under the same reference key, for
+  instance, if you want to show a list of notifications for a single entity)
+  """
+  senderReferenceKey: String
+
+  """The sentiment of the notification."""
+  sentiment: NotificationSentiment
+
+  """The subject or title of the notification."""
+  subject: String!
+}
+
+"""A Relay Edge containing a DemandHqNotification"""
+type DemandHqNotificationEdge {
+  node: DemandHqNotification!
+}
+
+"""
+The status of a DemandHqNotification, calculated by actions that have or have not been taken.
+"""
+enum DemandHqNotificationStatus {
+  ACKNOWLEDGED
+  FRESH
+  IGNORED
+  RESOLVED
+}
+
+"""Input for DemandHqNotification status updating."""
+input DemandHqNotificationUpdateStatusInput {
+  demandHqNotificationId: ID!
+  status: DemandHqNotificationStatus!
 }
 
 """
@@ -2057,9 +2463,241 @@ input DemandHqUpdateInput {
   ownerUserName: String
 }
 
+"""An import for the Demand Domain."""
+type DemandImport {
+  """The filename of the import's data file, can be used similar to an ID."""
+  filename: String!
+  metadata: DemandImportMetadata!
+}
+
+"""A connection that returns a list of DemandImport nodes."""
+type DemandImportConnection {
+  edges: [DemandImportEdge!]!
+  nodes: [DemandImport!]!
+  pageInfo: SingleDirectionPageInfo
+}
+
+"""The data for an import, containing which actions to undertake."""
+type DemandImportData {
+  actions: [DemandImportDataAction!]
+}
+
+"""An action to be performed on an import as well as its result."""
+type DemandImportDataAction {
+  """The action to be performed on an import."""
+  action: DemandImportDataActionAction!
+
+  """The result of the action."""
+  result: JSON
+}
+
+"""The action to be performed on an import."""
+type DemandImportDataActionAction {
+  """The request to perform this action."""
+  actionRequest: DemandImportDataActionActionRequest!
+
+  """The type of this action."""
+  actionType: String!
+}
+
+"""The query and variables to perform an action on an import."""
+type DemandImportDataActionActionRequest {
+  """The GQL query to perform on the import."""
+  query: String!
+
+  """The variables to use in the query."""
+  variables: JSON
+}
+
+"""The response from importData, containing data and metadata."""
+type DemandImportDataResponse {
+  data: DemandImportData
+
+  """The filename of the import's data file, can be used similar to an ID."""
+  filename: String!
+  metadata: DemandImportMetadata!
+}
+
+"""An edge that returns a DemandImport node."""
+type DemandImportEdge {
+  node: DemandImport!
+}
+
+"""The metadata for a bulk action export."""
+type DemandImportMetadata {
+  """The date and time the import was created."""
+  createdAt: Date!
+
+  """The DemandHqId of the demandHq that the export belongs to."""
+  domainEntityId: ID!
+
+  """Indicates the format of the underlying data."""
+  fileExtension: ImportFileExtension!
+
+  """The requesting identityId (username)."""
+  identityId: ID!
+
+  """The status of the export."""
+  importStatus: BulkActionStatus!
+
+  """The type of import requested."""
+  importType: DemandImportType!
+
+  """The name of the export, something to remember it by."""
+  name: String!
+
+  """
+  The number of ticks until the end of time (figuratively). Used to sort filenames in descending order of requestedAt.
+  Note that this number is actually an Int, it is just too large to fit in 32 bits.
+  """
+  ticksTillTheEndOfTime: Float!
+}
+
+"""The type of import requested."""
+enum DemandImportType {
+  """
+  Update DemandHq Products (and tags) and a single ProductLocale per Product.
+  """
+  PRODUCT_UPDATE
+
+  """Update DemandHq Variants."""
+  VARIANT_UPDATE
+}
+
+"""A link to be opened"""
+type DemandLinkAction {
+  actionRequest: DemandLinkActionRequest!
+
+  """Always set to LINK in this case"""
+  actionType: DemandActionType!
+}
+
+"""The href and details"""
+type DemandLinkActionRequest {
+  """The URL to be opened"""
+  href: String!
+  rel: String
+  target: String
+}
+
 """Codes that signify a DemandSubscription"""
 enum DemandSubscriptionCode {
   BETAMAX
+}
+
+"""
+The file extension of an export. Can also be used to dictate file format.
+"""
+enum ExportFileExtension {
+  CSV
+}
+
+"""The required fields to request an input."""
+input ExportInput {
+  demandHqId: ID!
+  format: ExportFileExtension!
+
+  """
+  The name of the export, something to remember it by. Must be only Letters
+  (Capital or Lowercase) and Numbers. No spaces or special characters. Maximum 36 characters.
+  """
+  name: String!
+}
+
+"""The parameters for an exportProducts request."""
+input ExportProductsParametersInput {
+  localeType: ResonanceLocaleType!
+
+  """Optionally filter by manufacturer."""
+  manufacturer: [StringFilterInput]
+
+  """
+  The maximum number of items to export. Must be a positive integer and less than or equal to 1,000,000.
+  """
+  maximumNumberOfItems: Int
+
+  """Optionally filter by msrp."""
+  msrp: [FloatRangeFilterInput]
+
+  """Optionally filter by price."""
+  price: [FloatRangeFilterInput]
+
+  """
+  Query products for certain terms. Searches several fields, including
+  product.tags, product.title, product.vendor, productLocales.description,
+  productLocales.featureBullets, variant.barcode, variant.mpn, variant.sku
+  """
+  query: String
+
+  """
+  Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
+  """
+  sortOrder: [ProductSortInput]
+
+  """Optionally filter by standardized color."""
+  standardizedColor: [ProductStandardizedColorFilterInput]
+
+  """Filter Products using Status."""
+  status: DemandEntityStatusFilterInput
+
+  """Optionally filter by storefrontIds."""
+  storefrontIds: IDFilterInput
+
+  """Filter Products using Tag Prefixes (starts with)."""
+  tagPrefixes: [StringFilterInput]
+
+  """Filter Products using Tags."""
+  tags: [StringFilterInput]
+
+  """Optionally filter by vendor."""
+  vendor: StringFilterInput
+}
+
+"""The parameters for an exportVariants request."""
+input ExportVariantsParametersInput {
+  """Optionally filter by manufacturer."""
+  manufacturer: [StringFilterInput]
+
+  """
+  The maximum number of items to export. Must be a positive integer and less than or equal to 1,000,000.
+  """
+  maximumNumberOfItems: Int
+
+  """Optionally filter by msrp."""
+  msrp: [FloatRangeFilterInput]
+
+  """Optionally filter by price."""
+  price: [FloatRangeFilterInput]
+
+  """
+  Query products for certain terms. Searches several fields, including
+  product.tags, product.title, product.vendor, productLocales.description,
+  productLocales.featureBullets, variant.barcode, variant.mpn, variant.sku
+  """
+  query: String
+
+  """
+  Sort Products by a series of fields and directions, defaults to CREATED_AT/ASC.
+  """
+  sortOrder: [ProductSortInput]
+
+  """Optionally filter by standardized color."""
+  standardizedColor: [ProductStandardizedColorFilterInput]
+
+  """Filter Products using Status."""
+  status: DemandEntityStatusFilterInput
+
+  """Optionally filter by storefrontIds."""
+  storefrontIds: IDFilterInput
+
+  """Filter Products using Tag Prefixes (starts with)."""
+  tagPrefixes: [StringFilterInput]
+
+  """Filter Products using Tags."""
+  tags: [StringFilterInput]
+
+  """Optionally filter by vendor."""
+  vendor: StringFilterInput
 }
 
 """Indicates how a filter should behave, defaults to OR"""
@@ -2081,6 +2719,11 @@ input FloatRangeFilterInput {
 input IDFilterInput {
   operator: FilterOperator
   values: [ID!]!
+}
+
+"""The file extension of an import's data file."""
+enum ImportFileExtension {
+  JSON
 }
 
 """
@@ -2141,6 +2784,14 @@ type Mutation {
   createCollectionTypeContent(input: CollectionTypeContentCreateInput!): CollectionTypeContent!
 
   """
+  Create an import using a CSV file.
+  This could also be called "createPreview" as it does not actually start the import.
+              
+  The permissions required vary depending on the type of import requested.
+  """
+  createCsvImport(csvData: String!, demandHqId: ID!, importType: DemandImportType!, name: String!): DemandImport!
+
+  """
   Creates a new Customer
                   
   Requires the customer/write scope on the associated DemandHq.
@@ -2162,11 +2813,25 @@ type Mutation {
   createDemandHq(input: DemandHqCreateInput!): DemandHq!
 
   """
+  Create a new DemandHqComment.
+              
+  Requires the demandhqnotification/write permission on the associated DemandHq.
+  """
+  createDemandHqComment(input: DemandHqCommentCreateInput!): DemandHqComment!
+
+  """
   Add a new DemandHqIdentity to a DemandHq (give a user permissions)
   
   Requires the demandHqidentity/write permission on the given DemandHq
   """
   createDemandHqIdentity(input: DemandHqIdentityCreateInput!): DemandHqIdentity!
+
+  """
+  Create a new demandHqNotification.
+                  
+  Requires the demandhqnotification/write permission on the associated DemandHq.
+  """
+  createDemandHqNotification(input: DemandHqNotificationCreateInput!): DemandHqNotification!
 
   """Create a new DemandHqQuickLink"""
   createDemandHqQuickLink(input: DemandHqQuickLinkCreateInput!): DemandHqQuickLink!
@@ -2177,6 +2842,13 @@ type Mutation {
   Requires the "nav/write" permission on the associated DemandHq.
   """
   createNav(input: NavCreateInput!): Nav
+
+  """
+  Create or update DemandHqAutomationSettings for a DemandHq.
+                  
+  Requires the demandhqautomationsettings/write permission on the associated DemandHq.
+  """
+  createOrUpdateDemandHqAutomationSettings(input: DemandHqAutomationSettingsUpdateInput!): DemandHqAutomationSettings!
 
   """
   Create an Order (Draft Status).
@@ -2414,6 +3086,20 @@ type Mutation {
   deleteVariantSupplierVariant(supplierVariantId: ID!, variantId: ID!): VariantSupplierVariantDeleteResponse!
 
   """
+  Create an export of products using set parameters.
+              
+  Requires the product/read and productlocale/read scopes on the specified DemandHq.
+  """
+  exportProducts(input: ExportInput!, parameters: ExportProductsParametersInput!): DemandExport!
+
+  """
+  Create an export of variants using set parameters.
+  
+  Requires the variant/read scope on the specified DemandHq.
+  """
+  exportVariants(input: ExportInput!, parameters: ExportVariantsParametersInput!): DemandExport!
+
+  """
   Install an app to a DemandHq (give an app permissions)
   
   Requires the demandHqidentity/write permission on the given DemandHq
@@ -2433,6 +3119,16 @@ type Mutation {
   Requires the requesting identity to have the "demandhqsupplier/write" permission on the associated DemandHq.
   """
   requestSupplierAccess(demandHqId: ID!, supplierId: ID!): DemandHqSupplier!
+
+  """
+  Run an Automation Job for a DemandHq on all of the associated Products, Variants, etc.
+  
+  Requires the demandhqautomationsettings/write permission on the associated DemandHq.
+  """
+  runAllForAutomationJob(input: DemandHqAutomationJobInput!): DemandHqAutomationJob!
+
+  """Start an import that is in CREATED importStatus."""
+  startImport(filename: String!): DemandImport!
 
   """
   Update an app's permissions on a DemandHq. This is a no-op if the app's
@@ -2484,6 +3180,20 @@ type Mutation {
   """
   updateDemandHqIdentity(input: DemandHqIdentityUpdateInput!): DemandHqIdentity!
 
+  """
+  Update the status of a demandHqNotification.
+  
+  Requires the demandhqnotification/write permission on the associated DemandHq.
+  """
+  updateDemandHqNotificationStatus(input: DemandHqNotificationUpdateStatusInput!): DemandHqNotification!
+
+  """
+  Update the status of multiple demandHqNotifications.
+  
+  Requires the demandhqnotification/write permission on the associated DemandHq.
+  """
+  updateDemandHqNotificationStatuses(inputs: [DemandHqNotificationUpdateStatusInput]!): [DemandHqNotification]!
+
   """Update a DemandHqQuickLink"""
   updateDemandHqQuickLink(input: DemandHqQuickLinkUpdateInput!): DemandHqQuickLink!
 
@@ -2507,6 +3217,13 @@ type Mutation {
   Requires the orderitem/write permission on the associated DemandHq.
   """
   updateOrderItem(input: OrderItemUpdateInput!): OrderItem!
+
+  """
+  Update multiple OrderItems.
+      
+  Requires the orderitem/write permission on all of the associated DemandHqs.
+  """
+  updateOrderItems(inputs: [OrderItemUpdateInput!]): [OrderItem!]
 
   """
   Update an existing page.
@@ -2533,7 +3250,7 @@ type Mutation {
   updateProductContentItem(input: ProductContentItemUpdateInput!): ProductContentItem!
 
   """Update an existing productLocale"""
-  updateProductLocale(input: ProductLocaleUpdateInput!): ProductLocale!
+  updateProductLocale(fallbackToCreateWith: ProductLocaleRelationshipFieldsInput, input: ProductLocaleUpdateInput!): ProductLocale!
 
   """
   Update multiple existing products.
@@ -2709,6 +3426,16 @@ input NavUpdateInput {
 }
 
 """
+Denotes positivity or negativity of a notification, can affect the display of the message.
+"""
+enum NotificationSentiment {
+  NEGATIVE
+  NEUTRAL
+  POSITIVE
+  SEMINEGATIVE
+}
+
+"""
 An order is a collection of items that a customer has purchased.
 As an order accrues transactions, it changes status until it is eventually complete.
 Orders rely on Suppliers to fulfill the OrderItems by creating PurchaseOrderItems (which are then fulfilled).
@@ -2764,6 +3491,7 @@ type Order {
   """
   placedAt: Date
   shippingAddress: Address!
+  shippingCharges: [OrderShippingCharge]
 
   """
   The status of the order currently, this field is read-only and can change many times over the course of the order
@@ -2864,7 +3592,7 @@ type OrderItem {
   productTitle: String!
   purchaseOrderItems: [OrderItemPurchaseOrderItem]
   quantity: Int!
-  shippingCharges: [OrderItemShippingCharge]
+  shippingCharges: [OrderShippingCharge]
   shippingMethod: ShippingMethod
   sku: String
   status: OrderItemStatus!
@@ -2951,7 +3679,7 @@ input OrderItemCreateInput {
   productId: ID!
   productTitle: String!
   quantity: Int!
-  shippingCharges: [OrderItemShippingChargeInput]
+  shippingCharges: [OrderShippingChargeInput]
   shippingMethod: ShippingMethod
   sku: String
   taxes: [OrderItemTaxInput]
@@ -3009,18 +3737,6 @@ type OrderItemPurchaseOrderItem {
   status: PurchaseOrderItemStatus!
 }
 
-"""A shippingCharge applied to an OrderItem."""
-type OrderItemShippingCharge {
-  amount: Float!
-  title: String
-}
-
-"""Create or Update an OrderItemShippingCharge"""
-input OrderItemShippingChargeInput {
-  amount: Float!
-  title: String
-}
-
 """Indicates the status of an OrderItem."""
 enum OrderItemStatus {
   ASSIGNED
@@ -3064,13 +3780,30 @@ input OrderItemUpdateInput {
   discounts: [OrderItemDiscountInput]
   note: String
   orderItemId: ID!
+  shippingCharges: [OrderShippingChargeInput]
+  shippingMethod: ShippingMethod
   taxes: [OrderItemTaxInput]
+}
+
+"""A shippingCharge applied to an Order."""
+type OrderShippingCharge {
+  amount: Float!
+  title: String
+}
+
+"""Create or Update an OrderShippingCharge"""
+input OrderShippingChargeInput {
+  amount: Float!
+  title: String
 }
 
 """Indicates the lifecycle stage an order is in"""
 enum OrderStatus {
   """Order has been authorized, waiting on fulfillment"""
   AUTHORIZED
+
+  """Order has been completely cancelled"""
+  CANCELLED
 
   """
   Order has been paid, and is now complete. This can also indicate that an order
@@ -3540,7 +4273,7 @@ type PageInfo {
 """
 The number of results to return for each term aggregation. Defaults to 0 for each.
 """
-input PageNumberOfTermAggregations {
+input PageNumberOfTermAggregationsInput {
   authors: Int
   pageTypes: Int
   tags: Int
@@ -4259,6 +4992,13 @@ input ProductLocaleInCompositeCreateInput {
 }
 
 """
+These fields are the additionally required fields to create a ProductLocale instead of update.
+"""
+input ProductLocaleRelationshipFieldsInput {
+  demandHqId: ID!
+}
+
+"""
 The necessary fields in order to update a productLocale.
 ID fields are required, others are optional, only included fields will be updated.
 """
@@ -4361,7 +5101,7 @@ type ProductMetrics {
 """
 The number of results to return for each term aggregation. Defaults to 0 for each.
 """
-input ProductNumberOfTermAggregations {
+input ProductNumberOfTermAggregationsInput {
   manufacturers: Int
   tags: Int
   vendors: Int
@@ -4718,6 +5458,31 @@ type Query {
     last: Int
   ): DemandEventConnection!
 
+  """Returns a list of the current user's exports."""
+  exports(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+    demandHqId: ID!
+
+    """Returns the first n elements from the list."""
+    first: Int
+  ): DemandExportConnection!
+
+  """
+  Returns the data for an import. This is not a subresolver due to response size (large).
+  """
+  importData(filename: String!): DemandImportDataResponse!
+
+  """Returns a list of the current user's imports."""
+  imports(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+    demandHqId: ID!
+
+    """Returns the first n elements from the list."""
+    first: Int
+  ): DemandImportConnection!
+
   """
   Get a Nav by its id.
               
@@ -4877,6 +5642,21 @@ enum ShippingMethod {
   OVERNIGHT
   THREE_DAY
   TWO_DAY
+}
+
+"""Information on Pagination"""
+type SingleDirectionPageInfo {
+  """
+  The cursor to use when paginating forwards (using first/after). Will always be
+  populated regardless of if a next page exists.
+  """
+  endCursor: String
+
+  """
+  Whether or not using the endCursor will result in more results. Always
+  populated, but will always be false when paginating using last/before.
+  """
+  hasNextPage: Boolean!
 }
 
 """Indicates which direction to sort, defaults to ASC"""
@@ -5183,12 +5963,26 @@ hierarchy using Product Tags and Collections.
 """
 type TaxonomyBranch {
   """
+  The Collection associated with this TaxonomyBranch.
+              
+  Requires the collection/read permission on the given DemandHq
+  """
+  collection: Collection
+
+  """
   The collectionId associated with the TaxonomyBranch.
   Not required as a field, but is strongly suggested to be populated, and one is generally created with a TaxonomyBranch.
   """
   collectionId: ID
   createdAt: Date!
   demandHqId: ID!
+
+  """
+  Get the parent TaxonomyBranch for a TaxonomyBranch.
+  
+  Requires the user to have the taxonomyBranch/read permission on the associated DemandHq.
+  """
+  parentTaxonomyBranch: TaxonomyBranch
 
   """
   All TaxonomyBranches besides the root have a parentTaxonomyBranchId. Immutable.
@@ -5213,7 +6007,7 @@ type TaxonomyBranch {
   """
   List Child TaxonomyBranches for a taxonomyBranch.
   
-      Requires the user to have the taxonomyBranch/read permission on the associated DemandHq.
+  Requires the user to have the taxonomyBranch/read permission on the associated DemandHq.
   """
   taxonomyBranches(
     """Returns the elements in the list that come after the specified cursor."""
@@ -5392,7 +6186,6 @@ type Variant {
   createdAt: String!
   deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
-  isTaxable: Boolean
 
   """Often same as vendor, but not always."""
   manufacturer: String
@@ -5437,6 +6230,9 @@ type Variant {
   """Stock Keeping Unit"""
   sku: String
   standardizedColor: VariantStandardizedColor
+
+  """Sales Tax Related Code, can match your chosen sales tax provider"""
+  taxCode: String
 
   """Get the title of this variant (combo of optionValues)"""
   title: String!
@@ -5494,7 +6290,6 @@ input VariantCreateInput {
   contentItemIds: [ID]
   deliveryMethod: VariantDeliveryMethod
   demandHqId: ID!
-  isTaxable: Boolean
 
   """Often same as vendor, but not always."""
   manufacturer: String
@@ -5532,6 +6327,9 @@ input VariantCreateInput {
   """Stock Keeping Unit"""
   sku: String
   standardizedColor: VariantStandardizedColor
+
+  """Sales Tax Related Code, can match your chosen sales tax provider"""
+  taxCode: String
   weight: VariantWeightInput
 }
 
@@ -5576,7 +6374,6 @@ input VariantInCompositeCreateInput {
   """
   contentItemInputIds: [String!]
   deliveryMethod: VariantDeliveryMethod
-  isTaxable: Boolean
 
   """Often same as vendor, but not always."""
   manufacturer: String
@@ -5613,6 +6410,9 @@ input VariantInCompositeCreateInput {
   """Stock Keeping Unit"""
   sku: String
   standardizedColor: VariantStandardizedColor
+
+  """Sales Tax Related Code, can match your chosen sales tax provider"""
+  taxCode: String
   weight: VariantWeightInput
 }
 
@@ -5827,7 +6627,6 @@ input VariantUpdateInput {
   """Associates contentItems with this variant"""
   contentItemIds: [ID]
   deliveryMethod: VariantDeliveryMethod
-  isTaxable: Boolean
 
   """Often same as vendor, but not always."""
   manufacturer: String
@@ -5864,6 +6663,9 @@ input VariantUpdateInput {
   """Stock Keeping Unit"""
   sku: String
   standardizedColor: VariantStandardizedColor
+
+  """Sales Tax Related Code, can match your chosen sales tax provider"""
+  taxCode: String
   variantId: ID!
   weight: VariantWeightInput
 }

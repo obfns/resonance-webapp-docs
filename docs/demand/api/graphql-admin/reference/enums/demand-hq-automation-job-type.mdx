@@ -1,0 +1,43 @@
+---
+id: demand-hq-automation-job-type
+title: DemandHqAutomationJobType
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Automation Job Types that can be run for a DemandHq
+
+```graphql
+enum DemandHqAutomationJobType {
+  PRICE_FLOOR
+  VENDOR_COLLECTIONS
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqAutomationJobType.<b>PRICE_FLOOR</b></code>](#) 
+> Enforce the Price Floor for all Variants in the DemandHq
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqAutomationJobType.<b>VENDOR_COLLECTIONS</b></code>](#) 
+> Create all Vendor Collections for the DemandHq
+> 
+
+
+
+### Member of
+
+[`DemandHqAutomationJob`](/demand/api/graphql-admin/reference/objects/demand-hq-automation-job)  <Badge class="secondary" text="object"/><Bullet />[`DemandHqAutomationJobInput`](/demand/api/graphql-admin/reference/inputs/demand-hq-automation-job-input)  <Badge class="secondary" text="input"/>
+
+
+

@@ -22,6 +22,8 @@ input OrderItemUpdateInput {
   discounts: [OrderItemDiscountInput]
   note: String
   orderItemId: ID!
+  shippingCharges: [OrderShippingChargeInput]
+  shippingMethod: ShippingMethod
   taxes: [OrderItemTaxInput]
 }
 ```
@@ -49,6 +51,14 @@ input OrderItemUpdateInput {
 > 
 > 
 
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemUpdateInput.<b>shippingCharges</b></code>](#)<Bullet />[`[OrderShippingChargeInput]`](/demand/api/graphql-admin/reference/inputs/order-shipping-charge-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderItemUpdateInput.<b>shippingMethod</b></code>](#)<Bullet />[`ShippingMethod`](/demand/api/graphql-admin/reference/enums/shipping-method) <Badge class="secondary" text="enum"/>
+> 
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>OrderItemUpdateInput.<b>taxes</b></code>](#)<Bullet />[`[OrderItemTaxInput]`](/demand/api/graphql-admin/reference/inputs/order-item-tax-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
 > 
 > 
@@ -57,7 +67,7 @@ input OrderItemUpdateInput {
 
 ### Member of
 
-[`updateOrderItem`](/demand/api/graphql-admin/reference/mutations/update-order-item)  <Badge class="secondary" text="mutation"/>
+[`updateOrderItem`](/demand/api/graphql-admin/reference/mutations/update-order-item)  <Badge class="secondary" text="mutation"/><Bullet />[`updateOrderItems`](/demand/api/graphql-admin/reference/mutations/update-order-items)  <Badge class="secondary" text="mutation"/>
 
 
 

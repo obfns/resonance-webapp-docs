@@ -18,6 +18,7 @@ Indicates the lifecycle stage an order is in
 ```graphql
 enum OrderStatus {
   AUTHORIZED
+  CANCELLED
   COMPLETE
   DRAFT
   FULFILLED
@@ -32,6 +33,10 @@ enum OrderStatus {
 
 #### [<code style={{ fontWeight: 'normal' }}>OrderStatus.<b>AUTHORIZED</b></code>](#) 
 > Order has been authorized, waiting on fulfillment
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>OrderStatus.<b>CANCELLED</b></code>](#) 
+> Order has been completely cancelled
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>OrderStatus.<b>COMPLETE</b></code>](#) 

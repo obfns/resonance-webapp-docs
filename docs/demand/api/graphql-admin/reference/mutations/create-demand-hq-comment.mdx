@@ -1,0 +1,42 @@
+---
+id: create-demand-hq-comment
+title: createDemandHqComment
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create a new DemandHqComment.
+            
+Requires the demandhqnotification/write permission on the associated DemandHq.
+
+```graphql
+createDemandHqComment(
+  input: DemandHqCommentCreateInput!
+): DemandHqComment!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createDemandHqComment.<b>input</b></code>](#)<Bullet />[`DemandHqCommentCreateInput!`](/demand/api/graphql-admin/reference/inputs/demand-hq-comment-create-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`DemandHqComment`](/demand/api/graphql-admin/reference/objects/demand-hq-comment) <Badge class="secondary" text="object"/>
+> A comment made by a DemandHqIndentity (user) about any DemandHqEntity (product, collection, etc.)
+> 
+
+
+
+
+

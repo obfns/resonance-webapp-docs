@@ -23,6 +23,7 @@ type PurchaseOrderItem {
   demandHqId: ID!
   externalProductId: String!
   externalVariantId: String!
+  fulfilledQuantity: Int!
   fulfillments: [PurchaseOrderItemFulfillment]
   isCancelled: Boolean
   isDraft: Boolean
@@ -31,10 +32,11 @@ type PurchaseOrderItem {
   productTitle: String!
   purchaseOrderItemId: ID!
   quantity: Int!
+  remainingQuantity: Int!
   shippingAddress: Address
   sku: String
   status: PurchaseOrderItemStatus!
-  storefrontId: ID!
+  storefrontId: ID
   supplierId: ID!
   supplierProductId: ID!
   supplierVariantId: ID!
@@ -73,6 +75,10 @@ type PurchaseOrderItem {
 > Actual Supplier ID for the SupplierVariant
 > 
 
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItem.<b>fulfilledQuantity</b></code>](#)<Bullet />[`Int!`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The quantity fulfilled.
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItem.<b>fulfillments</b></code>](#)<Bullet />[`[PurchaseOrderItemFulfillment]`](/supply/api/graphql-admin/reference/objects/purchase-order-item-fulfillment) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
 > Packages of items being shipped.
 > 
@@ -105,6 +111,10 @@ type PurchaseOrderItem {
 > 
 > 
 
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItem.<b>remainingQuantity</b></code>](#)<Bullet />[`Int!`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The quantity remaining to be fulfilled.
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItem.<b>shippingAddress</b></code>](#)<Bullet />[`Address`](/supply/api/graphql-admin/reference/objects/address) <Badge class="secondary" text="object"/>
 > 
 > 
@@ -117,7 +127,7 @@ type PurchaseOrderItem {
 > Status of the PurchaseOrderItem
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItem.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+#### [<code style={{ fontWeight: 'normal' }}>PurchaseOrderItem.<b>storefrontId</b></code>](#)<Bullet />[`ID`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
 > Storefront that originated the OrderItem
 > 
 

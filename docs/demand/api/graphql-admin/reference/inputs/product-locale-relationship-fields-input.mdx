@@ -1,0 +1,38 @@
+---
+id: product-locale-relationship-fields-input
+title: ProductLocaleRelationshipFieldsInput
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+These fields are the additionally required fields to create a ProductLocale instead of update.
+
+```graphql
+input ProductLocaleRelationshipFieldsInput {
+  demandHqId: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductLocaleRelationshipFieldsInput.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Member of
+
+[`updateProductLocale`](/demand/api/graphql-admin/reference/mutations/update-product-locale)  <Badge class="secondary" text="mutation"/>
+
+
+

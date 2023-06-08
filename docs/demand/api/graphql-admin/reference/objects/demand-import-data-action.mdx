@@ -1,0 +1,43 @@
+---
+id: demand-import-data-action
+title: DemandImportDataAction
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+An action to be performed on an import as well as its result.
+
+```graphql
+type DemandImportDataAction {
+  action: DemandImportDataActionAction!
+  result: JSON
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportDataAction.<b>action</b></code>](#)<Bullet />[`DemandImportDataActionAction!`](/demand/api/graphql-admin/reference/objects/demand-import-data-action-action) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> The action to be performed on an import.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandImportDataAction.<b>result</b></code>](#)<Bullet />[`JSON`](/demand/api/graphql-admin/reference/scalars/json) <Badge class="secondary" text="scalar"/>
+> The result of the action.
+> 
+
+
+
+### Member of
+
+[`DemandImportData`](/demand/api/graphql-admin/reference/objects/demand-import-data)  <Badge class="secondary" text="object"/>
+
+
+

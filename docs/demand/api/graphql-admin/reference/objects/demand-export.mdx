@@ -1,0 +1,52 @@
+---
+id: demand-export
+title: DemandExport
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+An export for the Demand Domain.
+
+```graphql
+type DemandExport {
+  filename: String!
+  metadata: DemandExportMetadata!
+  url: String
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandExport.<b>filename</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The filename of the export's data file, can be used similar to an ID.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandExport.<b>metadata</b></code>](#)<Bullet />[`DemandExportMetadata!`](/demand/api/graphql-admin/reference/objects/demand-export-metadata) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandExport.<b>url</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The URL to download the export.
+> 
+
+
+
+### Returned by
+
+[`exportProducts`](/demand/api/graphql-admin/reference/mutations/export-products)  <Badge class="secondary" text="mutation"/><Bullet />[`exportVariants`](/demand/api/graphql-admin/reference/mutations/export-variants)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`DemandExportConnection`](/demand/api/graphql-admin/reference/objects/demand-export-connection)  <Badge class="secondary" text="object"/><Bullet />[`DemandExportEdge`](/demand/api/graphql-admin/reference/objects/demand-export-edge)  <Badge class="secondary" text="object"/>
+
+
+

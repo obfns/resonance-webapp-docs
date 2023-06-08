@@ -365,7 +365,7 @@ type Mutation {
   updateSupplierProductContentItem(input: SupplierProductContentItemUpdateInput!): SupplierProductContentItem!
 
   """Update an existing supplierProductLocale"""
-  updateSupplierProductLocale(input: SupplierProductLocaleUpdateInput!): SupplierProductLocale!
+  updateSupplierProductLocale(fallbackToCreateWith: SupplierProductLocaleRelationshipFieldsInput, input: SupplierProductLocaleUpdateInput!): SupplierProductLocale!
 
   """
   Bulk Update SupplierProducts
@@ -536,6 +536,9 @@ type PurchaseOrderItem {
   """Actual Supplier ID for the SupplierVariant"""
   externalVariantId: String!
 
+  """The quantity fulfilled."""
+  fulfilledQuantity: Int!
+
   """Packages of items being shipped."""
   fulfillments: [PurchaseOrderItemFulfillment]
 
@@ -553,6 +556,9 @@ type PurchaseOrderItem {
   productTitle: String!
   purchaseOrderItemId: ID!
   quantity: Int!
+
+  """The quantity remaining to be fulfilled."""
+  remainingQuantity: Int!
   shippingAddress: Address
   sku: String
 
@@ -560,7 +566,7 @@ type PurchaseOrderItem {
   status: PurchaseOrderItemStatus!
 
   """Storefront that originated the OrderItem"""
-  storefrontId: ID!
+  storefrontId: ID
 
   """Supplier the PurchaseOrderItem is associated with"""
   supplierId: ID!
@@ -622,7 +628,7 @@ input PurchaseOrderItemCreateInput {
   sku: String
 
   """Storefront that originated the OrderItem"""
-  storefrontId: ID!
+  storefrontId: ID
 
   """Supplier the PurchaseOrderItem is associated with"""
   supplierId: ID!
@@ -1198,14 +1204,6 @@ type Supplier {
   supplierProduct(supplierProductId: ID!): SupplierProduct
 
   """
-  Term aggregations for SupplierProducts, typically used to suggest terms to use in Search Filters.
-  """
-  supplierProductTermAggregations(
-    """The number of aggregations to return for each type."""
-    numberOfResults: Int!
-  ): SupplierProductTermAggregations
-
-  """
   List SupplierProducts for a Supplier.
   
   Requires supplierproduct/read permission on the requesting identity
@@ -1237,6 +1235,11 @@ type Supplier {
 
     """Filter SupplierProducts using MSRP ranges."""
     msrp: [FloatRangeFilterInput]
+
+    """
+    The number of results to return for each term aggregation. Defaults to 0 for each.
+    """
+    numberOfTermAggregations: SupplierProductNumberOfTermAggregationsInput
 
     """
     Query supplierProducts for certain terms. Searches several fields, including
@@ -1658,6 +1661,12 @@ type SupplierProductConnectionWithSearch {
   term as the value. This is often referred to as 'Did you mean?'
   """
   querySuggestions: JSON
+
+  """
+  Values and the number of times they occur for the results of the query. These
+  will be the same for every page of a query, and should only be fetched on the first page.
+  """
+  termAggregations: SupplierProductTermAggregations
 }
 
 """
@@ -1966,6 +1975,13 @@ input SupplierProductLocaleInCompositeCreateInput {
 }
 
 """
+These fields are the additionally required fields to create a SupplierProductLocale instead of update.
+"""
+input SupplierProductLocaleRelationshipFieldsInput {
+  supplierId: ID!
+}
+
+"""
 The necessary fields in order to update a supplierProductLocale.
 ID fields are required, others are optional, only included fields will be updated.
 """
@@ -1976,6 +1992,15 @@ input SupplierProductLocaleUpdateInput {
   featureBullets: [String]
   localeType: ResonanceLocaleType!
   supplierProductId: ID!
+}
+
+"""
+The number of results to return for each term aggregation. Defaults to 0 for each.
+"""
+input SupplierProductNumberOfTermAggregationsInput {
+  manufacturers: Int
+  tags: Int
+  vendors: Int
 }
 
 """Indicates which field to sort by, defaults to CREATED_AT"""
@@ -2227,6 +2252,13 @@ Only the variant level exists, there is no parent product.
 type SupplierVariant {
   """Associates contentItems with this variant"""
   contentItemIds: [ID]
+
+  """
+  Get a list of supplierProductContentItems for a supplierVariant.
+  
+  Requires supplierproductcontentitem/read permission on the supplier for the requesting identity.
+  """
+  contentItems: [SupplierProductContentItem]
   createdAt: String!
   externalVariantId: String!
 
@@ -2482,7 +2514,6 @@ type SupplierVariantSupplement {
   Calculated field, giving the handling cost as Currency no matter how it is stored
   """
   handlingCostAsCurrency: Float
-  isTaxable: Boolean
 
   """Often same as vendor, but not always."""
   manufacturer: String
@@ -2507,6 +2538,9 @@ type SupplierVariantSupplement {
   supplierId: ID!
   supplierProductId: ID!
   supplierVariantId: ID!
+
+  """Sales Tax Related Code, can match your chosen sales tax provider"""
+  taxCode: String
 
   """ISO Date"""
   updatedAt: String!
@@ -2534,7 +2568,6 @@ input SupplierVariantSupplementCreateInput {
 
   """Additional warehouse handling charge, typically for larger items."""
   handlingCost: SupplierVariantHandlingCostInput
-  isTaxable: Boolean
 
   """Often same as vendor, but not always."""
   manufacturer: String
@@ -2558,6 +2591,9 @@ input SupplierVariantSupplementCreateInput {
   supplierId: ID!
   supplierProductId: ID!
   supplierVariantId: ID!
+
+  """Sales Tax Related Code, can match your chosen sales tax provider"""
+  taxCode: String
   weight: SupplierVariantWeightInput
 }
 
@@ -2582,7 +2618,6 @@ input SupplierVariantSupplementInCompositeCreateInput {
 
   """Additional warehouse handling charge, typically for larger items."""
   handlingCost: SupplierVariantHandlingCostInput
-  isTaxable: Boolean
 
   """Often same as vendor, but not always."""
   manufacturer: String
@@ -2603,6 +2638,9 @@ input SupplierVariantSupplementInCompositeCreateInput {
   """Stock Keeping Unit"""
   sku: String
   standardizedColor: VariantStandardizedColor
+
+  """Sales Tax Related Code, can match your chosen sales tax provider"""
+  taxCode: String
   weight: SupplierVariantWeightInput
 }
 
@@ -2627,7 +2665,6 @@ input SupplierVariantSupplementUpdateInput {
 
   """Additional warehouse handling charge, typically for larger items."""
   handlingCost: SupplierVariantHandlingCostInput
-  isTaxable: Boolean
 
   """Often same as vendor, but not always."""
   manufacturer: String
@@ -2649,6 +2686,9 @@ input SupplierVariantSupplementUpdateInput {
   sku: String
   standardizedColor: VariantStandardizedColor
   supplierVariantId: ID!
+
+  """Sales Tax Related Code, can match your chosen sales tax provider"""
+  taxCode: String
   weight: SupplierVariantWeightInput
 }
 

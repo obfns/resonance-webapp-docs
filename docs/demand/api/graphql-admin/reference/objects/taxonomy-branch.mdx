@@ -18,9 +18,11 @@ hierarchy using Product Tags and Collections.
 
 ```graphql
 type TaxonomyBranch {
+  collection: Collection
   collectionId: ID
   createdAt: Date!
   demandHqId: ID!
+  parentTaxonomyBranch: TaxonomyBranch
   parentTaxonomyBranchId: ID
   productTag: String!
   storefrontIds: [ID!]
@@ -42,6 +44,12 @@ type TaxonomyBranch {
 
 ### Fields
 
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranch.<b>collection</b></code>](#)<Bullet />[`Collection`](/demand/api/graphql-admin/reference/objects/collection) <Badge class="secondary" text="object"/>
+> The Collection associated with this TaxonomyBranch.
+            
+Requires the collection/read permission on the given DemandHq
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranch.<b>collectionId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
 > The collectionId associated with the TaxonomyBranch.
 Not required as a field, but is strongly suggested to be populated, and one is generally created with a TaxonomyBranch.
@@ -53,6 +61,12 @@ Not required as a field, but is strongly suggested to be populated, and one is g
 
 #### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranch.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranch.<b>parentTaxonomyBranch</b></code>](#)<Bullet />[`TaxonomyBranch`](/demand/api/graphql-admin/reference/objects/taxonomy-branch) <Badge class="secondary" text="object"/>
+> Get the parent TaxonomyBranch for a TaxonomyBranch.
+
+Requires the user to have the taxonomyBranch/read permission on the associated DemandHq.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranch.<b>parentTaxonomyBranchId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="scalar"/>
@@ -78,7 +92,7 @@ This is only present on the Root TaxonomyBranch of a taxonomyTree and applies to
 #### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranch.<b>taxonomyBranches</b></code>](#)<Bullet />[`TaxonomyBranchConnection!`](/demand/api/graphql-admin/reference/objects/taxonomy-branch-connection) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
 > List Child TaxonomyBranches for a taxonomyBranch.
 
-    Requires the user to have the taxonomyBranch/read permission on the associated DemandHq.
+Requires the user to have the taxonomyBranch/read permission on the associated DemandHq.
 > ##### [<code style={{ fontWeight: 'normal' }}>TaxonomyBranch.taxonomyBranches.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
 > Returns the elements in the list that come after the specified cursor.
 > 
@@ -123,7 +137,7 @@ This is only present on the Root TaxonomyBranch of a taxonomyTree and applies to
 
 ### Member of
 
-[`TaxonomyBranchConnection`](/demand/api/graphql-admin/reference/objects/taxonomy-branch-connection)  <Badge class="secondary" text="object"/><Bullet />[`TaxonomyBranchEdge`](/demand/api/graphql-admin/reference/objects/taxonomy-branch-edge)  <Badge class="secondary" text="object"/>
+[`TaxonomyBranch`](/demand/api/graphql-admin/reference/objects/taxonomy-branch)  <Badge class="secondary" text="object"/><Bullet />[`TaxonomyBranchConnection`](/demand/api/graphql-admin/reference/objects/taxonomy-branch-connection)  <Badge class="secondary" text="object"/><Bullet />[`TaxonomyBranchEdge`](/demand/api/graphql-admin/reference/objects/taxonomy-branch-edge)  <Badge class="secondary" text="object"/>
 
 
 

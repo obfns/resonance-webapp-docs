@@ -1,0 +1,40 @@
+---
+id: import-data
+title: importData
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Returns the data for an import. This is not a subresolver due to response size (large).
+
+```graphql
+importData(
+  filename: String!
+): DemandImportDataResponse!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>importData.<b>filename</b></code>](#)<Bullet />[`String!`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+### Type
+
+#### [`DemandImportDataResponse`](/demand/api/graphql-admin/reference/objects/demand-import-data-response) <Badge class="secondary" text="object"/>
+> The response from importData, containing data and metadata.
+> 
+
+
+
+
+

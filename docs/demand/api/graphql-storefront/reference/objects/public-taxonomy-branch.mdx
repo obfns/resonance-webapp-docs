@@ -18,9 +18,11 @@ hierarchy using Product Tags and Collections.
 
 ```graphql
 type PublicTaxonomyBranch {
+  collection: PublicCollection
   collectionId: ID
   createdAt: Date!
   demandHqId: ID!
+  parentTaxonomyBranch: PublicTaxonomyBranch
   parentTaxonomyBranchId: ID
   productTag: String!
   storefrontIds: [ID!]
@@ -42,6 +44,12 @@ type PublicTaxonomyBranch {
 
 ### Fields
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>collection</b></code>](#)<Bullet />[`PublicCollection`](/demand/api/graphql-storefront/reference/objects/public-collection) <Badge class="secondary" text="object"/>
+> Get the collection for a taxonomy branch.
+            
+Requires the publiccollection/read scope.
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>collectionId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
 > The collectionId associated with the TaxonomyBranch.
 Not required as a field, but is strongly suggested to be populated, and one is generally created with a TaxonomyBranch.
@@ -53,6 +61,12 @@ Not required as a field, but is strongly suggested to be populated, and one is g
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>parentTaxonomyBranch</b></code>](#)<Bullet />[`PublicTaxonomyBranch`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch) <Badge class="secondary" text="object"/>
+> The parent TaxonomyBranch for this TaxonomyBranch.
+
+Requires the publictaxonomybranch/read permission.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicTaxonomyBranch.<b>parentTaxonomyBranchId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
@@ -119,7 +133,7 @@ Requires the publictaxonomybranch/read permission.
 
 ### Member of
 
-[`PublicTaxonomyBranchConnection`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicTaxonomyBranchEdge`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch-edge)  <Badge class="secondary" text="object"/>
+[`PublicTaxonomyBranch`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch)  <Badge class="secondary" text="object"/><Bullet />[`PublicTaxonomyBranchConnection`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch-connection)  <Badge class="secondary" text="object"/><Bullet />[`PublicTaxonomyBranchEdge`](/demand/api/graphql-storefront/reference/objects/public-taxonomy-branch-edge)  <Badge class="secondary" text="object"/>
 
 
 

@@ -1,0 +1,48 @@
+---
+id: demand-hq-notification-connection
+title: DemandHqNotificationConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A Relay Connection containing DemandHqNotifications
+
+```graphql
+type DemandHqNotificationConnection {
+  edges: [DemandHqNotificationEdge!]!
+  nodes: [DemandHqNotification!]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotificationConnection.<b>edges</b></code>](#)<Bullet />[`[DemandHqNotificationEdge!]!`](/demand/api/graphql-admin/reference/objects/demand-hq-notification-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotificationConnection.<b>nodes</b></code>](#)<Bullet />[`[DemandHqNotification!]!`](/demand/api/graphql-admin/reference/objects/demand-hq-notification) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqNotificationConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/>
+
+
+

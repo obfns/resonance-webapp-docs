@@ -1,0 +1,43 @@
+---
+id: demand-hq-automation-job
+title: DemandHqAutomationJob
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+An Automation Job to be run for a DemandHq
+
+```graphql
+type DemandHqAutomationJob {
+  automationJobType: DemandHqAutomationJobType!
+  demandHqId: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqAutomationJob.<b>automationJobType</b></code>](#)<Bullet />[`DemandHqAutomationJobType!`](/demand/api/graphql-admin/reference/enums/demand-hq-automation-job-type) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqAutomationJob.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`runAllForAutomationJob`](/demand/api/graphql-admin/reference/mutations/run-all-for-automation-job)  <Badge class="secondary" text="mutation"/>
+
+
+

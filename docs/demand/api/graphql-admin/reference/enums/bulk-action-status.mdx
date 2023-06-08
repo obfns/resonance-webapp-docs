@@ -1,0 +1,53 @@
+---
+id: bulk-action-status
+title: BulkActionStatus
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+The status of a given import or export.
+
+```graphql
+enum BulkActionStatus {
+  COMPLETED
+  CREATED
+  ERROR
+  IN_PROGRESS
+}
+```
+
+
+### Values
+
+#### [<code style={{ fontWeight: 'normal' }}>BulkActionStatus.<b>COMPLETED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>BulkActionStatus.<b>CREATED</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>BulkActionStatus.<b>ERROR</b></code>](#) 
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>BulkActionStatus.<b>IN_PROGRESS</b></code>](#) 
+> 
+> 
+
+
+
+### Member of
+
+[`DemandExportMetadata`](/demand/api/graphql-admin/reference/objects/demand-export-metadata)  <Badge class="secondary" text="object"/><Bullet />[`DemandImportMetadata`](/demand/api/graphql-admin/reference/objects/demand-import-metadata)  <Badge class="secondary" text="object"/>
+
+
+

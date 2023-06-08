@@ -1,0 +1,48 @@
+---
+id: demand-hq-comment-connection
+title: DemandHqCommentConnection
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A connection to a list of DemandHqComments.
+
+```graphql
+type DemandHqCommentConnection {
+  edges: [DemandHqCommentEdge!]!
+  nodes: [DemandHqComment!]!
+  pageInfo: PageInfo!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqCommentConnection.<b>edges</b></code>](#)<Bullet />[`[DemandHqCommentEdge!]!`](/demand/api/graphql-admin/reference/objects/demand-hq-comment-edge) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqCommentConnection.<b>nodes</b></code>](#)<Bullet />[`[DemandHqComment!]!`](/demand/api/graphql-admin/reference/objects/demand-hq-comment) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>DemandHqCommentConnection.<b>pageInfo</b></code>](#)<Bullet />[`PageInfo!`](/demand/api/graphql-admin/reference/objects/page-info) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="object"/>
+> 
+> 
+
+
+
+### Member of
+
+[`DemandHq`](/demand/api/graphql-admin/reference/objects/demand-hq)  <Badge class="secondary" text="object"/>
+
+
+
