@@ -19,6 +19,7 @@ Content-Based Recommendations are recommendations that are based on the content 
 **Advantages**
 
 - Low customer activity required to provide beneficial recommendations.
+- Performs better than alternatives when the product catalog is vast.
 - Can be used to provide recommendations for new products.
 
 **Disadvantages**
@@ -44,6 +45,7 @@ Interaction-Based Recommendations are recommendations that are based on the inte
 **Advantages**
 
 - Generally higher impact than content-based recommendations. Causation is more clear than correlation.
+- Performs better than alternatives when the product catalog is small.
 
 **Disadvantages**
 
