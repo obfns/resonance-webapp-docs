@@ -17,7 +17,6 @@ Input for updating a Customer
 
 ```graphql
 input CustomerUpdateInput {
-  customerId: ID!
   defaultBillingAddressId: ID
   defaultShippingAddressId: ID
   emailAddress: String
@@ -31,10 +30,6 @@ input CustomerUpdateInput {
 
 
 ### Fields
-
-#### [<code style={{ fontWeight: 'normal' }}>CustomerUpdateInput.<b>customerId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
-> 
-> 
 
 #### [<code style={{ fontWeight: 'normal' }}>CustomerUpdateInput.<b>defaultBillingAddressId</b></code>](#)<Bullet />[`ID`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="scalar"/>
 > The CustomerAddressId for the default billing address for this Customer

@@ -1,0 +1,45 @@
+---
+id: product-recommendation
+title: ProductRecommendation
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A product that is being recommended for a requested reason.
+
+```graphql
+type ProductRecommendation {
+  product: PublicProduct
+  productId: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductRecommendation.<b>product</b></code>](#)<Bullet />[`PublicProduct`](/demand/api/graphql-storefront/reference/objects/public-product) <Badge class="secondary" text="object"/>
+> Get the product associated with the recommendation.
+            
+Requires the publicproduct/read scope.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>ProductRecommendation.<b>productId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`recommendLikeRecentActivityProducts`](/demand/api/graphql-storefront/reference/queries/recommend-like-recent-activity-products)  <Badge class="secondary" text="query"/><Bullet />[`recommendMoreLikeThisProducts`](/demand/api/graphql-storefront/reference/queries/recommend-more-like-this-products)  <Badge class="secondary" text="query"/><Bullet />[`recommendRecentlyViewedProducts`](/demand/api/graphql-storefront/reference/queries/recommend-recently-viewed-products)  <Badge class="secondary" text="query"/>
+
+
+

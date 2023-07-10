@@ -20,12 +20,16 @@ type PublicOrderItem {
   adjustedPrice: Float!
   adjustedQuantity: Int!
   adjustments: [OrderItemAdjustment]
+  assignedQuantity: Int!
   barcode: String
   currency: ResonanceCurrency!
   customProperties: JSON
   deliveryMethod: VariantDeliveryMethod!
   demandHqId: ID!
+  discountTotal: Float!
   discounts: [OrderItemDiscount]
+  fulfilledQuantity: Int!
+  grandTotal: Float!
   note: String
   orderId: ID!
   orderItemId: ID!
@@ -34,9 +38,11 @@ type PublicOrderItem {
   purchaseOrderItems: [OrderItemPurchaseOrderItem]
   quantity: Int!
   shippingCharges: [OrderShippingCharge]
+  shippingChargesTotal: Float!
   shippingMethod: ShippingMethod
   sku: String
   status: OrderItemStatus!
+  taxTotal: Float!
   taxes: [OrderItemTax]
   unitPrice: Float!
   variantId: ID!
@@ -60,6 +66,10 @@ type PublicOrderItem {
 > 
 > 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>assignedQuantity</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The quantity of the OrderItem that has been assigned to a PurchaseOrderItem.
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>barcode</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
 > 
 > 
@@ -80,8 +90,21 @@ type PublicOrderItem {
 > 
 > 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>discountTotal</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The aggregate amount of all discounts applied to the OrderItem, can be subtracted from the subtotal directly.
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>discounts</b></code>](#)<Bullet />[`[OrderItemDiscount]`](/demand/api/graphql-storefront/reference/objects/order-item-discount) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>fulfilledQuantity</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The quantity of the OrderItem that has been fulfilled.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>grandTotal</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The aggregate amount the consumer must pay for the item including price,
+quantity, adjustments, discounts, shippingCharges, and taxes.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>note</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
@@ -116,6 +139,10 @@ type PublicOrderItem {
 > 
 > 
 
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>shippingChargesTotal</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The aggregate amount of all shipping charges applied to the OrderItem, can be added to the subtotal directly.
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>shippingMethod</b></code>](#)<Bullet />[`ShippingMethod`](/demand/api/graphql-storefront/reference/enums/shipping-method) <Badge class="secondary" text="enum"/>
 > 
 > 
@@ -126,6 +153,10 @@ type PublicOrderItem {
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>status</b></code>](#)<Bullet />[`OrderItemStatus!`](/demand/api/graphql-storefront/reference/enums/order-item-status) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="enum"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>taxTotal</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The aggregate amount of all taxes applied to the OrderItem, can be added to the subtotal directly.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicOrderItem.<b>taxes</b></code>](#)<Bullet />[`[OrderItemTax]`](/demand/api/graphql-storefront/reference/objects/order-item-tax) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>

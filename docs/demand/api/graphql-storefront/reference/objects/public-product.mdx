@@ -59,20 +59,15 @@ type PublicProduct {
 #### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>contentItem</b></code>](#)<Bullet />[`PublicProductContentItem`](/demand/api/graphql-storefront/reference/objects/public-product-content-item) <Badge class="secondary" text="object"/>
 > Get a productContentItem for a product
 
-        Requires productcontentitem/read permission on the requesting identity
+Requires productcontentitem/read permission on the requesting identity
 > ##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.contentItem.<b>contentItemId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
 > 
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>PublicProduct.<b>contentItems</b></code>](#)<Bullet />[`ProductContentItemConnection`](/demand/api/graphql-storefront/reference/objects/product-content-item-connection) <Badge class="secondary" text="object"/>
-> Get a list of productContentItems
+> Get a list of productContentItems. The sort order is always by position.
 
-        Requires productcontentitem/read permission on the DemandHq for the requesting identity
-
-        Sorting works differently depending on which filters are used.
-        Without any filters, the sort order is by createdAt.
-        With a contentType filter, the sort order is by position.
-        This means "featuredImage" can be retrieved by using contentType: IMAGE and first: 1.
+Requires productcontentitem/read permission on the DemandHq for the requesting identity.
 > ##### [<code style={{ fontWeight: 'normal' }}>PublicProduct.contentItems.<b>after</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
 > Returns the elements in the list that come after the specified cursor.
 > 
@@ -180,7 +175,7 @@ Requires publicvariant/read permission on the demandHq for the requesting identi
 
 ### Member of
 
-[`PublicProductConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-product-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductEdge`](/demand/api/graphql-storefront/reference/objects/public-product-edge)  <Badge class="secondary" text="object"/><Bullet />[`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant)  <Badge class="secondary" text="object"/>
+[`ProductRecommendation`](/demand/api/graphql-storefront/reference/objects/product-recommendation)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductConnectionWithSearch`](/demand/api/graphql-storefront/reference/objects/public-product-connection-with-search)  <Badge class="secondary" text="object"/><Bullet />[`PublicProductEdge`](/demand/api/graphql-storefront/reference/objects/public-product-edge)  <Badge class="secondary" text="object"/><Bullet />[`PublicVariant`](/demand/api/graphql-storefront/reference/objects/public-variant)  <Badge class="secondary" text="object"/>
 
 
 

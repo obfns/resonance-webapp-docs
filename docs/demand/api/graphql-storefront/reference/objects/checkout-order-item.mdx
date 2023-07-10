@@ -20,11 +20,15 @@ of the checkout process if they are required for OrderItems.
 ```graphql
 type CheckoutOrderItem {
   customProperties: JSON
+  discountTotal: Float!
   discounts: [OrderItemDiscount]
+  grandTotal: Float!
   note: String
   quantity: Int
   shippingCharges: [OrderShippingCharge]
+  shippingChargesTotal: Float!
   shippingMethod: ShippingMethod
+  taxTotal: Float!
   taxes: [OrderItemTax]
   unitPrice: Float
   variant: PublicVariant
@@ -39,8 +43,17 @@ type CheckoutOrderItem {
 > 
 > 
 
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>discountTotal</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The aggregate amount of all discounts applied to the OrderItem, can be subtracted from the subtotal directly.
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>discounts</b></code>](#)<Bullet />[`[OrderItemDiscount]`](/demand/api/graphql-storefront/reference/objects/order-item-discount) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>grandTotal</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The aggregate amount the consumer must pay for the item including price,
+quantity, adjustments, discounts, shippingCharges, and taxes.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>note</b></code>](#)<Bullet />[`String`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="scalar"/>
@@ -55,8 +68,16 @@ type CheckoutOrderItem {
 > 
 > 
 
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>shippingChargesTotal</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The aggregate amount of all shipping charges applied to the OrderItem, can be added to the subtotal directly.
+> 
+
 #### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>shippingMethod</b></code>](#)<Bullet />[`ShippingMethod`](/demand/api/graphql-storefront/reference/enums/shipping-method) <Badge class="secondary" text="enum"/>
 > 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>taxTotal</b></code>](#)<Bullet />[`Float!`](/demand/api/graphql-storefront/reference/scalars/float) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The aggregate amount of all taxes applied to the OrderItem, can be added to the subtotal directly.
 > 
 
 #### [<code style={{ fontWeight: 'normal' }}>CheckoutOrderItem.<b>taxes</b></code>](#)<Bullet />[`[OrderItemTax]`](/demand/api/graphql-storefront/reference/objects/order-item-tax) <Badge class="secondary" text="list"/> <Badge class="secondary" text="object"/>

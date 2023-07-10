@@ -1,0 +1,42 @@
+---
+id: create-or-update-storefront-email-settings
+title: createOrUpdateStorefrontEmailSettings
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create or update StorefrontEmailSettings for a DemandHq.
+                
+Requires the storefrontemailsettings/write permission on the associated DemandHq.
+
+```graphql
+createOrUpdateStorefrontEmailSettings(
+  input: StorefrontEmailSettingsUpdateInput!
+): StorefrontEmailSettings!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createOrUpdateStorefrontEmailSettings.<b>input</b></code>](#)<Bullet />[`StorefrontEmailSettingsUpdateInput!`](/demand/api/graphql-admin/reference/inputs/storefront-email-settings-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`StorefrontEmailSettings`](/demand/api/graphql-admin/reference/objects/storefront-email-settings) <Badge class="secondary" text="object"/>
+> Contains all of the settings regarding Email for a Storefront.
+> 
+
+
+
+
+

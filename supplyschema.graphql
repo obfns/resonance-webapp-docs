@@ -300,6 +300,9 @@ type Mutation {
   """Delete a SupplierProduct (and all of its child entities)"""
   deleteSupplierProduct(supplierProductId: ID!): SupplierProductDeleteResponse!
 
+  """Delete a list of SupplierProducts (and all of their child entities)"""
+  deleteSupplierProducts(supplierProductIds: [ID!]!): SupplierProductsDeleteResponse!
+
   """Delete a SupplierQuickLink"""
   deleteSupplierQuickLink(appId: ID!, quickLinkType: SupplierQuickLinkType!, supplierId: ID!): SupplierQuickLinkDeletedResponse!
 
@@ -1264,6 +1267,9 @@ type Supplier {
     """Filter SupplierProducts using Status."""
     status: SupplyEntityStatusFilterInput
 
+    """Filter SupplierProducts using a list of SupplierProductIds."""
+    supplierProductIds: [ID!]
+
     """Filter SupplierProducts using Tags."""
     tags: [StringFilterInput]
 
@@ -2085,6 +2091,11 @@ input SupplierProductUpdateInput {
 
   """The brand or manufacturer of the product."""
   vendor: String
+}
+
+"""Response for deleting SupplierProducts"""
+type SupplierProductsDeleteResponse {
+  deletedIds: [ID!]
 }
 
 """Represents a link to your app from inside the Resonance Supply Portal"""

@@ -97,6 +97,7 @@ type Supplier {
   sortOrder: [SupplierProductSortInput]
   standardizedColor: [SupplierProductStandardizedColorFilterInput]
   status: SupplyEntityStatusFilterInput
+  supplierProductIds: [ID!]
   tags: [StringFilterInput]
   vendor: StringFilterInput
 ): SupplierProductConnectionWithSearch!
@@ -391,6 +392,10 @@ supplierVariantSupplement.sku
 
 ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>status</b></code>](#)<Bullet />[`SupplyEntityStatusFilterInput`](/supply/api/graphql-admin/reference/inputs/supply-entity-status-filter-input) <Badge class="secondary" text="input"/>
 > Filter SupplierProducts using Status.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>supplierProductIds</b></code>](#)<Bullet />[`[ID!]`](/supply/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter SupplierProducts using a list of SupplierProductIds.
 > 
 
 ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>tags</b></code>](#)<Bullet />[`[StringFilterInput]`](/supply/api/graphql-admin/reference/inputs/string-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>

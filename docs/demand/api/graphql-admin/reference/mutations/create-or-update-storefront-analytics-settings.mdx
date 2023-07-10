@@ -1,0 +1,42 @@
+---
+id: create-or-update-storefront-analytics-settings
+title: createOrUpdateStorefrontAnalyticsSettings
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Create or update StorefrontAnalyticsSettings for a DemandHq.
+                
+Requires the storefrontanalyticssettings/write permission on the associated DemandHq.
+
+```graphql
+createOrUpdateStorefrontAnalyticsSettings(
+  input: StorefrontAnalyticsSettingsUpdateInput!
+): StorefrontAnalyticsSettings!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>createOrUpdateStorefrontAnalyticsSettings.<b>input</b></code>](#)<Bullet />[`StorefrontAnalyticsSettingsUpdateInput!`](/demand/api/graphql-admin/reference/inputs/storefront-analytics-settings-update-input) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="input"/>
+> 
+> 
+
+### Type
+
+#### [`StorefrontAnalyticsSettings`](/demand/api/graphql-admin/reference/objects/storefront-analytics-settings) <Badge class="secondary" text="object"/>
+> Contains all of the settings regarding Analytics for a Storefront.
+> 
+
+
+
+
+

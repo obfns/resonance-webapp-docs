@@ -217,11 +217,32 @@ of the checkout process if they are required for OrderItems.
 """
 type CheckoutOrderItem {
   customProperties: JSON
+
+  """
+  The aggregate amount of all discounts applied to the OrderItem, can be subtracted from the subtotal directly.
+  """
+  discountTotal: Float!
   discounts: [OrderItemDiscount]
+
+  """
+  The aggregate amount the consumer must pay for the item including price,
+  quantity, adjustments, discounts, shippingCharges, and taxes.
+  """
+  grandTotal: Float!
   note: String
   quantity: Int
   shippingCharges: [OrderShippingCharge]
+
+  """
+  The aggregate amount of all shipping charges applied to the OrderItem, can be added to the subtotal directly.
+  """
+  shippingChargesTotal: Float!
   shippingMethod: ShippingMethod
+
+  """
+  The aggregate amount of all taxes applied to the OrderItem, can be added to the subtotal directly.
+  """
+  taxTotal: Float!
   taxes: [OrderItemTax]
 
   """Price per item, can be multiplied by quantity for total price"""
@@ -311,9 +332,11 @@ input CollectionNumberOfTermAggregationsInput {
 
 """Indicates which field to sort by"""
 enum CollectionSortField {
+  CREATED_AT
   PUBLISHED_AT
   RELEVANCE
   TITLE
+  UPDATED_AT
 }
 
 """Sort Collections by a field and direction."""
@@ -662,8 +685,6 @@ type CustomerTags {
 
 """Input for updating a Customer"""
 input CustomerUpdateInput {
-  customerId: ID!
-
   """
   The CustomerAddressId for the default billing address for this Customer
   """
@@ -1229,6 +1250,17 @@ input ProductNumberOfTermAggregationsInput {
   vendors: Int
 }
 
+"""A product that is being recommended for a requested reason."""
+type ProductRecommendation {
+  """
+  Get the product associated with the recommendation.
+              
+  Requires the publicproduct/read scope.
+  """
+  product: PublicProduct
+  productId: ID!
+}
+
 """Indicates which field to sort by, defaults to CREATED_AT"""
 enum ProductSortField {
   CREATED_AT
@@ -1703,12 +1735,31 @@ type PublicOrderItem {
   """The quantity of the OrderItem after adjustments."""
   adjustedQuantity: Int!
   adjustments: [OrderItemAdjustment]
+
+  """
+  The quantity of the OrderItem that has been assigned to a PurchaseOrderItem.
+  """
+  assignedQuantity: Int!
   barcode: String
   currency: ResonanceCurrency!
   customProperties: JSON
   deliveryMethod: VariantDeliveryMethod!
   demandHqId: ID!
+
+  """
+  The aggregate amount of all discounts applied to the OrderItem, can be subtracted from the subtotal directly.
+  """
+  discountTotal: Float!
   discounts: [OrderItemDiscount]
+
+  """The quantity of the OrderItem that has been fulfilled."""
+  fulfilledQuantity: Int!
+
+  """
+  The aggregate amount the consumer must pay for the item including price,
+  quantity, adjustments, discounts, shippingCharges, and taxes.
+  """
+  grandTotal: Float!
   note: String
   orderId: ID!
   orderItemId: ID!
@@ -1717,9 +1768,19 @@ type PublicOrderItem {
   purchaseOrderItems: [OrderItemPurchaseOrderItem]
   quantity: Int!
   shippingCharges: [OrderShippingCharge]
+
+  """
+  The aggregate amount of all shipping charges applied to the OrderItem, can be added to the subtotal directly.
+  """
+  shippingChargesTotal: Float!
   shippingMethod: ShippingMethod
   sku: String
   status: OrderItemStatus!
+
+  """
+  The aggregate amount of all taxes applied to the OrderItem, can be added to the subtotal directly.
+  """
+  taxTotal: Float!
   taxes: [OrderItemTax]
 
   """Price per item, can be multiplied by quantity for total price"""
@@ -1942,19 +2003,14 @@ type PublicProduct {
   """
   Get a productContentItem for a product
   
-          Requires productcontentitem/read permission on the requesting identity
+  Requires productcontentitem/read permission on the requesting identity
   """
   contentItem(contentItemId: ID!): PublicProductContentItem
 
   """
-  Get a list of productContentItems
+  Get a list of productContentItems. The sort order is always by position.
   
-          Requires productcontentitem/read permission on the DemandHq for the requesting identity
-  
-          Sorting works differently depending on which filters are used.
-          Without any filters, the sort order is by createdAt.
-          With a contentType filter, the sort order is by position.
-          This means "featuredImage" can be retrieved by using contentType: IMAGE and first: 1.
+  Requires productcontentitem/read permission on the DemandHq for the requesting identity.
   """
   contentItems(
     """Returns the elements in the list that come after the specified cursor."""
@@ -2448,6 +2504,11 @@ type Query {
   _empty: String
 
   """
+  Returns the analytics url for the storefront, with which you can send Analytics Interactions to be ingested.
+  """
+  analyticsIngestionUrl: String
+
+  """
   Get a collection by its slug.
   
   Requires the publiccollection/read scope.
@@ -2770,6 +2831,35 @@ type Query {
     """Optionally filter by vendor."""
     vendor: StringFilterInput
   ): PublicProductConnectionWithSearch!
+
+  """
+  Recommend products that are similar to a a customer's recent product activity.
+  """
+  recommendLikeRecentActivityProducts(
+    customerOrDeviceId: String!
+
+    """The number of results to return. Max 100."""
+    numberOfResults: Int!
+  ): [ProductRecommendation!]!
+
+  """Recommend products that are similar to a given product(s)."""
+  recommendMoreLikeThisProducts(
+    """The number of results to return. Max 100."""
+    numberOfResults: Int!
+
+    """The product(s) to find similar products for."""
+    productIds: [ID!]!
+  ): [ProductRecommendation!]!
+
+  """
+  Recommend products that have been recently viewed by a customer or device.
+  """
+  recommendRecentlyViewedProducts(
+    customerOrDeviceId: String!
+
+    """The number of results to return. Max 100."""
+    numberOfResults: Int!
+  ): [ProductRecommendation!]!
 
   """
   Get the storefront associated with the requesting storefront identity.

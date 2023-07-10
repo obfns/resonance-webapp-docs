@@ -2851,6 +2851,20 @@ type Mutation {
   createOrUpdateDemandHqAutomationSettings(input: DemandHqAutomationSettingsUpdateInput!): DemandHqAutomationSettings!
 
   """
+  Create or update StorefrontAnalyticsSettings for a DemandHq.
+                  
+  Requires the storefrontanalyticssettings/write permission on the associated DemandHq.
+  """
+  createOrUpdateStorefrontAnalyticsSettings(input: StorefrontAnalyticsSettingsUpdateInput!): StorefrontAnalyticsSettings!
+
+  """
+  Create or update StorefrontEmailSettings for a DemandHq.
+                  
+  Requires the storefrontemailsettings/write permission on the associated DemandHq.
+  """
+  createOrUpdateStorefrontEmailSettings(input: StorefrontEmailSettingsUpdateInput!): StorefrontEmailSettings!
+
+  """
   Create an Order (Draft Status).
                   
   Requires the order/write permission on the given DemandHq.
@@ -2928,12 +2942,20 @@ type Mutation {
   also VariantSupplierVariants from an existing SupplierProduct you have access
   to. Requires several write permissions and access to a Supplier.
   """
-  createProductCompositeFromSupplierProduct(demandHqId: ID!, supplierId: ID!, supplierProductId: ID!): Product!
+  createProductCompositeFromSupplierProducts(demandHqId: ID!, supplierId: ID!, supplierProductIds: [ID!]!): Product!
 
-  """Create a ProductContentItem from a URL"""
+  """
+  Create a ProductContentItem from a URL.
+              
+  Requires productcontentitem/write permission on the DemandHq for the requesting identity.
+  """
   createProductImageFromUrl(input: ProductImageFromUrlInput!): ProductContentItem!
 
-  """Create ProductContentItems from image files"""
+  """
+  Create ProductContentItems from image files.
+              
+  Requires productcontentitem/write permission on the DemandHq for the requesting identity.
+  """
   createProductImagesFromFiles(inputs: [ProductImageFromFileInput!]!): ProductImagesFromFilesResponse!
 
   """Create a new productLocale."""
@@ -3065,8 +3087,26 @@ type Mutation {
   """
   deleteProduct(productId: ID!): ProductDeleteResponse!
 
-  """Delete an existing ProductContentItem"""
+  """
+  Delete an existing ProductContentItem.
+              
+  Requires productcontentitem/write permission on the DemandHq for the requesting identity.
+  """
   deleteProductContentItem(contentItemId: ID!, productId: ID!): ProductContentItemDeleteResponse!
+
+  """
+  Delete existing ProductContentItems.
+              
+  Requires productcontentitem/write permission on all DemandHqs for the requesting identity.
+  """
+  deleteProductContentItems(inputs: [ProductContentItemDeleteInput!]!): ProductContentItemsDeleteResponse!
+
+  """
+  Delete multiple Products from a DemandHq.
+  
+  Requires the product/write permission on all given DemandHqs.
+  """
+  deleteProducts(productIds: [ID!]!): ProductsDeleteResponse!
 
   """
   Delete a TaxonomyBranch.
@@ -3246,7 +3286,11 @@ type Mutation {
   """
   updateProduct(input: ProductUpdateInput!): Product!
 
-  """Update an existing ProductContentItem"""
+  """
+  Update an existing ProductContentItem.
+              
+  Requires productcontentitem/write permission on the DemandHq for the requesting identity.
+  """
   updateProductContentItem(input: ProductContentItemUpdateInput!): ProductContentItem!
 
   """Update an existing productLocale"""
@@ -3571,13 +3615,32 @@ type OrderItem {
   """The quantity of the OrderItem after adjustments."""
   adjustedQuantity: Int!
   adjustments: [OrderItemAdjustment]
+
+  """
+  The quantity of the OrderItem that has been assigned to a PurchaseOrderItem.
+  """
+  assignedQuantity: Int!
   barcode: String
   createdAt: Date!
   currency: ResonanceCurrency!
   customProperties: JSON
   deliveryMethod: VariantDeliveryMethod!
   demandHqId: ID!
+
+  """
+  The aggregate amount of all discounts applied to the OrderItem, can be subtracted from the subtotal directly.
+  """
+  discountTotal: Float!
   discounts: [OrderItemDiscount]
+
+  """The quantity of the OrderItem that has been fulfilled."""
+  fulfilledQuantity: Int!
+
+  """
+  The aggregate amount the consumer must pay for the item including price,
+  quantity, adjustments, discounts, shippingCharges, and taxes.
+  """
+  grandTotal: Float!
   note: String
 
   """
@@ -3593,9 +3656,19 @@ type OrderItem {
   purchaseOrderItems: [OrderItemPurchaseOrderItem]
   quantity: Int!
   shippingCharges: [OrderShippingCharge]
+
+  """
+  The aggregate amount of all shipping charges applied to the OrderItem, can be added to the subtotal directly.
+  """
+  shippingChargesTotal: Float!
   shippingMethod: ShippingMethod
   sku: String
   status: OrderItemStatus!
+
+  """
+  The aggregate amount of all taxes applied to the OrderItem, can be added to the subtotal directly.
+  """
+  taxTotal: Float!
   taxes: [OrderItemTax]
 
   """Price per item, can be multiplied by quantity for total price"""
@@ -4574,19 +4647,14 @@ type Product {
   """
   Get a productContentItem for a product
   
-          Requires productcontentitem/read permission on the requesting identity
+  Requires productcontentitem/read permission on the requesting identity
   """
   contentItem(contentItemId: ID!): ProductContentItem
 
   """
-  Get a list of productContentItems
+  Get a list of productContentItems. The sort order is always by position.
   
-  Requires productcontentitem/read permission on the DemandHq for the requesting identity
-  
-  Sorting works differently depending on which filters are used.
-  Without any filters, the sort order is by createdAt.
-  With a contentType filter, the sort order is by position.
-  This means "featuredImage" can be retrieved by using contentType: IMAGE and first: 1.
+  Requires productcontentitem/read permission on the DemandHq for the requesting identity.
   """
   contentItems(
     """Returns the elements in the list that come after the specified cursor."""
@@ -4776,6 +4844,12 @@ type ProductContentItemDeleteId {
   productId: ID!
 }
 
+"""Input object for deleting a ProductContentItem"""
+input ProductContentItemDeleteInput {
+  contentItemId: ID!
+  productId: ID!
+}
+
 """The response type from a ProductContentItem delete mutation"""
 type ProductContentItemDeleteResponse {
   deletedId: ProductContentItemDeleteId
@@ -4805,6 +4879,11 @@ input ProductContentItemUpdateInput {
   """
   position: Int
   productId: ID!
+}
+
+"""The response type from a ProductContentItem delete mutation"""
+type ProductContentItemsDeleteResponse {
+  deletedIds: [ProductContentItemDeleteId]
 }
 
 """Describes what type of content the contentItem is"""
@@ -5193,6 +5272,11 @@ input ProductUpdateInput {
 
   """AKA Brand. Limit 256 characters."""
   vendor: String
+}
+
+"""Returned object from deleteProducts"""
+type ProductsDeleteResponse {
+  deletedIds: [ID!]!
 }
 
 """
@@ -5659,6 +5743,36 @@ type SingleDirectionPageInfo {
   hasNextPage: Boolean!
 }
 
+"""Contains SMTP credentials used for sending emails."""
+type SmtpCredentials {
+  """The SMTP host to connect to."""
+  host: String!
+
+  """The password to use for authentication."""
+  password: String!
+
+  """The port to connect to."""
+  port: Int!
+
+  """The username to use for authentication."""
+  username: String!
+}
+
+"""The input type setting SMTP credentials for sending emails."""
+input SmtpCredentialsInput {
+  """The SMTP host to connect to."""
+  host: String!
+
+  """The password to use for authentication."""
+  password: String!
+
+  """The port to connect to."""
+  port: Int!
+
+  """The username to use for authentication."""
+  username: String!
+}
+
 """Indicates which direction to sort, defaults to ASC"""
 enum SortDirection {
   ASC
@@ -5669,6 +5783,13 @@ enum SortDirection {
 A Storefront represents a customer facing ecommerce website that consumes Resonance Demand Entities
 """
 type Storefront {
+  """
+  The settings for Analytics for this Storefront.
+  
+  Requires the storefrontanalyticssettings/read permission on the associated DemandHq.
+  """
+  analyticsSettings: StorefrontAnalyticsSettings
+
   """Get an api key for this storefront by identitySlug."""
   apiKey(slug: String!): StorefrontApiKey
 
@@ -5729,6 +5850,13 @@ type Storefront {
   ): CustomerConnectionWithSearch!
   demandHqId: ID!
   description: String
+
+  """
+  The settings for Email for this Storefront.
+  
+  Requires the storefrontemailsettings/read permission on the associated DemandHq.
+  """
+  emailSettings: StorefrontEmailSettings
   name: String!
 
   """
@@ -5782,6 +5910,37 @@ type Storefront {
   updatedAt: Date!
   updatedBy: ID!
   urlDomain: String!
+}
+
+"""Contains all of the settings regarding Analytics for a Storefront."""
+type StorefrontAnalyticsSettings {
+  """
+  The origins (domains) that are allowed to ingest analytics data.
+  Should be in the same format as you would for CORS. (https://domain.com:port)
+  Localhost and "*" are allowed.
+  """
+  allowedOrigins: [String!]
+
+  """The DemandHq that these settings belong to"""
+  demandHqId: ID!
+
+  """The Storefront that these settings belong to"""
+  storefrontId: ID!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+
+"""The input type for creating or updating StorefrontAnalyticsSettings"""
+input StorefrontAnalyticsSettingsUpdateInput {
+  """
+  The origins (domains) that are allowed to ingest analytics data.
+  Should be in the same format as you would for CORS. (https://domain.com:port)
+  Localhost and "*" are allowed.
+  """
+  allowedOrigins: [String!]
+
+  """The Storefront that these settings belong to"""
+  storefrontId: ID!
 }
 
 """
@@ -5863,6 +6022,65 @@ input StorefrontCreateInput {
 """One edge producing one Storefront Node"""
 type StorefrontEdge {
   node: Storefront
+}
+
+"""Contains all of the settings regarding Email for a Storefront."""
+type StorefrontEmailSettings {
+  """The DemandHq that these settings belong to"""
+  demandHqId: ID!
+
+  """
+  The email address that emails will be sent from. Required to send any emails.
+  """
+  fromEmailAddress: String
+
+  """The name that emails will be sent from. Defaults to fromEmailAddress."""
+  fromName: String
+
+  """
+  The URL of the logo for email templates. Defaults to the text of the Storefront Name.
+  """
+  logoUrl: String
+
+  """
+  Send Order Confirmation emails when an Order is authorized. Defaults to false.
+  """
+  sendOrderConfirmations: Boolean
+
+  """SMTP credentials used for sending emails. Required to send any emails."""
+  smtpCredentials: SmtpCredentials
+
+  """The Storefront that these settings belong to"""
+  storefrontId: ID!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+
+"""The input type for creating or updating StorefrontEmailSettings"""
+input StorefrontEmailSettingsUpdateInput {
+  """
+  The email address that emails will be sent from. Required to send any emails.
+  """
+  fromEmailAddress: String
+
+  """The name that emails will be sent from. Defaults to fromEmailAddress."""
+  fromName: String
+
+  """
+  The URL of the logo for email templates. Defaults to the text of the Storefront Name.
+  """
+  logoUrl: String
+
+  """
+  Send Order Confirmation emails when an Order is authorized. Defaults to false.
+  """
+  sendOrderConfirmations: Boolean
+
+  """SMTP credentials used for sending emails. Required to send any emails."""
+  smtpCredentials: SmtpCredentialsInput
+
+  """The Storefront that these settings belong to"""
+  storefrontId: ID!
 }
 
 """

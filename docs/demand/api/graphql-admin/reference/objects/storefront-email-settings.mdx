@@ -1,0 +1,82 @@
+---
+id: storefront-email-settings
+title: StorefrontEmailSettings
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Contains all of the settings regarding Email for a Storefront.
+
+```graphql
+type StorefrontEmailSettings {
+  demandHqId: ID!
+  fromEmailAddress: String
+  fromName: String
+  logoUrl: String
+  sendOrderConfirmations: Boolean
+  smtpCredentials: SmtpCredentials
+  storefrontId: ID!
+  updatedAt: Date!
+  updatedBy: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontEmailSettings.<b>demandHqId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The DemandHq that these settings belong to
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontEmailSettings.<b>fromEmailAddress</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The email address that emails will be sent from. Required to send any emails.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontEmailSettings.<b>fromName</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The name that emails will be sent from. Defaults to fromEmailAddress.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontEmailSettings.<b>logoUrl</b></code>](#)<Bullet />[`String`](/demand/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="scalar"/>
+> The URL of the logo for email templates. Defaults to the text of the Storefront Name.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontEmailSettings.<b>sendOrderConfirmations</b></code>](#)<Bullet />[`Boolean`](/demand/api/graphql-admin/reference/scalars/boolean) <Badge class="secondary" text="scalar"/>
+> Send Order Confirmation emails when an Order is authorized. Defaults to false.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontEmailSettings.<b>smtpCredentials</b></code>](#)<Bullet />[`SmtpCredentials`](/demand/api/graphql-admin/reference/objects/smtp-credentials) <Badge class="secondary" text="object"/>
+> SMTP credentials used for sending emails. Required to send any emails.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontEmailSettings.<b>storefrontId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The Storefront that these settings belong to
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontEmailSettings.<b>updatedAt</b></code>](#)<Bullet />[`Date!`](/demand/api/graphql-admin/reference/scalars/date) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>StorefrontEmailSettings.<b>updatedBy</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-admin/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`createOrUpdateStorefrontEmailSettings`](/demand/api/graphql-admin/reference/mutations/create-or-update-storefront-email-settings)  <Badge class="secondary" text="mutation"/>
+
+### Member of
+
+[`Storefront`](/demand/api/graphql-admin/reference/objects/storefront)  <Badge class="secondary" text="object"/>
+
+
+
