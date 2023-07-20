@@ -1162,6 +1162,11 @@ input PageNumberOfTermAggregationsInput {
   tags: Int
 }
 
+"""A page that is being recommended for a requested reason."""
+type PageRecommendation {
+  pageId: ID!
+}
+
 """Indicates which field to sort by"""
 enum PageSortField {
   PUBLISHED_AT
@@ -2833,6 +2838,16 @@ type Query {
   ): PublicProductConnectionWithSearch!
 
   """
+  Recommend pages that are similar to a a customer's recent page activity.
+  """
+  recommendLikeRecentActivityPages(
+    customerOrDeviceId: String!
+
+    """The number of results to return. Max 100."""
+    numberOfResults: Int!
+  ): [PageRecommendation!]!
+
+  """
   Recommend products that are similar to a a customer's recent product activity.
   """
   recommendLikeRecentActivityProducts(
@@ -2841,6 +2856,22 @@ type Query {
     """The number of results to return. Max 100."""
     numberOfResults: Int!
   ): [ProductRecommendation!]!
+
+  """Recommend pages that are similar to a given page(s)."""
+  recommendMoreLikeThisPages(
+    """The number of results to return. Max 100."""
+    numberOfResults: Int!
+
+    """
+    The page(s) to find similar pages for. If this is provided, pageSlugs will be ignored.
+    """
+    pageIds: [ID!]
+
+    """
+    The page slug(s) to find similar pages for. If pageIds is not provided, this is required.
+    """
+    pageSlugs: [String!]
+  ): [PageRecommendation!]!
 
   """Recommend products that are similar to a given product(s)."""
   recommendMoreLikeThisProducts(
@@ -2857,6 +2888,16 @@ type Query {
     """
     productSlugs: [String!]
   ): [ProductRecommendation!]!
+
+  """
+  Recommend pages that have been recently viewed by a customer or device.
+  """
+  recommendRecentlyViewedPages(
+    customerOrDeviceId: String!
+
+    """The number of results to return. Max 100."""
+    numberOfResults: Int!
+  ): [PageRecommendation!]!
 
   """
   Recommend products that have been recently viewed by a customer or device.

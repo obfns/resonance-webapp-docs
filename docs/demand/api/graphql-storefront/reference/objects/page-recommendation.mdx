@@ -1,0 +1,38 @@
+---
+id: page-recommendation
+title: PageRecommendation
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+A page that is being recommended for a requested reason.
+
+```graphql
+type PageRecommendation {
+  pageId: ID!
+}
+```
+
+
+### Fields
+
+#### [<code style={{ fontWeight: 'normal' }}>PageRecommendation.<b>pageId</b></code>](#)<Bullet />[`ID!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> 
+> 
+
+
+
+### Returned by
+
+[`recommendLikeRecentActivityPages`](/demand/api/graphql-storefront/reference/queries/recommend-like-recent-activity-pages)  <Badge class="secondary" text="query"/><Bullet />[`recommendMoreLikeThisPages`](/demand/api/graphql-storefront/reference/queries/recommend-more-like-this-pages)  <Badge class="secondary" text="query"/><Bullet />[`recommendRecentlyViewedPages`](/demand/api/graphql-storefront/reference/queries/recommend-recently-viewed-pages)  <Badge class="secondary" text="query"/>
+
+
+
