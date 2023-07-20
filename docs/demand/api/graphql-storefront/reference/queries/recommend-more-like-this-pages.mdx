@@ -1,0 +1,50 @@
+---
+id: recommend-more-like-this-pages
+title: recommendMoreLikeThisPages
+hide_table_of_contents: false
+---
+
+
+
+export const Bullet = () => <><span style={{ fontWeight: 'normal', fontSize: '.5em', color: 'var(--ifm-color-secondary-darkest)' }}>&nbsp;●&nbsp;</span></>
+
+export const SpecifiedBy = (props) => <>Specification<a className="link" style={{ fontSize:'1.5em', paddingLeft:'4px' }} target="_blank" href={props.url} title={'Specified by ' + props.url}>⎘</a></>
+
+export const Badge = (props) => <><span className={'badge badge--' + props.class}>{props.text}</span></>
+
+
+Recommend pages that are similar to a given page(s).
+
+```graphql
+recommendMoreLikeThisPages(
+  numberOfResults: Int!
+  pageIds: [ID!]
+  pageSlugs: [String!]
+): [PageRecommendation!]!
+```
+
+
+### Arguments
+
+#### [<code style={{ fontWeight: 'normal' }}>recommendMoreLikeThisPages.<b>numberOfResults</b></code>](#)<Bullet />[`Int!`](/demand/api/graphql-storefront/reference/scalars/int) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
+> The number of results to return. Max 100.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>recommendMoreLikeThisPages.<b>pageIds</b></code>](#)<Bullet />[`[ID!]`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The page(s) to find similar pages for. If this is provided, pageSlugs will be ignored.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>recommendMoreLikeThisPages.<b>pageSlugs</b></code>](#)<Bullet />[`[String!]`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The page slug(s) to find similar pages for. If pageIds is not provided, this is required.
+> 
+
+### Type
+
+#### [`PageRecommendation`](/demand/api/graphql-storefront/reference/objects/page-recommendation) <Badge class="secondary" text="object"/>
+> A page that is being recommended for a requested reason.
+> 
+
+
+
+
+
