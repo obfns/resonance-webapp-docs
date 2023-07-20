@@ -85,6 +85,7 @@ type Supplier {
   after: String
   before: String
   cost: [FloatRangeFilterInput]
+  externalProductIds: [String!]
   first: Int
   inventoryPolicy: [SupplierProductInventoryPolicyFilterInput]
   inventoryStatus: VariantInventoryStatus
@@ -340,6 +341,10 @@ Requires supplierproduct/read permission on the requesting identity
 
 ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>cost</b></code>](#)<Bullet />[`[FloatRangeFilterInput]`](/supply/api/graphql-admin/reference/inputs/float-range-filter-input) <Badge class="secondary" text="list"/> <Badge class="secondary" text="input"/>
 > Filter SupplierProducts using cost ranges.
+> 
+
+##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>externalProductIds</b></code>](#)<Bullet />[`[String!]`](/supply/api/graphql-admin/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> Filter SupplierProducts using externalProductIds.
 > 
 
 ##### [<code style={{ fontWeight: 'normal' }}>Supplier.supplierProducts.<b>first</b></code>](#)<Bullet />[`Int`](/supply/api/graphql-admin/reference/scalars/int) <Badge class="secondary" text="scalar"/>

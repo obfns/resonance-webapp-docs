@@ -932,11 +932,31 @@ type Query {
   supplierVariant(supplierVariantId: ID): SupplierVariant
 
   """
-  Get several supplierVariants by SupplierVariantIds (currently)
+  List several supplierVariants by SupplierVariantIds or SupplierId.
+  Either supplierVariantIds or supplierId is required, and either
+  externalVariantIds or relayArgs are required for supplierId.
+  supplierId is required when externalVariantIds is provided, with relayArgs being ignored.
   
   Requires suppliervariant/read permission on the requesting identity for all associated suppliers
   """
-  supplierVariants(supplierVariantIds: [ID!]!): SupplierVariantConnection!
+  supplierVariants(
+    """Returns the elements in the list that come after the specified cursor."""
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+    externalVariantIds: [String!]
+
+    """Returns the first n elements from the list."""
+    first: Int
+
+    """Returns the last n elements from the list."""
+    last: Int
+    supplierId: ID
+    supplierVariantIds: [ID!]
+  ): SupplierVariantConnection!
 
   """
   Get a supplyEventSubscription by id. Requires you to own the subscription.
@@ -1222,6 +1242,9 @@ type Supplier {
 
     """Filter SupplierProducts using cost ranges."""
     cost: [FloatRangeFilterInput]
+
+    """Filter SupplierProducts using externalProductIds."""
+    externalProductIds: [String!]
 
     """Returns the first n elements from the list."""
     first: Int
