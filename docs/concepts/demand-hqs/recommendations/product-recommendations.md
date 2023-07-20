@@ -6,9 +6,9 @@ sidebar_position: 3
 
 Product Recommendations help customers find products they are likely to purchase. They generally increase Average Order Value and Conversion Rate by guiding customers to products they are likely to purchase.
 
-## Content-Based Recommendations
+## Content-Based / Individual Recommendations
 
-Content-Based Recommendations are recommendations that are based on the content of the product. 
+Content-Based Recommendations are recommendations that are based on the content of the product. Individual recommendations combine content-based recommendations with individual customer activity to provide recommendations that are personalized to the customer.
 
 **Advantages**
 
@@ -32,9 +32,9 @@ More Like This recommendations show products that are similar to the product the
 
 Like Recent Activity recommendations show products that are similar to the products the customer has recently viewed. This is a combination of personalizing to the customer's activity and finding contextually similar products. This is generally the most effective content-based recommendation and is often used as a backup for "Products for you" recommendations (that primarily use interaction metrics).
 
-## Interaction-Based Recommendations
+## Collaborative Recommendations
 
-Interaction-Based Recommendations are recommendations that are based on the interactions of the customer, and generally use collaborative filtering to find similar customers, then provide recommendations based on what the group has seen success with.
+Collaborative Recommendations are recommendations that are based on the interactions of the customer, use collaborative filtering to find similar customers, then provide recommendations based on what the group has seen success with.
 
 **Advantages**
 
@@ -46,4 +46,4 @@ Interaction-Based Recommendations are recommendations that are based on the inte
 - Requires a large amount of customer activity to provide beneficial recommendations, without which, content-based recommendations are generally more effective.
 - More popular products are recommended more often, which can lead to a "rich get richer" effect, and penalizes newer products.
 
-_Coming Soon..._
+None have been created as of yet.

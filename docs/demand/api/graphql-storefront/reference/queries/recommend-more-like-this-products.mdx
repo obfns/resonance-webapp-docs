@@ -18,7 +18,8 @@ Recommend products that are similar to a given product(s).
 ```graphql
 recommendMoreLikeThisProducts(
   numberOfResults: Int!
-  productIds: [ID!]!
+  productIds: [ID!]
+  productSlugs: [String!]
 ): [ProductRecommendation!]!
 ```
 
@@ -29,8 +30,12 @@ recommendMoreLikeThisProducts(
 > The number of results to return. Max 100.
 > 
 
-#### [<code style={{ fontWeight: 'normal' }}>recommendMoreLikeThisProducts.<b>productIds</b></code>](#)<Bullet />[`[ID!]!`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="non-null"/> <Badge class="secondary" text="scalar"/>
-> The product(s) to find similar products for.
+#### [<code style={{ fontWeight: 'normal' }}>recommendMoreLikeThisProducts.<b>productIds</b></code>](#)<Bullet />[`[ID!]`](/demand/api/graphql-storefront/reference/scalars/id) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The product(s) to find similar products for. If this is provided, productSlugs will be ignored.
+> 
+
+#### [<code style={{ fontWeight: 'normal' }}>recommendMoreLikeThisProducts.<b>productSlugs</b></code>](#)<Bullet />[`[String!]`](/demand/api/graphql-storefront/reference/scalars/string) <Badge class="secondary" text="list"/> <Badge class="secondary" text="scalar"/>
+> The product slug(s) to find similar products for. If productIds is not provided, this is required.
 > 
 
 ### Type

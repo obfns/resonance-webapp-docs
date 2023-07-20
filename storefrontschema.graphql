@@ -2847,8 +2847,15 @@ type Query {
     """The number of results to return. Max 100."""
     numberOfResults: Int!
 
-    """The product(s) to find similar products for."""
-    productIds: [ID!]!
+    """
+    The product(s) to find similar products for. If this is provided, productSlugs will be ignored.
+    """
+    productIds: [ID!]
+
+    """
+    The product slug(s) to find similar products for. If productIds is not provided, this is required.
+    """
+    productSlugs: [String!]
   ): [ProductRecommendation!]!
 
   """
